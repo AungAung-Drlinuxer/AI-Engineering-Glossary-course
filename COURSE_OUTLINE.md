@@ -58,9 +58,21 @@ python3 quiz.py --seed 7 --count 20 --answers
 
 ## လေ့လာလမ်းညွှန်များ (Guides)
 
-| နယ်ပယ် | လမ်းညွှန် | အခြေအနေ |
-|---|---|---|
-| 02 — Models & inference | [`guides/02_models_and_inference/README.md`](guides/02_models_and_inference/README.md) | အစဉ် ၆ အဆင့်၊ ပုံ ၁၂ ခု၊ lab ၆ ခု၊ အောက်ခံစနစ်၊ လေ့ကျင့်ခန်း — အားလုံး စစ်ဆေးပြီး |
+| နယ်ပယ် | လမ်းညွှန် | Term | အဆင့် |
+|---|---|---|---|
+| 01 — Math & training | [`guides/01_math_and_training/README.md`](guides/01_math_and_training/README.md) | ၄၂ | ၆ |
+| 02 — Models & inference | [`guides/02_models_and_inference/README.md`](guides/02_models_and_inference/README.md) | ၂၉ | ၆ |
+| 03 — Data & representations | [`guides/03_data_and_representations/README.md`](guides/03_data_and_representations/README.md) | ၁၃ | ၄ |
+| 04 — Retrieval & generation | [`guides/04_retrieval_and_generation/README.md`](guides/04_retrieval_and_generation/README.md) | ၁၄ | ၄ |
+| 05 — Prompting & context | [`guides/05_prompting_and_context/README.md`](guides/05_prompting_and_context/README.md) | ၁၅ | ၄ |
+| 06 — Agents & tools | [`guides/06_agents_and_tools/README.md`](guides/06_agents_and_tools/README.md) | ၂၇ | ၆ |
+| 07 — Evaluation & safety | [`guides/07_evaluation_and_safety/README.md`](guides/07_evaluation_and_safety/README.md) | ၁၇ | ၄ |
+| 08 — AI-native development | [`guides/08_ai_native_development/README.md`](guides/08_ai_native_development/README.md) | ၂၃ | ၅ |
+| 09 — Infrastructure & serving | [`guides/09_infrastructure_and_serving/README.md`](guides/09_infrastructure_and_serving/README.md) | ၁၈ | ၄ |
+| 10 — Reliability & operations | [`guides/10_reliability_and_operations/README.md`](guides/10_reliability_and_operations/README.md) | ၁၇ | ၄ |
+| 11 — Security & governance | [`guides/11_security_and_governance/README.md`](guides/11_security_and_governance/README.md) | ၂၀ | ၅ |
+| 12 — Multimodal systems | [`guides/12_multimodal_systems/README.md`](guides/12_multimodal_systems/README.md) | ၁၅ | ၄ |
 
-နယ်ပယ် 02 ကို လေ့လာသည့် အစီအစဉ်ကို ထို လမ်းညွှန်၏ ၆ ကြိမ် အစီအစဉ်အတိုင်း လုပ်ပါ —
-glossary term များကို ဖတ်ပြီးသည့် နောက် lab များဖြင့် ကိန်းဂဏန်း အနေဖြင့် တိုက်စစ်ပါ။
+လမ်းညွှန် တိုင်းသည် **terms + glossary shortcut** ပုံစံ ဖြစ်သည် — term တိုင်းကို ၃ ကြောင်း
+(term ဆိုတာ ဘာလဲ၊ ဥပမာ တစ်ခု၊ အတိုင်းအတာ သို့မဟုတ် အသုံးပြုပုံ) ဖြင့် ရေးထားပြီး အဆင့် ၄–၆ ခုအဖြစ်
+စီထားသည်။ `python3 verify_guide.py --verbose` ဖြင့် term ၂၅၀ လုံး ပါဝင်မှုကို စစ်ဆေးသည်။

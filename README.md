@@ -15,43 +15,34 @@ Term တိုင်းအတွက် —
 
 ## လေ့လာလမ်းညွှန် (Guides)
 
-Term စာရင်းသည် "ဘာလဲ" ကို ဖြေသည်။ `guides/` အောက်ရှိ လမ်းညွှန်များသည် "မည်သည့် အစဉ်ဖြင့် လေ့လာမည်၊
-ဘယ်လို အလုပ်လုပ်သည်၊ ဘယ်လောက် ကုန်ကျသည်" ကို ဖြေသည်။
+`terms/` ရှိ ဖိုင်များသည် term တိုင်း၏ အပြည့်အစုံ ရှင်းလင်းချက် (အင်္ဂလိပ် source အပါ) ကို ပေးသည်။
+`guides/` ရှိ ဖိုင်များသည် ထို term များကို **အတိုချုံး shortcut** အဖြစ် ပြန်ပေးသည် — term တိုင်း
+၃ ကြောင်း (term ဆိုတာ ဘာလဲ၊ ဥပမာ တစ်ခု၊ အတိုင်းအတာ သို့မဟုတ် အသုံးဝင်ပုံ) ဖြစ်သည်။
+နယ်ပယ် ၁၂ ခုလုံးအတွက် ဖိုင် တစ်ခုစီ (README.md) သာ ရှိသည် — lab၊ လေ့ကျင့်ခန်း၊ ပုံ မပါ။
 
-| လမ်းညွှန် | ဖုံးလွှမ်းသည့် နယ်ပယ် | ပါဝင်သည့် အရာ |
-|---|---|---|
-| [`guides/01_math_and_training/`](guides/01_math_and_training/README.md) | Math & training (term ၄၂) | အစဉ် ၆ အဆင့်၊ ပုံများ၊ lab ၃ ခု (gradient step၊ schedule၊ memory)၊ အောက်ခံစနစ်၊ လေ့ကျင့်ခန်း |
-| [`guides/02_models_and_inference/`](guides/02_models_and_inference/README.md) | Models & inference (term ၂၉) | အစဉ် ၆ အဆင့်၊ ပုံ ၁၂ ခု၊ lab ၆ ခု၊ အောက်ခံစနစ်၊ လေ့ကျင့်ခန်း |
-| [`guides/03_data_and_representations/`](guides/03_data_and_representations/README.md) | Data & representations (term ၁၃) | အစဉ် ၅ အဆင့်၊ tokenizer/split/pipeline lab |
-| [`guides/04_retrieval_and_generation/`](guides/04_retrieval_and_generation/README.md) | Retrieval & generation (term ၁၄) | အစဉ် ၅ အဆင့်၊ index/chunking/prompt-budget lab |
-| [`guides/05_prompting_and_context/`](guides/05_prompting_and_context/README.md) | Prompting & context (term ၁၅) | အစဉ် ၅ အဆင့်၊ budget/prefix-cache/prompt-shape lab |
-| [`guides/06_agents_and_tools/`](guides/06_agents_and_tools/README.md) | Agents & tools (term ၂၇) | အစဉ် ၆ အဆင့်၊ agent-loop/tool-schema/concurrency lab |
+| လမ်းညွှန် | နယ်ပယ် | Term | အဆင့် |
+|---|---|---|---|
+| [`guides/01_math_and_training/`](guides/01_math_and_training/README.md) | Math & training | ၄၂ | ၆ |
+| [`guides/02_models_and_inference/`](guides/02_models_and_inference/README.md) | Models & inference | ၂၉ | ၆ |
+| [`guides/03_data_and_representations/`](guides/03_data_and_representations/README.md) | Data & representations | ၁၃ | ၄ |
+| [`guides/04_retrieval_and_generation/`](guides/04_retrieval_and_generation/README.md) | Retrieval & generation | ၁၄ | ၄ |
+| [`guides/05_prompting_and_context/`](guides/05_prompting_and_context/README.md) | Prompting & context | ၁၅ | ၄ |
+| [`guides/06_agents_and_tools/`](guides/06_agents_and_tools/README.md) | Agents & tools | ၂၇ | ၆ |
+| [`guides/07_evaluation_and_safety/`](guides/07_evaluation_and_safety/README.md) | Evaluation & safety | ၁၇ | ၄ |
+| [`guides/08_ai_native_development/`](guides/08_ai_native_development/README.md) | AI-native development | ၂၃ | ၅ |
+| [`guides/09_infrastructure_and_serving/`](guides/09_infrastructure_and_serving/README.md) | Infrastructure & serving | ၁၈ | ၄ |
+| [`guides/10_reliability_and_operations/`](guides/10_reliability_and_operations/README.md) | Reliability & operations | ၁၇ | ၄ |
+| [`guides/11_security_and_governance/`](guides/11_security_and_governance/README.md) | Security & governance | ၂၀ | ၅ |
+| [`guides/12_multimodal_systems/`](guides/12_multimodal_systems/README.md) | Multimodal systems | ၁၅ | ၄ |
 
-### guides/02 — Models & inference
+Term တိုင်း၏ အစဉ်ကို အဆင့် ၄–၆ ခုအဖြစ် စီထားသည် — ပထမ အဆင့်များက နောက် အဆင့်များအတွက်
+လိုအပ်သည့် အခြေခံ ဖြစ်သည်။
 
-- **လေ့လာသည့် အစဉ်** — term ၂၉ ခုကို အဆင့် ၆ ဆင့် (အခြေခံ → Transformer → generative → decoding
-  → ကုန်ကျစရိတ် → တိုင်းတာမှု) အဖြစ် စီထားသည်၊ term တိုင်း၏ ကြိုတင် သိရမည့် term နှင့်
-  ဖွင့်ပေးသည့် အချက် ပါသည်။
-- **ပုံရှင်းလင်းချက်** — attention တွက်ချက်မှု၊ Transformer block အတွင်း စီးဆင်းမှု၊ KV cache
-  ကြီးထွားမှု၊ prefill/decode၊ sampling pipeline၊ quantization၊ MoE၊ speculative decoding၊
-  TTFT/ITL၊ batching — Mermaid ပုံ ၁၂ ခု။
-- **Interactive lab** — `lab_sampling.py` (temperature/top-k/top-p)၊ `lab_kv_cache.py`
-  (context/layers/dtype/batch)၊ `lab_quantization.py` (bits)၊ `lab_attention_cost.py` (context)၊
-  `lab_batching.py` (slots/requests/စျေးနှုန်း)၊ `lab_context_budget.py` (window) — တန်ဖိုး ပြောင်း၍
-  ရလဒ် ကြည့်နိုင်သည်၊ offline နှင့် deterministic။
-- **အောက်ခံစနစ်** — term တိုင်း GPU memory / compute / latency / throughput / ကုန်ကျစရိတ် /
-  production အပေါ် သက်ရောက်မှု (၄)။
-- **လေ့ကျင့်ခန်း** — လုပ်ပြထားသည့် ဥပမာ ၆ ခု၊ တွက်ချက်ရသည့် လေ့ကျင့်ခန်း ၈ ခု၊ ပြဿနာ ရှာဖွေခြင်း ၅ ခု၊
-  ဆုံးဖြတ်ချက် ၃ ခု၊ အဖြေများ အပြည့်အစုံ။
-
-စစ်ဆေးခြင်း — `python3 verify_guide.py --verbose` (လမ်းညွှန် တိုင်းအတွက် — ဖိုင် ၆ ခု၊ register၊ term လွှမ်းခြုံမှု၊
-Mermaid ပုံ ≥ ၄ ခု၊ lab တိုင်း ၃ ကြိမ် byte-identical၊ ဖိုင်ထဲ ကူးထားသည့် run တိုင်း ပြန် run ၍ တူညီမှု၊
-လမ်းညွှန် က ညွှန်သည့် lab/script ဖိုင် တိုင်း တကယ် ရှိမှု)။
-
-**terms-only လမ်းညွှန်** — လမ်းညွှန် တစ်ခုသည် term နှင့် glossary အတိုချုံး သာ ပေးလိုလျှင် README.md ထဲ
-`<!-- guide-kind: terms-only -->` ကို ထည့်ရမည်။ ထိုအခါ စစ်ဆေးမှုသည် ဖိုင် တစ်ခု၊ foreign glyph နှင့်
-term လွှမ်းခြုံမှု သာ တောင်းသည် (lab၊ ပုံ၊ လေ့ကျင့်ခန်း မတောင်း၊ colloquial register ban လည်း မစစ် —
-terms-only ဖိုင်သည် ပြောစကား register ဖြင့် ရေးထားသည်)။ ဤ area 11 သည် ထို ပုံစံ ဖြစ်သည်။
+စစ်ဆေးခြင်း — `python3 verify_guide.py --verbose` (လမ်းညွှန် တိုင်းအတွက် — README.md တစ်ဖိုင်၊ term ၂၅၀ လုံး
+ပါဝင်မှု၊ foreign glyph (CJK၊ Hangul၊ emoji) သုည၊ ဖိုင် ၈၀၀ လုံး အနည်းဆုံး)။ ဤ ဖိုင်များသည် ပြောစကား
+register (`ဆိုလိုပါတယ်`၊ `ဖြစ်ပါတယ်`) ဖြင့် ရေးထားသဖြင့် `<!-- guide-kind: terms-only -->` marker ဖြင့်
+formal register ban ကို ချွင်းချက် ပေးထားသည် — marker မပါသည့် လမ်းညွှန်များအတွက် စစ်ဆေးမှု အပြည့် ဆက်လက်
+အတည်ဖြစ်သည်။ ဤ area ၁၂ ခုလုံးသည် terms-only ပုံစံ ဖြစ်သည်။
 
 ## လေ့လာနယ်ပယ် ၁၂ ခု (Learning areas)
 
@@ -90,10 +81,10 @@ AI-Engineering-Glossary-course/
 ├── terms/
 │   ├── 00_index.md              # A–Z index (term ၂၅၀ လုံး)
 │   └── NN_<area>.md             # နယ်ပယ်တိုင်း၏ နှစ်ဘာသာ term စာရင်း
-├── guides/                      # လေ့လာလမ်းညွှန် (နယ်ပယ်အလိုက်)
-│   └── 02_models_and_inference/  # အစဉ်၊ ပုံများ၊ lab များ၊ အောက်ခံစနစ်၊ လေ့ကျင့်ခန်း
+├── guides/                      # terms-only shortcut လမ်းညွှန် (နယ်ပယ်အလိုက် ဖိုင် ၁၂ ခု)
+│   └── 11_security_and_governance/  # README.md — term ၂၀၊ term တိုင်း ၃ ကြောင်း
 ├── verify_glossary.py           # term ၂၅၀ လုံး ပြည့်စုံ/မှန်ကန်ကြောင်း စစ်ဆေးသည့် script
-├── verify_guide.py              # လမ်းညွှန်နှင့် lab များ စစ်ဆေးသည့် script
+├── verify_guide.py              # လမ်းညွှန် ဖိုင်များ (terms-only gate) စစ်ဆေးသည့် script
 └── quiz.py                      # term များမှ self-quiz ဖန်တီးသည့် script
 ```
 
@@ -128,8 +119,10 @@ python3 quiz.py --seed 42 --count 20 --answers     # အဖြေစာရင်
 | စာလုံး အရေအတွက် | ၄၀၅,၀၂၃ လုံး / ၃,၄၁၂ လိုင်း |
 | `verify_glossary.py` | `TOTAL: 250/250 terms across 12 area file(s)` — `[PASS]` |
 | Source အင်္ဂလိပ် စာသား | term တိုင်း byte တူညီစွာ ပါဝင် |
-| စကားပြော ပါတ်တစ်လ်လ် / အခြားဘာသာ / emoji | သုည |
+| စကားပြော particle / အခြားဘာသာ / emoji | သုည |
 | `quiz.py` | `--self-test` အောင်မြင်၊ offline |
+| လမ်းညွှန် (`guides/`) | နယ်ပယ် ၁၂ ခု / ဖိုင် ၁၂ ခု — term ၂၅၀ လုံး၊ နယ်ပယ်တိုင်း shortcut ပုံစံ |
+| `verify_guide.py` | `TOTAL: 12 guide(s), 250 terms covered` — `[PASS]` |
 
 ဤ စာရင်းသည် source ၏ ကြေညာချက် — **term ၂၅၀၊ နယ်ပယ် ၁၂** — နှင့် တစ်ခုမှ မကွာ။
 

@@ -1,91 +1,158 @@
-# Area 08 — AI-native development: လေ့လာလမ်းညွှန် (Study Guide)
+# Area 08 — AI-native development (terms + glossary shortcut)
 
-ဤ folder သည် [`terms/08_ai_native_development.md`](../../terms/08_ai_native_development.md) ရှိ term **၂၃ ခု** ကို
-**ကိုးကား စာရင်း** အဖြစ်မှ **လုပ်ငန်းစဉ် တစ်ခု** အဖြစ် တိုးချဲ့ထားသည်။ Glossary entry များသည်
-"ဤ term ဆိုသည်မှာ ဘာလဲ" ကို ဖြေသည်။ ဤလမ်းညွှန်သည် "agent တစ်ခုအား အလုပ်တစ်ခုကို မည်သို့
-သတ်မှတ်သည်၊ context နှင့် နယ်နိမိတ်ကို မည်သို့ ပေးသည်၊ ထွက်ပေါ်လာသည့် patch ကို မည်သည့်
-အထောက်အထားဖြင့် လက်ခံသည်၊ ထို လုပ်ငန်းစဉ်၏ ကုန်ကျစရိတ်ကို မည်သို့ တွက်သည်" ကို ဖြေသည်။
+<!-- guide-kind: terms-only -->
 
-ဤနယ်ပယ်သည် မော်ဒယ် အရည်အသွေးထက် **လုပ်ငန်းစဉ် ဖွဲ့စည်းပုံ** — spec၊ context၊ နယ်နိမိတ်၊
-အတည်ပြုမှု နှင့် တိုင်းတာမှု — အပေါ် အလေးထားသည်။ ထို့ကြောင့် ဤလမ်းညွှန်ရှိ ကိန်းဂဏန်း တိုင်းသည်
-"token မည်မျှ ကုန်သည်၊ လူ မည်မျှ နာရီ ကုန်သည်၊ defect မည်မျှ လွတ်မြောက်သည်၊ merged change တစ်ခု
-မည်မျှ ကုန်ကျသည်" ဟူသည့် မေးခွန်းများကို အဖြေပေးသည်။
+ဤဖိုင်သည် area 08 ၏ term ၂၃ ခုကို အတိုချုံး ရှင်းပြထားသည်။ term တိုင်းကို — term ဆိုတာ ဘာလဲ၊ ဥပမာ တစ်ခု၊
+အတိုင်းအတာ သို့မဟုတ် အသုံးဝင်ပုံ ဆိုတဲ့ ၃ ကြောင်းဖြင့် ရေးထားသည်။ term ၂၃ ခုကို အဆင့် ၅ ခုအဖြစ် စီထားသည်။
 
-## အခြေခံ အချက်
+## ၁။ ကုဒ် အလုပ်ကို agent လွှဲအပ်ခြင်း
 
-| အချက် | တန်ဖိုး |
-|---|---|
-| Term | ၂၃ ခု (area 08 — AI-native development) |
-| ဖိုင် | ဤ folder ရှိ document ၄ ခု (README၊ အစဉ်၊ ပုံများ၊ လေ့ကျင့်ခန်း) + `03_theory_to_infrastructure.md`၊ lab များ၊ `scripts/` |
-| လိုအပ်သည့် အရာ | Python 3.11+၊ standard library သာ — network၊ GPU၊ API key မလိုပါ |
-| Run တိုင်း | deterministic (ရလဒ် တူညီသည်)၊ offline |
-| စစ်ဆေးခြင်း | `python3 verify_guide.py --guide 08 --documents --verbose` |
+### Coding Agent
 
-ဤလမ်းညွှန်၏ ဥပမာ ကိန်းဂဏန်း တိုင်းသည် ဖော်ပြထားသည့် Python block ကို run လုပ်ပါက ပြန်လည်
-ရရှိသည့် output ဖြစ်သည်။ ကိန်းဂဏန်း တိုင်းသည် သတ်မှတ်ထားသည့် ယူဆချက် (assumption) အပေါ်
-မှီခိုသဖြင့် ဖော်မြူလာ တစ်ခုစီနှင့်အတူ ထို ယူဆချက်ကို ဖော်ပြထားသည်။
+Coding Agent ဆိုတာ repository ကို ဖတ်ခြင်း၊ ဖိုင် တည်းဖြတ်ခြင်း နှင့် development tool များ run ခြင်းဖြင့် သတ်မှတ်ထားတဲ့ ကုဒ် လုပ်ငန်းတစ်ခုကို ရှေ့တိုးစေတဲ့ agent ကို ဆိုလိုပါတယ်။
+ဥပမာ issue တစ်ခု၊ scope contract တစ်ခု နှင့် test command တစ်ခု ပေးပြီး patch တစ်ခု ပြန်တောင်းရင် agent က ဖိုင် ၄ ခု ပြင်ပြီး test ရလဒ်နဲ့အတူ patch ပြန်ပေးပါတယ်။
+Agent ရဲ့ တန်ဖိုးက ကုဒ် ထုတ်နိုင်တဲ့ အရည်အသွေး တစ်ခုတည်း မဟုတ်ဘဲ repository context၊ tool ခွင့်ပြုချက် နှင့် verification အပေါ်လည်း မူတည်ပါတယ်။
 
-## လေ့လာသည့် အစဉ် (၅ ကြိမ်)
+### Scope Contract
 
-| ကြိမ် | ဖတ်ရမည့် အပိုင်း | လက်တွေ့ လုပ်ရမည့် lab |
-|---|---|---|
-| ၁ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၁–၂ | `python3 labs/lab_context_strategy.py --scope-files 60 --window 32000` |
-| ၂ | [`02_visual_explanations.md`](02_visual_explanations.md) ပုံ ၁–၄ | `python3 labs/lab_review_budget.py --generated-lines 1200 --defect-rate 0.08` |
-| ၃ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၃–၄ | `python3 labs/lab_review_budget.py --generated-lines 3000 --defect-rate 0.12` |
-| ၄ | [`02_visual_explanations.md`](02_visual_explanations.md) ပုံ ၅–၈ | `python3 labs/lab_change_cost.py --tasks 100 --attempts 4 --success-rate 0.62` |
-| ၅ | [`04_exercises.md`](04_exercises.md) | `python3 labs/lab_change_cost.py --success-rate 0.45 --attempts 5`၊ `python3 labs/lab_context_strategy.py --repo-files 900 --window 128000` |
+Scope Contract ဆိုတာ လုပ်ငန်းတစ်ခုရဲ့ ပန်းတိုင်၊ ခွင့်ပြုတဲ့ နှင့် တားမြစ်တဲ့ နေရာများ၊ ထုတ်ရမည့် artifact၊ verification လိုအပ်ချက် နှင့် ရပ်တန့်မည့် အခြေအနေကို သတ်မှတ်တဲ့ သဘောတူညီချက် ဖြစ်ပါတယ်။
+ဥပမာ parser module နှင့် ၎င်း၏ test ကိုသာ ပြောင်းခွင့်ပြု၊ public API မပြောင်း၊ သတ်မှတ် test suite အောင်ရမည် လို့ ရေးထားရင် agent က ကျဉ်းမြောင်းတဲ့ fix ကိုသာ လုပ်ပါတယ်။
+Scope contract မရှိရင် fix တစ်ခုက review မလုပ်နိုင်တဲ့ refactor ကြီး ဖြစ်သွားနိုင်ပါတယ်။
 
-ကြိမ် တိုင်း၏ ပန်းတိုင်သည် တူညီသည် — term ဖတ်ပြီးနောက် ထို term က ကိန်းဂဏန်း အနေဖြင့်
-မည်မျှ သက်ရောက်သည် ကို lab ဖြင့် တိုက်စစ်ခြင်း ဖြစ်သည်။
+### Repository Instructions
 
-## ဖိုင်များ
+Repository Instructions ဆိုတာ repository ကို ဘယ်လို ဖွဲ့စည်းထားလဲ၊ ဘယ် command နှင့် စည်းမျဉ်း သက်ဆိုင်လဲ၊ ဘယ် နယ်နိမိတ် လေးစားရမလဲ နှင့် အလုပ်ကို ဘယ်လို စစ်ရမလဲ ကို coding agent ကို ပြောတဲ့ version control ဖြင့် စီမံထားတဲ့ လမ်းညွှန်ချက် ဖြစ်ပါတယ်။
+ဥပမာ repository အမြစ်မှာ AGENTS.md ထားပြီး build command၊ test command နှင့် မထိရမည့် generated ဖိုင် စည်းမျဉ်း ရေးထားရင် agent တိုင်း အဲဒီ စည်းမျဉ်းကို အလိုအလျောက် ရပါတယ်။
+လူတွေ နှုတ်နဲ့ ပြောနေရတဲ့ အသိပညာက ကုဒ်နဲ့အတူ လိုက်ပါသွားပါတယ်။
 
-| ဖိုင် | ဘာကို ပေးသည် |
-|---|---|
-| [`01_learning_sequence.md`](01_learning_sequence.md) | term ၂၃ ခုကို အဆင့် ၆ ဆင့်အဖြစ် အစဉ်လိုက် စီထားသည် — ကြိုတင် သိရမည့် term၊ ဖွင့်ပေးသည့် အချက်၊ အဆင့်တိုင်း၏ checkpoint မေးခွန်း၊ prerequisite graph၊ ထိုင်ရမည့် အစီအစဉ် |
-| [`02_visual_explanations.md`](02_visual_explanations.md) | Mermaid ပုံ ၈ ခု — spec မှ patch အထိ လမ်းကြောင်း၊ agent ရရှိသည့် context အစုအဝေး၊ လူ၏ ဂိတ်ပါသည့် review လှည့်ပတ်မှု၊ test-first နှင့် test-after၊ diff review checklist၊ tool ခွင့်ပြုချက် နှင့် scope နယ်နိမိတ်၊ session များအကြား handoff၊ workflow ယုံကြည်စိတ်ချရမှု |
-| [`03_theory_to_infrastructure.md`](03_theory_to_infrastructure.md) | term တိုင်း repository context၊ CI၊ cost၊ လူ၏ အချိန် နှင့် production အပေါ် သက်ရောက်မှု (အပြိုင် ရေးသားနေသည်) |
-| [`04_exercises.md`](04_exercises.md) | လုပ်ပြထားသည့် ဥပမာ ၄ ခု၊ တွက်ချက်ရသည့် လေ့ကျင့်ခန်း ၆ ခု၊ ပြဿနာ ရှာဖွေခြင်း ၃ ခု၊ ဆုံးဖြတ်ချက် ၂ ခု၊ အဖြေများ အပြည့်အစုံ |
-| [`labs/`](labs/) | interactive lab ၃ ခု + `run_labs.py` (usage နှင့် ရလဒ်များ — [`labs/README.md`](labs/README.md)) |
-| [`scripts/`](scripts/) | `03_theory_to_infrastructure.md` ရှိ ကိန်းဂဏန်း ဥပမာများကို ထုတ်ပေးသည့် script များ |
+### Repository Map
 
-`03_theory_to_infrastructure.md`၊ `labs/` နှင့် `scripts/` သည် ဤ လမ်းညွှန်၏ အခြား ဖိုင်များ ဖြစ်သည်။
-၎င်းတို့ကို အထက်ပါ verify command တစ်ခုတည်းဖြင့် တူညီစွာ စစ်ဆေးသည် — ကူးထားသည့် run တိုင်း
-ပြန်လည် run လုပ်ပါက တူညီသည့် output ရရမည်။
+Repository Map ဆိုတာ repository ရဲ့ အရေးပါတဲ့ directory များ၊ ပိုင်ဆိုင်မှု နယ်နိမိတ်၊ entry point၊ build command၊ test နှင့် generated ဖိုင် တွေကို ကျစ်လျစ်စွာ ဖော်ပြထားတာကို ဆိုလိုပါတယ်။
+ဥပမာ ဖိုင် ၉၀၀ ရှိတဲ့ repository တစ်ခုမှာ map ဖြင့် module ၃ ခုကို ရှာပြီး အဲဒီ ဖိုင် ၃ ခုကိုသာ load လုပ်ရင် window မပြည့်ဘဲ အလုပ်လုပ်နိုင်ပါတယ်။
+ဖိုင် tree က အမည်သာ ပြပါတယ် — map က ဘယ် path အရေးပါတယ် ဆိုတာကို ရှင်းပြပါတယ်။
 
-## Interactive lab များ — ဘာကို ပြောင်း၍ ဘာကို ကြည့်မည်
+### Progressive Disclosure
 
-Lab တိုင်းသည် **offline နှင့် deterministic** ဖြစ်ရမည် — parameter ပြောင်း၍ run ပါက အချိန်တိုင်း
-တူညီသည့် ရလဒ် ရရမည်။ သို့မှသာ မိမိ တွက်ချက်မှုနှင့် တိုက်စစ်နိုင်သည်။
+Progressive Disclosure ဆိုတာ လူ သို့မဟုတ် မော်ဒယ်ကို အနည်းဆုံး လိုအပ်တဲ့ context ကို အရင်ပေးပြီး၊ လုပ်ငန်း လိုအပ်လာမှ ပိုနက်တဲ့ အသေးစိတ်ကို ဖော်ထုတ်ပေးတာကို ဆိုလိုပါတယ်။
+ဥပမာ agent ကို repository စည်းမျဉ်းနှင့် map အရင်ပေးပြီး module ကို ဖော်ထုတ်ပြီးမှ implementation ဖိုင်ကို အပြည့် load လုပ်ရင် token ကုန်ကျမှု လျော့ပါတယ်။
+အသေးစိတ်ကို အဆင့်လိုက် ပေးတာဖြစ်ပြီး ဆုံးဖြတ်ချက်အတွက် လိုတဲ့ အချက်အလက်ကို ဖုံးထားတာ မဟုတ်ပါဘူး။
 
-| Lab | ပြောင်းနိုင်သည့် knob | ကြည့်ရမည့် ရလဒ် |
-|---|---|---|
-| [`labs/lab_context_strategy.py`](labs/lab_context_strategy.py) | `--repo-files`၊ `--avg-file-tokens`၊ `--scope-files`၊ `--window`၊ `--price-per-mtok` | whole-repo context သည် window ထဲ ဆံ့မှု၊ scoped context ၏ တန်ဖိုး၊ USD / task |
-| [`labs/lab_review_budget.py`](labs/lab_review_budget.py) | `--generated-lines`၊ `--review-min-per-100`၊ `--defect-rate`၊ `--reviewer-capacity-min` | review minutes၊ capacity ကျော်လွန်သည့် queue၊ လွတ်ထွက်သည့် defect၊ review USD |
-| [`labs/lab_change_cost.py`](labs/lab_change_cost.py) | `--tasks`၊ `--attempts`၊ `--success-rate`၊ `--tokens-per-attempt`၊ `--price-per-mtok`၊ `--repo-hour-cost` | မျှော်မှန်း attempt၊ merged change တစ်ခုလျှင် ကုန်ကျစရိတ်၊ retry multiplier |
+## ၂။ patch ထုတ်ခြင်း
 
-Lab အားလုံးကို တစ်ကြိမ်တည်း run လိုပါက —
+### Worktree
 
-```bash
-python3 guides/08_ai_native_development/labs/run_labs.py
-```
+Worktree ဆိုတာ Git မှာ repository တစ်ခုနှင့် branch သို့မဟုတ် commit တစ်ခုကို ချိတ်ထားတဲ့ working directory ဖြစ်ပြီး object storage ကို မျှသုံးပေမယ့် ကိုယ်ပိုင် checked-out ဖိုင် နှင့် index ရှိပါတယ်။
+ဥပမာ agent ၃ ခုကို worktree ၃ ခု ပေးလိုက်ရင် တစ်ခုစီ checkout မလဲရဘဲ တစ်ပြိုင်နက် လုပ်နိုင်ပြီး တစ်ခုရဲ့ ဖိုင် ပြင်မှု ကျန်နှစ်ခုကို မထိပါဘူး။
+Worktree က checked-out ဖိုင်ကိုသာ ခွဲပေးတာဖြစ်ပြီး process၊ port၊ database သို့မဟုတ် secret ကို မခွဲပေးပါဘူး။
 
-lab တိုင်းတွင် `--sweep` (knob တစ်ခုကို အပိုင်းအခြားအတွင်း လှည့်ကြည့်ခြင်း) နှင့် `--self-test`
-entry point ရှိသည်။ `--self-test` ကို run လုပ်ပါက ရလဒ်သည် run တိုင်း တူညီရမည်၊
-မတူပါက lab သည် တိုင်းတာမှု ကိရိယာ အဖြစ် အသုံးမဝင်ပါ။ Flag တိုင်း၏ အဓိပ္ပာယ်ကို
-`python3 <lab> --help` ဖြင့် ကြည့်နိုင်သည်။
+### Patch
 
-## စစ်ဆေးခြင်း
+Patch ဆိုတာ သိထားတဲ့ base revision တစ်ခုနှင့် နှိုင်းယှဉ်ပြီး ထည့်တဲ့ စာကြောင်း နှင့် ဖြတ်တဲ့ စာကြောင်းအဖြစ် ဖော်ပြလေ့ရှိတဲ့ review လုပ်နိုင်တဲ့ ဖိုင် ပြောင်းလဲမှု ဖော်ပြချက် ဖြစ်ပါတယ်။
+ဥပမာ coding agent က ဖိုင် ၄ ခုအတွက် unified diff ပြန်ပေးရင် လူက အဲဒီ diff ကိုသာ ဖတ်ပြီး +40 / -12 စာကြောင်း ပြောင်းလဲမှုကို စစ်လို့ ရပါတယ်။
+Patch က ဖိုင် ပြောင်းလဲမှုကိုသာ ဖမ်းပြီး ကျိုးကြောင်းဆင်ခြင်မှု၊ test အထောက်အထား သို့မဟုတ် ခွင့်ပြုချက်ကို ဖမ်းတာ မဟုတ်ပါဘူး။
 
-```bash
-python3 verify_guide.py --guide 08 --documents --verbose   # ဖိုင်၊ register၊ term လွှမ်းခြုံမှု ၂၃ ခု၊ Mermaid ပုံ
-python3 verify_guide.py --guide 08 --labs                   # lab များ (၃ ကြိမ် စီ run)
-python3 guides/08_ai_native_development/labs/run_labs.py     # lab များ၏ ရလဒ် စုစည်းမှု
-```
+### Handoff
 
-## မှီခိုသည့် အခြား ဖိုင်
+Handoff ဆိုတာ လူများ သို့မဟုတ် agent များအကြား လုပ်ငန်းတစ်ခုကို လွှဲပြောင်းတာဖြစ်ပြီး ပန်းတိုင်၊ လက်ရှိ အခြေအနေ၊ အထောက်အထား၊ ဆုံးဖြတ်ချက်၊ ကန့်သတ်ချက် နှင့် ကျန်ရှိတဲ့ အလုပ်ကို ထိန်းသိမ်းပေးပါတယ်။
+ဥပမာ session တစ်ခုက ပြီးစီးတဲ့ အစီအစဉ်၊ ပြောင်းထားတဲ့ ဖိုင် ၄ ခု၊ test ရလဒ် နှင့် နောက် လုပ်ရမည့် အလုပ် တစ်ခုကို task packet တစ်ခုအဖြစ် လွှဲပေးရင် session အသစ်က ပြန်မစရဘဲ ဆက်လုပ်နိုင်ပါတယ်။
+Summary က ဘာဖြစ်ခဲ့လဲ ဆိုတာသာ ပြောပြီး handoff က ဘယ် အခြေအနေက အခွင့်အာဏာ ရှိလဲ နှင့် နောက် ဘာလုပ်ရမလဲ ကို ထပ်ပြောပါတယ်။
 
-- Term တိုင်း၏ အပြည့်အစုံ အဓိပ္ပာယ် (အင်္ဂလိပ် + မြန်မာ) — [`../../terms/08_ai_native_development.md`](../../terms/08_ai_native_development.md)
-- A–Z index — [`../../terms/00_index.md`](../../terms/00_index.md)
-- area 07 (Evaluation & safety) သည် ဤနေရာ၏ verification gate များနှင့် တိုက်ရိုက် ဆက်စပ်သည် — [`../../terms/07_evaluation_and_safety.md`](../../terms/07_evaluation_and_safety.md)
-- area 10 (Reliability & operations) သည် ဤနေရာမှ ဆက်ဖတ်ရမည့် နယ်ပယ် ဖြစ်သည် — [`../../terms/10_reliability_and_operations.md`](../../terms/10_reliability_and_operations.md)
+## ၃။ patch ကို စစ်ဆေး အတည်ပြုခြင်း
+
+### Test Oracle
+
+Test Oracle ဆိုတာ program ရဲ့ အပြုအမူ မှန် မမှန် ဆုံးဖြတ်ဖို့ သုံးတဲ့ ယန္တရား၊ သတ်မှတ်ချက်၊ ရည်ညွှန်းမှု၊ invariant သို့မဟုတ် လူ၏ ဆုံးဖြတ်ချက် ဖြစ်ပါတယ်။
+ဥပမာ input ၁၀၀၀ ခုအတွက် test ထုတ်လုပ်နိုင်လည်း မှန် မမှန် ဆုံးဖြတ်တဲ့ schema သို့မဟုတ် reference implementation မရှိရင် အလိုအလျောက် verification လုပ်လို့ မရပါဘူး။
+ကုဒ်ကို ရေးတဲ့ မော်ဒယ်ကို သူ့ output မှန် မမှန် ပြန်မေးတာက လွတ်လပ်တဲ့ oracle မဖြစ်ပါဘူး။
+
+### Flaky Test
+
+Flaky Test ဆိုတာ ကုဒ် သို့မဟုတ် test ပတ်ဝန်းကျင်မှာ သက်ဆိုင်တဲ့ ပြောင်းလဲမှု မရှိဘဲ တူညီတဲ့ run များမှာ အောင်လည်း ရ ကျလည်း ရတဲ့ test ဖြစ်ပါတယ်။
+ဥပမာ test တစ်ခုက run ၂၀ မှာ ၃ ကြိမ် ကျရင် အဲဒါက ကုဒ်ကို မပြောင်းလည်း ရံဖန်ရံခါ ကျတဲ့ flaky test ဖြစ်ပါတယ်။
+Flaky test များလာရင် verification gate ကို လူ နှင့် agent နှစ်ဖက်လုံး လျစ်လျူရှုတတ်လာပြီး တကယ့် ကျရှုံးမှု လွတ်သွားနိုင်ပါတယ်။
+
+### Regression Test
+
+Regression Test ဆိုတာ အလုပ်လုပ်ကြောင်း သိထားတဲ့ အပြုအမူကို ကာကွယ်တဲ့ ထပ်လုပ်နိုင်တဲ့ စစ်ဆေးမှု ဖြစ်ပြီး code၊ prompt၊ model၊ retrieval သို့မဟုတ် tool ပြောင်းပြီးနောက် အထူး အရေးပါပါတယ်။
+ဥပမာ ပြင်ပြီးသား prompt-injection ဖြစ်ရပ်တစ်ခုကို အမြဲတမ်း eval case တစ်ခု ဖြစ်လာပြီး deployment တိုင်း မတိုင်မီ အောင်ရင် အဲဒီ ပြဿနာ ပြန်မဖြစ်တာ စစ်လို့ ရပါတယ်။
+Regression test က သတ်မှတ် အပြုအမူ တစ်ခုကို ကာကွယ်ပြီး benchmark က ကျယ်တဲ့ လုပ်ငန်း ပြန့်ကျဲမှုအပေါ် စွမ်းဆောင်ရည်ကို ခန့်မှန်းတာ ဖြစ်ပါတယ်။
+
+### Reviewer Agent
+
+Reviewer Agent ဆိုတာ အခြား agent တစ်ခုရဲ့ artifact သို့မဟုတ် ဆုံးဖြတ်ချက်ကို တိကျတဲ့ စံချိန်စံညွှန်းအပေါ် စစ်ပြီး တွေ့ရှိချက် သို့မဟုတ် အဆုံးအဖြတ် ပြန်ပေးတဲ့ agent ဖြစ်ပါတယ်။
+ဥပမာ agent တစ်ခုက patch ထုတ်ပြီးနောက် reviewer တစ်ခုကို diff၊ scope contract၊ repository စည်းမျဉ်း နှင့် test output ပေးပြီး စာကြောင်း တိကျတဲ့ တွေ့ရှိချက် တောင်းရင် ချန်လှပ်ထားမှု ဖမ်းမိနိုင်ပါတယ်။
+ဒုတိယ မော်ဒယ် ခေါ်ဆိုမှုတစ်ခုက အလိုအလျောက် လွတ်လပ်တာ မဟုတ်ဘဲ context မျှနေရင် အမှား တူတူ ပြန်ဖြစ်နိုင်ပါတယ်။
+
+## ၄။ ခေါ်ဆိုမှု များကို ယုံကြည်စိတ်ချအောင် ထိန်းချုပ်ခြင်း
+
+### Rate Limit
+
+Rate Limit ဆိုတာ သတ်မှတ်ထားတဲ့ အချိန် သို့မဟုတ် capacity အပိုင်းအခြားအတွင်း request၊ token၊ တစ်ပြိုင်နက် လုပ်တဲ့ အလုပ် သို့မဟုတ် အခြား resource ကို အများဆုံး ခွင့်ပြုတဲ့ policy ဖြစ်ပါတယ်။
+ဥပမာ tenant တစ်ခုအတွက် တစ်မိနစ် 100 request သတ်မှတ်ထားရင် အဲဒီ ကို ကျော်လာတဲ့ request တွေကို တန်းစီ သို့မဟုတ် ပယ်ချပါတယ်။
+Rate limit က ခွင့်ပြုတဲ့ အသုံးပြုမှုကို ထိန်းပြီး backpressure က အောက်ပိုင်း capacity ကန့်သတ်ချက်ကို စနစ်တစ်လျှောက် ဖြန့်ပေးပါတယ်။
+
+### Backpressure
+
+Backpressure ဆိုတာ အောက်ပိုင်း component တစ်ခုက လက်ရှိ နှုန်းအတိုင်း လုံခြုံစွာ မလုပ်နိုင်တဲ့အခါ အပေါ်ပိုင်း အလုပ်ကို နှေးစေခြင်း သို့မဟုတ် လက်မခံဘဲ ပယ်ချခြင်းဖြင့် flow ထိန်းတဲ့ ယန္တရား ဖြစ်ပါတယ်။
+ဥပမာ evaluator queue က limit ပြည့်တဲ့အခါ agent job အသစ်ကို ခေတ္တရပ်ပြီး retry လုပ်နိုင်တဲ့ တုံ့ပြန်ချက် ပြန်ပေးရင် memory ကုန်တာ နှင့် retry များတာ ကာကွယ်နိုင်ပါတယ်။
+Backpressure မရှိရင် တန်းစီနေတဲ့ run များက memory ကုန်စေပြီး rate limit ကို ကျော်နိုင်ပါတယ်။
+
+### Circuit Breaker
+
+Circuit Breaker ဆိုတာ ပျက်ကွက်မှုက သတ်မှတ် အဆင့်ကို ကျော်တဲ့အခါ dependency တစ်ခုဆီ ခေါ်တာကို ခေတ္တရပ်ပြီး ပြန်ကောင်းလား စမ်းသပ်တဲ့ ယုံကြည်စိတ်ချရမှု ထိန်းကိရိယာ ဖြစ်ပါတယ်။
+ဥပမာ provider timeout ၅ ခု ဆက်တိုက် ဖြစ်ရင် breaker ဖွင့်ပြီး fail over လုပ်ကာ cooldown ပြီးနောက် probe တစ်ခုသာ ခွင့်ပြုရင် latency နှင့် budget မစားသုံးရပါဘူး။
+Circuit Breaker က dependency ကျန်းမာမှုကို တုံ့ပြန်ပြီး rate limit က ခွင့်ပြုတဲ့ request ပမာဏကို ထိန်းတာ ဖြစ်ပါတယ်။
+
+### Retry with Backoff
+
+Retry with Backoff ဆိုတာ ယာယီ ပျက်ကွက်တဲ့ လုပ်ဆောင်ချက်ကို တစ်ဆင့်ချင်း ပိုရှည်တဲ့ ကြားချိန်ဖြင့် ထပ်လုပ်တာဖြစ်ပြီး jitter နှင့် retry အရေအတွက် ကန့်သတ်ချက် ပါဝင်ပါတယ်။
+ဥပမာ timeout တစ်ခုကို 1s၊ 2s၊ 4s ကြားချိန်ဖြင့် ၃ ကြိမ်သာ ပြန်လုပ်ရင် outage ကို မပိုဆိုးစေဘဲ ပြန်လုပ်နိုင်ပါတယ်။
+Immediate retry များက outage ကို ဆိုးစေပြီး rate limit ကုန်စေနိုင်တာမို့ validation error နှင့် idempotency မရှိတဲ့ write ကို ပြန်မလုပ်ရပါဘူး။
+
+### Idempotency
+
+Idempotency ဆိုတာ တူညီတဲ့ identity ဖြင့် တူညီတဲ့ လုပ်ဆောင်ချက်ကို ထပ်လုပ်တဲ့အခါ ပထမ အောင်မြင်တဲ့ အကျိုးသက်ရောက်မှုထက် ပိုတဲ့ ဘေးထွက် အကျိုးသက်ရောက်မှု မဖြစ်တဲ့ ဂုဏ်သတ္တိ ဖြစ်ပါတယ်။
+ဥပမာ tool request တစ်ခုမှာ idempotency key တွဲထည့်ပြီး ပြီးစီးတဲ့ ရလဒ်ကို မှတ်ထားရင် retry က write ကို ထပ်မလုပ်ဘဲ ထို ရလဒ်ကို ပြန်ပေးပါတယ်။
+Idempotency မရှိရင် မသေချာတဲ့ retry တစ်ခုက payment သို့မဟုတ် deployment ကို ထပ်နှစ်ဆ ဖြစ်စေနိုင်ပါတယ်။
+
+### Model Router
+
+Model Router ဆိုတာ capability၊ latency၊ ကုန်ကျစရိတ်၊ context အရွယ်အစား၊ policy နှင့် လက်ရှိ ရရှိနိုင်မှု စတဲ့ လိုအပ်ချက်အလိုက် request တစ်ခုအတွက် မော်ဒယ် သို့မဟုတ် provider ကို ရွေးတဲ့ component ဖြစ်ပါတယ်။
+ဥပမာ လွယ်တဲ့ extraction ကို မြန်တဲ့ မော်ဒယ်၊ ရှုပ်တဲ့ code review ကို အားကောင်းတဲ့ မော်ဒယ်ဆီ ပို့ပြီး တူညီတဲ့ data policy ရှိတဲ့ provider ဆီသာ fail over လုပ်ရင် အရည်အသွေး မကျဘဲ ကုန်ကျစရိတ် လျော့နိုင်ပါတယ်။
+Routing က policy ဆုံးဖြတ်ချက်ဖြစ်ပြီး ကျပန်း load balancing က traffic ခွဲပေးရုံသာ ဖြစ်ပါတယ်။
+
+### Semantic Cache
+
+Semantic Cache ဆိုတာ request အသစ်တစ်ခုကို ရွေးထားတဲ့ ကိုယ်စားပြုပုံစံ နှင့် ကန့်သတ်တန်ဖိုးအောက်မှာ လုံလောက်စွာ ဆင်တူတယ် ဆိုရင် ယခင် ရလဒ်ကို ပြန်သုံးတဲ့ cache ဖြစ်ပါတယ်။
+ဥပမာ အန္တရာယ်နည်းတဲ့ FAQ အဖြေကို ပုံမှန်ပြုလုပ်ထားတဲ့ ရည်ရွယ်ချက်အလိုက် cache လုပ်ပြီး key မှာ tenant နှင့် policy version ထည့်ရင် ထပ်တူ မေးခွန်း ၁၀၀ မှာ မော်ဒယ် ခေါ်ဆိုမှု လျော့သွားပါတယ်။
+မှားတဲ့ ကိုက်ညီမှုတစ်ခုက ခေတ်မမီ သို့မဟုတ် user အတွက် မသင့်လျော်တဲ့ output ပြန်ပေးနိုင်တာမို့ ပုဂ္ဂိုလ်ရေး request အတွက် cache ကို ကျော်ရပါတယ်။
+
+## ၅။ စောင့်ကြည့် တိုင်းတာ၍ ဖြန့်ချိခြင်း
+
+### Observability
+
+Observability ဆိုတာ မှတ်တမ်းတင်ထားတဲ့ input၊ output၊ အခြေအနေ ပြောင်းလဲမှု၊ tool ခေါ်ဆိုမှု၊ အချိန်၊ ကုန်ကျစရိတ်၊ error နှင့် evaluation အချက်ပြမှုများမှ AI စနစ်ရဲ့ အပြုအမူကို နားလည်နိုင်တဲ့ စွမ်းရည် ဖြစ်ပါတယ်။
+ဥပမာ retrieval၊ မော်ဒယ် ခေါ်ဆိုမှု၊ tool လုပ်ဆောင်မှု နှင့် အမှတ်ပေးခြင်း တစ်လျှောက် trace ID တစ်ခု မှတ်ထားရင် ပျက်ကွက်တာ ဘယ် အဆင့်မှာ ဝင်လာတာ ရှာလို့ ရပါတယ်။
+AI ပျက်ကွက်မှုက မော်ဒယ်၊ retrieval၊ tool နှင့် orchestration ကို ဖြတ်ဖြစ်တတ်တာမို့ ဆက်စပ်တဲ့ အထောက်အထား လိုပါတယ်။
+
+### Trace
+
+Trace ဆိုတာ မော်ဒယ် ခေါ်ဆိုမှု၊ retrieval၊ tool၊ အခြေအနေ ပြောင်းလဲမှု၊ retry၊ ခွင့်ပြုချက် နှင့် evaluation တစ်လျှောက် request သို့မဟုတ် လုပ်ငန်းတစ်ခုရဲ့ ဆက်စပ်နေတဲ့ မှတ်တမ်း ဖြစ်ပါတယ်။
+ဥပမာ မော်ဒယ် ခေါ်ဆိုမှု ၅ ခု နှင့် tool လုပ်ဆောင်မှု ၃ ခု ပါတဲ့ လုပ်ငန်းတစ်ခုကို span ဖြင့် မှတ်ထားရင် အချိန်နှင့် ကုန်ကျစရိတ် ဘယ် အဆင့်မှာ ကုန်တာ ပြန်တည်ဆောက်လို့ ရပါတယ်။
+Trace က လုပ်ငန်း အထောက်အထားသာ မှတ်ရပြီး ဖုံးထားတဲ့ မော်ဒယ် ကျိုးကြောင်းဆင်ခြင်မှု သို့မဟုတ် secret ကို ဖော်ထုတ်တာ မဟုတ်ပါဘူး။
+
+### Cost per Successful Task
+
+Cost per Successful Task ဆိုတာ သတ်မှတ် အောင်မြင်မှု စံကို ဖြည့်တဲ့ လုပ်ငန်း အရေအတွက်ဖြင့် စုစုပေါင်း စနစ် ကုန်ကျစရိတ်ကို စားတာ ဖြစ်ပြီး retry၊ ကျရှုံးတဲ့ run၊ tool နှင့် evaluation ကုန်ကျစရိတ်လည်း ပါပါတယ်။
+ဥပမာ repository လုပ်ငန်း ၁၀၀ ခုမှာ ကုန်ကျစရိတ် စုစုပေါင်း $50 ဖြစ်ပြီး test နှင့် review အောင်တဲ့ patch ၄၀ ခု ရရင် အောင်မြင်တဲ့ လုပ်ငန်း တစ်ခုလျှင် $1.25 ဖြစ်ပါတယ်။
+စျေးသက်သာတဲ့ မော်ဒယ် ခေါ်ဆိုမှုတစ်ခုလည်း မကြာခဏ ကျပြီး လူ ပြန်ပြင်ရရင် ကုန်ကျစရိတ် ကြီးတဲ့ workflow ဖြစ်လာနိုင်ပါတယ်။
+
+### Reproducible Build
+
+Reproducible Build ဆိုတာ ကြေညာထားတဲ့ source၊ ပတ်ဝန်းကျင် နှင့် လမ်းညွှန်ချက်ကို သီးခြားစီ ပြန်လုပ်တဲ့အခါ သတ်မှတ် artifact ကို bit တစ်လုံးမှ မကွာဘဲ ထုတ်နိုင်တဲ့ build ဖြစ်ပါတယ်။
+ဥပမာ toolchain နှင့် dependency ကို pin လုပ်ပြီး timestamp ကို ဖယ်ထားရင် စက် ၂ ခုမှာ သီးခြား build လုပ်လို့ ရလာတဲ့ artifact digest ၂ ခု တူညီပါတယ်။
+Reproducible build က artifact ကို မူလ ထုတ်ခဲ့တဲ့ စက် သို့မဟုတ် agent ကို ကျော်လွန်၍ စစ်နိုင်စေပါတယ်။
+
+## မှီခိုသည့် ဖိုင်
+
+- term တိုင်း၏ အပြည့်အစုံ အဓိပ္ပာယ် (အင်္ဂလိပ် source အပါ) — [`../../terms/08_ai_native_development.md`](../../terms/08_ai_native_development.md)

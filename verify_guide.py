@@ -7,10 +7,21 @@
     python3 verify_guide.py --labs              # lab များသာ
     python3 verify_guide.py --verbose
 
-လမ်းညွှန် တစ်ခုစီအတွက် စစ်ဆေးချက် —
+လမ်းညွှန် နှစ်မျိုး ရှိသည်။
+
+**terms-only လမ်းညွှန်** — README.md ထဲ `<!-- guide-kind: terms-only -->` marker ပါသည့် ဖိုင် (နယ်ပယ် ၁၂ ခုလုံး ဤ ပုံစံ ဖြစ်သည်) —
+
+1. README.md ဖိုင် တစ်ခု ရှိမှု၊ ၈၀၀ လုံး အနည်းဆုံး
+2. foreign glyph (CJK၊ Hangul၊ Devanagari၊ emoji) သုည
+3. ထို နယ်ပယ်၏ term အားလုံး ပါဝင်မှု
+
+register (စကားပြော particle) ban ကို ဤ ဖိုင်များအတွက် မစစ်ပါ — term တိုင်းကို ပြောစကား register
+(`ဆိုလိုပါတယ်`၊ `ဖြစ်ပါတယ်`) ဖြင့် ရေးထားသည်။
+
+**လမ်းညွှန် အပြည့်** — marker မပါသည့် ဖိုင် —
 
 1. လိုအပ်သည့် ဖိုင် ၆ ခု ရှိမှု (README, အစဉ်, ပုံများ, အောက်ခံစနစ်, လေ့ကျင့်ခန်း, labs/README)
-2. register သန့်ရှင်းမှု — စကားပြော ပါတ်တစ်လ်လ်၊ အခြားဘာသာ အက္ခရာ၊ emoji
+2. register သန့်ရှင်းမှု — စကားပြော particle၊ အခြားဘာသာ အက္ခရာ၊ emoji
 3. ထို နယ်ပယ်၏ term အားလုံး `01_learning_sequence.md` တွင် ပါဝင်မှု
 4. `02_visual_explanations.md` တွင် Mermaid ပုံ အနည်းဆုံး ၄ ခု
 5. lab တိုင်း `--self-test` ကို ၃ ကြိမ် run ၍ exit 0 နှင့် output တူညီမှု၊ `run_labs.py` အောင်မြင်မှု

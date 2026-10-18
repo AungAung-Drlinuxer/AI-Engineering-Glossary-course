@@ -1,82 +1,108 @@
-# Area 05 — Prompting & context: လေ့လာလမ်းညွှန် (Study Guide)
+# Area 05 — Prompting & context (terms + glossary shortcut)
 
-ဤ folder သည် [`../../terms/05_prompting_and_context.md`](../../terms/05_prompting_and_context.md) ရှိ term ၁၅ ခုကို
-**စာရင်း** အဖြစ်မှ **လေ့လာနိုင်သည့် သင်ခန်းစာ** အဖြစ် တိုးချဲ့ထားသည်။ Glossary entry များသည်
-"ဤ term ဆိုသည်မှာ ဘာလဲ" ကို ဖြေသည်။ ဤလမ်းညွှန်သည် "ဤ term ကို မည်သည့် အစဉ်ဖြင့် လေ့လာမည်၊
-inference တစ်ခုစီတွင် မော်ဒယ် တကယ် မြင်သည့် အရာ သည် ဘာလဲ၊ ထို အရာကို ဘယ်လောက် ခွဲဝေမည်၊
-မည်သို့ ကာကွယ်မည်" ကို ဖြေသည်။
+<!-- guide-kind: terms-only -->
 
-ဤနယ်ပယ်၏ အထူးအချက်မှာ ဤသင်ခန်းစာ အားလုံးသည် **အပြင်ဘက် မှ ထိန်းချနိုင်သည့် တစ်ခုတည်းသော
-အလွှာ** — prompt နှင့် context — အပေါ် ရည်ရွယ်ထားခြင်း ဖြစ်သည်။ မော်ဒယ်၏ weight ကို ပြင်ရန်
-မလိုဘဲ ပြောင်းလဲနိုင်သည့် အရာ အားလုံး — ညွှန်ကြားချက်၊ ဥပမာ၊ ရယူထားသည့် အထောက်အထား၊
-ကန့်သတ်ချက်၊ output ပုံစံ — သည် ဤနေရာတွင် ရှိသည်။ ထို့ကြောင့် ဤနယ်ပယ်သည် တိုင်းတာ၍ ရသည်၊
-ကုန်ကျစရိတ် တွက်နိုင်သည်၊ regression test ဖြင့် ထိန်းနိုင်သည်။
+ဤဖိုင်သည် area 05 ၏ term ၁၅ ခုကို အတိုချုံး ရှင်းပြထားသည်။ term တိုင်းကို — term ဆိုတာ ဘာလဲ၊ ဥပမာ တစ်ခု၊
+အတိုင်းအတာ သို့မဟုတ် အသုံးဝင်ပုံ ဆိုတဲ့ ၃ ကြောင်းဖြင့် ရေးထားသည်။ term ၁၅ ခုကို အဆင့် ၄ ခုအဖြစ် စီထားသည်။
 
-## အခြေခံ အချက်
+## ၁။ မော်ဒယ်ကို ဘာပေးမည်၊ ဘယ်လောက် ပေးမည်
 
-| အချက် | တန်ဖိုး |
-|---|---|
-| Term | ၁၅ ခု (area 05 — Prompting & context) |
-| အဆင့် | ၅ ဆင့် |
-| ဖိုင် | document ၅ ခု (ဤ README အပါအဝင်) + lab ၃ ခု (ရေးသားနေဆဲ) |
-| လိုအပ်သည့် အရာ | Python 3.11+၊ standard library သာ — network၊ GPU၊ API key မလိုပါ |
-| Run တိုင်း | deterministic (ရလဒ် တူညီသည်)၊ offline |
-| စစ်ဆေးခြင်း | `python3 verify_guide.py --guide 05 --documents --verbose` |
+### Chain of Thought (CoT)
 
-## လေ့လာသည့် အစဉ် (၅ ကြိမ်)
+Chain of Thought (CoT) ဆိုတာ ဖြေဆိုချက် မထုတ်မီ task တစ်ခုကို အဆင့်လိုက် ခွဲခြမ်းတဲ့ ကြားခံ ကျိုးကြောင်းဆင်ခြင်မှုကို ဆိုလိုပါတယ်။
+ဥပမာ အဆင့် ၅ ခု ပါတဲ့ ပြဿနာ တစ်ခုမှာ အဆင့်တိုင်း 80 token ဖြစ်ရင် reasoning စာသား 400 token ဖြစ်ပြီး အဲဒါ အားလုံး output budget ထဲ ပါပါတယ်။
+ဖော်ပြချက် ရှည်လာတာနဲ့ အချိန်နဲ့ ကုန်ကျစရိတ် တက်လာပြီး ချောမွေ့တဲ့ rationale တစ်ခုဟာ ဖြေဆိုချက် မှန်ကြောင်း သက်သေ မဖြစ်ပါဘူး။
 
-ကြိမ်တိုင်းတွင် **ဖတ်ရမည့် အပိုင်း** နှင့် **run ရမည့် lab** တွဲထားသည်။ lab များသည်
-offline နှင့် deterministic ဖြစ်သည် — parameter ပြောင်း၍ run ပါက အချိန်တိုင်း တူညီသည့် ရလဒ် ရသည်၊
-ထို့ကြောင့် မိမိ တွက်ချက်မှုနှင့် တိုက်စစ်နိုင်သည်။
+### Context Compression
 
-| ကြိမ် | ဖတ်ရမည့် ဖိုင် | run ရမည့် lab |
-|---|---|---|
-| ၁ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၁ | `python3 labs/lab_token_budget.py --window 16384` |
-| ၂ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၂ နှင့် [`02_visual_explanations.md`](02_visual_explanations.md) ပုံ ၁–၃ | `python3 labs/lab_shape_prompt.py --task classify --examples 2` |
-| ၃ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၃ | `python3 labs/lab_shape_prompt.py --sweep` |
-| ၄ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၄ | `python3 labs/lab_token_budget.py --sweep` နှင့် `python3 labs/lab_prefix_cache.py --calls 12000` |
-| ၅ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၅ နှင့် [`04_exercises.md`](04_exercises.md) | `python3 labs/lab_shape_prompt.py --examples 0 --cot on --seed 1` နှင့် `python3 labs/lab_prefix_cache.py --prefix-tokens 8000 --calls 500` |
+Context Compression ဆိုတာ နောက်ပိုင်း ဆုံးဖြတ်ချက် တစ်ခုအတွက် လိုအပ်တဲ့ အချက်အလက် ထိန်းထားရင်း ရင်းမြစ် စာသား၏ token ပမာဏကို လျှော့ချတာကို ဆိုလိုပါတယ်။
+ဥပမာ မှတ်တမ်း 12,000 token ကို 3,000 token အထိ ချုံ့လိုက်ရင် 75% လျော့သွားပြီး ချန်လှပ်လိုက်တဲ့ အသေးစိတ် တိုင်းလည်း ပျောက်သွားပါတယ်။
+ချုံ့ခြင်း မလုပ်ရင် budget ထဲ မဝင်ဘဲ ချုံ့ခြင်း လုပ်ရင် ဆုံးရှုံးမှု ရှိလာတဲ့အတွက် identifier နဲ့ ကန့်သတ်ချက် တွေကို စာလုံးတိုင်း ထိန်းရပါတယ်။
 
-## ဖိုင်များ
+### Context Engineering
 
-| ဖိုင် | ဘာကို ပေးသည် |
-|---|---|
-| [`01_learning_sequence.md`](01_learning_sequence.md) | term ၁၅ ခုကို အဆင့် ၅ ဆင့်အဖြစ် အစဉ်လိုက် စီထားသည် — ကြိုတင် သိရမည့် term၊ ဖွင့်ပေးသည့် အချက်၊ အဆင့်တိုင်း၏ စစ်ဆေးမေးခွန်း၊ prerequisite graph |
-| [`02_visual_explanations.md`](02_visual_explanations.md) | Mermaid ပုံ ၈ ခု — context window ကို budget အဖြစ် မြင်ခြင်း၊ prompt တည်ဆောက်ပုံ၊ request တစ်ခု၏ လည်ပတ်မှု၊ zero-shot / few-shot / chain-of-thought နှိုင်းယှဉ်ချက်၊ structured output နှင့် schema စစ်ဆေးခြင်း၊ compaction၊ prompt injection၊ prompt sensitivity အကဲဖြတ်မှု |
-| [`04_exercises.md`](04_exercises.md) | လုပ်ပြထားသည့် ဥပမာ ၄ ခု၊ တွက်ချက်ရသည့် လေ့ကျင့်ခန်း ၆ ခု၊ ပြဿနာ ရှာဖွေခြင်း ၃ ခု၊ ဆုံးဖြတ်ချက် ၂ ခု၊ အဖြေများ အပြည့်အစုံ — ကိန်းဂဏန်း တိုင်းသည် Python run မှ ရရှိသည် |
-| [`03_theory_to_infrastructure.md`](03_theory_to_infrastructure.md) | (တစ်ပြိုင်နက် ရေးသားနေသည် — ဤဖိုင်၏ အကြောင်းအရာကို ဤလမ်းညွှန်က မှီခို မထားပါ) |
-| [`labs/`](labs/) | lab ၃ ခု (`lab_token_budget.py`၊ `lab_prefix_cache.py`၊ `lab_shape_prompt.py`) နှင့် `run_labs.py` — ရေးသားနေဆဲ ဖြစ်သည် |
-| [`../../terms/05_prompting_and_context.md`](../../terms/05_prompting_and_context.md) | term တိုင်း၏ အပြည့်အစုံ အဓိပ္ပာယ် (အင်္ဂလိပ် + မြန်မာ) |
+Context Engineering ဆိုတာ ညွှန်ကြားချက်၊ ရွေးထားတဲ့ file၊ ရယူထားတဲ့ အထောက်အထား၊ tool ရလဒ်၊ ဥပမာ၊ state နဲ့ output ကန့်သတ်ချက် အားလုံး ပါဝင်တဲ့ အချက်အလက် ပတ်ဝန်းကျင်ကို အဆင့်တိုင်း စီစဉ်တာကို ဆိုလိုပါတယ်။
+ဥပမာ file ၃၀ ခု ရှိတဲ့ repo တစ်ခုမှာ သက်ဆိုင်တဲ့ file ၄ ခုနဲ့ လတ်တလော tool output ကိုသာ ထည့်ရင် အဲဒါ task packet ၁ ခု ဖြစ်ပါတယ်။
+အထောက်အထား ပျောက်နေရင်၊ ခေတ်မမီတော့ရင် သို့မဟုတ် ဆူညံသံ များလာရင် မော်ဒယ် စွမ်းဆောင်ရည် ကျရှုံးပါတယ်။
 
-## Lab များ — တစ်ပြိုင်နက် ရေးသားနေဆဲ
+### Context Window
 
-`labs/` folder ကို သီးခြား ရေးသားနေသည်။ ဖိုင် ၃ ခု ရှိပြီး ဖြစ်သည် — `lab_token_budget.py`၊
-`lab_prefix_cache.py`၊ `lab_shape_prompt.py` — အပိုင် ဖိုင် တိုးလာနိုင်သည်။ ထို့ကြောင့်
-အောက်ပါ knob များနှင့် lab အမည်များကို ကြိမ်တိုင်း၏ လမ်းညွှန်စာအဖြစ် ယူရမည်၊ ပုံသေ
-စာချုပ် အဖြစ် မမှတ်ရ။ Token အားလုံးသည် `tokens = ceil(characters / 4)` ဟူသည့် estimator
-မှ ရရှိသည့် ခန့်မှန်းတန်ဖိုး ဖြစ်သည်။
+Context Window ဆိုတာ မော်ဒယ်နဲ့ API contract တစ်ခုအောက်မှာ inference တစ်ခုအတွက် ရနိုင်တဲ့ အများဆုံး token ပမာဏကို ဆိုလိုပါတယ်။
+ဥပမာ context 8,192 token ရှိပြီး prompt က 1,200 token ယူရင် output အတွက် 6,992 token ကျန်ပါတယ်။
+window ကြီးလည်း ထည့်ထားတဲ့ အသေးစိတ် တိုင်းကို ယုံကြည်စိတ်ချစွာ အသုံးပြုမယ်လို့ အာမခံ မရပါဘူး။
 
-| Lab | ပြောင်းနိုင်သည့် knob | ကြည့်ရမည့် ရလဒ် | အဆင့် |
-|---|---|---|---|
-| `labs/lab_token_budget.py` | `--window`၊ `--system`၊ `--instructions`၊ `--examples`၊ `--retrieved`၊ `--history`၊ `--reserve`၊ `--sweep` | အပိုင်း တစ်ခုစီ၏ token၊ FITS သို့မဟုတ် OVERFLOW၊ headroom သို့မဟုတ် shortfall၊ ဖြေရှင်းနည်း တစ်ခုစီ လွတ်စေသည့် token၊ တောင်းဆိုမှု တစ်ခုစီ၏ cost | ၁၊ ၄ |
-| `labs/lab_prefix_cache.py` | `--prefix-tokens`၊ `--calls`၊ `--prefill-rate`၊ `--suffix-tokens`၊ `--sweep` | cache ရှိ/မရှိ prefill token၊ saving ရာခိုင်နှုန်း၊ TTFT နှစ်မျိုး၊ cost၊ shared prefix ၏ KV | ၄ |
-| `labs/lab_shape_prompt.py` | `--task`၊ `--examples`၊ `--cot`၊ `--seed`၊ `--sweep` | prompt ၏ structure tree၊ အပိုင်း တစ်ခုစီ၏ token၊ လိုအပ်သည့် အပိုင်း ပါ/မပါ စစ်ဆေးမှု | ၂၊ ၃၊ ၅ |
-| `labs/run_labs.py` | — | lab တိုင်း၏ `--self-test` ကို တစ်ကြိမ် run ၍ အကျဉ်းချုပ် | အားလုံး |
+## ၂။ ဥပမာနှင့် ညွှန်ကြားချက် လိုက်နာမှု
 
-## ဤလမ်းညွှန်ကို စစ်ဆေးခြင်း
+### Few-Shot
 
-```bash
-python3 verify_guide.py --guide 05 --documents --verbose
-```
+Few-Shot ဆိုတာ လိုလားတဲ့ task၊ format သို့မဟုတ် ဆုံးဖြတ်ချက် နယ်နိမိတ်ကို ကောက်ချက်ချနိုင်ရန် ပစ်မှတ် input မတိုင်မီ ဥပမာ အနည်းငယ် ထည့်တဲ့ in-context learning ကို ဆိုလိုပါတယ်။
+ဥပမာ email ၄ ခုကို ဥပမာအဖြစ် ထည့်ရင် 400 token ပိုကုန်ပြီး အဲဒီ token က context window ထဲက နေရာ ယူသွားပါတယ်။
+ဥပမာ အရေအတွက် ထက် ဥပမာ၏ အရည်အသွေးနဲ့ လွှမ်းခြုံမှုက ပို အရေးပါပြီး ဆန့်ကျင်နေတဲ့ ဥပမာ တွေက ယုံကြည်ရမှုကို လျှော့ချပါတယ်။
 
-စစ်ဆေးချက်များ — ဖိုင် ၄ ခု ရှိမှု၊ ဖိုင်တိုင်း ၈၀၀ အက္ခရာ ကျော်မှု၊ စကားပြော ပါတ်တစ်လ်လ်
-သို့မဟုတ် အခြားဘာသာ အက္ခရာ မပါမှု၊ term ၁၅ ခုလုံး [`01_learning_sequence.md`](01_learning_sequence.md)
-တွင် ပါမှု၊ Mermaid ပုံ ၄ ခု အထက် ရှိမှု။ `03_theory_to_infrastructure.md`၊ `labs/README.md`
-နှင့် lab script များနှင့် ပတ်သက်သည့် စစ်ဆေးချက်များသည် `labs/` ကို ရေးသားနေသည့်
-ပုဂ္ဂိုလ်ထံ ရောက်သည်။
+### In-Context Learning
 
-## မှီခိုသည့် အခြား ဖိုင်
+In-Context Learning ဆိုတာ parameter ကို ပြင်မထားဘဲ လက်ရှိ input ထဲက ညွှန်ကြားချက်၊ ဥပမာ သို့မဟုတ် ပုံစံကနေ မော်ဒယ်က သူ့ အပြုအမူကို လိုက်လျောညီထွေ ပြောင်းတာကို ဆိုလိုပါတယ်။
+ဥပမာ model တစ်ခုတည်းကို weight မပြင်ဘဲ task ၃ ခုအတွက် မတူတဲ့ context ၃ မျိုး ပေးရင် အပြုအမူ ၃ မျိုး ရပါတယ်။
+ဒါက weight ထဲ ဝင်သွားတဲ့ fine-tuning မဟုတ်ဘဲ ယာယီ conditioning သာ ဖြစ်ပြီး context ကုန်ရင် အဲဒီ သင်ယူမှုလည်း ကုန်သွားပါတယ်။
 
-- Term တိုင်း၏ အပြည့်အစုံ အဓိပ္ပာယ် (အင်္ဂလိပ် + မြန်မာ) — [`../../terms/05_prompting_and_context.md`](../../terms/05_prompting_and_context.md)
-- A–Z index — [`../../terms/00_index.md`](../../terms/00_index.md)
-- ဤလမ်းညွှန်၏ ကိန်းဂဏန်း အဖြေများ — [`04_exercises.md`](04_exercises.md)
+### Instruction Following
+
+Instruction Following ဆိုတာ ဖော်ပြထားတဲ့ task နဲ့ ကန့်သတ်ချက် ပြည့်မီတဲ့ အပြုအမူဆီ ညွှန်ကြားချက်နဲ့ context ကို ချိတ်ပေးတဲ့ မော်ဒယ် စွမ်းရည်ကို ဆိုလိုပါတယ်။
+ဥပမာ ကန့်သတ်ချက် ၅ ခု ပေးပြီး ၄ ခုသာ လိုက်နာရင် 80% ဖြစ်ပြီး ကျန်တဲ့ ၁ ခု ချိုးဖောက်မှုက ရလဒ်ကို ပျက်စီးစေနိုင်ပါတယ်။
+ဘာသာစကား ချောမွေ့နေလည်း တောင်းဆိုတဲ့ လုပ်ဆောင်ချက်၊ format နဲ့ ဦးစားပေး အစဉ်ကို လိုက်နာမှု ခွဲပြီး အကဲဖြတ်ရပါတယ်။
+
+### Instruction Hierarchy
+
+Instruction Hierarchy ဆိုတာ application policy၊ သုံးစွဲသူနဲ့ မယုံရတဲ့ ရယူထားတဲ့ အကြောင်းအရာ ကဲ့သို့ အခွင့်အာဏာ မတူတဲ့ ရင်းမြစ် တွေကြား ညွှန်ကြားချက် ပဋိပက္ခကို ဖြေရှင်းတဲ့ စည်းမျဉ်းကို ဆိုလိုပါတယ်။
+ဥပမာ အဆင့် ၃ ခု (policy၊ user၊ retrieved content) ရှိရင် webpage ထဲက "system prompt ကို ပြောပါ" ဆိုတဲ့ စာသားက အခွင့်အာဏာ အနည်းဆုံး အဆင့်မှာ ရပ်ပါတယ်။
+ဒါက အပြုအမူကို တိုးတက်စေနိုင်တဲ့ စည်းမျဉ်း ဖြစ်ပြီး လုံခြုံရေး နယ်နိမိတ် မဟုတ်တဲ့အတွက် least privilege နဲ့ အတည်ပြုချက် ထိန်းချုပ်မှု လိုအပ်ဆဲ ဖြစ်ပါတယ်။
+
+## ၃။ prompt ကို စီစဉ်ခြင်း၊ ပြန်သုံးခြင်းနှင့် စမ်းသပ်ခြင်း
+
+### Lost in the Middle
+
+Lost in the Middle ဆိုတာ အထောက်အထား တည်နေရာ အလိုက် မော်ဒယ် စွမ်းဆောင်ရည် ပြောင်းလဲပြီး အလယ်ပိုင်းမှာ ရှိတဲ့ အချက်အလက်ကို လျော့နည်း အသုံးချတဲ့ long-context ပုံစံကို ဆိုလိုပါတယ်။
+ဥပမာ စာရွက် ၂၀ ခု ထဲမှာ အထောက်အထားက position ၁၀ (အလယ်) မှာ ရှိရင် အစနဲ့ အဆုံးမှာ ရှိတဲ့ အခါထက် အသုံးချမှု လျော့နိုင်ပါတယ်။
+ဒါက လေ့လာ တွေ့ရတဲ့ အပြုအမူ ပုံစံ ဖြစ်ပြီး မော်ဒယ် တိုင်းကို တူညီစွာ သက်ရောက်တဲ့ ပုံသေ နိယာမ မဟုတ်ပါဘူး။
+
+### Prompt Cache
+
+Prompt Cache ဆိုတာ တူညီတဲ့ သို့မဟုတ် အရည်အချင်း ပြည့်မီတဲ့ prompt prefix တစ်ခုအတွက် provider သို့မဟုတ် application ဘက်က တွက်ချက်ပြီးသား အပိုင်းကို ပြန်သုံးတာကို ဆိုလိုပါတယ်။
+ဥပမာ prefix 8,000 token တူတဲ့ call 1,000 ခု run ရင် cache မရှိရင် prefill token 8,000,000 ဖြစ်ပြီး ဈေးနှုန်းကို ဥပမာ အဖြစ် token တစ်သန်း $0.50 ယူဆရင် $4.00 ဖြစ်ပါတယ်။
+တည်ငြိမ်တဲ့ policy စာသားကို ရှေ့မှာ ထားရင် cache hit ရနိုင်ပြီး miss ဖြစ်တာ ကိုလည်း ပုံမှန် အဖြစ် သဘောထားရပါတယ်။
+
+### Prompt Engineering
+
+Prompt Engineering ဆိုတာ သတ်မှတ်ထားတဲ့ task တစ်ခုမှာ အပြုအမူ တိုးတက်စေရန် ညွှန်ကြားချက်၊ ဥပမာ၊ ကန့်သတ်ချက်နဲ့ output လိုအပ်ချက် တွေကို စီစဉ် တည်ဆောက်တာကို ဆိုလိုပါတယ်။
+ဥပမာ prompt 150 token ရှိရာမှာ instruction ၃ ကြောင်း ထည့်လိုက်ရင် 250 token ဖြစ်လာပြီး ပိုကုန်တာ 100 token ဖြစ်ပါတယ်။
+စကားလုံး ရွေးချယ်မှုက ပျောက်နေတဲ့ အထောက်အထား၊ မလုံခြုံတဲ့ permission သို့မဟုတ် မရှိတဲ့ evaluation ကို ဖြည့်ပေးနိုင်ခြင်း မရှိပါဘူး။
+
+### Prompt Sensitivity
+
+Prompt Sensitivity ဆိုတာ ရည်ရွယ်တဲ့ task မပြောင်းဘဲ စကားလုံး၊ အစဉ်၊ format သို့မဟုတ် ဥပမာ ပြောင်းလိုက်တာကြောင့် ရလဒ် ကွဲပြားတာကို ဆိုလိုပါတယ်။
+ဥပမာ အဓိပ္ပာယ် တူတဲ့ prompt မူကွဲ ၅ ခု စမ်းရင် ၃ ခုသာ မှန်ရင် တိကျမှု 60% ဖြစ်ပြီး ကျန် ၂ ခု ကျသွားပါတယ်။
+တစ်မျိုးတည်း စကားလုံး အောက်မှာ အောင်မြင်တဲ့ စနစ်က သုံးစွဲသူ တကယ် အတွက် ယုံကြည်ရနိုင် မရှိနိုင်တဲ့အတွက် မူကွဲ တွေကို regression test ထဲ ထည့်ထားရပါတယ်။
+
+## ၄။ ကန့်သတ်ချက်၊ ခွဲဝေမှုနှင့် အခြေခံ ပုံစံ
+
+### System Prompt
+
+System Prompt ဆိုတာ ထို provider ရဲ့ instruction hierarchy အတွင်း အပြုအမူနဲ့ ကန့်သတ်ချက် တည်ထောင်ရန် application က ပေးတဲ့ အခြေခံ ညွှန်ကြားချက် message ကို ဆိုလိုပါတယ်။
+ဥပမာ system prompt 800 token၊ user instruction 200 token နဲ့ retrieved content 3,000 token ဆိုရင် စုစုပေါင်း 4,000 token ဖြစ်ပါတယ်။
+system prompt က အပြုအမူကို လမ်းညွှန်နိုင်ပေမယ့် လျှို့ဝှက် နေမယ်လို့ အာမခံ မရတဲ့အတွက် လုံခြုံရေး နယ်နိမိတ် အဖြစ် မယူရပါဘူး။
+
+### Token Budget
+
+Token Budget ဆိုတာ ညွှန်ကြားချက်၊ အထောက်အထား၊ မှတ်တမ်း၊ tool ရလဒ်၊ reasoning နဲ့ output တို့အတွက် token ပမာဏကို ကြိုတင် ခွဲဝေ သတ်မှတ်တာကို ဆိုလိုပါတယ်။
+ဥပမာ context 4,096 token ထဲက prompt အတွက် 2,500 token ယူပြီး output အတွက် 1,000 token ဖယ်ထားရင် 596 token သာ ကျန်ပါတယ်။
+ထည့်တဲ့ token တိုင်း context နေရာ၊ latency နဲ့ ကုန်ကျစရိတ် အတွက် ယှဉ်ပြိုင်တဲ့အတွက် တန်ဖိုးမြင့်တဲ့ အထောက်အထားကို အရင် ထိန်းရပါတယ်။
+
+### Zero-Shot
+
+Zero-Shot ဆိုတာ လက်ရှိ input ထဲ task-specific ဥပမာ မထည့်ဘဲ ညွှန်ကြားချက် သို့မဟုတ် task ဖွဲ့စည်းမှုနဲ့သာ task ကို လုပ်ဆောင်တာကို ဆိုလိုပါတယ်။
+ဥပမာ ဥပမာ တစ်ခုမှ မပေးဘဲ prompt 200 token ပို့ရင် few-shot နဲ့ 800 token ပို့ရတာထက် 600 token သက်သာပါတယ်။
+ဥပမာ မပါတာက pretraining၊ instruction tuning၊ tool သို့မဟုတ် retrieved context မရှိခဲ့တာ မဟုတ်တဲ့အတွက် zero-shot လည်း ကောင်းစွာ အလုပ်လုပ်နိုင်ပါတယ်။
+
+## မှီခိုသည့် ဖိုင်
+
+- term တိုင်း၏ အပြည့်အစုံ အဓိပ္ပာယ် (အင်္ဂလိပ် source အပါ) — [`../../terms/05_prompting_and_context.md`](../../terms/05_prompting_and_context.md)

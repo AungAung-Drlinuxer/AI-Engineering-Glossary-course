@@ -10,9 +10,9 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 
 ## ဤနယ်ပယ်အတွက် လေ့လာလမ်းညွှန်
 
-term ၂၉ ခုကို အစဉ်လိုက် လေ့လာရန် `guides/02_models_and_inference/01_learning_sequence.md`၊ ပုံများအတွက် `02_visual_explanations.md`၊ အောက်ခံစနစ် သက်ရောက်မှုအတွက် `03_theory_to_infrastructure.md`၊ လေ့ကျင့်ခန်းအတွက် `04_exercises.md` နှင့် လက်တွေ့စမ်းသပ်မှုအတွက် `labs/` ကို ဖတ်ပါ။
+term ၂၉ ခုကို အတိုချုံး (shortcut) အဖြစ် `guides/02_models_and_inference/README.md` တွင် ဖတ်ပါ — term တိုင်းကို ၃ ကြောင်းဖြင့် ရေးထားသည် (ဆိုလိုသည့် အဓိပ္ပာယ်၊ ဥပမာ တစ်ခု၊ အတိုင်းအတာ သို့မဟုတ် အသုံးပြုပုံ)။
 
-ပထမဦးစွာ `01_learning_sequence.md` အတိုင်း အစဉ်လိုက် ဖတ်ပါ။ term တစ်ခုစီကို မှတ်မိပြီးနောက် `02_visual_explanations.md` ဖြင့် ပုံကို ကြည့်၍ စိတ်ထဲတွင် ပုံဖော်ပါ။ ထို့နောက် `03_theory_to_infrastructure.md` ဖြင့် ထို concept သည် GPU memory၊ compute၊ latency၊ throughput သို့မဟုတ် serving cost အနက် မည်သည့် ဝင်ရိုးကို ရွေ့စေသည်ကို ဆက်စပ်ပါ။ နောက်ဆုံးတွင် `04_exercises.md` နှင့် `labs/` ကို run ၍ မိမိ ကိုယ်တိုင် တွက်ချက် စစ်ဆေးပါ။
+term ၂၉ ခုကို အဆင့် ၆ ခုအဖြစ် စီထားသဖြင့် အစဉ်လိုက် ဖတ်ပါ။ ဤဖိုင်သည် term တိုင်း၏ အပြည့်အစုံ အဓိပ္ပာယ် (English source အပါ) အတွက် ဖြစ်ပြီး၊ လမ်းညွှန်သည် မှတ်သားရန် အတိုချုံး ပုံစံ ဖြစ်သည်။
 
 ### Attention
 

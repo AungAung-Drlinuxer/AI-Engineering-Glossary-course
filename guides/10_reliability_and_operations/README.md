@@ -1,90 +1,120 @@
-# Area 10 — Reliability & Operations: လေ့လာလမ်းညွှန် (Study Guide)
+# Area 10 — Reliability & operations (terms + glossary shortcut)
 
-ဤ folder သည် [`terms/10_reliability_and_operations.md`](../../terms/10_reliability_and_operations.md) ရှိ term ၁၇ ခုကို **စာရင်း** အဖြစ်မှ
-**လေ့လာနိုင်သည့် သင်ခန်းစာ** အဖြစ် တိုးချဲ့ထားသည်။ Glossary entry များသည် "ဤ term ဆိုသည်မှာ ဘာလဲ" ဟူသည့် မေးခွန်းကို ဖြေသည်။
-ဤလမ်းညွှန်သည် "ဤ term များသည် မည်သည့် အစဉ်ဖြင့် ဆက်စပ်သည်၊ ဝန်ပို တစ်ခုသည် မည်သည့် နေရာတွင် စတင် ပျက်စီးသည်၊
-incident တစ်ခုသည် error budget မည်မျှ ကုန်သည်" ဟူသည့် မေးခွန်းများကို ဖြေသည်။
+<!-- guide-kind: terms-only -->
 
-## ဤလမ်းညွှန် ထပ်တိုးပေးသည့် အချက်
+ဤဖိုင်သည် area 10 ၏ term ၁၇ ခုကို အတိုချုံး ရှင်းပြထားသည်။ term တိုင်းကို — term ဆိုတာ ဘာလဲ၊ ဥပမာ တစ်ခု၊
+အတိုင်းအတာ သို့မဟုတ် အသုံးဝင်ပုံ ဆိုတဲ့ ၃ ကြောင်းဖြင့် ရေးထားသည်။ term ၁၇ ခုကို အဆင့် ၄ ခုအဖြစ် စီထားသည်။
 
-Glossary သည် term တိုင်းကို သီးခြားစီ ရှင်းပြသည်။ ထုတ်လုပ်မှု စနစ် တစ်ခုတွင် ထို term များသည် သီးခြားစီ မလုပ်ဆောင်ပါ —
-ဝန်ပို တစ်ခု ဖြစ်သည့်အခါ admission control၊ load shedding၊ backpressure၊ circuit breaker နှင့် degradation သည်
-တစ်ချိန်တည်းတွင် အလုပ်လုပ်သည်။ ဤလမ်းညွှန်သည် ထို ဆက်စပ်မှုကို သုံးလမ်းဖြင့် ဖော်ပြသည်။
+## ၁။ လက်ခံနိုင်မှုနှင့် ရရှိနိုင်မှု
 
-- **အစဉ် တည်ဆောက်ခြင်း** — term ၁၇ ခုကို အဆင့် ၅ ဆင့်အဖြစ် စီထားသည်။ မည်သည့် အရာ မှားနိုင်သည်၊ မည်သို့ တိုင်းတာမည် ဟူသည့်
-  အဆင့်မှ စ၍ ဝန်ပို ကာကွယ်ခြင်း၊ လျှော့ချခြင်းနှင့် ပြန်လည် ရယူခြင်း၊ ပြောင်းလဲမှု လွှတ်ခြင်း၊ နောက်ဆုံးတွင် incident လည်ပတ်ခြင်းနှင့်
-  သင်ယူခြင်း အထိ တည်ဆောက်သည်။
-- **ပုံဖြင့် မြင်ခြင်း** — Mermaid ပုံ ၇ ခုဖြင့် request လမ်းကြောင်း၏ ချို့ယွင်းသည့် အမှတ်များ၊ queue ပေါ်ရှိ backpressure နှင့် load shedding၊
-  circuit breaker အခြေအနေစက်၊ timeout နှင့် jitter ပါသည့် retry၊ degradation လှေကား၊ incident timeline နှင့် SLO error budget တို့ကို ပြသည်။
-- **ကိန်းဂဏန်းဖြင့် ချိန်ခြင်း** — error budget၊ retry တိုးပွားမှု (amplification)၊ queueing latency၊ timeout budget၊
-  ကုန်ကျစရိတ်နှင့် alert နှုန်းကို Python (standard library သာ) ဖြင့် တွက်ပြထားသည်။
+### Admission Control
 
-ဤလမ်းညွှန်သည် deployment အတွက် မဖြစ်မနေ လိုအပ်သည့် **policy** များကို ဖော်ထုတ်ပေးသည် — မည်သည့် နယ်နိမိတ်တွင် shed မည်၊
-error budget ကုန်သည့်အခါ မည်သည့် လုပ်ဆောင်ချက် ရပ်တန့်မည်၊ မည်သည့် အချိန်တွင် rollback လုပ်မည် ဖြစ်သည်။
+Admission Control ဆိုတာ request တစ်ခုကို စနစ်ထဲ ဝင်ခွင့် ပေးမလား ငြင်းမလား ကို မလက်ခံမီ အဆင့်တွင် စစ်ဆေးတဲ့ gate ကို ဆိုလိုပါတယ်။
+ဥပမာ service တစ်ခုက တစ်စက္ကန့် 100 request သာ ကိုင်တွယ်နိုင်ပြီး 250 request ဝင်လာရင် ကျန်တဲ့ 150 ကို ဝင်ခွင့် မပေးဘဲ၊ လက်ခံထားတဲ့ 100 က deadline မှီအောင် ဆောင်ရွက်ပေးပါတယ်။
+ဒီလို gate မရှိရင် ပိုလွန်တဲ့ request တွေက queue ထဲ ပွါးလာပြီး လက်ခံပြီးသား request တွေပါ timeout ဖြစ်ပါတယ်။
 
-## အခြေခံ အချက်
+### Availability
 
-| အချက် | တန်ဖိုး |
-|---|---|
-| Term | ၁၇ ခု (area 10 — Reliability & operations) |
-| အဆင့် | ၅ ဆင့် |
-| ဖိုင် | ၅ ခု + lab ၃ ခု + ကိန်းဂဏန်း script |
-| လိုအပ်သည့် အရာ | Python 3.11+၊ standard library သာ — network၊ GPU၊ API key မလိုပါ |
-| Run တိုင်း | deterministic (ရလဒ် တူညီသည်)၊ offline |
-| စစ်ဆေးခြင်း | `python3 verify_guide.py --guide 10 --documents --verbose` |
+Availability ဆိုတာ သတ်မှတ်ထားတဲ့ ကာလ တစ်ခုအတွင်း အသုံးပြုသူတွေ လက်ခံနိုင်တဲ့ ဝန်ဆောင်မှုကို တကယ် ရရှိနိုင်တဲ့ အချိုးအစားကို ဆိုလိုပါတယ်။
+ဥပမာ 99.9% availability ကို ရက် ၃၀ အတွင်း ချိန်ရင် ခွင့်ပြုတဲ့ ရပ်တန့်ချိန်က ၄၃ မိနစ် ခန့် ရပါတယ်။
+Process လည်ပတ်နေရုံနဲ့ မလုံလောက်ဘဲ request တွေ တကယ် အောင်မြင်မှသာ availability လို့ ခေါ်လို့ ရပါတယ်။
 
-## လေ့လာသည့် အစဉ် (၅ ကြိမ်)
+## ၂။ ပြောင်းလဲမှုနှင့် ချို့ယွင်းမှုကို ကြိုတင် ကာကွယ်ခြင်း
 
-| ကြိမ် | ဖတ်ရမည့် ဖိုင် | လက်တွေ့ run ရမည့် lab |
-|---|---|---|
-| ၁ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၁–၂ | `python3 labs/lab_error_budget.py --slo-percent 99.9 --requests-per-day 1000000 --window-days 30 --failure-rate 0.0005` |
-| ၂ | [`02_visual_explanations.md`](02_visual_explanations.md) ပုံ ၁–၃ | `python3 labs/lab_queue_headroom.py --arrivals-per-s 12 --service-ms 50 --workers 1` |
-| ၃ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၃ | `python3 labs/lab_queue_headroom.py --sweep --max-queue 200 --p95-target-ms 500` |
-| ၄ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၄–၅၊ [`02_visual_explanations.md`](02_visual_explanations.md) ပုံ ၄–၇ | `python3 labs/lab_retry_storm.py --retries 3 --failure-rate 0.5 --jitter 1.0 --retry-budget 0.10` |
-| ၅ | [`04_exercises.md`](04_exercises.md) | `python3 labs/run_labs.py` |
+### Canary Release
 
-Lab တိုင်းသည် **offline နှင့် deterministic** ဖြစ်သည် — parameter ပြောင်း၍ run ပါက အချိန်တိုင်း
-တူညီသည့် ရလဒ် ရသည်၊ ထို့ကြောင့် မိမိ တွက်ချက်မှုနှင့် byte တူညီစွာ တိုက်စစ်နိုင်သည်။ Flag အားလုံး၏
-အပြည့်အစုံ စာရင်းနှင့် run တိုင်း၏ output ကို [`labs/README.md`](labs/README.md) တွင် ကြည့်ပါ။
+Canary Release ဆိုတာ version အသစ်ကို traffic ရဲ့ သေးငယ်တဲ့ အစိတ်အပိုင်း တစ်ခုကိုသာ အရင် ပေးပြီး စမ်းကြည့်တဲ့ deployment နည်းလမ်းကို ဆိုလိုပါတယ်။
+ဥပမာ တစ်နေ့ 10,000 request ရှိရင် ၅% ဖြစ်တဲ့ 500 request ကို version အသစ်ဆီ ပို့ပြီး ကျန်တာကို version အဟောင်းဆီ ပို့ပါတယ်။
+ပြဿနာ တွေ့ရင် ထိတွေ့ခံရသူ 500 ယောက်လောက်သာ ရှိပြီး အားလုံး မထိခိုက်မီ ရပ်လို့ ရပါတယ်။
 
-| Lab | ပြောင်းနိုင်သည့် knob | ကြည့်ရမည့် ရလဒ် |
-|---|---|---|
-| `lab_error_budget.py` | `--slo-percent`၊ `--requests-per-day`၊ `--window-days`၊ `--failure-rate`၊ `--sweep` | error budget (request နှင့် မိနစ်)၊ burn rate၊ ကုန်ဆုံးချိန်၊ alert threshold |
-| `lab_queue_headroom.py` | `--arrivals-per-s`၊ `--service-ms`၊ `--workers`၊ `--max-queue`၊ `--p95-target-ms`၊ `--sweep` | utilisation တက်လာသည့်အခါ queue စောင့်ချိန် ကြီးထွားပုံ၊ SLO အတွက် လိုအပ်သည့် headroom |
-| `lab_retry_storm.py` | `--rps`၊ `--failure-rate`၊ `--retries`၊ `--backoff-ms`၊ `--jitter`၊ `--retry-budget`၊ `--breaker-open-ms`၊ `--sweep` | amplification၊ dependency ပေါ် ထပ်တိုးသည့် ဝန်၊ jitter နှင့် circuit breaker ၏ အလျော့အကျ |
+### Deadline Propagation
 
-## ဖိုင်များ
+Deadline Propagation ဆိုတာ မူလ request အတွက် ကျန်ရှိသေးတဲ့ အချိန် budget ကို downstream ခေါ်ဆိုမှု တွေဆီ ဆက်ပို့တာကို ဆိုလိုပါတယ်။
+ဥပမာ ingress မှာ deadline 2,000 ms သတ်မှတ်ထားပြီး 1,200 ms ကုန်သွားရင် downstream ကို ကျန် 800 ms သာ ပေးပါတယ်။
+Deadline မပို့ရင် dependency တစ်ခုချင်း ကိုယ့် timeout နဲ့ ပြေးပြီး အသုံးမဝင်တော့တဲ့ အလုပ်တွေက capacity ကို စားပါတယ်။
 
-| ဖိုင် | ဘာကို ပေးသည် |
-|---|---|
-| [`01_learning_sequence.md`](01_learning_sequence.md) | term ၁၇ ခုကို အဆင့် ၅ ဆင့်အဖြစ် အစဉ်လိုက် စီထားသည် — ကြိုတင် သိရမည့် term၊ ဖွင့်ပေးသည့် အချက်၊ အဆင့်တိုင်း၏ စစ်ဆေးမေးခွန်း၊ prerequisite graph |
-| [`02_visual_explanations.md`](02_visual_explanations.md) | Mermaid ပုံ ၇ ခု — request လမ်းကြောင်းနှင့် ချို့ယွင်းသည့် အမှတ်၊ backpressure နှင့် load shedding၊ circuit breaker၊ timeout နှင့် retry၊ degradation လှေကား၊ incident timeline၊ SLO error budget |
-| [`03_theory_to_infrastructure.md`](03_theory_to_infrastructure.md) | term တိုင်း၏ capacity၊ queueing၊ ကုန်ကျစရိတ်နှင့် on-call အပေါ် သက်ရောက်မှု + ကိန်းဂဏန်း ဥပမာများ (ပြိုင်တူ ရေးသားသည်) |
-| [`04_exercises.md`](04_exercises.md) | လုပ်ပြထားသည့် ဥပမာ ၄ ခု၊ တွက်ချက်ရသည့် လေ့ကျင့်ခန်း ၆ ခု၊ ပြဿနာ ရှာဖွေခြင်း ၃ ခု၊ ဆုံးဖြတ်ချက် ၂ ခု၊ အဖြေများ အပြည့်အစုံ |
-| [`labs/`](labs/) | interactive lab ၃ ခု + `run_labs.py` (usage နှင့် flag များ — [`labs/README.md`](labs/README.md)) |
-| [`scripts/`](scripts/) | `03_theory_to_infrastructure.md` ၏ ကိန်းဂဏန်း ဥပမာများကို ထုတ်ပေးသည့် script များ |
+### Error Budget
 
-## လေ့ကျင့်ခန်း တစ်ခုကို ဖတ်ပြီးနောက် ကိုယ်တိုင် စစ်ဆေးနည်း
+Error Budget ဆိုတာ SLO က သတ်မှတ်ကာလ အတွင်း ခွင့်ပြုတဲ့ မအောင်မြင်မှု ပမာဏကို ဆိုလိုပါတယ်။
+ဥပမာ 99.9% SLO ကို ရက် ၃၀ အတွင်း ချိန်ရင် budget ၄၃ မိနစ် ရပြီး incident တစ်ခုက ၂၀ မိနစ် စားသွားရင် ကျန် ၂၃ မိနစ်သာ ရပါတယ်။
+Budget ကုန်ခါနီးရင် release အသစ် လွှတ်တာ ရပ်ပြီး reliability ကို အရင် ပြန်ထိန်းရပါတယ်။
 
-တွက်ချက်ရသည့် လေ့ကျင့်ခန်း တိုင်းတွင် ဖော်မြူလာ၊ ယူဆချက် (assumption) နှင့် Python block တစ်ခု ပါဝင်သည်။
-Block ကို ကိုယ်တိုင် run ၍ ဖော်ပြထားသည့် output နှင့် တိုက်စစ်ပါ — ကိန်းဂဏန်း တိုင်းသည်
-**ရေးသားထားသည့် ယူဆချက်** အပေါ် မှီခိုသဖြင့် ယူဆချက် ပြောင်းပါက ရလဒ် ပြောင်းသည်။ ထို့ကြောင့် ဂဏန်း တိကျမှုထက်
-**ပုံသဏ္ဍာန်** (ဥပမာ queueing latency သည် utilization 0.9 ကျော်သည့်အခါ မည်သို့ တက်သည်) ကို ကြည့်ရမည်။
+### Graceful Degradation
 
-## စစ်ဆေးခြင်း
+Graceful Degradation ဆိုတာ capacity သို့မဟုတ် dependency ချို့ယွင်းချိန်မှာ request တိုင်း မှားစေမည့်အစား လိုအပ်တဲ့ core service ကို လျှော့ချ mode နဲ့ ဆက်ပေးတာကို ဆိုလိုပါတယ်။
+ဥပမာ re-ranking service ပျက်သွားရင် result ၁၂ ခုနဲ့ အဖြေ ၅ စက္ကန့် ပေးမည့်အစား result ၃ ခုနဲ့ 400 ms အတွင်း ပြန်ပေးပါတယ်။
+လျှော့ချ mode ကို လည်ပတ်သူတွေ မြင်နိုင်ရမည် ဖြစ်ပြီး အဖြေ သိသိသာသာ ပြောင်းရင် အသုံးပြုသူကို အသိပေးရပါတယ်။
 
-```bash
-python3 verify_guide.py --guide 10 --documents --verbose   # ဖိုင်၊ register၊ term လွှမ်းခြုံမှု၊ ပုံ အရေအတွက်
-python3 verify_guide.py --guide 10 --labs --verbose        # lab ၃ ခု (+ ၃ ကြိမ် စီ) နှင့် run_labs.py
-python3 guides/10_reliability_and_operations/labs/run_labs.py
-```
+## ၃။ incident ကာလ လုပ်ဆောင်ချက်နှင့် ပြန်လည်ရယူခြင်း
 
-`--documents` စစ်ဆေးချက်သည် [`03_theory_to_infrastructure.md`](03_theory_to_infrastructure.md) နှင့်
-[`labs/`](labs/) ကိုပါ လွှမ်းခြုံသည်၊ ထို့ကြောင့် run မလုပ်မီ lab များနှင့် ပုံများ တည်ရှိရမည်။
+### Incident Response
 
-## မှီခိုသည့် အခြား ဖိုင်
+Incident Response ဆိုတာ ဝန်ဆောင်မှုကို ခြိမ်းခြောက်တဲ့ ဖြစ်ရပ် တစ်ခုကို ရှာဖွေ၊ ထိန်းချုပ်၊ ပြန်ကောင်းစေ၊ ဆက်သွယ်ပြီး သင်ယူတဲ့ လုပ်ငန်းစဉ်ကို ဆိုလိုပါတယ်။
+ဥပမာ error rate 10:05 မှာ ခုန်တက်ရင် on-call ကို page လုပ်ပြီး ရာထူး ခွဲထားတဲ့ အဖွဲ့က trace ကြည့်ကာ ၂၅ မိနစ်အတွင်း ပြန်ကောင်းစေပါတယ်။
+ရာထူးနဲ့ အထောက်အထား ရှိရင် ကြံဖန် ဖြေရှင်းတာထက် ပို မြန်ပြီး လွဲမှားတာ နည်းပါတယ်။
 
-- Term တိုင်း၏ အပြည့်အစုံ အဓိပ္ပာယ် (အင်္ဂလိပ် + မြန်မာ) — [`../../terms/10_reliability_and_operations.md`](../../terms/10_reliability_and_operations.md)
-- အခြေခံ အချက်အလက် (JSON slice) — [`../../glossary/by_area/10_reliability_and_operations.json`](../../glossary/by_area/10_reliability_and_operations.json)
-- A–Z index — [`../../terms/00_index.md`](../../terms/00_index.md)
-- ဤနယ်ပယ်၏ အခြေခံ ဖြစ်သည့် serving အလွှာ — [`../09_infrastructure_and_serving/README.md`](../09_infrastructure_and_serving/README.md)
+### Load Shedding
+
+Load Shedding ဆိုတာ demand က capacity ထက် ကျော်လွန်ချိန် ရွေးချယ်ထားတဲ့ အလုပ်တွေကို တမင်တကာ ငြင်းပယ်တာကို ဆိုလိုပါတယ်။
+ဥပမာ တစ်စက္ကန့် 4,000 request ဝင်လာပြီး capacity က 2,500 သာ ဖြစ်ရင် 1,500 ကို shed လုပ်ပြီး အရေးကြီးတဲ့ request တွေကို ဦးစားပေး ဆောင်ရွက်ပါတယ်။
+အားလုံး လက်ခံနေရင် queue ပွါးလာပြီး request အားလုံးနီးပါး deadline လွန်ပါတယ်။
+
+### Postmortem
+
+Postmortem ဆိုတာ incident တစ်ခုရဲ့ သက်ရောက်မှု၊ တုံ့ပြန်မှုနဲ့ အထောက်အကူပြု အခြေအနေတွေကို ရေးမှတ်ပြီး ပိုင်ရှင် သတ်မှတ်ထားတဲ့ နောက်ဆက်တွဲ လုပ်ဆောင်ချက် ချထားတဲ့ မှတ်တမ်းကို ဆိုလိုပါတယ်။
+ဥပမာ incident တစ်ခုအတွက် action ၅ ခု ရေးမှတ်ပြီး ၃၀ ရက်အတွင်း ၄ ခု ပြီးစီးကာ ထပ်ဖြစ်မှုကို ကာကွယ်တဲ့ test ထည့်နိုင်ပါတယ်။
+Postmortem က လူတစ်ဦး အမှား ရှာတာ မဟုတ်ဘဲ စမ်းသပ်နိုင်တဲ့ စနစ် တိုးတက်မှု ထုတ်ဖို့ ဖြစ်ပါတယ်။
+
+### Readiness Probe
+
+Readiness Probe ဆိုတာ instance တစ်ခု request လက်ခံနိုင် မနိုင် ကို traffic လမ်းကြောင်း အလွှာကို ပြောပြတဲ့ စစ်ဆေးချက်ကို ဆိုလိုပါတယ်။
+ဥပမာ pod အသစ် တစ်ခုက model load လုပ်ဖို့ ၄၅ စက္ကန့် ကြာရင် ဒီကာလ အတွင်း readiness false ဖြစ်နေပြီး request တစ်ခုမှ ဒီ pod ဆီ မရောက်ပါဘူး။
+Process အသက်ရှင်နေရုံနဲ့ မလုံလောက်ဘဲ model unload ဖြစ်နေရင် စောလွန်းစွာ traffic ပို့လိုက်တာ ရှောင်ရပါတယ်။
+
+### Retry Budget
+
+Retry Budget ဆိုတာ retry traffic အပေါ် သတ်မှတ်ထားတဲ့ အများဆုံး ကန့်သတ်ချက်ကို ဆိုလိုပါတယ်။
+ဥပမာ တစ်စက္ကန့် ပထမ ကြိုးစားမှု 100 ရှိပြီး retry budget ၁၀% သတ်မှတ်ရင် retry ကို တစ်စက္ကန့် ၁၀ ခုအထိသာ ခွင့်ပြုပါတယ်။
+ကန့်သတ်မထားရင် dependency နှေးချိန်မှာ retry တွေ ပွါးပြီး စနစ်ကို ပို ဖိအားပေးပါတယ်။
+
+### Rollback
+
+Rollback ဆိုတာ release အသစ်က လိုအပ်ချက် မကိုက်ညီရင် သိရှိပြီးသား version အဟောင်းဆီ ပြန်လှည့်တာကို ဆိုလိုပါတယ်။
+ဥပမာ canary မှာ error rate 0.2% ကနေ 4.5% ခုန်တက်ရင် version အဟောင်းဆီ ပြန်လှည့်ပြီး error rate က ပြန်ကျသွားပါတယ်။
+Code ပြန်လှည့်လိုက်ရင် database migration သို့မဟုတ် ပြင်ပ အကျိုးဆက် တွေလည်း အလိုအလျောက် ပြန်လှန်သွားတာ မဟုတ်ပါဘူး။
+
+## ၄။ တိုင်းတာခြင်းနှင့် အမြင်ရရှိခြင်း
+
+### Saturation
+
+Saturation ဆိုတာ resource တစ်ခု သို့မဟုတ် ဝန်ဆောင်မှု တစ်ခုက စွမ်းရည် ကုန်ဆုံးသွားတဲ့ အတိုင်းအတာကို ဆိုလိုပါတယ်။
+ဥပမာ worker တစ်ခု 20 ms နဲ့ ဆောင်ရွက်ပြီး request တစ်စက္ကန့် 45 ဝင်လာရင် utilisation က 0.9 ဖြစ်ပြီး queue က ပွါးစပြုပါတယ်။
+Utilisation 0.9 လောက် ကျန်းမာနေပုံ ရပေမယ့် queue က ပွါးနေပြီဆိုရင် စောစော alert လုပ်ရပါတယ်။
+
+### Service Level Indicator (SLI)
+
+Service Level Indicator (SLI) ဆိုတာ အသုံးပြုသူနဲ့ သက်ဆိုင်တဲ့ နေရာမှာ တိုင်းတာတဲ့ ဝန်ဆောင်မှု အရည်အသွေး အရေအတွက်ကို ဆိုလိုပါတယ်။
+ဥပမာ တစ်နေ့ request 1,000,000 ရှိပြီး မအောင်မြင်တာ 500 ဖြစ်ရင် အောင်မြင်မှု အချိုး SLI က 99.95% ဖြစ်ပါတယ်။
+SLI က တိုင်းတာမှု ဖြစ်ပြီး၊ ထို တိုင်းတာမှုအပေါ် ပန်းတိုင် သတ်မှတ်လိုက်တာက SLO ဖြစ်ပါတယ်။
+
+### Service Level Objective (SLO)
+
+Service Level Objective (SLO) ဆိုတာ indicator တစ်ခုအတွက် သတ်မှတ်ကာလ တစ်ခုအတွင်း ရောက်ရမည့် ပန်းတိုင် ဖြစ်ပါတယ်။
+ဥပမာ ရက် ၃၀ အတွင်း request ၉၉% က 500 ms အောက် ဖြေရမည်လို့ SLO သတ်မှတ်ထားရင် ကျန် ၁% က error budget ဖြစ်ပါတယ်။
+SLO က စာချုပ် SLA မဟုတ်ဘဲ စောင့်ကြည့်မှုနဲ့ release အန္တရာယ်အတွက် အတွင်းပိုင်း ပန်းတိုင် ဖြစ်ပါတယ်။
+
+### Shadow Traffic
+
+Shadow Traffic ဆိုတာ live traffic ရဲ့ မိတ္တူကို candidate စနစ်ဆီ ပို့ပြီး အသုံးပြုသူထံ မပေးဘဲ လေ့လာတာကို ဆိုလိုပါတယ်။
+ဥပမာ တစ်နေ့ request 1,000,000 ရဲ့ ၁၀% ဖြစ်တဲ့ 100,000 ကို candidate ဆီ mirror ပို့ပြီး တုံ့ပြန်မှုကို အဓိက လမ်းကြောင်းပြင်ပ ထားပါတယ်။
+မိတ္တူ request က တကယ် လည်ပတ်နေတဲ့အတွက် write နဲ့ tool အကျိုးဆက် တွေကို သီးခြားခွဲထားရပါတယ်။
+
+### Tail Latency
+
+Tail Latency ဆိုတာ အနှေးဆုံး request အစိတ်အပိုင်း ကြုံတွေ့ရတဲ့ latency ကို ဆိုလိုပါတယ်။
+ဥပမာ request 100 မှာ p50 က 20 ms ဖြစ်ပြီး p95 က 400 ms ဖြစ်ရင် 100 ထဲက ၅ ခုက 400 ms အထက် စောင့်ရပါတယ်။
+ပျမ်းမျှ ကြည့်ရင် ကျန်းမာနေပုံ ရပေမယ့် အနှေးဆုံး အစိတ်အပိုင်းက အတော်များတဲ့ အသုံးပြုသူကို ထိခိုက်ပါတယ်။
+
+## မှီခိုသည့် ဖိုင်
+
+- term တိုင်း၏ အပြည့်အစုံ အဓိပ္ပာယ် (အင်္ဂလိပ် source အပါ) — [`../../terms/10_reliability_and_operations.md`](../../terms/10_reliability_and_operations.md)

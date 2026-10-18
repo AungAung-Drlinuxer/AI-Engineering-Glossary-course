@@ -1,150 +1,274 @@
-# Area 01 — Math & Training: လေ့လာလမ်းညွှန် (Study Guide)
+# Area 01 — Math & training (terms + glossary shortcut)
 
-ဤ folder သည် `terms/01_math_and_training.md` ရှိ term **၄၂** ခုကို **စာရင်း** အဖြစ်မှ **လေ့လာနိုင်သည့် သင်ခန်းစာ**
-အဖြစ် တိုးချဲ့ထားသည်။ Glossary entry များသည် "ဤ term ဆိုသည်မှာ ဘာလဲ" ကို ဖြေသည်။ ဤလမ်းညွှန်သည်
-"ဤ term များသည် training loop တစ်ခုအတွင်း မည်သည့် အစဉ်ဖြင့် ဆက်စပ်သည်၊ မည်သည့် အစိတ်အပိုင်း ပျက်ပါက
-မည်သည့် လက္ခဏာ ထွက်သည်၊ ကိန်းဂဏန်း အနေဖြင့် မည်သို့ တိုင်းတာမည်" ကို ဖြေသည်။
+<!-- guide-kind: terms-only -->
 
-ဤနယ်ပယ်၏ အဓိက အချက်မှာ term တိုင်း သီးခြား အလုပ်မလုပ်ခြင်း ဖြစ်သည်။ `Weight` များကို `Optimizer`
-က update လုပ်သည်၊ `Optimizer` သည် `Gradient` ကို စားသုံးသည်၊ `Gradient` ကို `Backpropagation` နှင့်
-`Autograd` က ထုတ်ပေးသည်၊ ထို gradient များသည် `Loss Function` နှင့် `Batch Size` အပေါ် မှီခိုသည်။
-ချို့ယွင်းသည့် အစိတ်အပိုင်းကို ရှာရန် ဤကွင်းဆက် တစ်ခုလုံးကို မြင်ရမည်။
+ဤဖိုင်သည် area 01 ၏ term ၄၂ ခုကို အတိုချုံး ရှင်းပြထားသည်။ term တိုင်းကို — term ဆိုတာ ဘာလဲ၊ ဥပမာ တစ်ခု၊
+အသုံးဝင်ပုံ ဆိုတဲ့ ၃ ကြောင်းဖြင့် ရေးထားသည်။ term ၄၂ ခုကို အဆင့် ၆ ခုအဖြစ် စီထားသည်။
 
-## အခြေခံ အချက်
+## ၁။ training တစ်ကြိမ် အတွင်း အလုပ်လုပ်သည့် အစိတ်အပိုင်းများ
 
-| အချက် | တန်ဖိုး |
-|---|---|
-| Term | ၄၂ ခု (area 01 — Math & training) |
-| ဖိုင် | ၄ ခု (ဤ လမ်းညွှန်) + [`03_theory_to_infrastructure.md`](03_theory_to_infrastructure.md) + `labs/` (lab ၃ ခု + `run_labs.py`) |
-| အဆင့် | ၆ အဆင့် — အဆင့်တိုင်း ယခင် အဆင့်အပေါ် မှီခိုသည် |
-| ပုံ | Mermaid ပုံ ၈ ခု (`02_visual_explanations.md`) |
-| လေ့ကျင့်ခန်း | လုပ်ပြထားသည့် ဥပမာ ၄ ခု၊ တွက်ချက်ရသည့် ၆ ခု၊ ပြဿနာ ရှာဖွေခြင်း ၃ ခု၊ ဆုံးဖြတ်ချက် ၂ ခု |
-| လိုအပ်သည့် အရာ | Python 3.11+၊ standard library သာ — network၊ GPU၊ API key မလိုပါ |
-| Run တိုင်း | deterministic (ရလဒ် တူညီသည်)၊ offline |
-| စစ်ဆေးခြင်း | `python3 verify_guide.py --guide 01 --documents --verbose` |
+### Activation Checkpointing
 
-## ဤလမ်းညွှန် ထပ်တိုးပေးသည့် အချက်
+Activation Checkpointing ဆိုတာ forward pass မှာ activation အားလုံးကို မသိမ်းဘဲ ရွေးထားတဲ့ အချို့ကိုသာ သိမ်းထားပြီး backpropagation မှာ ကျန်တာကို ပြန်တွက်တဲ့ training memory နည်းပညာကို ဆိုလိုပါတယ်။
+ဥပမာ layer 24 ခုရှိတဲ့ model မှာ layer ၄ ခုတစ်ခါ checkpoint လုပ်ရင် activation အစု ၆ ခုသာ သိမ်းထားပြီး ကျန် ၁၈ ခုကို backward မှာ ပြန်တွက်ရပါတယ်။
+Activation သိမ်းတာ လျှော့ပေမယ့် step အချိန် ပိုကြာလာတဲ့အတွက် memory နဲ့ compute လဲလှယ်တဲ့ နည်းလမ်း ဖြစ်ပါတယ်။
 
-Term စာရင်းတွင် term တစ်ခုစီ၏ အဓိပ္ပာယ် ရှိပြီးသား ဖြစ်သည်။ ဤလမ်းညွှန်က ထို အပေါ် ထပ်တိုးပေးသည့်
-အချက် ငါးခု ရှိသည် —
+### Activation Function
 
-1. **အစဉ်** — term ၄၂ ခုကို အဆင့် ၆ ဆင့်အဖြစ် စီထားသည်၊ အဆင့်တိုင်း ယခင်အဆင့်အပေါ် မှီခိုသည်။
-2. **ပုံ** — forward/backward ၏ shape များ၊ loss landscape နှင့် gradient step၊ optimizer update trace၊
-   learning rate schedule၊ regularization၊ overfitting/underfitting၊ mixed precision၊ batch size အကျိုးသက်ရောက်မှု။
-3. **ကိန်းဂဏန်း** — လေ့ကျင့်ခန်း တိုင်းတွင် ဖော်မြူလာ၊ ယူဆချက်နှင့် အဖြေ အတိအကျ ပါဝင်သည်။
-4. **လက္ခဏာမှ စစ်ဆေးခြင်း** — loss သည် NaN ဖြစ်ခြင်း၊ loss သည် စောစီးစွာ ရပ်တန့်ခြင်း၊ train နှင့်
-   validation ကွဲထွက်ခြင်း ဟူသည့် လက္ခဏာ သုံးခုအတွက် တိုင်းတာရမည့် အချက်၊ အကြောင်းရင်း အစဉ်နှင့် ဖြေရှင်းနည်း။
-5. **ဆုံးဖြတ်ချက်** — memory ကန့်သတ်ချက်အောက်တွင် micro-batch၊ gradient accumulation နှင့် learning rate ကို
-   မည်သို့ ရွေးမည်၊ generalization gap အတွက် regularization ကို မည်သို့ ချိန်ညှိမည်။
+Activation Function ဆိုတာ linear layer ပြီးနောက်မှာ ထည့်ပြီး nonlinearity ပေးတဲ့ function ကို ဆိုလိုပါတယ်။
+ဥပမာ ReLU ကို input ၂ ခု -2 နဲ့ 3 အပေါ် သုံးရင် max(0, -2) = 0 နဲ့ max(0, 3) = 3 ရပါတယ်။
+Nonlinearity မပါရင် layer ဘယ်လောက် ထပ်ထပ် affine transformation တစ်ခုတည်း ဖြစ်သွားပါတယ်။
 
-## လေ့လာသည့် အစဉ် (၆ ကြိမ်)
+### Adam (Optimizer)
 
-| ကြိမ် | ဖတ်ရမည့် ဖိုင် | လက်တွေ့ လုပ်ရမည့် အရာ |
-|---|---|---|
-| ၁ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၁–၂ | `labs/lab_memory.py --params-b 1.3 --batch 8 --seq 2048` |
-| ၂ | [`02_visual_explanations.md`](02_visual_explanations.md) ပုံ ၁–၄ | `labs/lab_gradient_step.py --sweep` |
-| ၃ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၃–၄ | `labs/lab_schedule.py --sweep` |
-| ၄ | [`02_visual_explanations.md`](02_visual_explanations.md) ပုံ ၅–၈ | `labs/lab_schedule.py --schedule cosine --steps 10 --base-lr 2e-3` |
-| ၅ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၅–၆ | `labs/lab_memory.py --batch 64 --activation-checkpointing on` |
-| ၆ | [`04_exercises.md`](04_exercises.md) | တွက်ချက်ရသည့် လေ့ကျင့်ခန်း ၆ ခု၊ ပြဿနာ ရှာဖွေခြင်း ၃ ခု |
+Adam (Optimizer) ဆိုတာ gradient ရဲ့ ပျမ်းမျှ (first moment) နဲ့ squared gradient ရဲ့ ပျမ်းမျှ (second moment) ကို ပေါင်းပြီး parameter တစ်ခုချင်းစီအတွက် update ကို ချိန်ညှိပေးတဲ့ optimizer ကို ဆိုလိုပါတယ်။
+ဥပမာ parameter 1,000,000 ခုရှိတဲ့ model မှာ Adam က moment ၂ ခုစီ သိမ်းတဲ့အတွက် fp32 နဲ့ဆိုရင် အပို 2,000,000 float (8 MB) လိုပါတယ်။
+အားကောင်းတဲ့ baseline ဖြစ်ပေမယ့် သင့်တော်တဲ့ learning rate နဲ့ schedule မရှိရင် အလုပ်မဖြစ်ပါဘူး။
 
-Command အားလုံးကို `guides/01_math_and_training/labs/` အတွင်းမှ run ရမည် (သို့မဟုတ် ဖိုင်လမ်းကြောင်း
-အပြည့်အစုံ ပေးရမည်)။ Lab အားလုံးကို တစ်ကြိမ်တည်း စစ်ရန် `python3 labs/run_labs.py` ကို run ပါ။
+### AdamW
 
-## ဖိုင်များ
+AdamW ဆိုတာ weight decay ကို gradient update နဲ့ ခွဲထုတ် (decouple) ထားတဲ့ Adam မျိုးကွဲကို ဆိုလိုပါတယ်။
+ဥပမာ weight decay 0.01 သတ်မှတ်ရင် step တစ်ခုစီမှာ weight က 0.99 ဆ ဖြစ်သွားပြီး step 100 ပြီးရင် မူလ weight ရဲ့ 0.366 ဆ လောက် ကျန်ပါတယ်။
+Decouple လုပ်ထားတာကြောင့် weight ကျုံ့ဝင်တဲ့ အပြုအမူကို ခန့်မှန်းရ လွယ်ပါတယ်။
 
-| ဖိုင် | ဘာကို ပေးသည် |
-|---|---|
-| [`01_learning_sequence.md`](01_learning_sequence.md) | term ၄၂ ခုကို အဆင့် ၆ ဆင့်အဖြစ် အစဉ်လိုက် စီထားသည် — ကြိုတင် သိရမည့် term၊ ဖွင့်ပေးသည့် အချက်၊ အဆင့်တိုင်း၏ စစ်ဆေးမေးခွန်း၊ prerequisite graph |
-| [`02_visual_explanations.md`](02_visual_explanations.md) | Mermaid ပုံ ၈ ခု — forward/backward shape၊ loss landscape နှင့် gradient step၊ optimizer update trace၊ learning rate schedule၊ weight decay နှင့် regularization၊ overfitting/underfitting၊ mixed precision၊ batch-size အကျိုးသက်ရောက်မှု |
-| [`03_theory_to_infrastructure.md`](03_theory_to_infrastructure.md) | term တိုင်း memory / compute / time-to-train / stability အပေါ် သက်ရောက်မှု + ကိန်းဂဏန်း ဥပမာ ၃ ခု |
-| [`04_exercises.md`](04_exercises.md) | လုပ်ပြထားသည့် ဥပမာ ၄ ခု၊ တွက်ချက်ရသည့် လေ့ကျင့်ခန်း ၆ ခု၊ ပြဿနာ ရှာဖွေခြင်း ၃ ခု၊ ဆုံးဖြတ်ချက် ၂ ခု၊ အဖြေများ အပြည့်အစုံ |
-| [`labs/`](labs/) | interactive lab ၃ ခု (`lab_gradient_step.py`၊ `lab_schedule.py`၊ `lab_memory.py`) + `run_labs.py` (usage နှင့် ရလဒ်များ — [`labs/README.md`](labs/README.md)) |
+### Autograd
 
-## Lab များ — ဘာကို ပြောင်း၍ ဘာကို ကြည့်မည်
+Autograd ဆိုတာ tensor operation များကို မှတ်တမ်းတင်ထားပြီး forward computation ကနေ derivative ကို အလိုအလျောက် ဆင်းသက်ပေးတဲ့ စနစ်ကို ဆိုလိုပါတယ်။
+ဥပမာ y = x² မှာ x = 3 ထားရင် dy/dx = 2x = 6 ကို autograd က လက်ဖြင့် မတွက်ရဘဲ ထုတ်ပေးပါတယ်။
+Layer များစွာ ပါတဲ့ model မှာ gradient ကို လူက လက်ဖြင့် ဆင်းသက်တွက်တာ မဖြစ်နိုင်တဲ့အတွက် မရှိမဖြစ် လိုပါတယ်။
 
-Lab တိုင်းသည် **offline နှင့် deterministic** ဖြစ်သည် — parameter ပြောင်း၍ run ပါက အချိန်တိုင်း
-တူညီသည့် ရလဒ် ရသည်၊ ထို့ကြောင့် မိမိ တွက်ချက်မှုနှင့် တိုက်စစ်နိုင်သည်။
+### Backpropagation
 
-| Lab | ပြောင်းနိုင်သည့် knob | ကြည့်ရမည့် ရလဒ် |
-|---|---|---|
-| `labs/lab_gradient_step.py` | `--lr`၊ `--steps`၊ `--momentum`၊ `--seed`၊ `--sweep` | step တိုင်း၏ w1၊ w2၊ gradient norm နှင့် loss၊ critical lr နှင့် ၎င်း၏ အပေါ်အောက် အပြုအမူ |
-| `labs/lab_schedule.py` | `--schedule`၊ `--steps`၊ `--base-lr`၊ `--warmup`၊ `--peak`၊ `--sweep` | schedule တစ်ခုစီ၏ rate ဇယား၊ max၊ min၊ mean နှင့် လျော့သည့် step အရေအတွက် |
-| `labs/lab_memory.py` | `--params-b`၊ `--batch`၊ `--seq`၊ `--layers`၊ `--dtype`၊ `--activation-checkpointing`၊ `--sweep` | weights၊ gradients၊ optimizer state နှင့် activations ၏ GiB၊ total VRAM၊ recompute overhead |
+Backpropagation ဆိုတာ scalar loss ကနေ computation graph အတွင်း နောက်သို့ chain rule နဲ့ derivative ဖြန့်ပြီး gradient တွက်ပေးတဲ့ နည်းလမ်းကို ဆိုလိုပါတယ်။
+ဥပမာ prediction 5၊ target 3 နဲ့ loss = (pred - target)² ဆိုရင် loss = 4 ဖြစ်ပြီး dloss/dpred = 2 × (5 - 3) = 4 ရပါတယ်။
+Backpropagation က gradient တွက်တာသာ ဖြစ်ပြီး learning rate ရွေးတာ မဟုတ်ပါဘူး — update လုပ်တာ optimizer ပါ။
 
-### Learning rate sweep — `labs/lab_gradient_step.py --sweep`
+### Batch Size
 
-```
-        lr     final loss        max |w|     loss ratio       status
-    0.0100   1.815865e-01   1.034442e+00   3.996757e-02       STABLE
-    0.0500   3.470810e-02   1.034442e+00   7.639324e-03       STABLE
-    0.1000   4.344602e-03   1.034442e+00   9.562558e-04       STABLE
-    0.2000   5.747279e-05   1.034442e+00   1.264988e-05       STABLE
-    0.2400   5.435756e-03   1.034442e+00   1.196421e-03       STABLE
-    0.2500   4.280289e+00   1.034442e+00   9.421004e-01    DIVERGENT
-    0.2600   2.020100e+03   2.247276e+01   4.446282e+02    DIVERGENT
-    0.3000   2.097564e+12   7.241485e+05   4.616783e+11    DIVERGENT
-    0.4000   1.059954e+28   5.147703e+13   2.332980e+27    DIVERGENT
-```
+Batch Size ဆိုတာ optimizer update တစ်ကြိမ် မတိုင်မီ gradient ခန့်မှန်းချက်အတွက် ပါဝင်တဲ့ နမူနာ အရေအတွက်ကို ဆိုလိုပါတယ်။
+ဥပမာ dataset 1,000 ခုကို batch 100 နဲ့ train ရင် epoch တစ်ခုစာ step 10 ခု ဖြစ်ပြီး epoch ၅ ခုဆိုရင် step 50 ရပါတယ်။
+Batch ကြီးလာရင် memory ပိုလိုပြီး learning rate ကို ပြန်ချိန်ရတာကြောင့် batch တိုင်း တူညီစွာ တိုးလို့ မရပါဘူး။
 
-**ဖတ်နည်း** — ဤ quadratic အတွက် critical lr သည် 0.2500 ဖြစ်သည်။ ၎င်း အောက်တွင် loss သည် ကျသည်
-(lr 0.20 တွင် final loss 5.747279e-05)၊ ၎င်း အပေါ်တွင် ချဲ့ထွင်သည် (lr 0.30 တွင် 2.097564e+12)။
-`Gradient Clipping` နှင့် `Warmup` လိုအပ်သည့် အခြေအနေသည် ဤဇယား၏ အောက်ခြေ အပိုင်း ဖြစ်သည်။
+## ၂။ loss၊ data နှင့် သင်ယူသည့် နည်းလမ်းများ
 
-### Schedule နှိုင်းယှဉ်ချက် — `labs/lab_schedule.py --sweep`
+### Contrastive Learning
 
-```
-  schedule       first lr      middle lr        last lr      drops      mean lr
-  constant    0.001000000    0.001000000    0.001000000          0  0.001000000
-      step    0.001000000    0.000500000    0.000250000          2  0.000583333
-    cosine    0.001000000    0.000428843    0.000000000         11  0.000500000
-    warmup    0.001500000    0.002382683    0.001000000          8  0.002000000
-```
+Contrastive Learning ဆိုတာ embedding space မှာ ဆင်တူတဲ့ pair ကို ပိုနီးစေပြီး မတူတဲ့ pair ကို ပိုဝေးစေအောင် train လုပ်တာကို ဆိုလိုပါတယ်။
+ဥပမာ image-text pair 8 ခုပါတဲ့ batch မှာ ကိုက်တဲ့ pair 8 ခု ဆွဲကပ်ပြီး မကိုက်တဲ့ 8 × 7 = 56 ခုကို တွန်းဖယ်ပါတယ်။
+Target label မလိုဘဲ ဆင်တူမှု ဖွဲ့စည်းပုံကို သင်ယူတဲ့အတွက် retrieval နဲ့ CLIP မျိုးမှာ အသုံးများပါတယ်။
 
-**ဖတ်နည်း** — schedule တိုင်းတွင် mean lr မတူညီပါ (0.001000000၊ 0.000583333၊ 0.000500000၊ 0.002000000)။
-ထို့ကြောင့် schedule များကို "peak" ဖြင့် နှိုင်းယှဉ်ပါက အမှားဖြစ်စေသည် — mean lr ဖြင့်
-နှိုင်းယှဉ်ရမည်။ `warmup` သည် mean lr အမြင့်ဆုံး ဖြစ်ပြီး first lr သည် 0.001500000 ဖြစ်သည်
-(step 0 တွင် မဟုတ်ဘဲ step 1 မှ စတင်သည့်အတွက်)။
+### Cross-Entropy
 
-### Memory breakdown — `labs/lab_memory.py`
+Cross-Entropy ဆိုတာ မှန်ကန်တဲ့ target အတွက် model ပေးတဲ့ probability ရဲ့ negative log အပေါ် အခြေခံတဲ့ loss ကို ဆိုလိုပါတယ်။
+ဥပမာ မှန်တဲ့ next token ကို model က probability 0.5 ပေးရင် loss = -ln(0.5) ≈ 0.693 ရပါတယ်။
+Language model pretraining အပါအဝင် classification လုပ်ငန်းစဉ် အများစုမှာ ဒီ loss ကို သုံးပါတယ်။
 
-```
-component (GiB)                   checkpointing=off   checkpointing=on
-weights                                       2.421              2.421
-gradients                                     2.421              2.421
-optimizer state (Adam fp32)                   9.686              9.686
-activations                                  15.564              3.113
---------------------------------------------------------------------------------------------
-total VRAM                                   30.093             17.641
-recompute overhead (x step FLOPs)               none              1.333
-```
+### Data Augmentation
 
-**ဖတ်နည်း** — checkpointing သည် activation ကို 5 ဆ လျှော့ပြီး (15.564 မှ 3.113) step FLOPs ကို
-1.333 ဆ တင်သည်။ `weights`၊ `gradients` နှင့် `optimizer state` သုံးခုသည် checkpointing အပေါ်
-လုံးဝ မှီခိုမှု မရှိပါ — ထို့ကြောင့် ကြိုတင် သတ်မှတ်ထားသည့် ကုန်ကျစရိတ် ဖြစ်သည်။
+Data Augmentation ဆိုတာ source data အသစ် မစုဆောင်းဘဲ ပြောင်းလဲထားတဲ့ နမူနာများ ဖန်တီးပြီး training diversity တိုးတာကို ဆိုလိုပါတယ်။
+ဥပမာ ရုပ်ပုံ 2,000 ခုကို transform ၃ မျိုးစီ လုပ်ရင် နမူနာ 2,000 × 3 = 6,000 ခု ရပါတယ်။
+Transform က task signal ကို မပျက်စီးစေရင် overfitting ကို လျှော့ပေးပါတယ်။
 
-**ယူဆချက် ကွာခြားမှု —** `labs/lab_memory.py` သည် `d_model` ကို `params = 12 x layers x d²` မှ
-ဆင်းသက်စေပြီး activation tensor factor ကို 10 (off) / 2 (on) ဟု ယူသည်။
-[`04_exercises.md`](04_exercises.md) ရှိ လေ့ကျင့်ခန်း ၆ သည် activation tensor 12 ခုနှင့်
-sequence 2048 ကို ကိုယ်တိုင် သတ်မှတ်သည်။ ထို့ကြောင့် total GiB တန်ဖိုးများ ကွာခြားခြင်းသည်
-အမှား မဟုတ်ဘဲ **ယူဆချက် ကွာခြားမှု** ဖြစ်သည် — အမြဲ ဖော်ပြထားသည့် ယူဆချက်နှင့် တွဲဖတ်ပါ။
+### DPO (Direct Preference Optimization)
 
-## စစ်ဆေးခြင်း
+DPO (Direct Preference Optimization) ဆိုတာ နှစ်သက်တဲ့ အဖြေနဲ့ ပယ်ချတဲ့ အဖြေ pair များကနေ reward model မလိုဘဲ policy ကို တိုက်ရိုက် train လုပ်တဲ့ objective ကို ဆိုလိုပါတယ်။
+ဥပမာ preference pair 1,000 ခုရှိရင် reference policy နဲ့ နှိုင်းယှဉ်ပြီး တိုက်ရိုက် optimize လုပ်တဲ့အတွက် reinforcement-learning loop တစ်ခု လျော့သွားပါတယ်။
+Reward model အဆင့် မလိုတာက pipeline ကို ရိုးရှင်းစေပေမယ့် preference data အရည်အသွေးအပေါ် မှီခိုဆဲ ဖြစ်ပါတယ်။
 
-```bash
-python3 verify_guide.py --guide 01 --documents --verbose
-```
+### Dropout
 
-ဤ command သည် ဖိုင် ရှိမှု၊ register သန့်ရှင်းမှု (စကားပြော ပါတ်တစ်လ်လ်၊ အခြားဘာသာ အက္ခရာ၊ emoji မပါမှု)၊
-term ၄၂ ခုလုံး `01_learning_sequence.md` တွင် ပါမှုနှင့် `02_visual_explanations.md` တွင် Mermaid ပုံ
-အနည်းဆုံး ၄ ခု ရှိမှုကို စစ်သည်။ Lab များကို စစ်ရန် `python3 verify_guide.py --guide 01 --labs --verbose`
-ကို အသုံးပြုနိုင်သည် (lab တိုင်း၏ `--self-test` ကို ၃ ကြိမ် run ၍ output တူညီမှုကို စစ်သည်)။
-`03_theory_to_infrastructure.md` နှင့် `scripts/` အတွက် ထုတ်ပြသည့် ပြဿနာများသည် သီးခြား
-ရေးသားသူ၏ အပိုင်း ဖြစ်သည်။
+Dropout ဆိုတာ training အတွင်း activation အချို့ကို ကျပန်း သုည သတ်မှတ်ပြီး path တစ်ခုတည်းအပေါ် မှီခိုမှုကို လျှော့တာကို ဆိုလိုပါတယ်။
+ဥပမာ dropout 0.1 ကို activation 1,000 ခုအပေါ် သုံးရင် activation 100 ခု သုည ဖြစ်ပြီး 900 ခု ကျန်ပါတယ်။
+Inference အချိန်မှာ ပုံမှန်အားဖြင့် ပိတ်ထားတဲ့အတွက် training နဲ့ inference အပြုအမူ ကွာပါတယ်။
 
-## မှီခိုသည့် အခြား ဖိုင်
+### Eigenvalue
 
-- Term တိုင်း၏ အပြည့်အစုံ အဓိပ္ပာယ် (အင်္ဂလိပ် + မြန်မာ) — [`../../terms/01_math_and_training.md`](../../terms/01_math_and_training.md)
-- A–Z index — [`../../terms/00_index.md`](../../terms/00_index.md)
-- area 02 (Models & inference) သည် ဤနယ်ပယ်မှ ဆက်ဖတ်ရမည့် နယ်ပယ် ဖြစ်သည် — [`../../terms/02_models_and_inference.md`](../../terms/02_models_and_inference.md)
-- Course outline နှင့် လေ့လာသည့် အစီအစဉ် — [`../../COURSE_OUTLINE.md`](../../COURSE_OUTLINE.md)
+Eigenvalue ဆိုတာ linear transformation တစ်ခုက သက်ဆိုင်တဲ့ eigenvector ရဲ့ ဦးတည်ချက် မပြောင်းဘဲ ဘယ်လောက် ချဲ့ သို့မဟုတ် ကျုံ့လဲ ဖော်ပြတဲ့ scalar ကို ဆိုလိုပါတယ်။
+ဥပမာ covariance matrix [[4, 0], [0, 1]] မှာ eigenvalue 4 နဲ့ 1 ရပြီး ပထမ ဦးတည်ချက်ရဲ့ variance က ဒုတိယထက် ၄ ဆ ရှိပါတယ်။
+Eigenvalue ကို ကြည့်ပြီး variance များတဲ့ ဦးတည်ချက်ကို ခွဲထုတ်တဲ့အတွက် PCA နဲ့ dimension လျှော့ချမှုမှာ အခြေခံ ဖြစ်ပါတယ်။
+
+### Epoch
+
+Epoch ဆိုတာ သတ်မှတ်ထားတဲ့ training dataset ကို တစ်ကြိမ် ဖြတ်သွားတာကို ဆိုလိုပါတယ်။
+ဥပမာ နမူနာ 10,000 နဲ့ batch 500 ဆိုရင် step 20 ခုနဲ့ epoch ၁ ခု ပြည့်ပြီး epoch ၃ ခုဆိုရင် step 60 ရပါတယ်။
+Epoch ပိုများလို့ generalization ပိုကောင်းမယ်လို့ အာမမခံနိုင်ဘဲ held-out data နဲ့ စစ်ရပါတယ်။
+
+## ၃။ gradient စီးဆင်းမှုနှင့် fine-tuning အခြေခံ
+
+### Fine-tuning
+
+Fine-tuning ဆိုတာ pretrained parameter များကနေ စပြီး ပိုကျဉ်းတဲ့ dataset သို့မဟုတ် objective အပေါ် training ကို ဆက်လုပ်တာကို ဆိုလိုပါတယ်။
+ဥပမာ နမူနာ 500 ခုကို batch 50 နဲ့ epoch ၃ ခု train ရင် step 30 ခု ရပါတယ်။
+Fine-tuning က style နဲ့ format ကို ချိန်ညှိနိုင်ပေမယ့် အချက်အလက် လက်ရှိ ဖြစ်နေရမယ့်နေရာမှာ retrieval ကို အစားမထိုးနိုင်ပါဘူး။
+
+### Gradient
+
+Gradient ဆိုတာ အမြန်ဆုံး တိုးပွားတဲ့ ဦးတည်ချက်သို့ ညွှန်တဲ့ partial derivative များရဲ့ vector ကို ဆိုလိုပါတယ်။
+ဥပမာ f(w) = w² မှာ w = 3 ဆိုရင် gradient = 2 × 3 = 6 ဖြစ်ပြီး lr 0.1 နဲ့ ဆင်းရင် w အသစ်က 3 - 0.1 × 6 = 2.4 ဖြစ်ပါတယ်။
+ML မှာ gradient ရဲ့ ဆန့်ကျင်ဘက် ဦးတည်ချက်သို့ သွားပြီး loss ကို လျှော့ချပါတယ်။
+
+### Gradient Accumulation
+
+Gradient Accumulation ဆိုတာ optimizer update တစ်ကြိမ် မလုပ်မီ microbatch အများအပြားရဲ့ gradient ကို ပေါင်းတာ သို့မဟုတ် ပျမ်းမျှယူတာကို ဆိုလိုပါတယ်။
+ဥပမာ device တစ်လုံးက micro-batch 8 သာဆံ့ရင် accumulate step 4 ခုနဲ့ effective batch 8 × 4 = 32 ရပါတယ်။
+Step တစ်ကြိမ်စာ activation memory လျော့ပေမယ့် batch အပြည့်ကို တစ်ပြိုင်နက် စီမံတာရဲ့ အရည်အချင်း အားလုံးကို မပြန်ဖော်ပြနိုင်ပါဘူး။
+
+### Gradient Clipping
+
+Gradient Clipping ဆိုတာ gradient တန်ဖိုးများ သို့မဟုတ် ၎င်းတို့ရဲ့ စုစုပေါင်း norm ကို သတ်မှတ် threshold အောက် ကန့်သတ်တာကို ဆိုလိုပါတယ်။
+ဥပမာ gradient norm 10 ရှိပြီး threshold 1 ထားရင် 1/10 ဆ scale လုပ်ပြီး norm 1 ဖြစ်သွားပါတယ်။
+ကြီးမားတဲ့ gradient တစ်ခုက step ကို မတည်ငြိမ်စေတာကို တားပေမယ့် မမှန်တဲ့ data သို့မဟုတ် ပျက်နေတဲ့ loss ကို ပြုပြင်ပေးတာ မဟုတ်ပါဘူး။
+
+### Gradient Descent
+
+Gradient Descent ဆိုတာ objective ရဲ့ negative gradient ကို သုံးပြီး parameter များကို ရွှေ့တဲ့ optimization update အုပ်စုကို ဆိုလိုပါတယ်။
+ဥပမာ gradient 4 နဲ့ lr 0.25 ဆိုရင် step တစ်ခုမှာ parameter က 0.25 × 4 = 1 ရွေ့သွားပါတယ်။
+များသောအားဖြင့် dataset တစ်ခုလုံး အစား batch များကနေ gradient ကို ခန့်မှန်းပါတယ်။
+
+### Hyperparameter
+
+Hyperparameter ဆိုတာ model parameter အဖြစ် သင်ယူခြင်း မရှိဘဲ training ကို ပုံဖော်တဲ့ configuration ရွေးချယ်မှုကို ဆိုလိုပါတယ်။
+ဥပမာ learning rate၊ batch size နဲ့ layer အရေအတွက် သုံးခုကို တစ်ခုစီ တန်ဖိုး ၃ မျိုးစီ စမ်းရင် ပေါင်းစပ်မှု 3 × 3 × 3 = 27 မျိုး ဖြစ်ပါတယ်။
+ရွေးချယ်မှုတိုင်းက training အပြုအမူကို ကန့်သတ်သတ်မှတ်ပေးတဲ့အတွက် ရလဒ်ကို တိုက်ရိုက် သက်ရောက်ပါတယ်။
+
+### JAX
+
+JAX ဆိုတာ numerical function များကို automatic differentiation၊ compilation၊ vectorization နဲ့ parallel execution ဖြင့် အသွင်ပြောင်းပေးတဲ့ Python library ကို ဆိုလိုပါတယ်။
+ဥပမာ နမူနာ 32 ခုကို Python loop နဲ့ 32 ကြိမ် ခေါ်တာအစား vmap က 32 ခုကို ခေါ်စရာ တစ်ကြိမ်အဖြစ် ပြောင်းပေးပါတယ်။
+Transformation များက state ကို ရှင်းလင်းစွာ ဖော်ပြတဲ့ functional-style code နဲ့ အကောင်းဆုံး အလုပ်လုပ်ပါတယ်။
+
+## ၄။ learning rate၊ adaptation နှင့် loss တိကျမှု
+
+### Knowledge Distillation
+
+Knowledge Distillation ဆိုတာ teacher model ရဲ့ အပြုအမူ သို့မဟုတ် output distribution ကို student model က ပုံတူပွားအောင် train လုပ်တာကို ဆိုလိုပါတယ်။
+ဥပမာ layer 12 ခုရှိတဲ့ teacher ကနေ layer 4 ခုရှိတဲ့ student ကို လွှဲရင် student က 12 / 4 = 3 ဆ သေးပါတယ်။
+Distillation က training distribution အပေါ်ရှိ အပြုအမူကို လွှဲပေးပေမယ့် teacher ရဲ့ စွမ်းရည်နဲ့ အချက်အလက် အားလုံးကို ကူးပေးတာ မဟုတ်ပါဘူး။
+
+### Learning Rate
+
+Learning Rate ဆိုတာ optimizer က parameter update အရွယ်အစားကို ထိန်းချုပ်တဲ့ scale factor ကို ဆိုလိုပါတယ်။
+ဥပမာ lr 0.001 နဲ့ gradient 0.5 ဆိုရင် step တစ်ခုမှာ update က 0.001 × 0.5 = 0.0005 ဖြစ်ပါတယ်။
+တန်ဖိုး ကြီးလွန်းရင် training မတည်ငြိမ်ဘဲ၊ သေးလွန်းရင် တိုးတက်မှု နှေးလွန်းတဲ့အတွက် ချိန်ညှိရတဲ့ အဓိက hyperparameter ဖြစ်ပါတယ်။
+
+### Learning Rate Schedule
+
+Learning Rate Schedule ဆိုတာ training တိုးတက်လာတာနဲ့အမျှ step၊ epoch သို့မဟုတ် curve တစ်ခုအပေါ် မူတည်ပြီး learning rate ကို ပြောင်းစေတဲ့ မူဝါဒကို ဆိုလိုပါတယ်။
+ဥပမာ step 50 တိုင်း lr ကို တစ်ဝက်ချပြီး စတင် lr 0.001 ထားရင် step 200 မှာ lr က 0.001 / 16 = 0.0000625 ဖြစ်ပါတယ်။
+အစောပိုင်းနဲ့ နောက်ပိုင်း အဆင့်များက update scale မတူတာကို လိုချင်တဲ့အတွက် ကိန်းသေ rate တစ်ခုတည်း မလုံလောက်ပါဘူး။
+
+### LoRA (Low-Rank Adaptation)
+
+LoRA (Low-Rank Adaptation) ဆိုတာ base weight ကို freeze ထားပြီး ရွေးထားတဲ့ layer များအတွက် low-rank update matrix များကိုသာ သင်ယူတဲ့ နည်းလမ်းကို ဆိုလိုပါတယ်။
+ဥပမာ matrix 1000 × 1000 (parameter 1,000,000) အတွက် rank 8 နဲ့ LoRA ဆိုရင် A 1000 × 8 နဲ့ B 8 × 1000 ပေါင်း parameter 16,000 သာ ရပါတယ်။
+Train လုပ်ရတဲ့ parameter လျော့တာက full-parameter fine-tuning ထက် training memory သက်သာစေပါတယ်။
+
+### Loss Function
+
+Loss Function ဆိုတာ prediction နဲ့ target ကို optimization က လျှော့ချရန် ကြိုးစားတဲ့ တန်ဖိုး တစ်ခုသို့ map လုပ်တဲ့ objective ကို ဆိုလိုပါတယ်။
+ဥပမာ error ၂ ခုက 1 နဲ့ 3 ဖြစ်ပြီး MSE သုံးရင် (1² + 3²) / 2 = 5 ရပါတယ်။
+Loss က training က မည်သည့် အမှားကို အရင့်အရောက် ခံစေတာကို ဆုံးဖြတ်တဲ့အတွက် ရွေးချယ်မှု အလွန် အရေးပါပါတယ်။
+
+### Mixed Precision
+
+Mixed Precision ဆိုတာ operation အမျိုးမျိုးအတွက် data type အမျိုးမျိုးကို သုံးတဲ့ numerical မဟာဗျူဟာကို ဆိုလိုပါတယ်။
+ဥပမာ parameter 1 ဘီလီယံကို fp32 နဲ့ သိမ်းရင် 4 GB လိုပြီး fp16 နဲ့ဆိုရင် 2 GB သာ လိုပါတယ်။
+အမြန်နှုန်းနဲ့ memory သက်သာမှုက hardware၊ dtype၊ kernel နဲ့ model အပေါ် မူတည်တဲ့အတွက် ကိန်းသေ multiplier တစ်ခု မဟုတ်ပါဘူး။
+
+### NaN (Not a Number)
+
+NaN (Not a Number) ဆိုတာ မသတ်မှတ်နိုင်တဲ့ numerical ရလဒ်ကို ကိုယ်စားပြုတဲ့ floating-point တန်ဖိုးကို ဆိုလိုပါတယ်။
+ဥပမာ exp(1000) က overflow ဖြစ်ပြီး inf ဖြစ်သွားရင် inf - inf က NaN ဖြစ်လာပါတယ်။
+တန်ဖိုး တစ်ခု NaN ဖြစ်ရင် ၎င်းကနေ ဆင်းသက်တဲ့ gradient နဲ့ parameter အားလုံး ပျက်နိုင်တဲ့အတွက် run တစ်ခုလုံး အသုံးမဝင်တော့ပါဘူး။
+
+## ၅။ optimizer အခြေခံများ၊ activation နှင့် preference training
+
+### Normalization
+
+Normalization ဆိုတာ သတ်မှတ်ထားတဲ့ statistics များနဲ့ input၊ activation သို့မဟုတ် feature များကို ပြန် scale လုပ် သို့မဟုတ် ဗဟိုပြန်ချိန်တဲ့ transformation အုပ်စုကို ဆိုလိုပါတယ်။
+ဥပမာ mean 10 နဲ့ std 2 ရှိရင် x = 14 က (14 - 10) / 2 = 2 ဖြစ်သွားပါတယ်။
+Activation ရဲ့ scale ကို ထိန်ညှိပေးတာက optimization တည်ငြိမ်မှုကို ကူပေမယ့် architecture တိုင်းကို တိုးတက်စေတာ မဟုတ်ပါဘူး။
+
+### Optimizer
+
+Optimizer ဆိုတာ gradient များကို parameter update များအဖြစ် အသွင်ပြောင်းတဲ့ algorithm ကို ဆိုလိုပါတယ်။
+ဥပမာ parameter 1 ဘီလီယံရှိတဲ့ model မှာ SGD က အပို state မလိုပေမယ့် Adam က moment ၂ ခုစီ fp32 နဲ့ သိမ်းတဲ့အတွက် အပို 8 GB လိုပါတယ်။
+Backpropagation က gradient တွက်ပေးပြီး optimizer က ၎င်းကို စားသုံးပြီး parameter ကို ရွှေ့ပါတယ်။
+
+### Overfitting
+
+Overfitting ဆိုတာ training data အပေါ် စွမ်းဆောင်ရည်က မမြင်ရသေးတဲ့ data အပေါ် စွမ်းဆောင်ရည်ထက် သိသိသာသာ ပိုကောင်းနေတဲ့ generalization gap ကို ဆိုလိုပါတယ်။
+ဥပမာ train accuracy 99% ဖြစ်ပြီး validation accuracy 70% ဆိုရင် ကွာဟမှု 29 အမှတ် ရှိပါတယ်။
+Training metric တစ်ခုတည်း ကောင်းနေတာက unseen data အပေါ် အလုပ်လုပ်မယ်လို့ အာမမခံနိုင်ပါဘူး။
+
+### QLoRA
+
+QLoRA ဆိုတာ pretrained base model ကို low-bit quantized ပုံစံနဲ့ freeze ထားပြီး LoRA adapter များကို ချိန်ညှိတဲ့ parameter-efficient fine-tuning နည်းလမ်းကို ဆိုလိုပါတယ်။
+ဥပမာ parameter 7 ဘီလီယံရှိတဲ့ model ကို fp16 နဲ့ဆိုရင် 14 GB လိုပြီး 4-bit နဲ့ဆိုရင် 3.5 GB သာ လိုပါတယ်။
+Memory သက်သာပေမယ့် သက်သာမှုနဲ့ အရည်အသွေးက rank၊ optimizer၊ sequence အရှည်နဲ့ hardware အပေါ် မူတည်ပါတယ်။
+
+### ReLU
+
+ReLU ဆိုတာ f(x) = max(0, x) လို့ သတ်မှတ်တဲ့ Rectified Linear Unit ကို ဆိုလိုပါတယ်။
+ဥပမာ input ၄ ခု (-1, 2, -3, 4) ကို ReLU ဖြတ်ရင် (0, 2, 0, 4) ရပြီး ၄ ခုထဲက ၂ ခု သုည ဖြစ်သွားပါတယ်။
+တွက်ချက်မှု သက်သာပေမယ့် negative input မှာ gradient သုည ဖြစ်တာက အလုပ်မလုပ်တော့တဲ့ unit များကို ဖြစ်စေနိုင်ပါတယ်။
+
+### RLHF (Reinforcement Learning from Human Feedback)
+
+RLHF (Reinforcement Learning from Human Feedback) ဆိုတာ လူ၏ တုံ့ပြန်ချက်ကနေ reward သို့မဟုတ် preference signal ကို သင်ယူပြီး ထို signal အတွက် policy ကို optimize လုပ်တဲ့ pipeline အုပ်စုကို ဆိုလိုပါတယ်။
+ဥပမာ လူ နှိုင်းယှဉ်ချက် 10,000 ကနေ reward model တစ်ခု ဆောက်ပြီး ထို reward အပေါ် policy ကို optimize လုပ်ပါတယ်။
+RLHF က သင်ယူထားတဲ့ proxy တစ်ခုကို optimize လုပ်တာ ဖြစ်တဲ့အတွက် အခြေအနေ တိုင်းအတွက် alignment ကို အာမမခံပါဘူး။
+
+### SFT (Supervised Fine-Tuning)
+
+SFT (Supervised Fine-Tuning) ဆိုတာ input နဲ့ လိုချင်တဲ့ အဖြေ တွဲဖက်ထားတဲ့ နမူနာများအပေါ် pretrained model ကို ဆက်လက် train လုပ်တာကို ဆိုလိုပါတယ်။
+ဥပမာ pair 1,000 ခုကို batch 50 နဲ့ epoch ၂ ခု train ရင် step 40 ရပါတယ်။
+ပြသထားတဲ့ နမူနာ အရည်အသွေးက မည်သည့် အပြုအမူကို အရင့်အရောက် ခံစေတာကို ဆုံးဖြတ်ပါတယ်။
+
+### Softmax
+
+Softmax ဆိုတာ logit များကို အပေါင်းလက္ခဏာ ဖြစ်ပြီး စုစုပေါင်း တစ်နဲ့ ညီတဲ့ တန်ဖိုးများအဖြစ် ပြောင်းတဲ့ function ကို ဆိုလိုပါတယ်။
+ဥပမာ logit (1, 1, 1) ဆိုရင် class ၃ ခုစီအတွက် e¹ ညီတဲ့အတွက် probability 1/3 ≈ 0.333 စီ ရပါတယ်။
+Output များက စုစုပေါင်း တစ်နဲ့ ညီတာကြောင့် categorical distribution အဖြစ် သုံးလို့ ရပါတယ်။
+
+### Stochastic Gradient Descent (SGD)
+
+Stochastic Gradient Descent (SGD) ဆိုတာ dataset တစ်ခုလုံး အစား နမူနာ တစ်ခု သို့မဟုတ် minibatch တစ်ခုကနေ ခန့်မှန်းတဲ့ gradient နဲ့ parameter ကို update လုပ်တဲ့ optimizer အုပ်စုကို ဆိုလိုပါတယ်။
+ဥပမာ dataset 1,000 ကို batch 100 နဲ့ ဆိုရင် update တစ်ကြိမ်အတွက် နမူနာ 100 ခုသာ ကြည့်ပြီး 1,000 ခုလုံး မကြည့်ရပါဘူး။
+Gradient noise၊ momentum နဲ့ batch scaling ကို နားလည်ရန် SGD က အခြေခံ baseline ဖြစ်ပါတယ်။
+
+## ၆။ generalization နှင့် parameter ထိန်းချုပ်မှု
+
+### Transfer Learning
+
+Transfer Learning ဆိုတာ distribution သို့မဟုတ် objective တစ်ခုအပေါ် သင်ယူထားတဲ့ representation များကနေ စပြီး အခြား task တစ်ခုအတွက် ချိန်ညှိတာကို ဆိုလိုပါတယ်။
+ဥပမာ နမူနာ 1,000,000 နဲ့ pretrain လုပ်ထားတဲ့ model ကို နမူနာ 5,000 နဲ့ fine-tune ရင် data 5,000 / 1,000,000 = 0.5% သာ လိုပါတယ်။
+Source နဲ့ target task ကွာလွန်းရင် transfer အောင်မြင်မယ်လို့ အာမမခံနိုင်ပါဘူး။
+
+### Underfitting
+
+Underfitting ဆိုတာ model သို့မဟုတ် training setup တစ်ခုမှာ training data အတွင်း အသုံးဝင်တဲ့ ပုံစံများကို ဖမ်းယူရန် effective capacity၊ optimization သို့မဟုတ် training signal မလုံလောက်တာကို ဆိုလိုပါတယ်။
+ဥပမာ train loss 1.2 နဲ့ validation loss 1.25 ဆိုရင် နှစ်ခုလုံး မြင့်ပြီး ကွာဟမှုက 0.05 သာ ရှိပါတယ်။
+Training loss ပင် လုံလောက်စွာ မကျရင် data နဲ့ optimization ကို အရင် စစ်ရပါတယ်။
+
+### Warmup
+
+Warmup ဆိုတာ learning rate ကို သေးငယ်တဲ့ တန်ဖိုးကနေ စပြီး အဓိက schedule ရဲ့ တန်ဖိုးသို့ တဖြည်းဖြည်း တင်တဲ့ အစပိုင်း training အဆင့်ကို ဆိုလိုပါတယ်။
+ဥပမာ warmup step 10 နဲ့ lr ကို 0.00001 ကနေ 0.001 အထိ တင်ရင် step တစ်ခုစီမှာ 0.000099 စီ တိုးပါတယ်။
+အစောပိုင်း gradient များ မတည်ငြိမ်တဲ့အတွက် warmup က optimization ကို ထိခိုက်မှုကို ကာကွယ်ပေးပါတယ်။
+
+### Weight
+
+Weight ဆိုတာ model transformation တစ်ခုအတွင်း ရှိတဲ့ train လုပ်နိုင်တဲ့ coefficient ကို ဆိုလိုပါတယ်။
+ဥပမာ layer တစ်ခုရဲ့ matrix 512 × 512 ဆိုရင် weight 512² = 262,144 ခု ရှိပါတယ်။
+Weight များကို tensor အဖြစ် စီစဉ်ထားပြီး optimization က training objective ကို လျှော့ချရန် ၎င်းတို့ကို ချိန်ညှိပါတယ်။
+
+### Weight Decay
+
+Weight Decay ဆိုတာ training တစ်လျှောက် ရွေးထားတဲ့ parameter များရဲ့ အရွယ်အစားကို လျှော့ချတဲ့ update rule ကို ဆိုလိုပါတယ်။
+ဥပမာ decay 0.001 ဆိုရင် step တစ်ခုစီမှာ weight က 0.999 ဆ ဖြစ်ပြီး step 50 ပြီးရင် မူလ weight ရဲ့ 0.951 ဆ လောက် ကျန်ပါတယ်။
+Generalization ကို ကူပေမယ့် သင့်တော်တဲ့ coefficient က model၊ optimizer နဲ့ data အပေါ် မူတည်ပါတယ်။
+
+## မှီခိုသည့် ဖိုင်
+
+- term တိုင်း၏ အပြည့်အစုံ အဓိပ္ပာယ် (အင်္ဂလိပ် source အပါ) — [`../../terms/01_math_and_training.md`](../../terms/01_math_and_training.md)

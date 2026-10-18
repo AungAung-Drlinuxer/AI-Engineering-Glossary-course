@@ -1,105 +1,127 @@
-# Area 09 — Infrastructure & serving: လေ့လာလမ်းညွှန် (Study Guide)
+# Area 09 — Infrastructure & serving (terms + glossary shortcut)
 
-ဤ folder သည် [`terms/09_infrastructure_and_serving.md`](../../terms/09_infrastructure_and_serving.md) ရှိ
-term ၁၈ ခုကို **စာရင်း** အဖြစ်မှ **လေ့လာနိုင်သည့် သင်ခန်းစာ** အဖြစ် တိုးချဲ့ထားသည်။ Glossary entry များသည်
-"ဤ term ဆိုသည်မှာ ဘာလဲ" ကို ဖြေသည်။ ဤလမ်းညွှန်သည် "ဤ term များကို မည်သည့် အစဉ်ဖြင့် ဆက်စပ်မည်၊
-request တစ်ခုသည် မည်သည့် အဆင့်များမှ ဖြတ်၍ ဘယ်လောက် ကုန်ကျသည်၊ deployment တစ်ခုကောင်း/ဆိုးကို
-မည်သည့် metric ဖြင့် ဆုံးဖြတ်မည်" ကို ဖြေသည်။
+<!-- guide-kind: terms-only -->
 
-## ဤလမ်းညွှန် ထပ်တိုးပေးသည့် အချက်
+ဤဖိုင်သည် area 09 ၏ term ၁၈ ခုကို အတိုချုံး ရှင်းပြထားသည်။ term တိုင်းကို — term ဆိုတာ ဘာလဲ၊ ဥပမာ တစ်ခု၊
+အတိုင်းအတာ သို့မဟုတ် အသုံးဝင်ပုံ ဆိုတဲ့ ၃ ကြောင်းဖြင့် ရေးထားသည်။ term ၁၈ ခုကို အဆင့် ၄ ခုအဖြစ် စီထားသည် —
+model ကို ဝန်ဆောင်ရွက်စေခြင်း၊ အလုပ် စီစဉ်ခြင်း၊ memory နှင့် GPU ခွဲဝေခြင်း၊ နောက်ဆုံး တိုင်းတာခြင်း။
 
-- **အစဉ် တည်ဆောက်ခြင်း** — term ၁၈ ခုကို အဆင့် ၅ ဆင့်အဖြစ် စီထားသည်။ serving ဆိုသည်မှာ ဘာလဲ နှင့်
-  request တစ်ခု၏ ကုန်ကျစရိတ်မှ စ၍ accelerator ပေါ်တွင် အလုပ် စီစဉ်ခြင်း၊ memory layout နှင့်
-  ပြန်လည် အသုံးပြုခြင်း၊ မော်ဒယ်ကို device များအကြား ဖြန့်ကျက်ခြင်း၊ နောက်ဆုံးတွင်
-  တိုင်းတာခြင်းနှင့် scale လုပ်ခြင်း အထိ တည်ဆောက်သည်။
-- **ပုံဖြင့် မြင်ခြင်း** — Mermaid ပုံ ၉ ခုဖြင့် request လမ်းကြောင်း၊ batching timeline နှစ်မျိုး၊
-  prefill နှင့် decode ၏ KV cache အပေါ် မှီခိုမှု၊ paged KV cache block layout၊ chunked prefill ၏
-  ရောနှောမှု၊ tensor နှင့် pipeline parallelism layout၊ disaggregated pool များ၊ queue signal ဖြင့်
-  autoscaling နှင့် rollout ကို ခွင့်ပြုသည့် metric gate များကို ပြသည်။
-- **ကိန်းဂဏန်းဖြင့် ချိန်ခြင်း** — weight နှင့် KV cache memory budget၊ roofline tokens/s နှင့်
-  cost per million tokens၊ batch နှင့် inter-token latency၊ replica အရေအတွက်နှင့် queue ကြီးထွားမှုတို့ကို
-  Python (standard library သာ) ဖြင့် တွက်ပြထားသည်။
+## ၁။ model တစ်ခု ဝန်ဆောင်ရွက်စေခြင်း နှင့် request ၏ အဆင့်များ
 
-ဤလမ်းညွှန်သည် deployment အတွက် မဖြစ်မနေ လိုအပ်သည့် **စည်းမျဉ်း** များကို ဖော်ထုတ်ပေးသည် —
-admission control၊ chunk policy၊ block အရွယ်အစား၊ sharding layout၊ latency SLO နှင့်
-autoscaling signal ဖြစ်သည်။
+### Model Serving
 
-## အခြေခံ အချက်
+Model Serving ဆိုတာ version သတ်မှတ်ထားသည့် model ကို ဖွင့်တင်ပြီး request လက်ခံကာ အလုပ် စီစဉ်ပြီး ရလဒ် ပြန်ပေးသည့် runtime နှင့် API အလွှာကို ဆိုလိုပါတယ်။
+ဥပမာ 7B model ကို fp16 ဖြင့် ဖွင့်ရင် weight က 14 GB (parameter ၇ ဘီလီယံ × 2 byte) ဖြစ်ပြီး 24 GB card တစ်ခုတွင် ကျန် 10 GB ခန့်သာ KV cache အတွက် ကျန်ပါတယ်။
+ထို့ကြောင့် request ကန့်သတ်ချက်၊ readiness နှင့် concurrency ကို ကြိုတင် သတ်မှတ်ထားမှ ဝန်ဆောင်မှုကို ယုံလို့ ရပါတယ်။
 
-| အချက် | တန်ဖိုး |
-|---|---|
-| Term | ၁၈ ခု (area 09 — Infrastructure & serving) |
-| အဆင့် | ၅ ဆင့် |
-| ဖိုင် | ၅ ခု + lab ၃ ခု + ကိန်းဂဏန်း script ၃ ခု |
-| လိုအပ်သည့် အရာ | Python 3.11+၊ standard library သာ — network၊ GPU၊ API key မလိုပါ |
-| Run တိုင်း | deterministic (ရလဒ် တူညီသည်)၊ offline |
-| စစ်ဆေးခြင်း | `python3 verify_guide.py --guide 09 --verbose` |
+### Prefill
 
-## လေ့လာသည့် အစဉ် (၅ ကြိမ်)
+Prefill ဆိုတာ ပေးထားသည့် input token အားလုံးကို တစ်ခါတည်း စီမံပြီး နောက်ဆက်တွဲ token ထုတ်လုပ်မှုအတွက် လိုအပ်သည့် attention state ကို ထုတ်လုပ်သည့် ပထမ အဆင့်ကို ဆိုလိုပါတယ်။
+ဥပမာ prompt 2,000 token ရှိရင် prefill က 2,000 token လုံးကို တစ်လှမ်းတည်း စီမံပြီး ပထမ output token မပေါ်မီ စောင့်ချိန် (TTFT) ကို ဆုံးဖြတ်ပါတယ်။
+Prompt ရှည်လာသည်နှင့် အချိုးကျ prefill အလုပ် များလာပြီး ပထမ token စောင့်ချိန် တိုးလာပါတယ်။
 
-| ကြိမ် | ဖတ်ရမည့် ဖိုင် | လက်တွေ့ run ရမည့် lab |
-|---|---|---|
-| ၁ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၁ | `python3 labs/lab_serving_memory.py --params-b 8 --context 8192 --batch 32` |
-| ၂ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၂ | `python3 labs/lab_roofline.py --sweep` |
-| ၃ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၃ | `python3 labs/lab_serving_memory.py --context 32768 --dtype int8 --batch 8` |
-| ၄ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၄ | `python3 labs/lab_roofline.py --params-b 70 --dtype int4 --batch 64` |
-| ၅ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၅ နှင့် [`04_exercises.md`](04_exercises.md) | `python3 labs/lab_autoscale.py --rps 40 --output-tokens 300 --replicas 3` |
+### Decode Phase
 
-Lab အားလုံးကို တစ်ကြိမ်တည်း စစ်ဆေးလိုပါက `python3 labs/run_labs.py` ကို run ရမည်။
-အဆင့် တိုင်းတွင် စစ်ဆေးသည့် မေးခွန်း တစ်ခု ပါဝင်သည် — ထို မေးခွန်းကို ဖြေနိုင်မှသာ နောက်အဆင့်သို့
-တက်ရမည်။
+Decode Phase ဆိုတာ prefill ပြီးနောက် output token များကို တစ်လှမ်းချင်း ထုတ်လုပ်သည့် ထပ်ခါတလဲလဲ လည်ပတ်ရသည့် အဆင့်ကို ဆိုလိုပါတယ်။
+ဥပမာ output 300 token ထုတ်ဖို့ step 300 လိုပြီး step တစ်ခုကို 20 ms ယူရင် စုစုပေါင်း 300 × 20 ms = 6 စက္ကန့် ကြာပါတယ်။
+ဤအဆင့်ကို KV cache နေရာနှင့် batch အရွယ်အစားက ကန့်သတ်ပါတယ် — weight မပြည့်မီ KV cache က အရင် ပြည့်တတ်ပါတယ်။
 
-## ဖိုင်များ
+### Disaggregated Serving
 
-| ဖိုင် | ဘာကို ပေးသည် |
-|---|---|
-| [`01_learning_sequence.md`](01_learning_sequence.md) | term ၁၈ ခုကို အဆင့် ၅ ဆင့်အဖြစ် အစဉ်လိုက် စီထားသည် — ကြိုတင် သိရမည့် term၊ ဖွင့်ပေးသည့် အချက်၊ အဆင့်တိုင်း၏ စစ်ဆေးမေးခွန်း၊ prerequisite graph |
-| [`02_visual_explanations.md`](02_visual_explanations.md) | Mermaid ပုံ ၉ ခု — serving လမ်းကြောင်း၊ static နှင့် continuous batching timeline၊ prefill နှင့် decode၊ paged KV cache block၊ chunked prefill၊ parallelism layout သုံးမျိုး၊ disaggregated pool၊ autoscaling signal၊ rollout metric gate |
-| [`03_theory_to_infrastructure.md`](03_theory_to_infrastructure.md) | term တိုင်း GPU memory / compute / latency / throughput / ကုန်ကျစရိတ် / ထုတ်လုပ်မှု အပေါ် သက်ရောက်မှု + တွက်ချက်မှု ဥပမာ ၃ ခု |
-| [`04_exercises.md`](04_exercises.md) | လုပ်ပြထားသည့် ဥပမာ ၄ ခု၊ တွက်ချက်ရသည့် လေ့ကျင့်ခန်း ၆ ခု၊ ပြဿနာ ရှာဖွေခြင်း ၃ ခု၊ ဆုံးဖြတ်ချက် ၂ ခု၊ အဖြေများ အပြည့်အစုံ |
-| [`labs/`](labs/) | interactive lab ၃ ခု + `run_labs.py` (usage နှင့် ရလဒ်များ — [`labs/README.md`](labs/README.md)) |
-| [`scripts/`](scripts/) | `03_theory_to_infrastructure.md` ၏ ကိန်းဂဏန်း ဥပမာများကို ထုတ်ပေးသည့် script ၃ ခု — `ex_a_memory_budget.py`၊ `ex_b_roofline.py`၊ `ex_c_replicas.py` |
+Disaggregated Serving ဆိုတာ prefill အလုပ်နှင့် decode အလုပ်ကို သီးခြား worker pool နှစ်ခုတွင် လည်ပတ်စေပြီး attention state ကို pool နှစ်ခုအကြား လွှဲပြောင်းသည့် serving ဗိသုကာကို ဆိုလိုပါတယ်။
+ဥပမာ prefill worker ၂ ခုနှင့် decode worker ၆ ခု ခွဲထားရင် prompt 2,000 token ရှိသည့် request အသစ်က decode လုပ်နေသည့် request ၆ ခုကို ရပ်တန့်စေတော့ပါဘူး။
+ဒါပေမယ့် attention state လွှဲပြောင်းမှု ကုန်ကျစရိတ်ကို ချိန်ရပါတယ် — လွှဲပြောင်းမှု နှေးရင် ရရှိမည့် အမြတ် ပျက်ပါတယ်။
 
-## Lab များ — ဘာကို ပြောင်း၍ ဘာကို ကြည့်မည်
+## ၂။ အလုပ် စီစဉ်ခြင်း နှင့် စွမ်းရည် ချိန်ညှိခြင်း
 
-Lab တိုင်းသည် **offline နှင့် deterministic** ဖြစ်သည် — parameter ပြောင်း၍ run ပါက အချိန်တိုင်း
-တူညီသည့် ရလဒ် ရသည်၊ ထို့ကြောင့် မိမိ တွက်ချက်မှုနှင့် တိုက်စစ်နိုင်သည်။
+### Continuous Batching
 
-| Lab | ပြောင်းနိုင်သည့် knob | ကြည့်ရမည့် ရလဒ် |
-|---|---|---|
-| `lab_serving_memory.py` | `--params-b`၊ `--layers`၊ `--heads`၊ `--head-dim`၊ `--context`၊ `--batch`၊ `--dtype`၊ `--budget-gib`၊ `--sweep` | weight GiB၊ KV cache per sequence နှင့် total၊ activation workspace၊ total VRAM၊ budget အောက်တွင် တင်နိုင်သည့် အကြီးဆုံး batch |
-| `lab_roofline.py` | `--bandwidth-gbps`၊ `--params-b`၊ `--dtype`၊ `--batch`၊ `--efficiency`၊ `--gpu-hour-cost`၊ `--sweep` | တစ်လှမ်းလျှင် byte၊ tokens/s အပေါ်ဘောင် နှင့် ရရှိသည့် တန်ဖိုး၊ step ကြာချိန်၊ cost per million tokens |
-| `lab_autoscale.py` | `--rps`၊ `--output-tokens`၊ `--replica-tps`၊ `--replicas`၊ `--target-utilisation`၊ `--cold-start-s`၊ `--gpu-hour-cost`၊ `--sweep` | utilisation၊ queue ကြီးထွားနှုန်း၊ လိုအပ်သည့် replica၊ scale-up ကြာချိန်၊ over- နှင့် under-provisioning ကုန်ကျစရိတ် |
+Continuous Batching ဆိုတာ iteration နယ်နိမိတ် တိုင်းတွင် request အသစ် ထည့်ခြင်း၊ ပြီးဆုံးသွားသည့် request ဖယ်ခြင်း လုပ်သည့် serving scheduler ကို ဆိုလိုပါတယ်။
+ဥပမာ slot 8 ရှိသည့် batch တွင် request တစ်ခုက token 50 တွင် ပြီးသွားရင် အဲဒီ slot ကို request အသစ် ချက်ချင်း ဖြည့်ပြီး output အရှည် 300 token ရှိသည့် request အတွက် စောင့်စရာ မလိုပါဘူး။
+ထို့ကြောင့် hardware ကုန်ကျစရိတ် တူညီစွာဖြင့် တစ်စက္ကန့် ထုတ်လုပ်သည့် token အရေအတွက် များစွာ တိုးလာပါတယ်။
 
-lab suite တစ်ခုလုံး၏ အခြေအနေ (`python3 labs/run_labs.py` ၏ ရလဒ်) —
+### Dynamic Batching
 
-```text
-==========================================================================
-run_labs - area 09 Infrastructure & Serving (offline, deterministic)
-==========================================================================
-[PASS] lab_serving_memory.py: [PASS] lab_serving_memory self-test passed.
-[PASS] lab_roofline.py: [PASS] lab_roofline self-test passed.
-[PASS] lab_autoscale.py: [PASS] lab_autoscale self-test passed.
-==========================================================================
-[PASS] All 3/3 labs passed successfully.
-```
+Dynamic Batching ဆိုတာ queue တွင် စောင့်နေသည့် request များကို ကိုက်ညီသည့် shape၊ အများဆုံး အရွယ်အစားနှင့် ခွင့်ပြုထားသည့် queue ကြာချိန်အလိုက် batch အဖြစ် စုစည်းသည့် runtime policy ကို ဆိုလိုပါတယ်။
+ဥပမာ queue delay ကို 10 ms သတ်မှတ်ထားရင် 10 ms အတွင်း ရောက်လာသည့် request အားလုံးကို batch တစ်ခုအဖြစ် တွဲပို့ပြီး hardware အသုံးချမှု တိုးလာပါတယ်။
+ဒါပေမယ့် traffic ကျဲသည့်အခါ batch အတွက် စောင့်လိုက်ရသည့် 10 ms က latency ကို ပိုဆိုးစေပါတယ်။
 
-**သတိထားရန်** — bandwidth၊ efficiency၊ GPU-hour စျေးနှုန်းနှင့် activation factor အားလုံးသည်
-ဖော်ပြထားသည့် ယူဆချက် (assumption) ဖြစ်သည်၊ benchmark တိုင်းတာမှု မဟုတ်ပါ။ accelerator၊
-vendor နှင့် region အလိုက် ကွာခြားသည်၊ ထို့ကြောင့် တန်ဖိုးများကို "ဤ ယူဆချက်အောက်တွင်"
-ဟု တွဲဖတ်ရမည်။
+### Chunked Prefill
 
-## စစ်ဆေးခြင်း
+Chunked Prefill ဆိုတာ prompt ရှည်တစ်ခု၏ prefill အလုပ်ကို အပိုင်းငယ်များအဖြစ် ခွဲပြီး အခြား request များ၏ decode အလုပ်နှင့် အလှည့်ကျ ရောနှောလုပ်ဆောင်သည့် နည်းစနစ်ကို ဆိုလိုပါတယ်။
+ဥပမာ prompt 8,000 token ကို chunk 512 token အဖြစ် ခွဲရင် အပိုင်း ၁၆ ခု ဖြစ်ပြီး အပိုင်း တစ်ခုချင်း အကြား ကျန်သည့် request များ decode ဆက်လုပ်နိုင်ပါတယ်။
+ထို့ကြောင့် စုစုပေါင်း throughput မကျဘဲ အရှည်ဆုံး စောင့်ချိန် (tail latency) ကျသွားပါတယ်။
 
-```bash
-python3 verify_guide.py --guide 09 --verbose          # ဖိုင်၊ register၊ term လွှမ်းခြုံမှု၊ lab ၃ ခု (၃ ကြိမ် စီ)
-python3 verify_guide.py --guide 09 --documents        # document ဖိုင်များသာ
-python3 verify_guide.py --guide 09 --labs             # lab များသာ
-python3 guides/09_infrastructure_and_serving/labs/run_labs.py
-```
+### Autoscaling
 
-## မှီခိုသည့် အခြား ဖိုင်
+Autoscaling ဆိုတာ တောင်းဆိုမှု သို့မဟုတ် resource အသုံးပြုမှုအပေါ် မူတည်၍ serving worker အရေအတွက်ကို သတ်မှတ်ထားသည့် အတိုင်းအတာအတွင်း အလိုအလျောက် တိုးလျှော့သည့် control loop ကို ဆိုလိုပါတယ်။
+ဥပမာ worker တစ်ခုက တစ်စက္ကန့် token 1,200 ထုတ်နိုင်ပြီး လိုအပ်ချက်က တစ်စက္ကန့် token 6,000 ဖြစ်ရင် worker ၅ ခု လိုပါတယ် (6,000 ÷ 1,200)။
+ဒါပေမယ့် worker အသစ် ဖွင့်ရာတွင် model ဖွင့်ချိန် ကြာတာကို ထည့်တွက်ရပါတယ် — အဲဒါကို မတွက်ရင် scale လုပ်ချိန် မလုံလောက်ပါဘူး။
 
-- Term တိုင်း၏ အပြည့်အစုံ အဓိပ္ပာယ် (အင်္ဂလိပ် + မြန်မာ) — [`../../terms/09_infrastructure_and_serving.md`](../../terms/09_infrastructure_and_serving.md)
-- A–Z index — [`../../terms/00_index.md`](../../terms/00_index.md)
-- area 02 (Models & Inference) သည် ဤနေရာမှ ဆက်ဖတ်ရမည့် နယ်ပယ် ဖြစ်သည် — [`../02_models_and_inference/README.md`](../02_models_and_inference/README.md)
+## ၃။ memory နှင့် GPU များအကြား ခွဲဝေခြင်း
+
+### Paged KV Cache
+
+Paged KV Cache ဆိုတာ attention state ကို ပုံသေ အရွယ်အစား block များတွင် သိမ်းပြီး logical sequence နေရာများကို physical block များသို့ map လုပ်သည့် KV-cache memory manager ကို ဆိုလိုပါတယ်။
+ဥပမာ block size 16 token ထားရင် sequence 1,000 token တစ်ခုက block ၆၃ ခု ယူပြီး အဲဒီ 1,000 token အတွက် ဆက်တိုက် နေရာ တစ်ခုတည်း ရှာစရာ မလိုပါဘူး။
+ဤလို block ခွဲထားတာကြောင့် memory ကို လွတ်လပ်စွာ မျှဝေနိုင်ပြီး fragmentation ကြောင့် ဖြုန်းတီးမှု လျော့ပါတယ်။
+
+### Prefix Caching
+
+Prefix Caching ဆိုတာ တူညီသည့် token prefix တစ်ခုအတွက် ထုတ်ထားပြီးသား KV-cache block များကို request များအကြား ပြန်လည် အသုံးပြုခြင်းကို ဆိုလိုပါတယ်။
+ဥပမာ system prompt 1,000 token ကို request 100 ခုက မျှသုံးရင် prefill အလုပ် 1,000 × 100 = 100,000 token အစား 1,000 token သာ လုပ်ရပါတယ်။
+ဒါပေမယ့် prefix တူမှသာ အကျိုးရှိပါတယ် — request သီးသန့် စာသားကို ရှေ့ဆုံးတွင် ထားရင် hit rate ကျသွားပါတယ်။
+
+### FlashAttention
+
+FlashAttention ဆိုတာ attention တွက်ချက်မှုကို tile များအဖြစ် ခွဲ၍ memory လွှဲပြောင်းမှု လျှော့ချသည့် တိကျသည့် attention kernel ကို ဆိုလိုပါတယ်။
+ဥပမာ token 4,096 ရှိသည့် sequence တွင် attention matrix အပြည့်က 4,096 × 4,096 = 16,777,216 cell ဖြစ်ပြီး fp16 ဖြင့် head တစ်ခုလျှင် 32 MB ခန့် ဖြစ်ပါတယ်။
+ဇယား အပြည့်ကို memory တွင် အမှန်တကယ် မထားတော့ဘဲ တွက်သည့်အတွက် sequence ရှည်တိုင်း memory ချွေတာမှု ပိုသိသာပါတယ်။
+
+### Tensor Parallelism
+
+Tensor Parallelism ဆိုတာ layer တစ်ခုအတွင်းရှိ tensor တွက်ချက်မှုကို device များအကြား ခွဲဝေပြီး ရလဒ် အစိတ်အပိုင်းများကို collective communication ဖြင့် ပေါင်းစပ်ခြင်းကို ဆိုလိုပါတယ်။
+ဥပမာ 7B model ၏ weight 14 GB ကို GPU ၂ ခုအကြား ခွဲရင် တစ်ခုလျှင် 7 GB ကျပြီး card တစ်ခုတည်း၏ memory ထက် ကြီးသည့် model ကို ဖွင့်နိုင်ပါတယ်။
+ဒါပေမယ့် layer တိုင်းတွင် အပိုင်းများ ပြန်ပေါင်းရသည့်အတွက် GPU များကြား လိုင်း မမြန်ရင် အလွန် နှေးသွားပါတယ်။
+
+### Pipeline Parallelism
+
+Pipeline Parallelism ဆိုတာ ဆက်တိုက် လိုက်ရသည့် layer အုပ်စုများကို device များအကြား ပိုင်းခြားပြီး microbatch များကို အဆင့်များမှတစ်ဆင့် pipeline ကဲ့သို့ ရွှေ့ပေးခြင်းကို ဆိုလိုပါတယ်။
+ဥပမာ layer 32 ရှိသည့် model ကို GPU ၄ ခုအကြား ခွဲရင် GPU တစ်ခုလျှင် layer ၈ ခု ကျပြီး weight ကို လေးပုံတစ်ပုံစီ ထမ်းပါတယ်။
+အဆင့်များ မညီညာရင် GPU တစ်ချို့ အားလပ်နေသည့် pipeline bubble ဖြစ်ပြီး အသုံးဝင်သည့် စွမ်းရည် လျော့ပါတယ်။
+
+### Expert Parallelism
+
+Expert Parallelism ဆိုတာ MoE model ၏ expert များကို device များအကြား ဖြန့်ထားပြီး token တစ်ခုချင်း ရွေးချယ်လိုက်သည့် expert ရှိသည့် device ဆီသို့ activation များကို route လုပ်ခြင်းကို ဆိုလိုပါတယ်။
+ဥပမာ expert 64 ခုကို GPU ၈ ခုအကြား ထားရင် GPU တစ်ခုလျှင် expert ၈ ခု ရှိပြီး token တိုင်းသည် expert ၂ ခုသာ ရွေးလုပ်ရပါတယ်။
+Token တိုင်း expert အားလုံးကို မလည်ပတ်စေတာကြောင့် model စွမ်းရည် များစွာ တိုးနိုင်ပါတယ် — ဒါပေမယ့် route လုပ်ရသည့် လိုင်း ကုန်ကျစရိတ် ပါလာပါတယ်။
+
+## ၄။ load အောက်တွင် မြန်နှုန်း တိုင်းတာခြင်း
+
+### Goodput
+
+Goodput ဆိုတာ သတ်မှတ်ထားသည့် latency ကန့်သတ်ချက် ပြည့်မီသည့် ပြီးစီးသွားသည့် request များ၏ နှုန်းကို ဆိုလိုပါတယ်။
+ဥပမာ တစ်စက္ကန့် request 1,000 ပြီးစီးသည့်အထဲမှ TTFT 2 စက္ကန့်အောက်နှင့် TPOT 50 ms အောက် ပြည့်မီသည့် request 800 ခုသာ ရှိရင် goodput က တစ်စက္ကန့် request 800 ခု ဖြစ်ပါတယ်။
+Throughput တစ်ခုတည်း ကြည့်ရင် ကျေနပ်နေစဉ်မှာပဲ အသုံးပြုသူ နှေးသည့် request များ ရနေတာကို ဖုံးကွယ်နေနိုင်ပါတယ်။
+
+### Tokens per Second (TPS)
+
+Tokens per Second (TPS) ဆိုတာ serving စနစ်တစ်ခုက အချိန် တစ်ယူနစ်အတွင်း output token မည်မျှ ထုတ်သည်ကို ဖော်ပြသည့် throughput အတိုင်းအတာကို ဆိုလိုပါတယ်။
+ဥပမာ စုစုပေါင်း တစ်စက္ကန့် token 1,200 ထုတ်ပြီး request တစ်ခုလျှင် output 300 token ရှိရင် တစ်စက္ကန့် request 1,200 ÷ 300 = 4 ခု ဆံ့ပါတယ်။
+TPS ကို request တစ်ခုချင်း ဟုတ်လား စုစုပေါင်း ဟုတ်လား ဖော်ပြမထားရင် နှိုင်းယှဉ်လို့ မရပါဘူး။
+
+### Time per Output Token (TPOT)
+
+Time per Output Token (TPOT) ဆိုတာ request တစ်ခုအတွင်း ပထမ token ပြီးနောက် output token များ၏ ပျှမ်းမျှ ကြားကာလကို ဆိုလိုပါတယ်။
+ဥပမာ output 300 token ကို ပထမ token နောက်ပိုင်း 6 စက္ကန့်အတွင်း ထုတ်ရင် 6,000 ms ÷ 299 ≈ 20 ms ဖြစ်ပါတယ်။
+ပထမ token မြန်ပြီး ကျန် အဖြေ နှေးနေတာကို TTFT တစ်ခုတည်းနှင့် မသိနိုင်ပါဘူး — TPOT က အဲဒါကို ပြပါတယ်။
+
+### Inter-Token Latency (ITL)
+
+Inter-Token Latency (ITL) ဆိုတာ output token နှစ်ခု ဆက်တိုက် ရောက်လာသည့် အချိန် နှစ်ခုအကြား ကြားကာလ တစ်ခုကို ဆိုလိုပါတယ်။
+ဥပမာ token များအကြား ကွာဟချက် 20 ms ဖြစ်နေရာမှ batch ကြီးလာချိန် တစ်ခါတစ်လေ 500 ms အထိ ရောက်သွားရင် အဲဒီ request က ရုတ်တရက် ရပ်သလို ခံစားရပါတယ်။
+ပျှမ်းမျှချည်း ကြည့်ရင် 500 ms ကွာဟမှုက ပျောက်သွားတတ်ပါတယ် — ထို့ကြောင့် p99 ကို ကြည့်ရပါတယ်။
+
+## မှီခိုသည့် ဖိုင်
+
+- term တိုင်း၏ အပြည့်အစုံ အဓိပ္ပာယ် (အင်္ဂလိပ် source အပါ) — [`../../terms/09_infrastructure_and_serving.md`](../../terms/09_infrastructure_and_serving.md)

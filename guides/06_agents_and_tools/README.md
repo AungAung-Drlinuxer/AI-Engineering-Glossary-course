@@ -1,106 +1,184 @@
-# Area 06 — Agents & tools: လေ့လာလမ်းညွှန် (Study Guide)
+# Area 06 — Agents & tools (terms + glossary shortcut)
 
-ဤ folder သည် [`terms/06_agents_and_tools.md`](../../terms/06_agents_and_tools.md) ရှိ term ၂၇ ခုကို **စာရင်း** အဖြစ်မှ
-**လေ့လာနိုင်သည့် သင်ခန်းစာ** အဖြစ် တိုးချဲ့ထားသည်။ Glossary entry များသည် "ဤ term ဆိုသည်မှာ ဘာလဲ" ကို ဖြေသည်။
-ဤလမ်းညွှန်သည် "ဤ term များကို မည်သည့် အစဉ်ဖြင့် ဆက်စပ်မည်၊ tool call တစ်ခု၏ လမ်းကြောင်းသည် မည်သို့ ဖြစ်သည်၊
-loop တစ်ခုသည် ဘယ်လောက် ကုန်ကျသည်" ကို ဖြေသည်။
+<!-- guide-kind: terms-only -->
 
-## ဤလမ်းညွှန် ထပ်တိုးပေးသည့် အချက်
+ဤဖိုင်သည် area 06 ၏ term ၂၇ ခုကို အတိုချုံး ရှင်းပြထားသည်။ term တိုင်းကို — term ဆိုတာ ဘာလဲ၊ ဥပမာ တစ်ခု၊
+အတိုင်းအတာ သို့မဟုတ် အသုံးဝင်ပုံ ဆိုတဲ့ ၃ ကြောင်းဖြင့် ရေးထားသည်။ term ၂၇ ခုကို အဆင့် ၆ ခုအဖြစ် စီထားသည်။
 
-Glossary သည် term တိုင်းကို သီးခြားစီ ရှင်းပြသည်။ Agent စနစ် တစ်ခုကို လက်တွေ့ တည်ဆောက်သည့်အခါ
-term တိုင်း သီးခြားစီ မလုပ်ဆောင်ပါ — ၎င်းတို့သည် **လည်ပတ်မှု တစ်ခုတည်း၏ အစိတ်အပိုင်းများ** ဖြစ်သည်။
-ဤလမ်းညွှန်သည် ထို ဆက်စပ်မှုကို သုံးလမ်းဖြင့် ဖော်ပြသည်။
+## ၁။ Agent နှင့် ၎င်းကို ဝန်းရံသည့် runtime
 
-- **အစဉ် တည်ဆောက်ခြင်း** — term ၂၇ ခုကို အဆင့် ၆ ဆင့်အဖြစ် စီထားသည်။ မော်ဒယ် call တစ်ခုတည်း (one model call) မှ
-  စ၍ loop တစ်ခု၊ tool contract၊ harness နှင့် state၊ memory နှင့် handoff၊ ပျက်ကျမှုနှင့် human approval၊
-  နောက်ဆုံးတွင် multi-agent နှင့် routing အထိ တည်ဆောက်သည်။
-- **ပုံဖြင့် မြင်ခြင်း** — Mermaid ပုံ ၈ ခုဖြင့် agent loop၊ tool contract ၏ validation path၊ turn များအကြား state၊
-  harness နှင့် sandbox ၏ နယ်နိမိတ်၊ retry ဆုံးဖြတ်ချက်၊ approval gate နှင့် multi-agent routing တို့ကို ပြသည်။
-- **ကိန်းဂဏန်းဖြင့် ချိန်ခြင်း** — token၊ context ကြီးထွားမှု၊ step အရေအတွက်၊ retry ဖြစ်နိုင်ခြေ၊ latency နှင့်
-  cache ၏ အကျိုးအမြတ်တို့ကို Python (standard library သာ) ဖြင့် တွက်ပြထားသည်။
+### Agent
 
-ဤလမ်းညွှန်သည် deployment အတွက် မဖြစ်မနေ လိုအပ်သည့် **policy** များကို ဖော်ထုတ်ပေးသည် — tool call အရေအတွက်
-ကန့်သတ်ချက်၊ termination condition၊ approval gate နှင့် sandbox နယ်နိမိတ် ဖြစ်သည်။
+Agent ဆိုတာ မော်ဒယ်တစ်ခုကို ပန်းတိုင်တစ်ခုဆီသို့ လုပ်ဆောင်ချက်များ ရွေးချယ်စေပြီး tool သို့မဟုတ် environment ရလဒ်များကို လေ့လာကာ orchestration policy တစ်ခုအောက်တွင် ဆက်လက်လုပ်ဆောင်စေသည့် software စနစ်တစ်ခုကို ဆိုလိုပါတယ်။
+ဥပမာ agent တစ်ခုက အဆင့် ၁၀ ခု လုပ်ပြီး အဆင့်တိုင်းမှာ tool call ၂ ခု ခေါ်ရင် tool call ၂၀ ခု ဖြစ်ပါတယ်။
+ထို ၂၀ ခုထဲက တစ်ခု မှားလိုက်ရင် ရလဒ် တစ်ခုလုံး လွဲသွားနိုင်တဲ့အတွက် tool contract နဲ့ verification က အရေးပါပါတယ်။
 
-## အခြေခံ အချက်
+### Agent Harness
 
-| အချက် | တန်ဖိုး |
-|---|---|
-| Term | ၂၇ ခု (area 06 — Agents & tools) |
-| အဆင့် | ၆ ဆင့် |
-| ဖိုင် | ၅ ခု + lab ၃ ခု + ကိန်းဂဏန်း script ၃ ခု |
-| လိုအပ်သည့် အရာ | Python 3.11+၊ standard library သာ — network၊ GPU၊ API key မလိုပါ |
-| Run တိုင်း | deterministic (ရလဒ် တူညီသည်)၊ offline |
-| စစ်ဆေးခြင်း | `python3 verify_guide.py --guide 06 --verbose` |
+Agent Harness ဆိုတာ context စုစည်းခြင်း၊ tool ဖော်ထုတ်ခြင်း၊ state စီမံခြင်း၊ ကန့်သတ်ချက် ချမှတ်ခြင်းနဲ့ agent ဆက်လုပ်မည်၊ ပြန်ကြိုးစားမည်၊ ရပ်မည်ကို ဆုံးဖြတ်ခြင်းတို့ကို ပြုလုပ်သည့် မော်ဒယ်ပတ်လည်ရှိ runtime တစ်ခုကို ဆိုလိုပါတယ်။
+ဥပမာ harness တစ်ခုက tool call ၅ ခုသာ ခွင့်ပြုရင် တောင်းဆိုလာတဲ့ ၅၀ ခုထဲက ၅ ခုသာ run ပြီး ကျန်တာ ရပ်လိုက်ပါတယ်။
+မော်ဒယ် တူညီပေမယ့် harness မတူတဲ့ စနစ် ၂ ခုရဲ့ စွမ်းဆောင်ရည်က အလွန် ကွာနိုင်ပါတယ်။
 
-## လေ့လာသည့် အစဉ် (၆ ကြိမ်)
+## ၂။ မှတ်ဉာဏ်၊ state နှင့် skill
 
-| ကြိမ် | ဖတ်ရမည့် ဖိုင် | လက်တွေ့ run ရမည့် lab |
-|---|---|---|
-| ၁ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၁–၂ | `python3 labs/lab_agent_loop.py` |
-| ၂ | [`02_visual_explanations.md`](02_visual_explanations.md) ပုံ ၁–၄ | `python3 labs/lab_tool_schema.py` |
-| ၃ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၃ | `python3 labs/lab_agent_loop.py --max-steps 16 --tool-calls 6 --context 8192` |
-| ၄ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၄ | `python3 labs/lab_agent_loop.py --cost-budget 0.06` |
-| ၅ | [`02_visual_explanations.md`](02_visual_explanations.md) ပုံ ၅–၈ | `python3 labs/lab_tool_schema.py --tools 8 --fields 6 --turns 12` |
-| ၆ | [`04_exercises.md`](04_exercises.md) | `python3 labs/lab_concurrency.py` |
+### Agent Memory
 
-Lab အားလုံးကို တစ်ကြိမ်တည်း စစ်ဆေးလိုပါက `python3 labs/run_labs.py` ကို run ရမည်။
+Agent Memory ဆိုတာ မော်ဒယ်ရဲ့ အပြင်ဘက်မှာ သိမ်းထားပြီး နောက်ပိုင်း agent အဆင့်များအတွက် ရွေးချယ်ထားသည့် အချက်အလက်များကို ဆိုလိုပါတယ်။
+ဥပမာ အတိတ် run ၁၀၀ ခုရဲ့ episode ၁၀၀ ခု သိမ်းထားပြီး လက်ရှိ run အတွက် သက်ဆိုင်တဲ့ ၅ ခုသာ ပြန်ရယူရင် prompt မကြီးဘဲ ဆက်တည်ရှိမှု ရပါတယ်။
+အတိတ် ဖြစ်ရပ်တိုင်းကို prompt တိုင်းထဲ ထည့်ရင် context window ပြည့်သွားမှာမို့ memory က ရွေးချယ်မှုကို လုပ်ပေးပါတယ်။
 
-## ဖိုင်များ
+### Agent State
 
-| ဖိုင် | ဘာကို ပေးသည် |
-|---|---|
-| [`01_learning_sequence.md`](01_learning_sequence.md) | term ၂၇ ခုကို အဆင့် ၆ ဆင့်အဖြစ် အစဉ်လိုက် စီထားသည် — ကြိုတင် သိရမည့် term၊ ဖွင့်ပေးသည့် အချက်၊ အဆင့်တိုင်း၏ စစ်ဆေးမေးခွန်း၊ prerequisite graph |
-| [`02_visual_explanations.md`](02_visual_explanations.md) | Mermaid ပုံ ၈ ခု — agent loop၊ tool contract နှင့် validation path၊ state၊ harness နှင့် sandbox၊ retry flow၊ approval gate၊ multi-agent routing၊ skill discovery |
-| [`03_theory_to_infrastructure.md`](03_theory_to_infrastructure.md) | term တိုင်း runtime နှင့် ကုန်ကျစရိတ်အပေါ် သက်ရောက်မှု + ကိန်းဂဏန်း ဥပမာ ၃ ခု |
-| [`04_exercises.md`](04_exercises.md) | လုပ်ပြထားသည့် ဥပမာ ၄ ခု၊ တွက်ချက်ရသည့် လေ့ကျင့်ခန်း ၆ ခု၊ ပြဿနာ ရှာဖွေခြင်း ၃ ခု၊ ဆုံးဖြတ်ချက် ၂ ခု၊ အဖြေများ အပြည့်အစုံ |
-| [`labs/`](labs/) | interactive lab ၃ ခု + `run_labs.py` (usage နှင့် ရလဒ်များ — [`labs/README.md`](labs/README.md)) |
-| [`scripts/`](scripts/) | `03_theory_to_infrastructure.md` ၏ ကိန်းဂဏန်း ဥပမာများကို ထုတ်ပေးသည့် script ၃ ခု |
+Agent State ဆိုတာ agent က အဆင့်များအကြား သယ်ဆောင်သည့် ရည်မှန်းချက်၊ ပြီးစီးပြီးသား လုပ်ဆောင်ချက်၊ tool ရလဒ်၊ budget နဲ့ အတည်ပြုချက်များ စတဲ့ တိကျပြတ်သားသည့် data ကို ဆိုလိုပါတယ်။
+ဥပမာ state ကို field ၁၀ ခုနဲ့ သိမ်းထားရင် prompt ထဲ 400 token သာ ပါပြီး transcript အပြည့် 12,000 token ထက် အလွန် သေးပါတယ်။
+State က conversation history မဟုတ်ပါ — transcript က အထောက်အထား၊ state က နောက် ဘာလုပ်မည် ဆုံးဖြတ်ရာ ကျစ်လျစ်တဲ့ မှတ်တမ်း ဖြစ်ပါတယ်။
 
-## Lab များ — ဘာကို ပြောင်း၍ ဘာကို ကြည့်မည်
+### Agent Skill
 
-Lab တိုင်းသည် **offline နှင့် deterministic** ဖြစ်သည် — parameter ပြောင်း၍ run ပါက အချိန်တိုင်း
-တူညီသည့် ရလဒ် ရသည်၊ ထို့ကြောင့် မိမိ တွက်ချက်မှုနှင့် တိုက်စစ်နိုင်သည်။
+Agent Skill ဆိုတာ entry point က `SKILL.md` ဖြစ်သည့်၊ ရွေးချယ်နိုင်တဲ့ reference၊ script နဲ့ asset များ ပါဝင်တဲ့ လုပ်ငန်းစဉ် ညွှန်ကြားချက် directory တစ်ခုကို ဆိုလိုပါတယ်။
+ဥပမာ skill တစ်ခုရဲ့ `SKILL.md` က 600 token သာ load လုပ်ပြီး reference အားလုံး ပေါင်း 6,000 token ကို လိုအပ်မှသာ ဖတ်ရင် context ပို မကျပ်ပါဘူး။
+Skill activate လုပ်ခြင်းက context ပေးရုံသာ ဖြစ်ပြီး tool ဖော်ထုတ်ခြင်း၊ permission ပေးခြင်း မပြုပါ။
 
-| Lab | ပြောင်းနိုင်သည့် knob | ကြည့်ရမည့် ရလဒ် |
-|---|---|---|
-| `lab_agent_loop.py` | `--max-steps`၊ `--tool-calls`၊ `--result-tokens`၊ `--context`၊ `--price-per-mtok`၊ `--cost-budget`၊ `--sweep` | step တိုင်း၏ prompt token၊ context ကြီးထွားမှု၊ KV MiB၊ cumulative USD၊ step budget နှင့် cost budget အနက် မည်သည့် တစ်ခုက အရင် ရပ်စေသည် |
-| `lab_tool_schema.py` | `--tools`၊ `--fields`၊ `--turns`၊ `--price-per-mtok`၊ `--sweep` | turn တိုင်း ပို့သည့် schema token၊ prefix cache ဖြင့် ရရှိသည့် saving၊ malformed tool call ငါးမျိုး၏ ငြင်းပယ်သည့် အကြောင်းရင်း |
-| `lab_concurrency.py` | `--sessions`၊ `--turn-tokens`၊ `--kv-per-token-mb`၊ `--gpu-memory-gb`၊ `--step-ms`၊ `--task-steps`၊ `--sweep` | session တစ်ခုလျှင် memory၊ တစ်ပြိုင်နက် ထည့်နိုင်သည့် session အရေအတွက်၊ queue၊ steps per minute နှင့် tasks per minute |
+## ၃။ အတည်ပြုချက်၊ ပြန်လည်စတင်နိုင်မှုနှင့် လွှဲအပ်ခြင်း
 
-### Step budget နှင့် cost budget — `lab_agent_loop.py`
+### Approval Gate
 
-Default run တွင် step ၈ ခု ပြီးစီးသော်လည်း `--cost-budget 0.06` ဖြင့် run ပါက step ၄ တွင်
-ရပ်သည်။ ဤ ကွာခြားမှုသည် **Termination Condition** ၏ အဓိကအချက် ဖြစ်သည် — မည်သည့်
-ကန့်သတ်ချက်ကို အရင် ထားမည်ကို ကြိုတင် ဆုံးဖြတ်ရမည်။ cost budget သည် အရင် ရပ်စေပါက
-loop သည် ပန်းတိုင် မပြည့်မီ ရပ်နိုင်သဖြင့် escalation အခြေအနေကို လည်း သတ်မှတ်ရမည်။
+Approval Gate ဆိုတာ အကျိုးဆက် ကြီးတဲ့ လုပ်ဆောင်ချက်တစ်ခုကို အခွင့်အာဏာရှိသူ သို့မဟုတ် policy တစ်ခုက ခွင့်ပြုချက် မပေးမချင်း ပိတ်ဆို့ထားသည့် control point တစ်ခုကို ဆိုလိုပါတယ်။
+ဥပမာ reversible action ၁,၀၀၀ ကို အလိုအလျောက် လုပ်ခွင့်ပြုပြီး production write ၃ ခုကို owner approve လိုက်မှ run စေရင် ထိခိုက်နိုင်တဲ့ အတိုင်းအတာ ကျဉ်းသွားပါတယ်။
+Approval Gate က “ခွင့်ပြုထားလား” ကို မေးပြီး Verification Gate က “မှန်ကြောင်း သက်သေရှိလား” ကို မေးပါတယ်။
 
-### Schema overhead နှင့် cache — `lab_tool_schema.py`
+### Checkpoint
 
-tool ၃ ခု၊ field ၄ ခုဖြင့် schema သည် turn တိုင်း 372 token ကျခံစေပြီး cache ဖြင့် 55.00 % သက်သာသည်။
-tool ၈ ခု၊ field ၆ ခုဖြစ်ပါက 1,230 token ဖြစ်လာပြီး cache ၏ saving သည် 66.67 % သို့ တိုးသည် —
-ဆိုလိုသည်မှာ prefix ကြီးလာသည့်အခါ cache ၏ အကျိုးအမြတ် ပို၍ ကြီးသည်။
+Checkpoint ဆိုတာ သိရှိထားပြီးသည့် နယ်နိမိတ်တစ်ခုမှ ပြန်လည်စတင်ရန် အသုံးပြုသည့် တည်မြဲတဲ့ snapshot တစ်ခုကို ဆိုလိုပါတယ်။
+ဥပမာ အဆင့် ၁၀ ခုရှိတဲ့ run တစ်ခု အဆင့် ၉ မှာ ပျက်ကျပြီး အဆင့် ၈ က checkpoint ရှိရင် ၂ ခုသာ ပြန်လုပ်ရပါတယ်။
+Checkpoint မရှိရင် အဆင့် ၁၀ ခုလုံး အစကနေ ပြန်လုပ်ရပြီး ကုန်ကျစရိတ် ၅ ဆ အထိ တိုးနိုင်ပါတယ်။
 
-### Concurrency — `lab_concurrency.py`
+### Compensating Action
 
-session 64 ခုကို တောင်းသော်လည်း KV cache ကြောင့် 11 ခုသာ ဝင်သည်၊ ကျန် 53 ခု စောင့်ရသည်။
-turn token လျှော့ပါက session အရေအတွက် တိုးသည် — ထို့ကြောင့် `Agent State` နှင့် context ကို
-ကျစ်လျစ်စေခြင်းသည် concurrency ကို တိုက်ရိုက် တိုးပေးသည်။
+Compensating Action ဆိုတာ မူရင်း လုပ်ဆောင်ချက်ကို atomic အနေဖြင့် ပြန်ဖျက်လို့ မရတဲ့အခါ ပြီးမြောက်သွားတဲ့ ဘေးထွက်ဆိုးကျိုးကို အဓိပ္ပာယ်အားဖြင့် ဆန့်ကျင်ဖျက်သည့် လုပ်ဆောင်ချက်တစ်ခုကို ဆိုလိုပါတယ်။
+ဥပမာ card ကို 40 ဒေါ်လာ ဖြတ်ပြီးနောက် booking မအောင်မြင်ရင် 40 ဒေါ်လာ ပြန်အမ်းတဲ့ refund တစ်ခု ထုတ်ပေးရပါတယ်။
+Compensation က လုပ်ငန်း လုပ်ဆောင်ချက် အသစ်တစ်ခု ဖြစ်ပြီး အချိန် ပြန်သွားခြင်း မဟုတ်တဲ့အတွက် idempotency နဲ့ monitoring လိုပါတယ်။
 
-## စစ်ဆေးခြင်း
+### Delegation
 
-```bash
-python3 verify_guide.py --guide 06 --documents --verbose   # ဖိုင်၊ register၊ term လွှမ်းခြုံမှု၊ ပုံ အရေအတွက်
-python3 verify_guide.py --guide 06 --labs --verbose        # lab ၃ ခု (+ ၃ ကြိမ် စီ) နှင့် run_labs.py
-python3 guides/06_agents_and_tools/labs/run_labs.py
-```
+Delegation ဆိုတာ ကန့်သတ်ထားတဲ့ subtask တစ်ခုကို အခြား လူတစ်ဦး သို့မဟုတ် agent တစ်ခုထံ context၊ အခွင့်အာဏာ၊ output contract နဲ့ ပြန်ပေးအပ်ရမည့် အခြေအနေများနှင့်တကွ လွှဲအပ်ခြင်းကို ဆိုလိုပါတယ်။
+ဥပမာ subtask ၃ ခုကို agent ၃ ခုဆီ လွှဲပြီး တစ်ခုလျှင် ၁၀ မိနစ် ကြာရင် အပြိုင် လုပ်ပါက ၁၀ မိနစ်သာ၊ အစဉ်လိုက် လုပ်ပါက ၃၀ မိနစ် ကြာပါတယ်။
+တိကျပြတ်သားတဲ့ delegation မရှိဘဲ မရှင်းလင်းတဲ့ မက်ဆေ့ချ် ပို့ရင် ပိုင်ဆိုင်မှုနဲ့ scope လည်း ပျောက်သွားပါတယ်။
 
-`--documents` စစ်ဆေးချက်သည် [`03_theory_to_infrastructure.md`](03_theory_to_infrastructure.md) နှင့်
-[`labs/`](labs/) ကိုပါ လွှမ်းခြုံသည်၊ ထို့ကြောင့် run မလုပ်မီ lab များ တည်ရှိရမည်။
+### Durable Execution
 
-## မှီခိုသည့် အခြား ဖိုင်
+Durable Execution ဆိုတာ workflow တစ်ခုရဲ့ state နဲ့ ပြီးစီးပြီးသား အဆင့်များက process ပျက်ကျခြင်း၊ ပြန်စတင်ခြင်းနဲ့ ရှည်ကြာတဲ့ စောင့်ဆိုင်းမှုများကို ကျော်လွန်၍ တည်ရှိနေစေအောင် run ခြင်းကို ဆိုလိုပါတယ်။
+ဥပမာ worker ၅ ကြိမ် ပြန်စတင်ပေမယ့် checkpoint ရှိရင် အတည်ပြုပြီးသား ၅၀ ခုကို ပြန်မလုပ်ဘဲ ကျန်တဲ့ ၂ ခုကနေ ဆက်ပါတယ်။
+Durable execution သက်သက်က လုပ်ဆောင်မှုတိုင်းကို လုံခြုံစေခြင်း မပြုဘဲ idempotency နဲ့ compensation စည်းမျဉ်း လိုအပ်ဆဲ ဖြစ်ပါတယ်။
 
-- Term တိုင်း၏ အပြည့်အစုံ အဓိပ္ပာယ် (အင်္ဂလိပ် + မြန်မာ) — [`../../terms/06_agents_and_tools.md`](../../terms/06_agents_and_tools.md)
-- အခြေခံ အချက်အလက် (JSON slice) — [`../../glossary/by_area/06_agents_and_tools.json`](../../glossary/by_area/06_agents_and_tools.json)
-- A–Z index — [`../../terms/00_index.md`](../../terms/00_index.md)
-- Term များ၏ အောက်ခံ အခြေခံသဘောတရားများ — [`../02_models_and_inference/README.md`](../02_models_and_inference/README.md)
+## ၄။ tool ခေါ်ယူခြင်း၊ လူ ပါဝင်ခြင်းနှင့် protocol
+
+### Function Calling
+
+Function Calling ဆိုတာ မော်ဒယ်က tool အမည်နဲ့ ၎င်း၏ argument များ ပါဝင်တဲ့ ဖွဲ့စည်းထားသည့် တောင်းဆိုမှုကို ထုတ်လွှတ်ပြီး application code က validate လုပ်ကာ ရလဒ်ကို နောက် အဆင့်အတွက် ပြန်ပေးနိုင်သည့် interface တစ်ခုကို ဆိုလိုပါတယ်။
+ဥပမာ model က `get_weather` လို့ အမည်တပ်ပြီး argument ၂ ခု (city၊ unit) ပါတဲ့ request ထုတ်လိုက်ရင် code က validate ပြီးမှ run ပါတယ်။
+မော်ဒယ်က function call တစ်ခုကို တောင်းဆိုရုံသာ ဖြစ်ပြီး function calling သက်သက်က ပြည့်စုံတဲ့ agent တစ်ခု မဟုတ်ပါ။
+
+### Human-in-the-Loop (HITL)
+
+Human-in-the-Loop (HITL) ဆိုတာ AI ဖြင့် မောင်းနှင်တဲ့ လုပ်ငန်းစဉ်တစ်ခုအတွင်း သတ်မှတ်ထားတဲ့ အချက်များမှာ လူတစ်ဦးက ဆုံးဖြတ်ချက်၊ အမှားပြင်ဆင်မှု၊ အတည်ပြုချက် သို့မဟုတ် escalation ပေးအပ်သည့် workflow တည်ဆောက်ပုံကို ဆိုလိုပါတယ်။
+ဥပမာ တောင်းဆိုမှု ၁,၀၀၀ ထဲက ၉၅၀ ကို အလိုအလျောက် ဖြေပြီး မသေချာတဲ့ ၅၀ ကို လူ စစ်ဆေးသူဆီ လွှဲရင် ၅ % သာ လူ ပါဝင်ရပါတယ်။
+လူ ပါဝင်မှုက အဆင့်တိုင်းပြီးနောက် fallback အနေဖြင့် မဟုတ်ဘဲ သက်ရောက်မှု ကြီးတဲ့ နယ်နိမိတ်များမှာ အသုံးဝင်ဆုံး ဖြစ်ပါတယ်။
+
+### MCP (Model Context Protocol)
+
+MCP (Model Context Protocol) ဆိုတာ host တစ်ခုက tool၊ resource၊ prompt နဲ့ extension များ ဖော်ထုတ်တဲ့ server များထံ သတ်မှတ်ထားတဲ့ request၊ result၊ discovery နဲ့ transport contract များမှတစ်ဆင့် ချိတ်ဆက်ရန် အသုံးပြုတဲ့ ဖွင့်ထားသည့် JSON-RPC protocol တစ်ခုကို ဆိုလိုပါတယ်။
+ဥပမာ host တစ်ခုက MCP server ၃ ခုနှင့် ချိတ်ပြီး tool ၄၀ ကို discover လုပ်လို့ ရရင် tool တိုင်းအတွက် code အသစ် ရေးစရာ မလိုပါဘူး။
+MCP က discovery နဲ့ exchange ကို စံပြုပေးရုံသာ ဖြစ်ပြီး မည်သည့် tool လုံခြုံသည်ကို ဆုံးဖြတ်ခြင်း၊ permission ပေးခြင်း မပြုပါ။
+
+### Multi Round-Trip Request (MRTR)
+
+Multi Round-Trip Request (MRTR) ဆိုတာ လုပ်ဆောင်မှုတစ်ခုက `resultType: input_required` ကို `inputRequests` များနှင့်တကွ ပြန်ပေးပြီးနောက် client က မူရင်း method ကို `inputResponses` နဲ့ ပြန်ပေးထားတဲ့ `requestState` အတိအက်နှင့်တကွ ပြန်ကြိုးစားတဲ့ MCP ပုံစံတစ်ခုကို ဆိုလိုပါတယ်။
+ဥပမာ `tools/call` တစ်ခုက input_required ပြန်လာရင် client က inputResponses နဲ့ ၁ ကြိမ် ပြန်ကြိုးစားပြီး ရလဒ် ရပါတယ်။
+`requestState` က မယုံကြည်ရတဲ့ round-trip data ဖြစ်တဲ့အတွက် authorization အတွက် အသုံးမပြုမီ integrity ကို ကာကွယ်ရပါတယ်။
+
+## ၅။ စီစဉ်မောင်းနှင်ခြင်း၊ sandbox နှင့် skill များ
+
+### Orchestration
+
+Orchestration ဆိုတာ မော်ဒယ်နဲ့ tool အဆင့်များအကြား လုပ်ငန်းများကို အစဉ်လိုက် စီစဉ်ခြင်း၊ အခန်းကိုင်းခွဲခြင်း၊ လွှဲအပ်ခြင်း၊ ပြန်ကြိုးစားခြင်း၊ ရပ်တန့်ခြင်းနဲ့ အဆုံးသတ်ခြင်းတို့ကို ပြုလုပ်တဲ့ control logic ကို ဆိုလိုပါတယ်။
+ဥပမာ workflow တစ်ခုမှာ အဆင့် ၆ ခု၊ အခန်းကိုင်း ၂ ခုနဲ့ ပြန်ကြိုးစားမှု ၃ ကြိမ်အထိ ကန့်သတ်ထားရင် run ဘယ်လိုဆုံးမည်ကို ကြိုတင် သိပါတယ်။
+Orchestration က autonomy သို့မဟုတ် multi-agent နဲ့ အဓိပ္ပာယ် တူညီသည် မဟုတ်ဘဲ agent တစ်ခုတည်းကို workflow တစ်ခုဖြင့် မောင်းနှင်နိုင်ပါတယ်။
+
+### Planning
+
+Planning ဆိုတာ လက်ရှိ state မှ ပန်းတိုင်တစ်ခုဆီသို့ ရွေ့ရန် လုပ်ဆောင်ချက်များ၏ အစဉ်နဲ့ မှီခိုမှုများကို တည်ဆောက်ခြင်း၊ ရွေးချယ်ခြင်း သို့မဟုတ် ပြန်လည်ပြင်ဆင်ခြင်းကို ဆိုလိုပါတယ်။
+ဥပမာ အဆင့် ၅ ခု ပါတဲ့ အစီအစဉ်တစ်ခုမှာ အဆင့် ၂ က အဆင့် ၁ ရလဒ်အပေါ် မှီခိုရင် အစဉ်လိုက်ဖြစ်မှုကို စစ်ပြီးမှ စတင်ရပါတယ်။
+ထုတ်လုပ်ထားတဲ့ အစီအစဉ်က အဆိုပြုချက်တစ်ခုသာ ဖြစ်ပြီး ဖြစ်နိုင်ခြေ၊ လုံလောက်မှုကို သက်သေပြချက် မဟုတ်ပါ။
+
+### ReAct
+
+ReAct ဆိုတာ နောက် အဆင့်ကို မဆုံးဖြတ်မီ task ကျိုးကြောင်းဆင်ခြင်မှု၊ တိကျတဲ့ လုပ်ဆောင်ချက်တစ်ခုနဲ့ environment မှ ပြန်ပေးတဲ့ observation တို့ကို တစ်လှည့်စီ ရောနှောပေးတဲ့ agent ပုံစံတစ်ခုကို ဆိုလိုပါတယ်။
+ဥပမာ အဆင့် ၄ ခုရှိတဲ့ ReAct loop တစ်ခုမှာ ကျိုးကြောင်းဆင်ခြင် ၄ ကြိမ်၊ လုပ်ဆောင်ချက် ၄ ခုနဲ့ observation ၄ ခု ရပါတယ်။
+ReAct က prompting နဲ့ control ပုံစံတစ်ခုသာ ဖြစ်ပြီး autonomy၊ မှန်ကန်မှု သို့မဟုတ် လုံခြုံတဲ့ tool အသုံးပြုမှုကို အာမခံချက် မဟုတ်ပါ။
+
+### Sandbox
+
+Sandbox ဆိုတာ agent တစ်ခုရဲ့ file၊ process၊ network ပန်းတိုင်၊ credential နဲ့ host အရင်းအမြစ်များသို့ ဝင်ရောက်နိုင်မှုကို ကန့်သတ်ထားတဲ့ သီးခြားခွဲထုတ်ထားသည့် လုပ်ဆောင်မှု ပတ်ဝန်းကျင်တစ်ခုကို ဆိုလိုပါတယ်။
+ဥပမာ sandbox ကို network allowlist ၂ ခုနဲ့ ကန့်သတ်ထားရင် test က ခွင့်ပြုထားတဲ့ ၂ ခုကိုသာ ခေါ်နိုင်ပြီး ကျန် ပန်းတိုင်များ ပိတ်ထားပါတယ်။
+Sandbox က သက်ရောက်မှု အတိုင်းအတာကို လျော့စေရုံသာ ဖြစ်ပြီး အတွင်းရှိ code မှန်ကန်ကြောင်း သက်သေပြခြင်း မပြုပါ။
+
+### Skill Bundle
+
+Skill Bundle ဆိုတာ `SKILL.md` နဲ့ workflow လိုအပ်တဲ့ reference၊ script၊ asset၊ fixture အားလုံး အပါအဝင် ပြည့်စုံတဲ့ တပ်ဆင်နိုင်သည့် skill directory တစ်ခုကို ဆိုလိုပါတယ်။
+ဥပမာ skill တစ်ခုမှာ `SKILL.md` ၁ ခု၊ reference ၃ ခုနဲ့ script ၁ ခု ပါရင် file ၅ ခုလုံးကို တစ်ယူနစ်အဖြစ် တပ်ဆင်ရပါတယ်။
+Entry file တစ်ခုတည်း ကူးယူရင် ပျောက်ဆုံးနေတဲ့ အရင်းအမြစ်များကို ညွှန်းသည့် ညွှန်ကြားချက်များ ကျန်နိုင်ပါတယ်။
+
+### Skill Catalog
+
+Skill Catalog ဆိုတာ အရည်အချင်းပြည့်မီတဲ့ skill များ၏ မော်ဒယ် မြင်နိုင်တဲ့ ကျစ်လျစ်တဲ့ စာရင်းဖြစ်ပြီး များသောအားဖြင့် skill body အားလုံးမဟုတ်ဘဲ name၊ description နဲ့ source identifier ကဲ့သို့ routing metadata များ ပါဝင်သည်ကို ဆိုလိုပါတယ်။
+ဥပမာ skill ၁၂၀ ခုကို entry တစ်ခုလျှင် ၅၀ token နဲ့ စာရင်းလုပ်ရင် catalog က 6,000 token သာ ကျခံပါတယ်။
+Catalog entry ရှိခြင်းက skill ရှာဖွေတွေ့ရှိနိုင်သည်သာ ဆိုလိုပြီး body active ဖြစ်သည် သို့မဟုတ် tool ခွင့်ပြုထားသည် မဆိုလိုပါ။
+
+### Skill Discovery
+
+Skill Discovery ဆိုတာ သတ်မှတ်ထားတဲ့ root များကို ရှာဖွေခြင်း၊ candidate skill directory များကို ဖော်ထုတ်ခြင်း၊ package contract ကို validate လုပ်ခြင်း၊ scope နဲ့ provenance တွဲဖက်ခြင်း၊ collision များကို ဖြေရှင်းခြင်းနဲ့ catalog entry များ ထုတ်ဝေခြင်းတို့ကို ပြုလုပ်တဲ့ runtime pipeline တစ်ခုကို ဆိုလိုပါတယ်။
+ဥပမာ root ၄ ခုကို ရှာပြီး candidate ၆၀ ခု တွေ့ရာ duplicate ၃ ခုကို ရှင်းလိုက်ရင် catalog ထဲ ၅၇ ခု ထည့်ပါတယ်။
+Discovery က မော်ဒယ် routing မစတင်မီ ပျောက်ဆုံးခြင်း၊ ပုံပျက်ခြင်းနဲ့ မလုံခြုံတဲ့ package များကို ရောဂါရှာဖွေနိုင်စေပါတယ်။
+
+### Skill Invocation
+
+Skill Invocation ဆိုတာ အရည်အချင်းပြည့်မီတဲ့ လူတစ်ဦး၊ မော်ဒယ်၊ application သို့မဟုတ် အခြား skill တစ်ခုက skill တစ်ခုကို ရွေးချယ်ပြီး ၎င်း၏ ညွှန်ကြားချက်များကို လုပ်ငန်း context ထဲ ဝင်ရောက်စေသည့် runtime မှ ဖြတ်ကူးစေတဲ့ လုပ်ငန်းစဉ်တစ်ခုကို ဆိုလိုပါတယ်။
+ဥပမာ အလုပ်တစ်ခုအတွက် skill ၁ ခု activate လုပ်ရင် ၎င်း၏ body ၈၀၀ token သာ context ထဲ ဝင်ပါတယ်။
+Invocation က ညွှန်ကြားချက်များကို activate လုပ်ရုံသာ ဖြစ်ပြီး approval နဲ့ sandbox policy ကို ကျော်လွန်ခြင်း မပြုပါ။
+
+## ၆။ protocol အခြေအနေ၊ ရလဒ် ဖွဲ့စည်းပုံနှင့် ရပ်တန့်ချက်
+
+### Stateless MCP
+
+Stateless MCP ဆိုတာ request တိုင်းက `params._meta` ထဲမှာ protocol version နဲ့ client capabilities ကို သယ်ဆောင်ပြီး ရလဒ်များက ရှင်းလင်းတဲ့ `resultType` ကို သယ်ဆောင်တဲ့ MCP 2026-07-28 တောင်းဆိုမှု ပုံစံကို ဆိုလိုပါတယ်။
+ဥပမာ worker ၃ ခု ရှိရင် request တိုင်းမှာ version နဲ့ capabilities ပါလာတဲ့အတွက် မည်သည့် worker ကမဆို ဆောင်ရွက်နိုင်ပါတယ်။
+Stateless MCP က protocol session ကို ဖယ်ရှားရုံသာ ဖြစ်ပြီး application state၊ streaming response နဲ့ handle များကို မဖယ်ရှားပါ။
+
+### Structured Output
+
+Structured Output ဆိုတာ application code က လွတ်လပ်တဲ့ စကားပြေ စာသားကို ခွဲခြမ်းစိတ်ဖြာရန် မလိုဘဲ field များကို အသုံးပြုနိုင်ရန် မော်ဒယ် ရလဒ်ကို စက်ဖတ်နိုင်တဲ့ schema တစ်ခုနှင့် ကိုက်ညီအောင် ကန့်သတ်ခြင်း သို့မဟုတ် validate လုပ်ခြင်းကို ဆိုလိုပါတယ်။
+ဥပမာ field ၄ ခု ပါတဲ့ schema နဲ့ စစ်ပြီး မကိုက်ညီတဲ့ တုံ့ပြန်မှု ၁၀၀ ထဲက ၅ ခုကို ငြင်းပယ်ပြီး ပြန်တောင်းပါတယ်။
+Schema နဲ့ ကိုက်ညီသည့် ရလဒ်တွင် မှားယွင်းတဲ့ တန်ဖိုးများ ရှိနိုင်ဆဲ ဖြစ်တဲ့အတွက် ဖွဲ့စည်းပုံက အချက်အလက် မှန်ကန်မှု စစ်ဆေးခြင်း မဟုတ်ပါ။
+
+### Swarm
+
+Swarm ဆိုတာ ဒေသခံ agent ဆုံးဖြတ်ချက်များနဲ့ မက်ဆေ့ချ် ဖလှယ်မှုက စနစ်အဆင့် အပြုအမူကို ဖြစ်ပေါ်စေတဲ့ ချိတ်ဆက်မှု လျော့ရဲရဲ multi-agent ပုံစံတစ်ခုကို ဆိုလိုပါတယ်။
+ဥပမာ agent ၈ ခုက ဗဟို ထိန်းချုပ်သူ မရှိဘဲ မက်ဆေ့ချ် ဖလှယ်ရင် အပြုအမူကို topology နဲ့ ရပ်တန့်စည်းမျဉ်း သတ်မှတ်မှသာ ခန့်မှန်းနိုင်ပါတယ်။
+အမည်တပ်ထားတဲ့ agent အများအပြား ရှိခြင်းက အသုံးဝင်တဲ့ အထူးပြုလုပ်မှု သို့မဟုတ် ဟန်ချက်ညီမှုကို အာမခံခြင်း မပြုပါ။
+
+### Termination Condition
+
+Termination Condition ဆိုတာ agent run တစ်ခုက အောင်မြင်သည့်အခါ၊ ကျရှုံးသည့်အခါ၊ budget ကုန်သည့်အခါ၊ လုံခြုံတဲ့ နယ်နိမိတ်သို့ ရောက်သည့်အခါ သို့မဟုတ် escalation လိုသည့်အခါ ၎င်းကို အဆုံးသတ်စေတဲ့ ရှင်းလင်းတဲ့ စည်းမျဉ်းတစ်ခုကို ဆိုလိုပါတယ်။
+ဥပမာ အဆင့် ၁၂ ခုနဲ့ ကုန်ကျစရိတ် 0.10 ဒေါ်လာ ကန့်သတ်ထားရင် 0.10 ဒေါ်လာ အရင် ကုန်ပါက အဆင့် ၅ မှာ ရပ်ပါတယ်။
+Termination condition မရှိရင် agent က loop ဖြစ်ခြင်း၊ ဘေးထွက်ဆိုးကျိုး ထပ်ခါတလဲလဲ ဖြစ်ခြင်း သို့မဟုတ် ပန်းတိုင် မပြည့်မီ ပြီးစီးပြီဟု ဆိုခြင်းတို့ ဖြစ်နိုင်ပါတယ်။
+
+### Tool Contract
+
+Tool Contract ဆိုတာ tool နယ်နိမိတ်တစ်ခုအတွက် ရည်ရွယ်ချက်၊ typed input များ၊ output များ၊ validation၊ permission များ၊ ဘေးထွက်ဆိုးကျိုးများ၊ အမှားများ၊ timeout များ၊ idempotency နဲ့ ခေါ်သူထံ ပြန်ပေးတဲ့ အထောက်အထား စတဲ့ ပြည့်စုံတဲ့ သဘောတူညီချက်ကို ဆိုလိုပါတယ်။
+ဥပမာ file-write tool တစ်ခုမှာ allowed root၊ maximum size 2 MB နဲ့ dry-run mode သတ်မှတ်ထားရင် ခွင့်ပြုထားတဲ့ နေရာ၊ အရွယ်အစား ကျော်လွန်တဲ့ write ကို ငြင်းပါတယ်။
+JSON Schema တစ်ခုက tool contract ၏ အစိတ်အပိုင်းတစ်ခုသာ ဖြစ်ပြီး စာချုပ်တစ်ခုလုံး မဟုတ်ပါ။
+
+## မှီခိုသည့် ဖိုင်
+
+- term တိုင်း၏ အပြည့်အစုံ အဓိပ္ပာယ် (အင်္ဂလိပ် source အပါ) — [`../../terms/06_agents_and_tools.md`](../../terms/06_agents_and_tools.md)
