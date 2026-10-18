@@ -22,7 +22,7 @@
   "confusion": "Availability is one reliability outcome. It does not describe latency, correctness, safety, or the experience of every user segment.",
   "practice": "Define eligible events and acceptable outcomes, exclude only documented cases, calculate the indicator over a fixed window, and investigate both total failures and prolonged partial degradation.",
   "learn": "",
-  "sources": "[Google SRE: Service Level Objectives](https://sre.google/sre-book/service-level-objectives/) ## B",
+  "sources": "[Google SRE: Service Level Objectives](https://sre.google/sre-book/service-level-objectives/)",
   "aliases": "",
   "why_called": "",
   "related": "Service Level Indicator (SLI), Service Level Objective (SLO), Error Budget, Incident Response"

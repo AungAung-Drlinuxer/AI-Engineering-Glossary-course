@@ -109,7 +109,7 @@
   "sources": "",
   "aliases": "",
   "why_called": "",
-  "related": "Least Privilege, Approval Gate, Sandbox, Evaluation (Eval) ## H"
+  "related": "Least Privilege, Approval Gate, Sandbox, Evaluation (Eval)"
  },
  {
   "term": "Hallucination",
@@ -221,7 +221,7 @@
   "sources": "",
   "aliases": "",
   "why_called": "",
-  "related": "Evaluation (Eval), Precision & Recall, LLM-as-a-Judge ## S"
+  "related": "Evaluation (Eval), Precision & Recall, LLM-as-a-Judge"
  },
  {
   "term": "Verification Gate",

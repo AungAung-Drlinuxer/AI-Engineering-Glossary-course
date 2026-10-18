@@ -78,7 +78,7 @@
   "confusion": "Dynamic batching assembles batches from queued work. Continuous batching changes membership while autoregressive generation is already running.",
   "practice": "Set queue-delay and batch limits from measured latency objectives, separate incompatible request shapes, and compare throughput with tail latency at realistic arrival rates.",
   "learn": "[vLLM Serving Internals](../phases/17-infrastructure-and-production/04-vllm-serving-internals/)",
-  "sources": "[NVIDIA Triton: Models and Schedulers](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#scheduling-and-batching) ## E",
+  "sources": "[NVIDIA Triton: Models and Schedulers](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#scheduling-and-batching)",
   "aliases": "",
   "why_called": "",
   "related": "Admission Control, Continuous Batching, Saturation, Tail Latency"
@@ -92,7 +92,7 @@
   "confusion": "Expert parallelism partitions experts selected by a router. Tensor parallelism partitions the tensor operations inside layers.",
   "practice": "Measure token distribution by expert, provision communication bandwidth, cap or route overflow deliberately, and test quality when traffic produces uneven expert demand.",
   "learn": "[Mixture of Experts](../phases/07-transformers-deep-dive/11-mixture-of-experts/)",
-  "sources": "[GShard](https://arxiv.org/abs/2006.16668) ## F",
+  "sources": "[GShard](https://arxiv.org/abs/2006.16668)",
   "aliases": "",
   "why_called": "",
   "related": "MoE (Mixture of Experts), Tensor Parallelism, Pipeline Parallelism, Model Serving"
@@ -134,7 +134,7 @@
   "confusion": "ITL is one interval between consecutive tokens. Time per output token is a per-request average across those intervals, while time to first token covers the wait before streaming begins.",
   "practice": "Record each post-first-token interval with its request and token position, then report distributions by workload, output length, and concurrency without pooling away request boundaries.",
   "learn": "[Inference Metrics and Goodput](../phases/17-infrastructure-and-production/08-inference-metrics-goodput/)",
-  "sources": "[DistServe](https://arxiv.org/abs/2401.09670) ## J",
+  "sources": "[DistServe](https://arxiv.org/abs/2401.09670)",
   "aliases": "",
   "why_called": "",
   "related": "Time per Output Token (TPOT), Time to First Token (TTFT), Decode Phase, Tail Latency"

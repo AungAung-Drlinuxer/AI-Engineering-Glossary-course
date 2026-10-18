@@ -277,7 +277,7 @@
   "sources": "",
   "aliases": "",
   "why_called": "",
-  "related": "Parameter, Learning Rate, Batch Size, Temperature ## I"
+  "related": "Parameter, Learning Rate, Batch Size, Temperature"
  },
  {
   "term": "JAX",
@@ -291,7 +291,7 @@
   "sources": "[JAX documentation](https://docs.jax.dev/en/latest/)",
   "aliases": "",
   "why_called": "",
-  "related": "Autograd, Tensor, CUDA ## K"
+  "related": "Autograd, Tensor, CUDA"
  },
  {
   "term": "Knowledge Distillation",
@@ -431,7 +431,7 @@
   "sources": "",
   "aliases": "",
   "why_called": "",
-  "related": "Underfitting, Dropout, Weight Decay, Eval Set ## P"
+  "related": "Underfitting, Dropout, Weight Decay, Eval Set"
  },
  {
   "term": "QLoRA",
@@ -543,7 +543,7 @@
   "sources": "",
   "aliases": "",
   "why_called": "",
-  "related": "Overfitting, Loss Function, Hyperparameter ## V"
+  "related": "Overfitting, Loss Function, Hyperparameter"
  },
  {
   "term": "Warmup",

@@ -120,7 +120,7 @@
   "confusion": "It is an observed behavior pattern, not a fixed law that affects every model, task, or position identically.",
   "practice": "Test several evidence positions, reduce distractors, place decision-critical constraints where they remain salient, and verify answers against the source.",
   "learn": "",
-  "sources": "[Lost in the Middle](https://aclanthology.org/2024.tacl-1.9/) ## M",
+  "sources": "[Lost in the Middle](https://aclanthology.org/2024.tacl-1.9/)",
   "aliases": "",
   "why_called": "",
   "related": "Context Window, Context Engineering, Eval Set, Grounding"
@@ -179,7 +179,7 @@
   "sources": "",
   "aliases": "",
   "why_called": "",
-  "related": "Prompt Engineering, Prompt Injection, Context Engineering, Guardrails ## T"
+  "related": "Prompt Engineering, Prompt Injection, Context Engineering, Guardrails"
  },
  {
   "term": "Token Budget",

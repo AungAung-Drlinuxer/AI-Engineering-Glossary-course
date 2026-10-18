@@ -151,7 +151,7 @@
   "sources": "",
   "aliases": "",
   "why_called": "",
-  "related": "Structured Output, Tool Contract, Agent, MCP (Model Context Protocol) ## G"
+  "related": "Structured Output, Tool Contract, Agent, MCP (Model Context Protocol)"
  },
  {
   "term": "Human-in-the-Loop (HITL)",
@@ -190,7 +190,7 @@
   "confusion": "`requestState` is untrusted round-trip data. Integrity-protect it before using it for authorization or business decisions, and do not treat it as a server-side session identifier.",
   "practice": "Return an input request from `tools/call`, collect the authorized response in the host, and retry that same tool call with a new JSON-RPC id.",
   "learn": "[MCP Roots and Elicitation](../phases/13-tools-and-protocols/12-mcp-roots-and-elicitation/)",
-  "sources": "[MCP Multi Round-Trip Requests](https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/mrtr) ## N",
+  "sources": "[MCP Multi Round-Trip Requests](https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/mrtr)",
   "aliases": "MRTR",
   "why_called": "",
   "related": "Stateless MCP, MCP (Model Context Protocol), Human-in-the-Loop (HITL), Tool Contract"

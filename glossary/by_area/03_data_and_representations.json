@@ -8,7 +8,7 @@
   "confusion": "BPE is one tokenizer family, not a universal description of how every model creates tokens.",
   "practice": "Train the tokenizer only on approved corpus splits, version its merge rules with the model, and inspect how it segments code, multilingual text, and whitespace.",
   "learn": "",
-  "sources": "[Neural Machine Translation of Rare Words with Subword Units](https://arxiv.org/abs/1508.07909) ## C",
+  "sources": "[Neural Machine Translation of Rare Words with Subword Units](https://arxiv.org/abs/1508.07909)",
   "aliases": "",
   "why_called": "",
   "related": "Tokenization, Vocabulary, Token, Embedding"
@@ -176,7 +176,7 @@
   "confusion": "A model vocabulary is not a dictionary of human words; many entries are fragments, bytes, whitespace patterns, or control symbols.",
   "practice": "Version the vocabulary and special-token assignments with the model, test encode-decode round trips, and never substitute a tokenizer with merely similar token names.",
   "learn": "",
-  "sources": "[Neural Machine Translation of Rare Words with Subword Units](https://arxiv.org/abs/1508.07909) ## W",
+  "sources": "[Neural Machine Translation of Rare Words with Subword Units](https://arxiv.org/abs/1508.07909)",
   "aliases": "",
   "why_called": "",
   "related": "Tokenization, Byte Pair Encoding (BPE), Token, Embedding"

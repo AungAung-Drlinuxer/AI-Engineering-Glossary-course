@@ -302,7 +302,7 @@
   "confusion": "Availability is one reliability outcome. It does not describe latency, correctness, safety, or the experience of every user segment.",
   "practice": "Define eligible events and acceptable outcomes, exclude only documented cases, calculate the indicator over a fixed window, and investigate both total failures and prolonged partial degradation.",
   "learn": "",
-  "sources": "[Google SRE: Service Level Objectives](https://sre.google/sre-book/service-level-objectives/) ## B",
+  "sources": "[Google SRE: Service Level Objectives](https://sre.google/sre-book/service-level-objectives/)",
   "aliases": "",
   "why_called": "",
   "related": "Service Level Indicator (SLI), Service Level Objective (SLO), Error Budget, Incident Response"
@@ -386,7 +386,7 @@
   "confusion": "BPE is one tokenizer family, not a universal description of how every model creates tokens.",
   "practice": "Train the tokenizer only on approved corpus splits, version its merge rules with the model, and inspect how it segments code, multilingual text, and whitespace.",
   "learn": "",
-  "sources": "[Neural Machine Translation of Rare Words with Subword Units](https://arxiv.org/abs/1508.07909) ## C",
+  "sources": "[Neural Machine Translation of Rare Words with Subword Units](https://arxiv.org/abs/1508.07909)",
   "aliases": "",
   "why_called": "",
   "related": "Tokenization, Vocabulary, Token, Embedding"
@@ -683,7 +683,7 @@
   "sources": "",
   "aliases": "",
   "why_called": "",
-  "related": "Tensor, Mixed Precision, JAX ## D"
+  "related": "Tensor, Mixed Precision, JAX"
  },
  {
   "term": "Data Augmentation",
@@ -1016,7 +1016,7 @@
   "confusion": "Dynamic batching assembles batches from queued work. Continuous batching changes membership while autoregressive generation is already running.",
   "practice": "Set queue-delay and batch limits from measured latency objectives, separate incompatible request shapes, and compare throughput with tail latency at realistic arrival rates.",
   "learn": "[vLLM Serving Internals](../phases/17-infrastructure-and-production/04-vllm-serving-internals/)",
-  "sources": "[NVIDIA Triton: Models and Schedulers](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#scheduling-and-batching) ## E",
+  "sources": "[NVIDIA Triton: Models and Schedulers](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_configuration.html#scheduling-and-batching)",
   "aliases": "",
   "why_called": "",
   "related": "Admission Control, Continuous Batching, Saturation, Tail Latency"
@@ -1156,7 +1156,7 @@
   "confusion": "Expert parallelism partitions experts selected by a router. Tensor parallelism partitions the tensor operations inside layers.",
   "practice": "Measure token distribution by expert, provision communication bandwidth, cap or route overflow deliberately, and test quality when traffic produces uneven expert demand.",
   "learn": "[Mixture of Experts](../phases/07-transformers-deep-dive/11-mixture-of-experts/)",
-  "sources": "[GShard](https://arxiv.org/abs/2006.16668) ## F",
+  "sources": "[GShard](https://arxiv.org/abs/2006.16668)",
   "aliases": "",
   "why_called": "",
   "related": "MoE (Mixture of Experts), Tensor Parallelism, Pipeline Parallelism, Model Serving"
@@ -1243,7 +1243,7 @@
   "sources": "",
   "aliases": "",
   "why_called": "",
-  "related": "Structured Output, Tool Contract, Agent, MCP (Model Context Protocol) ## G"
+  "related": "Structured Output, Tool Contract, Agent, MCP (Model Context Protocol)"
  },
  {
   "term": "GAN (Generative Adversarial Network)",
@@ -1383,7 +1383,7 @@
   "sources": "",
   "aliases": "",
   "why_called": "",
-  "related": "Least Privilege, Approval Gate, Sandbox, Evaluation (Eval) ## H"
+  "related": "Least Privilege, Approval Gate, Sandbox, Evaluation (Eval)"
  },
  {
   "term": "Hallucination",
@@ -1467,7 +1467,7 @@
   "sources": "",
   "aliases": "",
   "why_called": "",
-  "related": "Parameter, Learning Rate, Batch Size, Temperature ## I"
+  "related": "Parameter, Learning Rate, Batch Size, Temperature"
  },
  {
   "term": "Idempotency",
@@ -1604,7 +1604,7 @@
   "confusion": "ITL is one interval between consecutive tokens. Time per output token is a per-request average across those intervals, while time to first token covers the wait before streaming begins.",
   "practice": "Record each post-first-token interval with its request and token position, then report distributions by workload, output length, and concurrency without pooling away request boundaries.",
   "learn": "[Inference Metrics and Goodput](../phases/17-infrastructure-and-production/08-inference-metrics-goodput/)",
-  "sources": "[DistServe](https://arxiv.org/abs/2401.09670) ## J",
+  "sources": "[DistServe](https://arxiv.org/abs/2401.09670)",
   "aliases": "",
   "why_called": "",
   "related": "Time per Output Token (TPOT), Time to First Token (TTFT), Decode Phase, Tail Latency"
@@ -1635,7 +1635,7 @@
   "sources": "[JAX documentation](https://docs.jax.dev/en/latest/)",
   "aliases": "",
   "why_called": "",
-  "related": "Autograd, Tensor, CUDA ## K"
+  "related": "Autograd, Tensor, CUDA"
  },
  {
   "term": "Knowledge Distillation",
@@ -1663,7 +1663,7 @@
   "sources": "",
   "aliases": "",
   "why_called": "",
-  "related": "Attention, Autoregressive, Prefix Caching, Prompt Cache ## L"
+  "related": "Attention, Autoregressive, Prefix Caching, Prompt Cache"
  },
  {
   "term": "Late Fusion",
@@ -1828,7 +1828,7 @@
   "confusion": "It is an observed behavior pattern, not a fixed law that affects every model, task, or position identically.",
   "practice": "Test several evidence positions, reduce distractors, place decision-critical constraints where they remain salient, and verify answers against the source.",
   "learn": "",
-  "sources": "[Lost in the Middle](https://aclanthology.org/2024.tacl-1.9/) ## M",
+  "sources": "[Lost in the Middle](https://aclanthology.org/2024.tacl-1.9/)",
   "aliases": "",
   "why_called": "",
   "related": "Context Window, Context Engineering, Eval Set, Grounding"
@@ -2010,7 +2010,7 @@
   "confusion": "`requestState` is untrusted round-trip data. Integrity-protect it before using it for authorization or business decisions, and do not treat it as a server-side session identifier.",
   "practice": "Return an input request from `tools/call`, collect the authorized response in the host, and retry that same tool call with a new JSON-RPC id.",
   "learn": "[MCP Roots and Elicitation](../phases/13-tools-and-protocols/12-mcp-roots-and-elicitation/)",
-  "sources": "[MCP Multi Round-Trip Requests](https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/mrtr) ## N",
+  "sources": "[MCP Multi Round-Trip Requests](https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/mrtr)",
   "aliases": "MRTR",
   "why_called": "",
   "related": "Stateless MCP, MCP (Model Context Protocol), Human-in-the-Loop (HITL), Tool Contract"
@@ -2052,7 +2052,7 @@
   "confusion": "Top-p is a probability-mass threshold, while top-k always keeps a fixed maximum number of candidates.",
   "practice": "Evaluate the threshold with temperature and stop settings held constant, and record the complete decoding configuration with every result.",
   "learn": "",
-  "sources": "[The Curious Case of Neural Text Degeneration](https://arxiv.org/abs/1904.09751) ## O",
+  "sources": "[The Curious Case of Neural Text Degeneration](https://arxiv.org/abs/1904.09751)",
   "aliases": "Top-p sampling",
   "why_called": "",
   "related": "Top-k Sampling, Temperature, Decoding Strategy, Softmax"
@@ -2111,7 +2111,7 @@
   "sources": "",
   "aliases": "",
   "why_called": "",
-  "related": "Underfitting, Dropout, Weight Decay, Eval Set ## P"
+  "related": "Underfitting, Dropout, Weight Decay, Eval Set"
  },
  {
   "term": "Paged KV Cache",
@@ -2374,7 +2374,7 @@
   "confusion": "Purpose limitation governs why data is used. Data minimization governs how much data that purpose actually requires.",
   "practice": "Record the purpose with each dataset, check new pipelines against it before access, separate incompatible uses, and require a documented decision when the purpose changes.",
   "learn": "",
-  "sources": "[General Data Protection Regulation, Article 5(1)(b)](https://eur-lex.europa.eu/eli/reg/2016/679/oj) ## Q",
+  "sources": "[General Data Protection Regulation, Article 5(1)(b)](https://eur-lex.europa.eu/eli/reg/2016/679/oj)",
   "aliases": "",
   "why_called": "",
   "related": "Data Minimization, Data Classification, AI Risk Assessment, Audit Log"
@@ -2405,7 +2405,7 @@
   "sources": "",
   "aliases": "",
   "why_called": "",
-  "related": "QLoRA, Mixed Precision, Parameter ## R"
+  "related": "QLoRA, Mixed Precision, Parameter"
  },
  {
   "term": "RAG (Retrieval-Augmented Generation)",
@@ -2671,7 +2671,7 @@
   "sources": "",
   "aliases": "",
   "why_called": "",
-  "related": "Evaluation (Eval), Precision & Recall, LLM-as-a-Judge ## S"
+  "related": "Evaluation (Eval), Precision & Recall, LLM-as-a-Judge"
  },
  {
   "term": "Sandbox",
@@ -3035,7 +3035,7 @@
   "sources": "",
   "aliases": "",
   "why_called": "",
-  "related": "Prompt Engineering, Prompt Injection, Context Engineering, Guardrails ## T"
+  "related": "Prompt Engineering, Prompt Injection, Context Engineering, Guardrails"
  },
  {
   "term": "Tail Latency",
@@ -3298,7 +3298,7 @@
   "confusion": "A network boundary is only one kind of trust boundary. Untrusted document text entering a privileged agent context also crosses one.",
   "practice": "Draw boundaries around users, model context, retrieval sources, tools, networks, and data stores, then specify validation and authorization for every crossing.",
   "learn": "[Jailbreak Taxonomy](../phases/19-capstone-projects/82-jailbreak-taxonomy/)",
-  "sources": "[Microsoft Learn: Trust Boundary, the Trust Zone Change Element](https://learn.microsoft.com/en-us/training/modules/tm-create-a-threat-model-using-foundational-data-flow-diagram-elements/6-trust-boundary-the-trust-zone-change-element); [OWASP Threat Modeling](https://owasp.org/www-community/Threat_Modeling) ## U",
+  "sources": "[Microsoft Learn: Trust Boundary, the Trust Zone Change Element](https://learn.microsoft.com/en-us/training/modules/tm-create-a-threat-model-using-foundational-data-flow-diagram-elements/6-trust-boundary-the-trust-zone-change-element); [OWASP Threat Modeling](https://owasp.org/www-community/Threat_Modeling)",
   "aliases": "",
   "why_called": "",
   "related": "Threat Model, Least Privilege, Sandbox, Indirect Prompt Injection"
@@ -3315,7 +3315,7 @@
   "sources": "",
   "aliases": "",
   "why_called": "",
-  "related": "Overfitting, Loss Function, Hyperparameter ## V"
+  "related": "Overfitting, Loss Function, Hyperparameter"
  },
  {
   "term": "VAE (Variational Autoencoder)",
@@ -3410,7 +3410,7 @@
   "confusion": "A model vocabulary is not a dictionary of human words; many entries are fragments, bytes, whitespace patterns, or control symbols.",
   "practice": "Version the vocabulary and special-token assignments with the model, test encode-decode round trips, and never substitute a tokenizer with merely similar token names.",
   "learn": "",
-  "sources": "[Neural Machine Translation of Rare Words with Subword Units](https://arxiv.org/abs/1508.07909) ## W",
+  "sources": "[Neural Machine Translation of Rare Words with Subword Units](https://arxiv.org/abs/1508.07909)",
   "aliases": "",
   "why_called": "",
   "related": "Tokenization, Byte Pair Encoding (BPE), Token, Embedding"
@@ -3469,7 +3469,7 @@
   "sources": "[git-worktree documentation](https://git-scm.com/docs/git-worktree)",
   "aliases": "",
   "why_called": "",
-  "related": "Coding Agent, Patch, Scope Contract, Handoff ## Z"
+  "related": "Coding Agent, Patch, Scope Contract, Handoff"
  },
  {
   "term": "Zero-Shot",

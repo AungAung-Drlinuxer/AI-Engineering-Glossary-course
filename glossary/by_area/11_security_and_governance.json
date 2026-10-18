@@ -190,7 +190,7 @@
   "confusion": "Purpose limitation governs why data is used. Data minimization governs how much data that purpose actually requires.",
   "practice": "Record the purpose with each dataset, check new pipelines against it before access, separate incompatible uses, and require a documented decision when the purpose changes.",
   "learn": "",
-  "sources": "[General Data Protection Regulation, Article 5(1)(b)](https://eur-lex.europa.eu/eli/reg/2016/679/oj) ## Q",
+  "sources": "[General Data Protection Regulation, Article 5(1)(b)](https://eur-lex.europa.eu/eli/reg/2016/679/oj)",
   "aliases": "",
   "why_called": "",
   "related": "Data Minimization, Data Classification, AI Risk Assessment, Audit Log"
@@ -260,7 +260,7 @@
   "confusion": "A network boundary is only one kind of trust boundary. Untrusted document text entering a privileged agent context also crosses one.",
   "practice": "Draw boundaries around users, model context, retrieval sources, tools, networks, and data stores, then specify validation and authorization for every crossing.",
   "learn": "[Jailbreak Taxonomy](../phases/19-capstone-projects/82-jailbreak-taxonomy/)",
-  "sources": "[Microsoft Learn: Trust Boundary, the Trust Zone Change Element](https://learn.microsoft.com/en-us/training/modules/tm-create-a-threat-model-using-foundational-data-flow-diagram-elements/6-trust-boundary-the-trust-zone-change-element); [OWASP Threat Modeling](https://owasp.org/www-community/Threat_Modeling) ## U",
+  "sources": "[Microsoft Learn: Trust Boundary, the Trust Zone Change Element](https://learn.microsoft.com/en-us/training/modules/tm-create-a-threat-model-using-foundational-data-flow-diagram-elements/6-trust-boundary-the-trust-zone-change-element); [OWASP Threat Modeling](https://owasp.org/www-community/Threat_Modeling)",
   "aliases": "",
   "why_called": "",
   "related": "Threat Model, Least Privilege, Sandbox, Indirect Prompt Injection"

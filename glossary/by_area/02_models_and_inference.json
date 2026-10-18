@@ -53,7 +53,7 @@
   "sources": "",
   "aliases": "",
   "why_called": "",
-  "related": "Tensor, Mixed Precision, JAX ## D"
+  "related": "Tensor, Mixed Precision, JAX"
  },
  {
   "term": "Decoder",
@@ -179,7 +179,7 @@
   "sources": "",
   "aliases": "",
   "why_called": "",
-  "related": "Attention, Autoregressive, Prefix Caching, Prompt Cache ## L"
+  "related": "Attention, Autoregressive, Prefix Caching, Prompt Cache"
  },
  {
   "term": "LLM (Large Language Model)",
@@ -232,7 +232,7 @@
   "confusion": "Top-p is a probability-mass threshold, while top-k always keeps a fixed maximum number of candidates.",
   "practice": "Evaluate the threshold with temperature and stop settings held constant, and record the complete decoding configuration with every result.",
   "learn": "",
-  "sources": "[The Curious Case of Neural Text Degeneration](https://arxiv.org/abs/1904.09751) ## O",
+  "sources": "[The Curious Case of Neural Text Degeneration](https://arxiv.org/abs/1904.09751)",
   "aliases": "Top-p sampling",
   "why_called": "",
   "related": "Top-k Sampling, Temperature, Decoding Strategy, Softmax"
@@ -277,7 +277,7 @@
   "sources": "",
   "aliases": "",
   "why_called": "",
-  "related": "QLoRA, Mixed Precision, Parameter ## R"
+  "related": "QLoRA, Mixed Precision, Parameter"
  },
  {
   "term": "Self-Attention",
