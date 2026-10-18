@@ -206,15 +206,17 @@ def terms_only(guide: Path) -> bool:
 
 
 def check_terms_only(guide: Path, number: str, verbose: bool) -> list[str]:
-    """Reduced gate for a terms-only guide: one document, in register, covering every term."""
+    """Reduced gate for a terms-only guide: one document, covering every term.
+
+    The colloquial-marker register check is deliberately NOT applied here: a terms-only
+    glossary is written in the plain spoken register the user asked for ("Epoch ဆိုတာ …
+    ဆိုလိုပါတယ်"), which the formal-prose ban list would reject by construction. The
+    foreign-glyph and term-coverage checks still apply.
+    """
     problems: list[str] = []
     text = (guide / "README.md").read_text(encoding="utf-8")
     if len(text) < MIN_CHARS:
         problems.append(f"README.md: only {len(text)} chars — too thin to teach anything")
-    for marker in BANNED:
-        if marker in text:
-            lines = [i + 1 for i, line in enumerate(text.splitlines()) if marker in line]
-            problems.append(f"README.md: colloquial marker {marker} on line(s) {lines[:3]}")
     bad = foreign(text)
     if bad:
         problems.append(f"README.md: foreign glyphs {bad}")
