@@ -8,6 +8,12 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 
 **English (source)** field သည် source glossary ၏ မူရင်း အင်္ဂလိပ် စာသား ဖြစ်ပြီး စကားလုံး တစ်လုံးမျှ မပြင်ဆင်ရ၊ ဖြတ်တောက်၍ လည်း မရပါ။ ထို အင်္ဂလိပ် စာသားသည် အတည်ပြုရန် အခြေခံ စာသား ဖြစ်သည်၊ မြန်မာ ရှင်းလင်းချက်သည် ၎င်း၏ အဓိပ္ပာယ်နှင့် တိုက်ရိုက် ကိုက်ညီရမည်။ Entry များ၏ အစဉ်သည် source ၏ JSON slice အစဉ်အတိုင်း ဖြစ်သည်။ ဖိုင် အဆုံးတွင် Self-check နှင့် References ပါဝင်သည်။
 
+## ဤနယ်ပယ်အတွက် လေ့လာလမ်းညွှန်
+
+term ၂၉ ခုကို အစဉ်လိုက် လေ့လာရန် `guides/02_models_and_inference/01_learning_sequence.md`၊ ပုံများအတွက် `02_visual_explanations.md`၊ အောက်ခံစနစ် သက်ရောက်မှုအတွက် `03_theory_to_infrastructure.md`၊ လေ့ကျင့်ခန်းအတွက် `04_exercises.md` နှင့် လက်တွေ့စမ်းသပ်မှုအတွက် `labs/` ကို ဖတ်ပါ။
+
+ပထမဦးစွာ `01_learning_sequence.md` အတိုင်း အစဉ်လိုက် ဖတ်ပါ။ term တစ်ခုစီကို မှတ်မိပြီးနောက် `02_visual_explanations.md` ဖြင့် ပုံကို ကြည့်၍ စိတ်ထဲတွင် ပုံဖော်ပါ။ ထို့နောက် `03_theory_to_infrastructure.md` ဖြင့် ထို concept သည် GPU memory၊ compute၊ latency၊ throughput သို့မဟုတ် serving cost အနက် မည်သည့် ဝင်ရိုးကို ရွေ့စေသည်ကို ဆက်စပ်ပါ။ နောက်ဆုံးတွင် `04_exercises.md` နှင့် `labs/` ကို run ၍ မိမိ ကိုယ်တိုင် တွက်ချက် စစ်ဆေးပါ။
+
 ### Attention
 
 **မြန်မာ:** အာရုံစိုက်မှု ယန္တရား (Attention)
@@ -17,6 +23,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **မကြာခဏ ရောထွေးမှု:** Attention weight များသည် computation coefficient များ ဖြစ်သည်၊ model ၏ ကျိုးကြောင်းဆင်ခြင်မှုကို သစ္စာရှိစွာ ဖော်ပြသည့် ရှင်းလင်းချက် မဟုတ်ပါ။
 - **ဆက်စပ် term များ:** Self-Attention, Transformer, KV Cache
 - **Learn it:** [Self-Attention from Scratch](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/02-self-attention-from-scratch/)
+- **Infrastructure အကျိုးသက်ရောက်မှု:** Attention သည် compute ကို ရွေ့စေသည်၊ context အရှည် တိုးလျှင် compute ceiling ကို ထိသည့်အတွက် context limit နှင့် mask pattern ကို ချိန်ညှိရမည်။
 - **English (source):** A mechanism that forms contextual representations by comparing query vectors with key vectors, normalizing the resulting scores, and using them to combine value vectors. Masks, position rules, or sparse patterns can restrict which positions participate. Attention lets a model route information between sequence positions, but it does not by itself explain or prove what the model understood.
 
 ### Autoregressive
@@ -27,6 +34,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **အရေးပါသည့် အကြောင်းရင်း:** စာသား ထုတ်လုပ်မှုသည် token တစ်လုံးချင်း အစဉ်လိုက် ဖြစ်ပေါ်သောကြောင့် ထပ်တလဲလဲ တွက်ချက်မှုကို လျှော့ချသည့် KV cache နှင့် ရွေးချယ်မှုကို ထိန်းညှိသည့် Temperature စသည့် လုပ်ငန်းစဉ်များသည် ဤအစဉ်လိုက် သဘောသဘာဝအပေါ် မှီခိုသည်။
 - **မကြာခဏ ရောထွေးမှု:** ခန့်မှန်းသည့် အလုံးအစုသည် token ဖြစ်သည်၊ word ဖြစ်ရန် မလိုအပ်ပါ။ ထို့အပြင် generation တွင် အမြင့်ဆုံး probability ရှိသည့် token ကို အမြဲ ရွေးချယ်သည့် နည်းလမ်းသာ မဟုတ်ဘဲ အခြား decoding နည်းလမ်းများကိုလည်း အသုံးပြုနိုင်သည်။
 - **ဆက်စပ် term များ:** Token, Temperature, KV Cache
+- **Infrastructure အကျိုးသက်ရောက်မှု:** Autoregressive သည် inter-token latency ကို ရွေ့စေသည်၊ decode သည် serial ဖြစ်သည့်အတွက် KV cache နှင့် batching ဖြင့် memory bandwidth ကို စီမံရမည်။
 - **English (source):** A factorization in which each output token is predicted from the tokens that precede it. During generation, the selected token is appended to the sequence and becomes part of the next prediction's context.
 
 ### CNN (Convolutional Neural Network)
@@ -37,6 +45,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **အရေးပါသည့် အကြောင်းရင်း:** filter မျှဝေအသုံးပြုခြင်းဖြင့် local pattern ကို ရှာဖွေသည့် ဤဖွဲ့စည်းပုံသည် ရုပ်ပုံ များအတွက် အသုံးများပြီး ၎င်း၏ inductive bias သည် စနစ်တစ်ခု မည်သည့် feature များကို လွယ်ကူစွာ သင်ယူနိုင်သည်ကို သက်ရောက်သည်။
 - **မကြာခဏ ရောထွေးမှု:** convolution များသည် အသံ (audio)၊ အချိန်စဉ် အချက်အလက် (time series) နှင့် အခြား grid ပုံစံ data များတွင်လည်း အလုပ်လုပ်သည်။
 - **ဆက်စပ် term များ:** Feature, Inductive Bias, Activation Function
+- **Infrastructure အကျိုးသက်ရောက်မှု:** CNN သည် GPU memory ကို ရွေ့စေသည်၊ filter မျှဝေမှုကြောင့် weight bytes နည်းသည့်အတွက် CNN encoder ကို VRAM နည်းသည့် accelerator ပေါ် တင်ရမည်။
 - **English (source):** A neural network that uses convolution operations (sliding filters over the input) to detect local patterns. Stacking convolutions detects increasingly complex features: edges, textures, objects.
 
 ### CUDA
@@ -47,6 +56,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **အရေးပါသည့် အကြောင်းရင်း:** deep-learning framework များတွင် tensor တွက်ချက်မှု အများအပြားကို တစ်ပြိုင်နက် လုပ်ဆောင်နိုင်စေသည့် အလွှာမှာ ဤ platform ဖြစ်သောကြောင့် လေ့ကျင့်ခြင်းနှင့် inference အရှိန်သည် CUDA အထောက်အပံ့အပေါ် မှီခိုသည်။
 - **မကြာခဏ ရောထွေးမှု:** GPU acceleration သည် CUDA နှင့် ထပ်တူကျသည့် အဓိပ္ပာယ် မဟုတ်ပါ၊ အခြား hardware နှင့် software stack များလည်း တည်ရှိသည်။
 - **ဆက်စပ် term များ:** Tensor, Mixed Precision, JAX
+- **Infrastructure အကျိုးသက်ရောက်မှု:** CUDA သည် compute utilisation ကို ရွေ့စေသည်၊ kernel နှင့် driver မကိုက်ညီလျှင် tokens/s ကျဆင်းသည့်အတွက် image version ကို မှတ်တမ်းတင်ရမည်။
 - **English (source):** NVIDIA's platform and programming model for general-purpose computation on compatible GPUs. Deep-learning frameworks use CUDA libraries and kernels to execute many tensor operations in parallel.
 
 ### Decoder
@@ -56,6 +66,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **ဆိုလိုသည့် အဓိပ္ပာယ်:** representation တစ်ခုကို output အဖြစ် ပြောင်းလဲပေးသည့် အစိတ်အပိုင်း ဖြစ်သည်။ encoder-decoder transformer တွင် decoder သည် masked self-attention နှင့် cross-attention ကို အသုံးပြု၍ output များကို ထုတ်လုပ်သည်။ decoder-only language model များမှာမူ causal stack တစ်ခုတည်းမှ ထုတ်လုပ်သည်။
 - **အရေးပါသည့် အကြောင်းရင်း:** decoder-only အမျိုးအစား model များတွင် causal stack တစ်ခုတည်းမှ ထုတ်လုပ်သောကြောင့် masking စည်းမျဉ်းသည် token တစ်လုံးစီ မည်သည့် position များကို တွေ့မြင်နိုင်သည်ကို သတ်မှတ်သည်။
 - **ဆက်စပ် term များ:** Encoder, Transformer, Autoregressive
+- **Infrastructure အကျိုးသက်ရောက်မှု:** Decoder သည် decode အရှိန် နှင့် VRAM ကို ရွေ့စေသည်၊ context တစ်ခုလုံးသည် KV cache အဖြစ် တည်ရှိသည့်အတွက် decode batch ကို continuous batching ဖြင့် စီမံရမည်။
 - **English (source):** A component that maps a representation into an output. In an encoder-decoder transformer, the decoder uses masked self-attention and cross-attention to generate outputs. Decoder-only language models instead generate from a single causal stack.
 
 ### Decoding Strategy
@@ -67,6 +78,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **မကြာခဏ ရောထွေးမှု:** decoding သည် output များ မည်သို့ ရွေးချယ်ခံရသည်ကို ပြောင်းလဲသည်၊ model ၏ လေ့ကျင့်ပြီး parameter များကို မပြောင်းလဲပါ၊ အသိပညာ ထပ်တိုး မပေးပါ။
 - **လက်တွေ့:** task ၏ decoding setting များ၊ ရပ်တန့်သည့် စည်းမျဉ်းများနှင့် seed အပြုအမူကို eval configuration တွင် သတ်မှတ်ထားရမည်၊ ထိုအခါ ရလဒ်များကို တရားမျှတစွာ နှိုင်းယှဉ်နိုင်သည်။
 - **ဆက်စပ် term များ:** Autoregressive, Temperature, Top-k Sampling, Nucleus Sampling (Top-p)
+- **Infrastructure အကျိုးသက်ရောက်မှု:** Decoding Strategy သည် latency ကို ရွေ့စေသည်၊ output အရှည်သည် serving cost ကို ဆုံးဖြတ်သည့်အတွက် decode policy ကို latency နှင့် cost အကြား သတ်မှတ်ရမည်။
 - **English (source):** The algorithm that converts a model's sequence of next-token scores into selected tokens and a completed output. Greedy selection, sampling, truncation, and search can produce different quality, diversity, latency, and repeatability from the same logits.
 
 ### Diffusion Model
@@ -77,6 +89,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **အရေးပါသည့် အကြောင်းရင်း:** ၎င်းသည် ရုပ်ပုံသီးသန့် နည်းစနစ် မဟုတ်ဘဲ ယေဘုယျ generative framework တစ်ခု ဖြစ်သောကြောင့် ဖန်တီးမှုဆိုင်ရာ စနစ်များတွင် ရွေးချယ်နိုင်သည့် ဖွဲ့စည်းပုံ တစ်ခု အဖြစ် သက်ရောက်သည်။
 - **မကြာခဏ ရောထွေးမှု:** diffusion သည် ယေဘုယျ generative framework တစ်ခု ဖြစ်သည်၊ ရုပ်ပုံ (image) သီးသန့် နည်းစနစ် မဟုတ်ပါ။
 - **ဆက်စပ် term များ:** Latent Space, VAE (Variational Autoencoder), Inference
+- **Infrastructure အကျိုးသက်ရောက်မှု:** Diffusion Model သည် compute ကို ရွေ့စေသည်၊ sampling step အရေအတွက်နှင့် အချိုးကျသည့်အတွက် step count၊ resolution နှင့် batch size သုံးခုကို ချိန်ညှိရမည်။
 - **English (source):** A generative model trained around a progressive noising process and a learned reverse process. Sampling usually begins from noise and applies repeated denoising steps, sometimes in a learned latent space.
 
 ### Encoder
@@ -87,6 +100,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **အရေးပါသည့် အကြောင်းရင်း:** encoder ၏ output representation သည် နောက်ဆက်တွဲ task များအတွက် အသုံးပြုခံရသောကြောင့် မည်သည့် mask များဖြင့် context ကို ကန့်သတ်သည် ဆိုသည်က စနစ်တစ်ခု တွေ့မြင်နိုင်သည့် အချက်အလက် ပမာဏကို သက်ရောက်သည်။
 - **မကြာခဏ ရောထွေးမှု:** encoder-only model များသည် autoregressive စာသား ထုတ်လုပ်ခြင်းအတွက် ပုံမှန်အားဖြင့် အသုံးပြုခြင်း မခံရသော်လည်း task head များမှတစ်ဆင့် output များ ထုတ်လုပ်နိုင်သည်။
 - **ဆက်စပ် term များ:** Decoder, Transformer, Embedding
+- **Infrastructure အကျိုးသက်ရောက်မှု:** Encoder သည် TTFT ကို ရွေ့စေသည်၊ embedding နှင့် rerank service ၏ TTFT သည် prefill FLOPs အပေါ် မှီခိုသည့်အတွက် batch size ကို prefill compute နှင့် ညှိရမည်။
 - **English (source):** A component that transforms input into a representation. A transformer encoder commonly uses non-causal self-attention, subject to any masks, so each position can incorporate context from across the input.
 
 ### GAN (Generative Adversarial Network)
@@ -96,6 +110,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **ဆိုလိုသည့် အဓိပ္ပာယ်:** generator network သည် လက်တွေ့နှင့် တူညီသည့် data ဖန်တီးရန် ကြိုးစားပြီး discriminator network သည် အစစ်နှင့် အတုကို ခွဲခြားရန် ကြိုးစားသည်။ ၎င်းတို့နှစ်ခုသည် အတူတကွ လေ့ကျင့်သည် — generator သည် discriminator ကို လှည့်ဖျားနိုင်မှု ပိုကောင်းလာသည်၊ discriminator သည် အတုကို ဖော်ထုတ်နိုင်မှု ပိုကောင်းလာသည်။
 - **အရေးပါသည့် အကြောင်းရင်း:** generator နှင့် discriminator နှစ်ခုလုံး တစ်ပြိုင်နက် တိုးတက်လာသည့် ဤပြိုင်ဆိုင်မှု ဖွဲ့စည်းပုံသည် data ဖန်တီးသည့် စနစ်များတွင် လေ့ကျင့်မှု လုပ်ငန်းစဉ်ကို သက်ရောက်သည်။
 - **ဆက်စပ် term များ:** Loss Function, Latent Space, Diffusion Model
+- **Infrastructure အကျိုးသက်ရောက်မှု:** GAN သည် compute နှင့် sampling latency ကို ရွေ့စေသည်၊ forward pass တစ်ခုတည်းဖြင့် sample ထုတ်သည့်အတွက် realtime ထုတ်လုပ်မှု စနစ်များတွင် ရွေးချယ်ရမည်။
 - **English (source):** A generator network tries to create realistic data while a discriminator network tries to tell real from fake. They train together: the generator gets better at fooling the discriminator, and the discriminator gets better at detecting fakes.
 
 ### GPT
@@ -105,6 +120,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **ဆိုလိုသည့် အဓိပ္ပာယ်:** Generative Pre-trained Transformer ဖြစ်ပြီး sequence-prediction objective များဖြင့် ကြိုတင် လေ့ကျင့်ထားကာ နောက်ဆက်တွဲ အသုံးပြုမှုများအတွက် ပြင်ဆင်ထားသည့် generative transformer model များအတွက် မိသားစု အမည် ဖြစ်သည်။ Product အမည်များနှင့် model ဖွဲ့စည်းပုံများကို အပြန်အလှန် အစားထိုး အသုံးပြုနိုင်သည့် အရာများ အဖြစ် မယူဆရ။ အမည်တွင် generative သည် output ထုတ်လုပ်ခြင်းကို ရည်ညွှန်းပြီး pre-trained သည် အစောပိုင်း ကျယ်ပြန့်သည့် လေ့ကျင့်မှု အဆင့်ကို ရည်ညွှန်းသည်၊ transformer သည် ဖွဲ့စည်းပုံ မိသားစုကို ရည်ညွှန်းသည်။
 - **အရေးပါသည့် အကြောင်းရင်း:** GPT သည် ဖွဲ့စည်းပုံ မိသားစုကို ရည်ညွှန်းသည့် အမည် ဖြစ်သောကြောင့် စနစ်တစ်ခုတွင် အသုံးပြုသည့် model နှင့် ၎င်းအပေါ် တည်ဆောက်ထားသည့် product တို့ကို မတူညီသည့် အရာများ အဖြစ် ခွဲခြား သတ်မှတ်ရမည်။
 - **ဆက်စပ် term များ:** Transformer, Autoregressive, LLM (Large Language Model)
+- **Infrastructure အကျိုးသက်ရောက်မှု:** GPT အမည်သည် serving cost ကို တိုက်ရိုက် မရွေ့စေပါ၊ parameter၊ context နှင့် precision သာ ကုန်ကျစရိတ်ကို ဆုံးဖြတ်သည့်အတွက် ထို အချက်များကို မှတ်တမ်းတင်ရမည်။
 - **English (source):** Generative Pre-trained Transformer, a family label for generative transformer models pretrained on sequence-prediction objectives and adapted for downstream use. Product names and model architectures should not be treated as interchangeable.
 
 ### Inductive Bias
@@ -115,6 +131,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **အရေးပါသည့် အကြောင်းရင်း:** ဤကြိုတင်ယူဆချက်များသည် model တစ်ခု လွယ်ကူစွာ သင်ယူနိုင်သည့် function အမျိုးအစားကို ကွာခြားစေသောကြောင့် ဖွဲ့စည်းပုံ ရွေးချယ်မှုသည် စနစ်တစ်ခု၏ အပြုအမူကို သက်ရောက်သည်။
 - **မကြာခဏ ရောထွေးမှု:** transformer များတွင်လည်း tokenization၊ position ကိုင်တွယ်မှု၊ masking၊ architecture၊ data နှင့် objective များမှတစ်ဆင့် inductive bias များ ရှိသည်။
 - **ဆက်စပ် term များ:** CNN (Convolutional Neural Network), Transformer, Feature
+- **Infrastructure အကျိုးသက်ရောက်မှု:** Inductive Bias သည် compute ကို ရွေ့စေသည်၊ ဖွဲ့စည်းပုံ ရွေးချယ်မှုသည် serving cost ကို ရေရှည် ချုပ်ထားသည့်အတွက် architecture ကို အစောပိုင်းတွင် ဆုံးဖြတ်ရမည်။
 - **English (source):** Structural or statistical assumptions that favor some functions or representations over others. Convolution favors locality and shared filters; causal masking favors prediction from preceding positions.
 
 ### Inference
@@ -125,6 +142,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **အရေးပါသည့် အကြောင်းရင်း:** model weight များ မပြောင်းလဲဘဲ prediction နှင့် token ထုတ်လုပ်ခြင်း အားလုံး ဤအဆင့်တွင် ဖြစ်ပေါ်သောကြောင့် စနစ်တစ်ခု၏ ဖြေကြားမှု လျင်မြန်မှုနှင့် တွက်ချက်မှု ကုန်ကျစရိတ်ကို ဤအဆင့်က သက်ရောက်သည်။
 - **မကြာခဏ ရောထွေးမှု:** application တစ်ခုသည် inference လုပ်နေစဉ်အတွင်း cache များ၊ စကားပြောမှု အခြေအနေ (conversation state) သို့မဟုတ် ပြင်ပ memory ကို update လုပ်နိုင်သည်၊ သို့သော် model weight များ မပြောင်းလဲပါ။
 - **ဆက်စပ် term များ:** Autoregressive, Streaming, KV Cache
+- **Infrastructure အကျိုးသက်ရောက်မှု:** Inference သည် serving cost ကို ရွေ့စေသည်၊ ကုန်ကျစရိတ် အားလုံး accelerator အချိန် အပေါ် ရောက်သည့်အတွက် batch size နှင့် precision ကို ချိန်ညှိရမည်။
 - **English (source):** Executing a trained model to produce predictions, scores, embeddings, or generated tokens without performing an ordinary training update to its parameters.
 
 ### KV Cache
@@ -136,6 +154,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **မကြာခဏ ရောထွေးမှု:** KV cache သည် sequence တစ်ခုအတွက် runtime attention state ဖြစ်သည်။ Prefix caching သည် အသုံးပြုနိုင်သည့် KV state ကို request များအကြား ပြန်လည် အသုံးပြုခြင်း ဖြစ်ပြီး prompt caching သည် ပိုမို ကျယ်ပြန့်သည့် provider သို့မဟုတ် application အဆင့် ပြန်လည် အသုံးပြုမှု သဘောတူညီချက် ဖြစ်သည်။
 - **ဆက်စပ် term များ:** Attention, Autoregressive, Prefix Caching, Prompt Cache
 - **Learn it:** [KV Cache and Flash Attention](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/12-kv-cache-flash-attention/)
+- **Infrastructure အကျိုးသက်ရောက်မှု:** KV Cache သည် GPU memory နှင့် decode latency ကို ရွေ့စေသည်၊ VRAM စားသည့်အတွက် paged attention၊ prefix caching နှင့် KV precision ဖြင့် စီမံရမည်။
 - **English (source):** Stored key and value tensors from earlier positions in autoregressive generation. Reusing them avoids recomputing attention projections for the unchanged prefix at every decoding step. It reduces repeated computation but consumes memory that grows with sequence length, layers, batch, and model configuration.
 
 ### LLM (Large Language Model)
@@ -146,6 +165,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **အရေးပါသည့် အကြောင်းရင်း:** LLM သည် system တစ်ခုအတွင်းရှိ model အစိတ်အပိုင်း တစ်ခု ဖြစ်သောကြောင့် application တစ်ခု၏ အပြုအမူကို ခွဲခြမ်းရာတွင် model နှင့် ၎င်းကို ဝန်းရံထားသည့် စနစ် အစိတ်အပိုင်းများကို ခွဲခြားရမည်။
 - **မကြာခဏ ရောထွေးမှု:** LLM သည် model အစိတ်အပိုင်း တစ်ခု ဖြစ်သည်။ tool များ၊ retrieval၊ state၊ policy များနှင့် product logic တို့သည် ၎င်းကို ဝန်းရံထားသည့် စနစ်တွင် တည်ရှိသည်။
 - **ဆက်စပ် term များ:** Transformer, Autoregressive, Agent Harness
+- **Infrastructure အကျိုးသက်ရောက်မှု:** LLM သည် serving cost ကို ရွေ့စေသည်၊ model ကိန်းနှင့် system ကိန်း (retrieval၊ tool call) ကို ခွဲခြားသည့်အတွက် cost per million tokens ကို သီးခြား တိုင်းတာရမည်။
 - **English (source):** A language model with enough capacity and broad training to perform many language tasks through prompting or adaptation. Most current LLMs use transformer architectures and sequence-prediction objectives, but size thresholds, data sources, and training recipes vary.
 
 ### Logits
@@ -157,6 +177,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **မကြာခဏ ရောထွေးမှု:** logits သည် probability များ မဟုတ်ပါ၊ သတ်မှတ်ထားသည့် transformation တစ်ခု မရှိဘဲ ဆက်စပ်မှု မရှိသည့် position များ၊ model များ သို့မဟုတ် task များအကြား နှိုင်းယှဉ်နိုင်သည် မဟုတ်ပါ။
 - **လက်တွေ့:** API က ဖော်ပြသည့် အခြေအနေတွင် logits သို့မဟုတ် log probability များကို စစ်ဆေးရမည်၊ sampling မလုပ်မီ mask များကို အသုံးပြုရမည်၊ ကိန်းဂဏန်း ပမာဏ အကြီးအငယ်ကို calibration ရှိသည့် ယုံကြည်စိတ်ချမှု အဖြစ် အဓိပ္ပာယ် ကောက်ခြင်းကို ရှောင်ရမည်။
 - **ဆက်စပ် term များ:** Softmax, Temperature, Token, Cross-Entropy
+- **Infrastructure အကျိုးသက်ရောက်မှု:** Logits သည် compute နှင့် GPU memory ကို ရွေ့စေသည်၊ vocabulary ကြီးလျှင် decode အရှိန် လျော့သည့်အတွက် sampling မလုပ်မီ mask အသုံးပြုမှုကို စီမံရမည်။
 - **English (source):** The model's unnormalized numeric scores for candidate outcomes before a normalization function or decoding rule converts them into selections. Temperature, softmax, top-k, and top-p operate on or derive from logits, so logits connect model computation to generated tokens.
 
 ### MoE (Mixture of Experts)
@@ -168,6 +189,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **မကြာခဏ ရောထွေးမှု:** product အမည်များသည် model developer က ထုတ်ဖော်မပြဘဲ MoE ဖွဲ့စည်းပုံ ဖြစ်သည်ဟု သက်သေပြသည် မဟုတ်ပါ။
 - **ဆက်စပ် term များ:** Transformer, Model Router, Parameter
 - **Learn it:** [Mixture of Experts](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/11-mixture-of-experts/)
+- **Infrastructure အကျိုးသက်ရောက်မှု:** MoE သည် GPU memory ကို ရွေ့စေသည်၊ total parameter က VRAM ကို ဆုံးဖြတ်သည့်အတွက် expert parallelism အတွက် VRAM ကို ကြိုတင် စစ်ဆေးရမည်။
 - **English (source):** An architecture with multiple expert subnetworks and a learned router that selects a subset for each input unit, often each token. Sparse activation can increase total parameter capacity without using every expert on every forward pass. Compute, memory, communication, routing balance, and quality depend on the specific architecture and serving system.
 
 ### Nucleus Sampling (Top-p)
@@ -179,6 +201,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **မကြာခဏ ရောထွေးမှု:** top-p သည် probability mass အဆင့်သတ်မှတ်ချက် ဖြစ်ပြီး top-k သည် အမြဲတမ်း သတ်မှတ်ထားသည့် အများဆုံး candidate အရေအတွက်ကို ထိန်းသိမ်းသည်။
 - **လက်တွေ့:** temperature နှင့် stop setting များကို မပြောင်းလဲဘဲ ထားရှိပြီး သတ်မှတ်ချက်ကို အကဲဖြတ်ရမည်၊ ရလဒ်တိုင်းနှင့်အတူ decoding configuration အပြည့်အစုံကို မှတ်တမ်းတင်ရမည်။
 - **ဆက်စပ် term များ:** Top-k Sampling, Temperature, Decoding Strategy, Softmax
+- **Infrastructure အကျိုးသက်ရောက်မှု:** Nucleus Sampling (Top-p) သည် latency ကို ရွေ့စေသည်၊ candidate အစု အရွယ်အစား distribution အလိုက် ပြောင်းသည့်အတွက် သတ်မှတ်ချက်ကို အကဲဖြတ်ရမည်။
 - **English (source):** A decoding method that samples from the smallest set of next-token candidates whose cumulative probability reaches a chosen threshold. The candidate-set size adapts to the distribution, retaining more options when uncertainty is broad and fewer when probability is concentrated.
 
 ### Parameter
@@ -189,6 +212,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **အရေးပါသည့် အကြောင်းရင်း:** model အရွယ်အစားကို ဖော်ပြရာတွင် parameter အရေအတွက်ကို အသုံးပြုသော်လည်း လက်တွေ့ memory နှင့် ကုန်ကျစရိတ် ခန့်မှန်းရာတွင် ၎င်းတို့ သိမ်းဆည်းသည့် numerical format နှင့် runtime အခြေအနေများကို ထည့်သွင်းစဉ်းစားရမည်။
 - **မကြာခဏ ရောထွေးမှု:** parameter တစ်ခုစီအတွက် memory သည် numerical format၊ quantization metadata၊ sharding၊ optimizer state၊ activation များနှင့် runtime အပိုအလွှာ (overhead) များအပေါ် မှီခိုသည်။
 - **ဆက်စပ် term များ:** Weight, MoE (Mixture of Experts), Quantization
+- **Infrastructure အကျိုးသက်ရောက်မှု:** Parameter သည် GPU memory ကို ရွေ့စေသည်၊ fp16 တွင် parameter တစ်ခုလျှင် 2 byte လိုသည့်အတွက် VRAM ခန့်မှန်းမှုကို byte အဆင့်တွင် ပြန်တွက်ရမည်။
 - **English (source):** A value learned during training, commonly a weight, bias, embedding element, or normalization parameter. Parameter count is one measure of model capacity, but it does not directly determine quality, memory, or serving cost.
 
 ### Perplexity
@@ -199,6 +223,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **အရေးပါသည့် အကြောင်းရင်း:** model တစ်ခု၏ token များအတွက် probability ခန့်မှန်းမှု အတိုင်းအတာကို ကိန်းဂဏန်း တစ်ခုတည်းဖြင့် ဖော်ပြသည့်အတွက် အကဲဖြတ်မှု (evaluation) လုပ်ငန်းစဉ်များတွင် ဤတန်ဖိုးကို အသုံးပြုသည်၊ သို့သော် tokenizer သို့မဟုတ် အကဲဖြတ်မှု အခြေအနေ မတူညီပါက ၎င်းကို နှိုင်းယှဉ်နိုင်သည် မဟုတ်ပါ။
 - **မကြာခဏ ရောထွေးမှု:** perplexity သည် tokenizer မတူညီသည့် အခြေအနေများ သို့မဟုတ် အကဲဖြတ်မှု စနစ် မတူညီသည့် အခြေအနေများအကြား နှိုင်းယှဉ်နိုင်သည် မဟုတ်ပါ၊ အချက်အလက် တိကျမှု (factuality) သို့မဟုတ် အသုံးဝင်မှုကို တိုက်ရိုက် တိုင်းတာသည် လည်း မဟုတ်ပါ။
 - **ဆက်စပ် term များ:** Cross-Entropy, Token, Evaluation (Eval)
+- **Infrastructure အကျိုးသက်ရောက်မှု:** Perplexity သည် compute ကို ရွေ့စေသည်၊ evaluation အဆင့်တွင်သာ တွက်သည့်အတွက် capacity budget တွင် evaluation အချိန် ကို သီးသန့် ထားရမည်။
 - **English (source):** The exponentiated average negative log-likelihood under a stated tokenization and logarithm convention. Lower values mean the model assigned higher probability to the evaluated sequence.
 
 ### Quantization
@@ -209,6 +234,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **အရေးပါသည့် အကြောင်းရင်း:** model တစ်ခုကို ပိုနည်းသည့် memory ဖြင့် serving လုပ်နိုင်ရန် ဤဖော်ပြမှု format ကို ရွေးချယ်သည့်အတွက် လက်တွေ့ deployment တွင် memory အပေါ် မှီခိုမှုနှင့် အရှိန်အပေါ် သက်ရောက်သည်။
 - **မကြာခဏ ရောထွေးမှု:** သတ်မှတ် bit အလုံးအစု တစ်ခုမှ အခြား တစ်ခုသို့ ရွေ့ခြင်းသည် တူညီသည့် end-to-end memory သို့မဟုတ် အရှိန် အချိုးကို အာမမခံနိုင်ပါ၊ အကြောင်းမှာ metadata၊ kernel များ၊ cache များနှင့် hardware အထောက်အပံ့တို့သည်လည်း အရေးပါသည်။
 - **ဆက်စပ် term များ:** QLoRA, Mixed Precision, Parameter
+- **Infrastructure အကျိုးသက်ရောက်မှု:** Quantization သည် GPU memory ကို ရွေ့စေသည်၊ 70B သည် 4-bit တွင်သာ accelerator တစ်လုံးပေါ် ဆံ့သည့်အတွက် precision ကို capacity ဆုံးဖြတ်ချက် အဖြစ် သတ်မှတ်ရမည်။
 - **English (source):** Representing weights, activations, or caches with lower-precision formats to reduce memory, bandwidth, or compute cost. Methods differ in calibration, granularity, data type, and whether conversion happens before, during, or after training.
 
 ### Self-Attention
@@ -220,6 +246,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **မကြာခဏ ရောထွေးမှု:** token တိုင်းသည် အခြား token တိုင်းကို အမြဲတမ်း attend လုပ်နိုင်သည် မဟုတ်ပါ။ causal နှင့် sparse model များသည် ဆက်သွယ်မှုများကို ရည်ရွယ်ချက်ရှိရှိ ကန့်သတ်သည်။
 - **ဆက်စပ် term များ:** Attention, Transformer, Context Window
 - **Learn it:** [Self-Attention from Scratch](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/02-self-attention-from-scratch/)
+- **Infrastructure အကျိုးသက်ရောက်မှု:** Self-Attention သည် compute ကို ရွေ့စေသည်၊ long-context တွင် layer FLOPs အများစုကို စားသည့်အတွက် context limit နှင့် masking policy ကို သတ်မှတ်ရမည်။
 - **English (source):** Attention in which queries, keys, and values are derived from the same sequence representation. Scaled similarity scores are normalized and used to combine values, subject to causal, padding, local, or other masks. It builds context-sensitive token representations, but the permitted attention pattern depends on the architecture.
 
 ### Speculative Decoding
@@ -231,6 +258,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **မကြာခဏ ရောထွေးမှု:** speculative decoding သည် သာမန် model routing သို့မဟုတ် အတည်မပြုရသေးသည့် autocomplete မဟုတ်ပါ။ တိကျသည့် မျိုးကွဲများသည် လက်ခံခြင်းနှင့် ပြင်ဆင်ခြင်းဖြင့် target distribution ကို ထိန်းသိမ်းပြီး အနီးစပ်ဆုံး (approximate) မျိုးကွဲများသည် ထို အာမခံချက်ကို အရှိန်နှင့် လဲလှယ်နိုင်သည်။
 - **လက်တွေ့:** လက်တွေ့ prompt များအပေါ် acceptance rate နှင့် end-to-end latency ကို တိုင်းတာရမည်၊ draft model ၏ အပိုအလွှာ (overhead) ကို ထည့်သွင်းစဉ်းစားရမည်၊ implementation သည် ရည်ရွယ်သည့် decoding distribution ကို ထိန်းသိမ်းကြောင်း စစ်ဆေးရမည်။
 - **ဆက်စပ် term များ:** Autoregressive, KV Cache, Decoding Strategy, Tokens per Second (TPS)
+- **Infrastructure အကျိုးသက်ရောက်မှု:** Speculative Decoding သည် latency ကို ရွေ့စေသည်၊ acceptance rate နိမ့်လျှင် draft overhead က အကျိုးအမြတ်ကို လွန်သည့်အတွက် acceptance rate ကို တိုင်းတာရမည်။
 - **English (source):** An inference method in which a cheaper draft process proposes several tokens and the target model scores those draft positions in parallel. In exact sampling variants, an acceptance and correction rule preserves the target model's output distribution. It can reduce serial target-model decoding work when drafts are accepted, without requiring a change to the target model's trained weights.
 
 ### Stop Sequence
@@ -242,6 +270,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **မကြာခဏ ရောထွေးမှု:** stop sequence သည် စက်ပိုင်းဆိုင်ရာ decoding အခြေအနေ တစ်ခု ဖြစ်သည်၊ အဖြေ ပြည့်စုံသည် သို့မဟုတ် agent ရည်မှန်းချက် ပြည့်မီသည်ဟု သက်သေပြခြင်း မဟုတ်ပါ။
 - **လက်တွေ့:** မရောထွေးနိုင်သည့် delimiter များကို ရွေးချယ်ရမည်၊ tokenization နှင့် streaming တွင် တစ်စိတ်တစ်ပိုင်း ကိုက်ညီမှုများကို စမ်းသပ်ရမည်၊ output အရှည်နှင့် schema validation ကို ဆက်လက် ကျင့်သုံးရမည်။
 - **ဆက်စပ် term များ:** Decoding Strategy, Structured Output, Token, Termination Condition
+- **Infrastructure အကျိုးသက်ရောက်မှု:** Stop Sequence သည် latency နှင့် serving cost ကို ရွေ့စေသည်၊ output token အရေအတွက်၏ အထက် ကန့်သတ်ချက် ဖြစ်သည့်အတွက် မရောထွေးနိုင်သည့် delimiter ကို ရွေးရမည်။
 - **English (source):** An application-specified token or text pattern that causes generation to stop when the decoding system encounters it. Stop sequences bound output protocols and multi-part generation without waiting for the model to decide semantically that it is finished.
 
 ### Streaming
@@ -253,6 +282,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **မကြာခဏ ရောထွေးမှု:** network transport၊ event ပုံစံနှင့် chunk နယ်နိမိတ်များသည် provider အလိုက် ကွာခြားပြီး word သို့မဟုတ် token များနှင့် တိုက်ဆိုင်မည်ဟု အာမမခံနိုင်ပါ။
 - **ဆက်စပ် term များ:** Time to First Token (TTFT), Autoregressive, Observability
 - **Learn it:** [Production LLM Application](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/13-production-app/)
+- **Infrastructure အကျိုးသက်ရောက်မှု:** Streaming သည် TTFT ကို ရွေ့စေသည်၊ စုစုပေါင်း latency ကို မပြောင်းသည့်အတွက် client-side TTFT ကို streaming state နှင့်အတူ မှတ်တမ်းတင်ရမည်။
 - **English (source):** Delivering incremental response events before the complete result is ready. A stream may contain token text, structured deltas, tool-call arguments, usage metadata, or status events depending on the API. It improves perceived responsiveness, but it does not reduce the model's actual time to produce a complete answer.
 
 ### Temperature
@@ -263,6 +293,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **အရေးပါသည့် အကြောင်းရင်း:** temperature သည် sampling အပြုအမူကို ပြောင်းလဲသည်၊ model ၏ အသိပညာ သို့မဟုတ် အချက်အလက် တိကျမှုကို မပြောင်းလဲပါ။
 - **မကြာခဏ ရောထွေးမှု:** တန်ဖိုး သုည သတ်မှတ်ခြင်းကို greedy decoding အဖြစ် အကောင်အထည်ဖော်လေ့ ရှိသော်လည်း အတိအကျ အပြုအမူနှင့် အဆုံးအဖြတ်ဖြစ်မှု (determinism) သည် provider၊ sampler၊ seed အထောက်အပံ့နှင့် serving စနစ်အပေါ် မှီခိုသည်။
 - **ဆက်စပ် term များ:** Softmax, Autoregressive, Token
+- **Infrastructure အကျိုးသက်ရောက်မှု:** Temperature သည် production consequence ကို ရွေ့စေသည်၊ weight နှင့် per-token FLOPs ကို မပြောင်းသည့်အတွက် determinism လိုအပ်သည့် task တွင် ပုံသေ သတ်မှတ်ရမည်။
 - **English (source):** A decoding parameter that rescales logits before a probability distribution is formed. Higher positive values usually flatten the distribution; lower positive values sharpen it. Temperature changes sampling behavior, not the model's knowledge or factuality.
 
 ### Time to First Token (TTFT)
@@ -274,6 +305,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **မကြာခဏ ရောထွေးမှု:** TTFT သည် tokens per second မဟုတ်ပါ။ တစ်ခုသည် စတင်သည့် latency ကို တိုင်းတာပြီး အခြားတစ်ခုသည် output စတင်ပြီးနောက် generation throughput ကို တိုင်းတာသည်။
 - **လက်တွေ့:** model၊ prompt အရှည်၊ region နှင့် cache အခြေအနေ အလိုက် client-side TTFT ကို မှတ်တမ်းတင်ပြီး စုစုပေါင်း ပြီးစီးချိန်နှင့် ခွဲခြားရမည်။
 - **ဆက်စပ် term များ:** Streaming, Prompt Cache, Observability, Token Budget
+- **Infrastructure အကျိုးသက်ရောက်မှု:** TTFT သည် perceived latency ကို ရွေ့စေသည်၊ prefill compute သည် context အရှည်နှင့် တိုးသည့်အတွက် context limit ကို TTFT SLO အတွက် သတ်မှတ်ရမည်။
 - **English (source):** The elapsed time from submitting a generation request until the client receives the first output token or content event under a defined measurement boundary. TTFT strongly affects perceived responsiveness and can reveal queueing, prompt processing, cache, or network delays.
 
 ### Top-k Sampling
@@ -285,6 +317,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **မကြာခဏ ရောထွေးမှု:** top-k သည် သတ်မှတ်ထားသည့် candidate အရေအတွက်ကို အသုံးပြုပြီး top-p သည် candidate အရေအတွက် အဆင့်တိုင်း ပြောင်းလဲသည့် probability mass အဆင့်သတ်မှတ်ချက်ကို အသုံးပြုသည်။
 - **လက်တွေ့:** k ကို temperature၊ top-p နှင့် stop setting များနှင့်အတူ အကဲဖြတ်ရမည်၊ ထုတ်လုပ်လိုက်သည့် ရလဒ်များနှင့်အတူ sampler configuration အပြည့်အစုံကို မှတ်တမ်းတင်ရမည်။
 - **ဆက်စပ် term များ:** Nucleus Sampling (Top-p), Temperature, Decoding Strategy, Logits
+- **Infrastructure အကျိုးသက်ရောက်မှု:** Top-k Sampling သည် latency ကို ရွေ့စေသည်၊ candidate အရေအတွက် ပုံသေ ဖြစ်သည့်အတွက် sampler configuration ကို ရလဒ်နှင့်အတူ မှတ်တမ်းတင်ရမည်။
 - **English (source):** A decoding method that restricts the next-token distribution to the k highest-scoring candidates, renormalizes their probabilities, and samples from that set. It removes the long low-probability tail from sampling while keeping a fixed maximum candidate count.
 
 ### Transformer
@@ -296,6 +329,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **မကြာခဏ ရောထွေးမှု:** self-attention ရှိခြင်းသည် transformer တိုင်းတွင် ကန့်သတ်ချက် မရှိ all-to-all attention ရှိသည်ဟု အဓိပ္ပာယ် မဆောင်ပါ။
 - **ဆက်စပ် term များ:** Attention, Self-Attention, Encoder, Decoder
 - **Learn it:** [Build a Full Transformer](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/05-full-transformer/)
+- **Infrastructure အကျိုးသက်ရောက်မှု:** Transformer သည် compute ကို ရွေ့စေသည်၊ prefill (parallel) နှင့် decode (serial) ၏ ကုန်ကျစရိတ် မတူသည့်အတွက် နှစ်ခုကို သီးခြား စီမံရမည်။
 - **English (source):** A neural-network architecture built from attention, position information, feed-forward sublayers, residual connections, and normalization. Encoder, decoder, and encoder-decoder variants use different masks and information flows. Training can process many sequence positions in parallel, while autoregressive generation still produces outputs step by step.
 
 ### VAE (Variational Autoencoder)
@@ -306,6 +340,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **အရေးပါသည့် အကြောင်းရင်း:** ခန့်မှန်း posterior နှင့် prior ကို ရွေးချယ်ခြင်းသည် model ၏ latent space ဖွဲ့စည်းပုံကို သတ်မှတ်သောကြောင့် sampling လုပ်သည့် စနစ်များတွင် ဤရွေးချယ်မှုများ သက်ရောက်သည်။
 - **မကြာခဏ ရောထွေးမှု:** VAE သည် latent distribution တိုင်းကို တစ်ခုတည်းသော Gaussian တစ်ခုသို့ အတင်းအကြပ် ရောက်ရှိစေသည် မဟုတ်ပါ၊ prior နှင့် ခန့်မှန်း posterior အတိအကျကို model ရေးဆွဲသည့် ရွေးချယ်မှုများ အဖြစ် သတ်မှတ်သည်။
 - **ဆက်စပ် term များ:** Latent Space, Encoder, Decoder, Diffusion Model
+- **Infrastructure အကျိုးသက်ရောက်မှု:** VAE သည် GPU memory ကို ရွေ့စေသည်၊ latent dimension သည် representation byte ပမာဏကို ဆုံးဖြတ်သည့်အတွက် latent resolution ကို ချိန်ညှိရမည်။
 - **English (source):** A latent-variable model trained with a reconstruction objective and a regularization term that keeps an approximate posterior close to a chosen prior. The reparameterization estimator allows gradients through stochastic latent sampling.
 
 ## Self-check

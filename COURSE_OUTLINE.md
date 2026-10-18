@@ -55,3 +55,12 @@ Lesson၊ paper၊ model card သို့မဟုတ် code review တစ်�
 python3 verify_glossary.py                  # term ၂၅၀၊ နယ်ပယ် ၁၂၊ နှစ်ဘာသာ ပြည့်စုံမှု
 python3 quiz.py --seed 7 --count 20 --answers
 ```
+
+## လေ့လာလမ်းညွှန်များ (Guides)
+
+| နယ်ပယ် | လမ်းညွှန် | အခြေအနေ |
+|---|---|---|
+| 02 — Models & inference | [`guides/02_models_and_inference/README.md`](guides/02_models_and_inference/README.md) | အစဉ် ၆ အဆင့်၊ ပုံ ၁၂ ခု၊ lab ၆ ခု၊ အောက်ခံစနစ်၊ လေ့ကျင့်ခန်း — အားလုံး စစ်ဆေးပြီး |
+
+နယ်ပယ် 02 ကို လေ့လာသည့် အစီအစဉ်ကို ထို လမ်းညွှန်၏ ၆ ကြိမ် အစီအစဉ်အတိုင်း လုပ်ပါ —
+glossary term များကို ဖတ်ပြီးသည့် နောက် lab များဖြင့် ကိန်းဂဏန်း အနေဖြင့် တိုက်စစ်ပါ။

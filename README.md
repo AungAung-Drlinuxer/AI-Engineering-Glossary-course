@@ -13,6 +13,35 @@ Term တိုင်းအတွက် —
 - **English (source)** — မူရင်း အင်္ဂလိပ် စာသား byte တူညီစွာ
 - **Related terms** နှင့် **Learn it** — ဆက်စပ် term များနှင့် source lesson လင့်
 
+## လေ့လာလမ်းညွှန် (Guides)
+
+Term စာရင်းသည် "ဘာလဲ" ကို ဖြေသည်။ `guides/` အောက်ရှိ လမ်းညွှန်များသည် "မည်သည့် အစဉ်ဖြင့် လေ့လာမည်၊
+ဘယ်လို အလုပ်လုပ်သည်၊ ဘယ်လောက် ကုန်ကျသည်" ကို ဖြေသည်။
+
+| လမ်းညွှန် | ဖုံးလွှမ်းသည့် နယ်ပယ် | ပါဝင်သည့် အရာ |
+|---|---|---|
+| [`guides/02_models_and_inference/`](guides/02_models_and_inference/README.md) | Models & inference (term ၂၉) | လေ့လာသည့် အစဉ် (အဆင့် ၆)၊ Mermaid ပုံ ၁၂ ခု၊ interactive lab ၆ ခု၊ အောက်ခံစနစ် သက်ရောက်မှု၊ လေ့ကျင့်ခန်း |
+
+### guides/02 — Models & inference
+
+- **လေ့လာသည့် အစဉ်** — term ၂၉ ခုကို အဆင့် ၆ ဆင့် (အခြေခံ → Transformer → generative → decoding
+  → ကုန်ကျစရိတ် → တိုင်းတာမှု) အဖြစ် စီထားသည်၊ term တိုင်း၏ ကြိုတင် သိရမည့် term နှင့်
+  ဖွင့်ပေးသည့် အချက် ပါသည်။
+- **ပုံရှင်းလင်းချက်** — attention တွက်ချက်မှု၊ Transformer block အတွင်း စီးဆင်းမှု၊ KV cache
+  ကြီးထွားမှု၊ prefill/decode၊ sampling pipeline၊ quantization၊ MoE၊ speculative decoding၊
+  TTFT/ITL၊ batching — Mermaid ပုံ ၁၂ ခု။
+- **Interactive lab** — `lab_sampling.py` (temperature/top-k/top-p)၊ `lab_kv_cache.py`
+  (context/layers/dtype/batch)၊ `lab_quantization.py` (bits)၊ `lab_attention_cost.py` (context)၊
+  `lab_batching.py` (slots/requests/စျေးနှုန်း)၊ `lab_context_budget.py` (window) — တန်ဖိုး ပြောင်း၍
+  ရလဒ် ကြည့်နိုင်သည်၊ offline နှင့် deterministic။
+- **အောက်ခံစနစ်** — term တိုင်း GPU memory / compute / latency / throughput / ကုန်ကျစရိတ် /
+  production အပေါ် သက်ရောက်မှု (၄)။
+- **လေ့ကျင့်ခန်း** — လုပ်ပြထားသည့် ဥပမာ ၆ ခု၊ တွက်ချက်ရသည့် လေ့ကျင့်ခန်း ၈ ခု၊ ပြဿနာ ရှာဖွေခြင်း ၅ ခု၊
+  ဆုံးဖြတ်ချက် ၃ ခု၊ အဖြေများ အပြည့်အစုံ။
+
+စစ်ဆေးခြင်း — `python3 verify_guide.py --verbose` (ဖိုင်၊ register၊ term လွှမ်းခြုံမှု၊
+lab ၆ ခု ၃ ကြိမ် စီ၊ ဖိုင်ထဲ ကူးထားသည့် output တိုင်း ပြန် run ၍ တူညီမှု)။
+
 ## လေ့လာနယ်ပယ် ၁၂ ခု (Learning areas)
 
 | # | Learning area | Term အရေအတွက် | ဖိုင် |
@@ -50,7 +79,10 @@ AI-Engineering-Glossary-course/
 ├── terms/
 │   ├── 00_index.md              # A–Z index (term ၂၅၀ လုံး)
 │   └── NN_<area>.md             # နယ်ပယ်တိုင်း၏ နှစ်ဘာသာ term စာရင်း
+├── guides/                      # လေ့လာလမ်းညွှန် (နယ်ပယ်အလိုက်)
+│   └── 02_models_and_inference/  # အစဉ်၊ ပုံများ၊ lab များ၊ အောက်ခံစနစ်၊ လေ့ကျင့်ခန်း
 ├── verify_glossary.py           # term ၂၅၀ လုံး ပြည့်စုံ/မှန်ကန်ကြောင်း စစ်ဆေးသည့် script
+├── verify_guide.py              # လမ်းညွှန်နှင့် lab များ စစ်ဆေးသည့် script
 └── quiz.py                      # term များမှ self-quiz ဖန်တီးသည့် script
 ```
 
