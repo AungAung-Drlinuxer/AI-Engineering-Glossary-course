@@ -174,6 +174,24 @@ def check_script_refs(guide: Path) -> list[str]:
     return problems
 
 
+def check_script_names(guide: Path) -> list[str]:
+    """Every lab_*.py or ex_*.py the prose names must exist on disk.
+
+    A writer who drafts the prose before the sibling's labs land tends to leave
+    placeholder file names behind; the study path then points at a script no reader
+    can run.
+    """
+    problems: list[str] = []
+    present = {p.name for p in (guide / "labs").glob("*.py")}
+    present |= {p.name for p in (guide / "scripts").glob("*.py")}
+    named: set[str] = set()
+    for path in sorted(guide.rglob("*.md")):
+        named |= set(re.findall(r"\b(?:lab|run_labs|ex)_[a-z0-9_]+\.py", path.read_text(encoding="utf-8")))
+    for name in sorted(named - present):
+        problems.append(f"{name}: named in the guide but no such file in labs/ or scripts/")
+    return problems
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="Verify every study guide under guides/.")
     ap.add_argument("--guide", default=None, help="area number, e.g. 02")
@@ -207,6 +225,7 @@ def main() -> int:
             own += check_documents(guide, number, args.verbose)
             own += check_examples(guide, args.verbose)
             own += check_script_refs(guide)
+            own += check_script_names(guide)
         if do_labs:
             own += check_labs(guide, args.verbose)
         print(f"  -> {'PASS' if not own else 'FAIL'}")
