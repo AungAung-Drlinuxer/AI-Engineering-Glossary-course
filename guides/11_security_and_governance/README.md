@@ -1,103 +1,123 @@
-# Area 11 — Security & Governance: လေ့လာလမ်းညွှန် (Study Guide)
+# Area 11 — Security & Governance (terms + glossary shortcut)
 
-ဤ folder သည် [`terms/11_security_and_governance.md`](../../terms/11_security_and_governance.md) ရှိ term ၂၀ ခုကို **စာရင်း** အဖြစ်မှ
-**လေ့လာနိုင်သည့် သင်ခန်းစာ** အဖြစ် တိုးချဲ့ထားသည်။ Glossary entry များသည် "ဤ term ဆိုသည်မှာ ဘာလဲ" ကို ဖြေသည်။
-ဤလမ်းညွှန်သည် "ဤ term များကို မည်သည့် အစဉ်ဖြင့် ဆက်စပ်မည်၊ trust boundary တစ်ခုကို ဘယ်နေရာတွင် ဆွဲမည်၊
-control တစ်ခုသည် ဘယ်လောက် လျော့ပေးသည်၊ မှတ်တမ်း တစ်ခုသည် ဘယ်လောက် ကုန်ကျသည်" ကို ဖြေသည်။
+<!-- guide-kind: terms-only -->
 
-## ဤလမ်းညွှန် ထပ်တိုးပေးသည့် အချက်
+ဤဖိုင်သည် area 11 ၏ term ၂၀ ခုကို **အဓိပ္ပာယ် အတိုချုံး (shortcut)** ဖြင့် ဖတ်ရန် ဖြစ်သည်။
+term တိုင်းတွင် English အမည်၊ မြန်မာ အမည်နှင့် အဓိပ္ပာယ် ၁–၃ ကြောင်း သာ ပါသည်။
+term ၂၀ ခုကို အဆင့် ၅ ခုအဖြစ် စီထားသည် — ဘာကို ကာကွယ်သည်၊ မည်သူက ဘာလုပ်နိုင်သည်၊
+data ကိုယ်တိုင် ကာကွယ်ခြင်း၊ သက်သေပြခြင်း၊ တိုက်ခိုက်မှု စမ်းသပ်ခြင်း ဖြစ်သည်။
 
-Glossary သည် term တိုင်းကို သီးခြားစီ ရှင်းပြသည်။ လုံခြုံရေးနှင့် အုပ်ချုပ်မှု တွင် term တိုင်း သီးခြားစီ
-မလုပ်ဆောင်ပါ — ၎င်းတို့သည် **စနစ် တစ်ခုတည်း၏ ကာကွယ်မှု အလွှာများ** ဖြစ်သည်။ ဤလမ်းညွှန်သည် ထို ဆက်စပ်မှုကို
-သုံးလမ်းဖြင့် ဖော်ပြသည်။
+## ၁။ ကာကွယ်ရမည့် အရာနှင့် ရန်သူ
 
-- **အစဉ် တည်ဆောက်ခြင်း** — term ၂၀ ခုကို အဆင့် ၅ ဆင့်အဖြစ် စီထားသည်။ မည်သည့်အရာကို ကာကွယ်သည်၊ မည်သူကို
-  ဆန့်ကျင်သည် (Threat Model၊ AI Risk Assessment၊ Trust Boundary၊ Data Classification) မှ စ၍ မည်သူက ဘာလုပ်နိုင်သည်
-  (Zero Trust၊ Separation of Duties၊ Defense in Depth၊ Data Exfiltration)၊ data ကိုယ်တိုင် ကာကွယ်ခြင်း
-  (Data Minimization၊ Purpose Limitation၊ Data Lineage၊ Datasheet for Datasets)၊ ဖြစ်ပွားခဲ့သည့် အရာ သက်သေပြခြင်း
-  (Audit Log၊ Content Provenance၊ Provenance Attestation၊ Software Bill of Materials (SBOM))၊ နောက်ဆုံးတွင်
-  စမ်းသပ်ခြင်းနှင့် အုပ်ချုပ်မှု (Indirect Prompt Injection၊ Jailbreak၊ Membership Inference၊ Red Teaming) အထိ တည်ဆောက်သည်။
-- **ပုံဖြင့် မြင်ခြင်း** — Mermaid ပုံ ၇ ခုဖြင့် LLM application တစ်ခု၏ trust boundary၊ agent tool များ၏ least privilege၊
-  key နှင့် secret ကိုင်တွယ်သည့် လမ်းကြောင်း၊ prompt အတွင်း sensitive data နှင့် redaction လမ်းကြောင်း၊
-  request မှ audit record အထိ သက်သေ လမ်းကြောင်း၊ human approval gate ပါသည့် policy ဆုံးဖြတ်ချက် လမ်းကြောင်း၊
-  vulnerability နှင့် exfiltration လမ်းကြောင်းတို့ကို ပြသည်။
-- **ကိန်းဂဏန်းဖြင့် ချိန်ခြင်း** — risk score၊ expected annual loss၊ control ၏ ကုန်ကျစရိတ်နှင့် သက်သာမှု၊
-  key rotation window နှင့် exposure time၊ audit log ပမာဏနှင့် retention ကုန်ကျစရိတ်၊ over-permissioned tool တစ်ခု၏
-  blast radius တို့ကို Python (standard library သာ) ဖြင့် တွက်ပြထားသည်။
+### Threat Model
+**မြန်မာ:** အန္တရာယ် ပုံစံ ရေးဆွဲခြင်း
+ကာကွယ်ရမည့် asset၊ trust boundary၊ ဖြစ်နိုင်သည့် ရန်သူနှင့် တိုက်ခိုက်သည့် လမ်းကြောင်းများကို မှတ်တမ်းတင်ထားသည့် ဖော်ပြချက် ဖြစ်သည်။ control တစ်ခုကို မည်သည့်အရာကို ကာကွယ်သည်၊ မည်သူကို ဆန့်ကျင်သည် ကို မဖော်ပြဘဲ အကဲဖြတ်နိုင်မည် မဟုတ်ပါ။
+ဆက်စပ် — Least Privilege, Prompt Injection, Sandbox, Red Teaming
 
-ဤလမ်းညွှန်သည် deployment အတွက် မဖြစ်မနေ လိုအပ်သည့် **policy** များကို ဖော်ထုတ်ပေးသည် — မည်သည့် data ကို
-မည်သည့် class ဟု သတ်မှတ်သည်၊ မည်သည့် tool သည် မည်သည့် destination သို့ ရေးနိုင်သည်၊ မည်သည့် လုပ်ဆောင်ချက်အတွက်
-လူ၏ approval လိုသည်၊ မည်သည့် ဖြစ်ရပ်ကို audit log တွင် မှတ်တမ်းတင်သည်၊ မည်သည့် အချိန်တွင် key ကို rotate လုပ်သည် ဖြစ်သည်။
+### AI Risk Assessment
+**မြန်မာ:** AI အန္တရာယ် အကဲဖြတ်ခြင်း
+AI စနစ်တစ်ခုသည် လူ၊ အဖွဲ့အစည်းနှင့် ပတ်ဝန်းကျင်အပေါ် မည်သို့ သက်ရောက်နိုင်သည်ကို ခွဲခြမ်းစိတ်ဖြာထားသည့် မှတ်တမ်း ဖြစ်သည်။ context၊ hazard၊ ဖြစ်နိုင်ခြေ၊ သက်ရောက်မှု၊ control၊ residual risk နှင့် စောင့်ကြည့်ရန် တာဝန်ရှိသူများ ပါဝင်သည်။
+ဆက်စပ် — Threat Model, Guardrails, Human-in-the-Loop (HITL), Data Classification
 
-## အခြေခံ အချက်
+### Trust Boundary
+**မြန်မာ:** ယုံကြည်မှု နယ်နိမိတ်
+ယုံကြည်မှု ယူဆချက် မတူညီသည့် component များ သို့မဟုတ် လုပ်ဆောင်သူများအကြား data၊ ညွှန်ကြားချက်၊ identity သို့မဟုတ် အာဏာ ဖြတ်ကူးသည့် မျက်နှာပြင် ဖြစ်သည်။ ထို ဖြတ်ကူးသည့် နေရာတိုင်းတွင် authenticate၊ validate နှင့် permission ကန့်သတ်မှု လိုသည်။
+ဆက်စပ် — Threat Model, Least Privilege, Sandbox, Indirect Prompt Injection
 
-| အချက် | တန်ဖိုး |
-|---|---|
-| Term | ၂၀ ခု (area 11 — Security & governance) |
-| အဆင့် | ၅ ဆင့် |
-| ဖိုင် | document ဖိုင် ၆ ခု + lab ၃ ခု + ကိန်းဂဏန်း script ၃ ခု |
-| လိုအပ်သည့် အရာ | Python 3.11+၊ standard library သာ — network၊ GPU၊ API key မလိုပါ |
-| Run တိုင်း | deterministic (ရလဒ် တူညီသည်)၊ offline |
-| စစ်ဆေးခြင်း | `python3 verify_guide.py --guide 11 --documents --verbose` |
+### Data Classification
+**မြန်မာ:** data အဆင့်တန်း သတ်မှတ်ခြင်း
+data ကို sensitivity သို့မဟုတ် သက်ရောက်မှု အဆင့်တန်းများအဖြစ် သတ်မှတ်ခြင်း ဖြစ်သည်။ ထိုသို့ သတ်မှတ်မှသာ ကိုင်တွယ်ခြင်း၊ access၊ ထိန်းသိမ်းခြင်းနှင့် မျှဝေခြင်း စည်းမျဉ်းများသည် ဖော်ထုတ်ခံရမှု၏ အကျိုးဆက်အတိုင်း လိုက်နာစေသည်။
+ဆက်စပ် — Data Minimization, Trust Boundary, Least Privilege, Audit Log
 
-## လေ့လာသည့် အစဉ် (၅ ကြိမ်)
+## ၂။ မည်သူက ဘာလုပ်နိုင်သည်
 
-| ကြိမ် | ဖတ်ရမည့် ဖိုင် | လက်တွေ့ run ရမည့် lab |
-|---|---|---|
-| ၁ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၁–၂ | `python3 labs/lab_blast_radius.py --sweep` |
-| ၂ | [`02_visual_explanations.md`](02_visual_explanations.md) ပုံ ၁–၃ | `python3 labs/lab_redaction_path.py --pattern-count 40 --false-positive-rate 0.005` |
-| ၃ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၃ | `python3 labs/lab_audit_volume.py --retention-days 90 --sampling-rate 0.25` |
-| ၄ | [`01_learning_sequence.md`](01_learning_sequence.md) အဆင့် ၄–၅ | `python3 labs/lab_blast_radius.py --tools 20 --over-permission 0.3 --likelihood 0.4` |
-| ၅ | [`04_exercises.md`](04_exercises.md) | `python3 labs/lab_audit_volume.py --bytes-per-record 2400 --retention-days 730` + တွက်ချက်ရသည့် လေ့ကျင့်ခန်း ၆ ခု |
+### Zero Trust
+**မြန်မာ:** zero trust (ယုံကြည်မှု သုည ပုံစံ)
+network တည်နေရာ သို့မဟုတ် asset ပိုင်ဆိုင်မှုမှ သွယ်ဝိုက် ယုံကြည်မှု မပေးသည့် လုံခြုံရေး model ဖြစ်သည်။ access တောင်းခံမှု တိုင်းကို identity၊ device၊ resource၊ policy နှင့် လက်ရှိ context အလိုက် အကဲဖြတ်သည်။
+ဆက်စပ် — Least Privilege, Trust Boundary, Approval Gate, Audit Log
 
-Lab အားလုံးကို တစ်ကြိမ်တည်း စစ်ဆေးလိုပါက `python3 labs/run_labs.py` ကို run ရမည်။
+### Separation of Duties
+**မြန်မာ:** တာဝန် ခွဲခြားခြင်း
+ပဋိပက္ခ ဖြစ်သည့် တာဝန်များ သို့မဟုတ် အာဏာများကို အမှီအခိုကင်းသည့် role များအကြား ခွဲဝေခြင်း ဖြစ်သည်။ ထို့ကြောင့် principal တစ်ခုတည်းသည် အန္တရာယ်မြင့်သည့် လုပ်ဆောင်ချက်ကို အဆိုပြုခြင်း၊ အတည်ပြုခြင်းနှင့် ဆောင်ရွက်ခြင်း အားလုံး မလုပ်နိုင်ပါ။
+ဆက်စပ် — Approval Gate, Reviewer Agent, Audit Log, Least Privilege
 
-## ဖိုင်များ
+### Defense in Depth
+**မြန်မာ:** အလွှာလိုက် ကာကွယ်မှု
+system boundary အများအပြားတွင် တစ်ခုနှင့်တစ်ခု အမှီအခိုကင်းသည့် preventive၊ detective နှင့် corrective control များကို အသုံးပြုခြင်း ဖြစ်သည်။ ထို့ကြောင့် control တစ်ခု ပျက်ကွက်လျှင် ရလဒ်ကို ၎င်းတစ်ခုတည်းက မဆုံးဖြတ်နိုင်ပါ။
+ဆက်စပ် — Guardrails, Sandbox, Least Privilege, Trust Boundary
 
-| ဖိုင် | ဘာကို ပေးသည် |
-|---|---|
-| [`01_learning_sequence.md`](01_learning_sequence.md) | term ၂၀ ခုကို အဆင့် ၅ ဆင့်အဖြစ် အစဉ်လိုက် စီထားသည် — ကြိုတင် သိရမည့် term၊ ဖွင့်ပေးသည့် အချက်၊ အဆင့်တိုင်း၏ စစ်ဆေးမေးခွန်း၊ prerequisite graph |
-| [`02_visual_explanations.md`](02_visual_explanations.md) | Mermaid ပုံ ၇ ခု — trust boundary၊ tool least privilege၊ key နှင့် secret လမ်းကြောင်း၊ prompt အတွင်း sensitive data နှင့် redaction၊ audit trail၊ policy ဆုံးဖြတ်ချက်နှင့် approval gate၊ exfiltration လမ်းကြောင်း |
-| [`03_theory_to_infrastructure.md`](03_theory_to_infrastructure.md) | term တိုင်း runtime၊ ကုန်ကျစရိတ်နှင့် operation အပေါ် သက်ရောက်မှု + ကိန်းဂဏန်း ဥပမာများ (`labs/` နှင့် `scripts/` ကို အသုံးပြုသည်) |
-| [`04_exercises.md`](04_exercises.md) | လုပ်ပြထားသည့် ဥပမာ ၄ ခု၊ တွက်ချက်ရသည့် လေ့ကျင့်ခန်း ၆ ခု၊ ပြဿနာ ရှာဖွေခြင်း ၃ ခု၊ ဆုံးဖြတ်ချက် ၂ ခု၊ အဖြေများ အပြည့်အစုံ |
-| [`labs/`](labs/) | interactive lab ၃ ခု + `run_labs.py` (usage၊ flag နှင့် ရလဒ်များ — [`labs/README.md`](labs/README.md)) |
-| [`scripts/`](scripts/) | `03_theory_to_infrastructure.md` ၏ ကိန်းဂဏန်း ဥပမာများကို ထုတ်ပေးသည့် script ၃ ခု — `ex_a_guardrail_cost.py`၊ `ex_b_audit_volume.py`၊ `ex_c_control_roi.py` |
+### Data Exfiltration
+**မြန်မာ:** data ခွင့်ပြုချက်မရှိဘဲ ယူဆောင်ခြင်း
+ကာကွယ်ထားသည့် data ကို လက်ခံခွင့် မရှိသည့် လူ၊ tool၊ service သို့မဟုတ် သိုလှောင်ရာ နေရာသို့ ခွင့်ပြုချက် မရှိဘဲ လွှဲပြောင်းခြင်း ဖြစ်သည်။ မူလ data store မပျက်စီးဘဲ ရှိနေသည့် အချိန်တွင်ပင် agent ၏ စာသား၊ tool argument၊ URL သို့မဟုတ် log မှတစ်ဆင့် secret များ ဖော်ထုတ်ခံရနိုင်သည်။
+ဆက်စပ် — Trust Boundary, Least Privilege, Indirect Prompt Injection, Audit Log
 
-`03_theory_to_infrastructure.md`၊ `labs/README.md` နှင့် `scripts/` တို့ကို ဤလမ်းညွှန်နှင့် တွဲဖက်၍
-အလုပ်လုပ်သည့် ဖိုင်များအဖြစ် ရေးသားထားသည်။ ထို ဖိုင်များ၏ lab အမည်၊ flag နှင့် script အမည်များ၏
-အပြည့်အစုံ စာရင်းကို [`labs/README.md`](labs/README.md) နှင့် [`scripts/`](scripts/) တွင် ဖတ်ရမည်။
+## ၃။ data ကိုယ်တိုင် ကာကွယ်ခြင်း
 
-## Lab များ — ဘာကို ပြောင်း၍ ဘာကို ကြည့်မည်
+### Data Minimization
+**မြန်မာ:** data အနည်းဆုံး အသုံးပြုခြင်း
+သတ်မှတ်ထားသည့် ရည်ရွယ်ချက် တစ်ခုအတွက် လိုအပ်သည့် ပမာဏအတိုင်းသာ စုဆောင်းခြင်း၊ ဆောင်ရွက်ခြင်း၊ ဖော်ထုတ်ခြင်းနှင့် ထိန်းသိမ်းခြင်းကို ကန့်သတ်ခြင်း ဖြစ်သည်။ prompt၊ trace၊ cache သို့မဟုတ် tool call ထဲသို့ ထည့်သည့် မလိုအပ်သည့် field တိုင်းသည် ဖော်ထုတ်ခံရမှုကို တိုးစေသည်။
+ဆက်စပ် — Purpose Limitation, Data Classification, Least Privilege, Context Engineering
 
-Lab တိုင်းသည် **offline နှင့် deterministic** ဖြစ်သည် — parameter ပြောင်း၍ run ပါက အချိန်တိုင်း
-တူညီသည့် ရလဒ် ရသည်၊ ထို့ကြောင့် မိမိ တွက်ချက်မှုနှင့် တိုက်စစ်နိုင်သည်။
+### Purpose Limitation
+**မြန်မာ:** ရည်ရွယ်ချက် ကန့်သတ်မှု
+personal data ကို သတ်မှတ်ပြီး ရှင်းလင်းသည့် ရည်ရွယ်ချက်များအတွက်သာ စုဆောင်းခြင်းနှင့် အသုံးပြုခြင်း ဖြစ်သည်။ workflow တစ်ခုအတွက် လက်ခံနိုင်သည့် data သည် model training၊ evaluation သို့မဟုတ် မသက်ဆိုင်သည့် analytics အတွက် တိတ်ဆိတ်စွာ ပြန်လည် အသုံးပြုသည့်အခါ အန္တရာယ် ဖြစ်လာသည်။
+ဆက်စပ် — Data Minimization, Data Classification, AI Risk Assessment, Audit Log
 
-| Lab (path) | ပြောင်းနိုင်သည့် flag | ကြည့်ရမည့် ရလဒ် |
-|---|---|---|
-| `labs/lab_blast_radius.py` | `--tools`၊ `--data-scopes`၊ `--over-permission`၊ `--likelihood`၊ `--impact`၊ `--sweep` | as-configured နှင့် least-privilege reachable scope (tool-scope pair)၊ scope လျော့မှု၊ risk နှစ်မျိုးနှင့် control မှ ရရှိသည့် risk reduction |
-| `labs/lab_redaction_path.py` | `--requests-per-s`၊ `--check-ms`၊ `--workers`၊ `--pattern-count`၊ `--false-positive-rate`၊ `--base-ms`၊ `--usd-per-false-redaction`၊ `--sweep` | ထည့်လိုက်သည့် p50 နှင့် p95 latency၊ throughput ceiling၊ ceiling လျော့မှု၊ false positive ကြောင့် မှားယွင်းစွာ ပိတ်ဆို့ခံရသည့် request နှင့် ကုန်ကျစရိတ် |
-| `labs/lab_audit_volume.py` | `--requests-per-day`၊ `--bytes-per-record`၊ `--retention-days`၊ `--storage-cost-per-gb-month`၊ `--records-per-request`၊ `--sampling-rate`၊ `--sweep` | records per day၊ volume per day၊ retention သိုလှောင်မှု၊ monthly cost နှင့် sampling ဖြင့် သက်သာသည့် ပမာဏ |
+### Data Lineage
+**မြန်မာ:** data ဆင်းသက်မှု လမ်းကြောင်း
+data artifact တစ်ခုသည် source၊ transformation၊ join၊ filter၊ version နှင့် နောက်ဆက်တွဲ အသုံးပြုမှုများကို ဖြတ်သန်း၍ မည်သို့ ဆင်းသက်လာသည်ကို မှတ်တမ်းတင်ထားခြင်း ဖြစ်သည်။ source တစ်ခုကို ပြင်ဆင်ခြင်း သို့မဟုတ် ရုပ်သိမ်းခြင်း ဖြစ်သည့်အခါ သက်ရောက်နိုင်သည့် dataset၊ embedding၊ evaluation နှင့် model artifact များကို ဖော်ထုတ်ပေးသည်။
+ဆက်စပ် — Data Provenance, Datasheet for Datasets, Audit Log, Content Provenance
 
-တွက်ချက်ရသည့် လေ့ကျင့်ခန်း ၆ ခုနှင့် ဆုံးဖြတ်ချက် ၂ ခု၏ ကိန်းဂဏန်းများကို lab တစ်ခုတည်းအပေါ် မမှီခိုဘဲ
-[`04_exercises.md`](04_exercises.md) အတွင်း Python (standard library သာ) ဖြင့် ပြန်လည် ထုတ်ပေးထားသည်။
+### Datasheet for Datasets
+**မြန်မာ:** dataset အတွက် datasheet
+dataset တစ်ခု၏ ရည်ရွယ်ချက်၊ ဖွဲ့စည်းမှု၊ စုဆောင်းသည့် လုပ်ငန်းစဉ်၊ preprocessing၊ အသုံးပြုမှု၊ ဖြန့်ဖြူးမှုနှင့် သိရှိထားသည့် ကန့်သတ်ချက်များကို ဖွဲ့စည်းထားသည့် အတိုင်း မှတ်တမ်းတင်ခြင်း ဖြစ်သည်။ dataset တစ်ခုသည် ရရှိနိုင်သည် ဆိုသည့် အချက်တစ်ချက်တည်းဖြင့် ဘေးကင်းသည် မဟုတ်ပါ။
+ဆက်စပ် — Data Lineage, Data Provenance, Model Card, Dataset Split
 
-## စစ်ဆေးခြင်း
+## ၄။ ဖြစ်ပွားခဲ့သည့် အရာ သက်သေပြခြင်း
 
-```bash
-python3 verify_guide.py --guide 11 --documents --verbose   # ဖိုင်၊ register၊ term လွှမ်းခြုံမှု၊ ပုံ အရေအတွက်
-python3 verify_guide.py --guide 11 --labs --verbose        # lab ၄ ခု (+ ၃ ကြိမ် စီ) နှင့် run_labs.py
-python3 guides/11_security_and_governance/labs/run_labs.py
-```
+### Audit Log
+**မြန်မာ:** စစ်ဆေးစာရင်း မှတ်တမ်း
+မည်သူ သို့မဟုတ် မည်သည့် အရာက ဆောင်ရွက်ခဲ့သည်၊ မည်သည့်အရာ ပြောင်းလဲခဲ့သည်၊ မည်သည့်အချိန်တွင် ဖြစ်ပွားခဲ့သည်နှင့် ရရှိသည့် status ကို ကြာရှည်ခံ၍ access control ဖြင့် ကာကွယ်ထားသည့် မှတ်တမ်း ဖြစ်သည်။ အကျိုးဆက် ရှိသည့် agent လုပ်ဆောင်ချက်များအတွက် performance debug လုပ်ခြင်းထက် ကျော်လွန်သည့် အထောက်အထား လိုသည်။
+ဆက်စပ် — Trace, Observability, Approval Gate, Provenance Attestation
 
-`--documents` စစ်ဆေးချက်သည် [`03_theory_to_infrastructure.md`](03_theory_to_infrastructure.md) နှင့်
-[`labs/`](labs/) ကိုပါ လွှမ်းခြုံသည်၊ ထို့ကြောင့် run မလုပ်မီ ထို ဖိုင်များ တည်ရှိရမည်။
-[`04_exercises.md`](04_exercises.md) အတွင်း ကူးထားသည့် Python run တိုင်းကို ပြန် run ပါက
-တူညီသည့် output ကို ရရှိမည်။
+### Content Provenance
+**မြန်မာ:** အကြောင်းအရာ၏ မူလဇာစ်မြစ်
+media တစ်ခု သို့မဟုတ် digital content တစ်ခု၏ မူလရင်းမြစ်နှင့် တည်းဖြတ်မှု သမိုင်းကြောင်းအပေါ် စစ်ဆေး အတည်ပြုနိုင်သည့် အချက်အလက် ဖြစ်သည်။ မည်သူ ကြေညာခဲ့သည် နှင့် မှတ်တမ်းကို ပြောင်းလဲခဲ့မှု ရှိမရှိ ကို အတည်ပြုနိုင်သည်၊ သို့သော် content မှန်ကန်သည် ဆိုသည်ကို သက်သေမပြနိုင်ပါ။
+ဆက်စပ် — Data Provenance, Provenance Attestation, Audit Log, Grounding
 
-## မှီခိုသည့် အခြား ဖိုင်
+### Provenance Attestation
+**မြန်မာ:** မူလဇာစ်မြစ် အတည်ပြုချက်
+artifact တစ်ခုကို မည်သို့၊ မည်သည့်နေရာတွင်၊ မည်သည့်အချိန်တွင်၊ မည်သည့် input များမှ ထုတ်လုပ်ခဲ့သည်ဆိုသည့် ကြေညာချက်များနှင့် ချိတ်ဆက်ပေးသည့်၊ စစ်မှန်ကြောင်း အတည်ပြုထားသည့် machine-readable metadata ဖြစ်သည်။ လက်မှတ် မထိုးထားသည့် build note ကို ယုံကြည်ခြင်းအစား supply-chain ကြေညာချက်များကို စစ်ဆေးနိုင်စေသည်။
+ဆက်စပ် — Data Provenance, Reproducible Build, Audit Log, Verification Gate
 
-- Term တိုင်း၏ အပြည့်အစုံ အဓိပ္ပာယ် (အင်္ဂလိပ် + မြန်မာ) — [`../../terms/11_security_and_governance.md`](../../terms/11_security_and_governance.md)
-- အခြေခံ အချက်အလက် (JSON slice) — [`../../glossary/by_area/11_security_and_governance.json`](../../glossary/by_area/11_security_and_governance.json)
-- A–Z index — [`../../terms/00_index.md`](../../terms/00_index.md)
-- မော်ဒယ်၊ inference နှင့် serving အခြေခံ — [`../02_models_and_inference/README.md`](../02_models_and_inference/README.md)
-- agent loop၊ tool contract နှင့် approval gate အခြေခံ — [`../06_agents_and_tools/README.md`](../06_agents_and_tools/README.md)
+### Software Bill of Materials (SBOM)
+**မြန်မာ:** software အစိတ်အပိုင်း စာရင်း
+product တစ်ခု သို့မဟုတ် artifact တစ်ခုနှင့် သက်ဆိုင်သည့် software component များနှင့် ၎င်းတို့၏ ဆက်စပ်မှုများကို ဖွဲ့စည်းထားသည့် စာရင်း ဖြစ်သည်။ version၊ supplier၊ license နှင့် identifier များ ပါဝင်လေ့ ရှိသည်။ vulnerability တစ်ခု ပေါ်ပေါက်သည့်အခါ သက်ရောက်သည့် dependency များကို အကဲဖြတ်ရန် ထို စာရင်း လိုသည်။
+ဆက်စပ် — Provenance Attestation, Reproducible Build, Data Provenance, Audit Log
+
+## ၅။ တိုက်ခိုက်မှု စမ်းသပ်ခြင်း
+
+### Indirect Prompt Injection
+**မြန်မာ:** သွယ်ဝိုက် prompt injection
+သုံးစွဲသူ၏ ညွှန်ကြားချက်မှတစ်ဆင့် တိုက်ရိုက် မဟုတ်ဘဲ စနစ်က ရယူသည် သို့မဟုတ် လေ့လာသည် ဖြစ်သည့် အကြောင်းအရာ (webpage၊ document၊ email၊ ရုပ်ပုံ အတွင်း စာသား သို့မဟုတ် tool ရလဒ်) မှတစ်ဆင့် ပို့ဆောင်သည့် prompt-injection တိုက်ခိုက်မှု ဖြစ်သည်။ သယ်ဆောင်သည့် လမ်းကြောင်း ကွာခြားရုံသာ ဖြစ်သည်၊ ပိုအားနည်းသည့် တိုက်ခိုက်မှု မဟုတ်ပါ။
+ဆက်စပ် — Prompt Injection, Instruction Hierarchy, Trust Boundary, Data Exfiltration
+
+### Jailbreak
+**မြန်မာ:** jailbreak (မော်ဒယ်၏ ကန့်သတ်ချက် ကျော်လွှားခြင်း)
+မော်ဒယ်၏ training သို့မဟုတ် application control များ ကာကွယ်ရန် ရည်ရွယ်ထားသည့် အပြုအမူကို ထုတ်လုပ်စေရန် ရည်ရွယ်သည့် ရန်လိုသည့် input သို့မဟုတ် အပြန်အလှန် ဆက်သွယ်သည့် နည်းဗျူဟာ ဖြစ်သည်။ အောင်မြင်သည့် jailbreak များသည် ကြေညာထားသည့် policy နှင့် တကယ့် အပြုအမူအကြား ကွာဟချက်ကို ဖော်ထုတ်ပေးသည်။
+ဆက်စပ် — Prompt Injection, Red Teaming, Guardrails, Eval Set
+
+### Membership Inference
+**မြန်မာ:** အဖွဲ့ဝင်ဖြစ်မှု ခန့်မှန်းသည့် တိုက်ခိုက်မှု
+မော်ဒယ်၏ output များ သို့မဟုတ် အခြား ရရှိနိုင်သည့် အချက်ပြမှုများကို လေ့လာ၍ record တစ်ခု သည် training data ထဲတွင် ပါဝင်ခဲ့သည် မပါဝင်ခဲ့သည် ကို ခန့်မှန်းသည့် တိုက်ခိုက်မှု ဖြစ်သည်။ record ကို စာလုံးတစ်လုံးမှ မပြန်ထုတ်သည့် အခြေအနေတွင်ပင် ခွဲခြားနိုင်သည့် အပြုအမူက sensitive dataset တွင် ပါဝင်ခဲ့မှုကို ဖော်ထုတ်နိုင်သည်။
+ဆက်စပ် — Data Leakage, Data Minimization, Eval Set, Data Classification
+
+### Red Teaming
+**မြန်မာ:** red teaming (ရန်လို စမ်းသပ်ခြင်း)
+ခွင့်ပြုချက် ရရှိသည့် စမ်းသပ်သူများသည် မှတ်တမ်းတင်ထားသည့် ရည်မှန်းချက်၊ အန္တရာယ် ယူဆချက်၊ အခြေအနေနှင့် အထောက်အထားများကို အသုံးပြု၍ ပျက်ကွက်မှုများကို ရှာဖွေသည့် ဖွဲ့စည်းထားသည့် ရန်လို စမ်းသပ်ခြင်း လုပ်ငန်းစဉ် ဖြစ်သည်။ အတည်ပြုပြီးသည့် ပျက်ကွက်မှုများကို regression eval များအဖြစ် ပြောင်းလဲသိမ်းဆည်းသည်။
+ဆက်စပ် — Threat Model, Guardrails, Prompt Injection, Eval Set
+
+## မှီခိုသည့် ဖိုင်
+
+- term တိုင်း၏ အပြည့်အစုံ အဓိပ္ပာယ် (အင်္ဂလိပ် source အပါ) — [`../../terms/11_security_and_governance.md`](../../terms/11_security_and_governance.md)
+- Source glossary — [AI Engineering from Scratch — Glossary](https://aiengineeringfromscratch.com/glossary) (MIT, `rohitg00/ai-engineering-from-scratch`)

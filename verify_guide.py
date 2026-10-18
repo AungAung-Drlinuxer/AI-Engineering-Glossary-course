@@ -192,6 +192,41 @@ def check_script_names(guide: Path) -> list[str]:
     return problems
 
 
+def terms_only(guide: Path) -> bool:
+    """A guide that declares itself terms-only carries a shortcut glossary and no labs.
+
+    The full gate (6 documents, 4 diagrams, a lab suite, pasted-run reproduction) is
+    for teaching guides. A guide whose README.md carries the marker below is instead
+    held to the terms-only gate in check_terms_only().
+    """
+    readme = guide / "README.md"
+    if not readme.is_file():
+        return False
+    return "guide-kind: terms-only" in readme.read_text(encoding="utf-8")
+
+
+def check_terms_only(guide: Path, number: str, verbose: bool) -> list[str]:
+    """Reduced gate for a terms-only guide: one document, in register, covering every term."""
+    problems: list[str] = []
+    text = (guide / "README.md").read_text(encoding="utf-8")
+    if len(text) < MIN_CHARS:
+        problems.append(f"README.md: only {len(text)} chars — too thin to teach anything")
+    for marker in BANNED:
+        if marker in text:
+            lines = [i + 1 for i, line in enumerate(text.splitlines()) if marker in line]
+            problems.append(f"README.md: colloquial marker {marker} on line(s) {lines[:3]}")
+    bad = foreign(text)
+    if bad:
+        problems.append(f"README.md: foreign glyphs {bad}")
+    terms = slice_terms(number)
+    missing = [t for t in terms if t not in text]
+    if missing:
+        problems.append(f"README.md: {len(missing)} of {len(terms)} term(s) absent: {missing[:4]}")
+    elif verbose:
+        print(f"    README.md: terms-only guide, all {len(terms)} terms present, {len(text)} chars")
+    return problems
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="Verify every study guide under guides/.")
     ap.add_argument("--guide", default=None, help="area number, e.g. 02")
@@ -221,6 +256,11 @@ def main() -> int:
         total_terms += len(slice_terms(number))
         print(f"{guide.name}")
         own: list[str] = []
+        if terms_only(guide):
+            own += check_terms_only(guide, number, args.verbose)
+            print(f"  -> {'PASS' if not own else 'FAIL'}")
+            problems.extend(f"{guide.name}: {p}" for p in own)
+            continue
         if do_docs:
             own += check_documents(guide, number, args.verbose)
             own += check_examples(guide, args.verbose)
