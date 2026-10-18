@@ -17,7 +17,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ **ဆိုလိ�
 - **မကြာခဏ ရောထွေးမှု:** autoscaling သည် စွမ်းရည်ကို ထပ်တိုး သို့မဟုတ် လျှော့ချသည်။ overload ဖြစ်နေသည့် dependency ကို ပိုမြန်စေသည် မဟုတ်သလို၊ လိုအပ်သည့် hardware ကို အချိန်မီ ရရှိမည်ဟုလည်း အာမခံသည် မဟုတ်ပါ။
 - **လက်တွေ့:** အသုံးဝင်သည့် အလုပ် (useful work) နှင့် ချိတ်ဆက်ထားသည့် demand signal မှ scale လုပ်ရမည်။ အနည်းဆုံး warm capacity ကို သတ်မှတ်ရမည်၊ scale-down အပြောင်းအလဲ (churn) ကို ကန့်သတ်ရမည်၊ replica အသစ်များသည် traffic မရရှိမီ readiness check များ အောင်မြင်ကြောင်း စစ်ဆေးရမည်။
 - **ဆက်စပ် term များ:** Model Serving, Saturation, Readiness Probe, Backpressure
-- **Learn it:** [GPU Autoscaling on Kubernetes](../phases/17-infrastructure-and-production/03-gpu-autoscaling-kubernetes/)
+- **Learn it:** [GPU Autoscaling on Kubernetes](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/03-gpu-autoscaling-kubernetes/)
 - **English (source):** A control loop that changes the number or capacity of serving workers from observed demand, resource use, or application metrics within configured bounds. AI workloads can change faster than manual provisioning, but scaling decisions must account for model-load time, accelerator availability, queueing, and request cost.
 
 ### Chunked Prefill
@@ -29,7 +29,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ **ဆိုလိ�
 - **မကြာခဏ ရောထွေးမှု:** chunked prefill သည် prompt တွက်ချက်မှုကို schedule လုပ်သည့် ပုံစံကို ပြောင်းလဲသည်။ အသုံးပြုသူ၏ context ကို အဓိပ္ပာယ် သီးသန့်သည့် chunk များအဖြစ် ခွဲသည် မဟုတ်သလို၊ model ၏ context window ကိုလည်း ပြောင်းလဲသည် မဟုတ်ပါ။
 - **လက်တွေ့:** တိုင်းတာထားသည့် workload များမှ chunk policy ကို ရွေးချယ်ရမည်၊ scheduling overhead ကို ထည့်သွင်း စဉ်းစားရမည်၊ ရောနှောသည့် prompt အရှည်များအောက်တွင် prefill ပြီးစီးမှု၊ decode latency နှင့် goodput ကို နှိုင်းယှဉ်ရမည်။
 - **ဆက်စပ် term များ:** Prefill, Decode Phase, Dynamic Batching, Tail Latency
-- **Learn it:** [vLLM Serving Internals](../phases/17-infrastructure-and-production/04-vllm-serving-internals/)
+- **Learn it:** [vLLM Serving Internals](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/04-vllm-serving-internals/)
 - **English (source):** A serving technique that divides a long prompt's prefill work into smaller schedulable pieces so prompt processing can interleave with decode work from other requests. One long prompt can otherwise occupy the accelerator and delay active generations, producing poor tail latency even when total throughput looks healthy.
 
 ### Continuous Batching
@@ -52,7 +52,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ **ဆိုလိ�
 - **မကြာခဏ ရောထွေးမှု:** decode phase သည် encoder-decoder model ၏ decoder အစိတ်အပိုင်း မဟုတ်ပါ။ runtime ရှိ generation အဆင့်ကို အမည်ပေးခြင်း ဖြစ်သည်။
 - **လက်တွေ့:** inter-token latency နှင့် output throughput ကို သီးခြား တိုင်းတာရမည်၊ KV-cache နေရာ ယူထားမှု (occupancy) ကို ထည့်သွင်းရမည်၊ တက်ကြွသည့် decode များသည် prefill အသစ်များနှင့် စွမ်းရည် မျှဝေသည့် ရောနှော workload များကို စမ်းသပ်ရမည်။
 - **ဆက်စပ် term များ:** Prefill, Autoregressive, KV Cache, Time per Output Token (TPOT)
-- **Learn it:** [Disaggregated Prefill and Decode](../phases/17-infrastructure-and-production/17-disaggregated-prefill-decode/)
+- **Learn it:** [Disaggregated Prefill and Decode](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/17-disaggregated-prefill-decode/)
 - **English (source):** The iterative stage of autoregressive inference that generates new tokens one step at a time after the input prefix has been processed. Decode work has different compute, memory, and scheduling behavior from prefill, so one aggregate latency number can hide the actual serving bottleneck.
 
 ### Disaggregated Serving
@@ -64,7 +64,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ **ဆိုလိ�
 - **မကြာခဏ ရောထွေးမှု:** disaggregation သည် runtime အဆင့်များကို ခွဲထုတ်သည်။ အဆင့်တစ်ခုအတွင်း model တစ်ခုကို tensor သို့မဟုတ် pipeline-parallel shard များအဖြစ် ခွဲသည် မဟုတ်ပါ။
 - **လက်တွေ့:** state လွှဲပြောင်းမှု ကုန်ကျစရိတ်ကို တိုင်းတာရမည်၊ request များကို ကိုက်ညီသည့် model version များမှတစ်ဆင့် route လုပ်ရမည်၊ pool တစ်ခုချင်းကို ၎င်း၏ demand signal မှ scale လုပ်ရမည်၊ အဆင့်များအကြား failure recovery ကို စမ်းသပ်ရမည်။
 - **ဆက်စပ် term များ:** Prefill, Decode Phase, Model Serving, Goodput
-- **Learn it:** [Disaggregated Prefill and Decode](../phases/17-infrastructure-and-production/17-disaggregated-prefill-decode/)
+- **Learn it:** [Disaggregated Prefill and Decode](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/17-disaggregated-prefill-decode/)
 - **English (source):** A serving architecture that runs prefill and decode work in separately provisioned worker pools and transfers the required attention state between them. Prefill and decode stress hardware differently, so independent pools can be sized and scheduled for their own bottlenecks instead of competing in one queue.
 
 ### Dynamic Batching
@@ -76,7 +76,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ **ဆိုလိ�
 - **မကြာခဏ ရောထွေးမှု:** dynamic batching သည် queue တွင် ရှိသည့် အလုပ်များမှ batch များကို စုစည်းသည်။ continuous batching သည် autoregressive generation လည်ပတ်နေစဉ်အတွင်း batch ၏ အဖွဲ့ဝင်များကို ပြောင်းလဲသည်။
 - **လက်တွေ့:** တိုင်းတာထားသည့် latency ပန်းတိုင်များမှ queue-delay နှင့် batch ကန့်သတ်ချက်များကို သတ်မှတ်ရမည်၊ မကိုက်ညီသည့် request shape များကို ခွဲထားရမည်၊ လက်တွေ့ ရောက်ရှိသည့် နှုန်းများ (arrival rate) တွင် throughput နှင့် tail latency ကို နှိုင်းယှဉ်ရမည်။
 - **ဆက်စပ် term များ:** Admission Control, Continuous Batching, Saturation, Tail Latency
-- **Learn it:** [vLLM Serving Internals](../phases/17-infrastructure-and-production/04-vllm-serving-internals/)
+- **Learn it:** [vLLM Serving Internals](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/04-vllm-serving-internals/)
 - **English (source):** A runtime policy that forms inference batches from queued requests according to compatible shapes, maximum size, priority, and allowed queue delay. Grouping requests can improve hardware utilization, but waiting for a batch can make latency worse when traffic is sparse or requests differ sharply.
 
 ### Expert Parallelism
@@ -88,7 +88,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ **ဆိုလိ�
 - **မကြာခဏ ရောထွေးမှု:** expert parallelism သည် router က ရွေးချယ်သည့် expert များကို ခွဲဝေသည်။ tensor parallelism သည် layer များအတွင်းရှိ tensor operation များကို ခွဲဝေသည်။
 - **လက်တွေ့:** expert အလိုက် token ဖြန့်ဝေမှုကို တိုင်းတာရမည်၊ communication bandwidth ကို စီစဉ်ပေးရမည်၊ overflow ကို တမင်တကာ ကန့်သတ်ရမည် သို့မဟုတ် route လုပ်ရမည်၊ traffic သည် expert လိုအပ်ချက်ကို မညီမျှစွာ ဖြစ်ပေါ်စေသည့်အခါ အရည်အသွေးကို စမ်းသပ်ရမည်။
 - **ဆက်စပ် term များ:** MoE (Mixture of Experts), Tensor Parallelism, Pipeline Parallelism, Model Serving
-- **Learn it:** [Mixture of Experts](../phases/07-transformers-deep-dive/11-mixture-of-experts/)
+- **Learn it:** [Mixture of Experts](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/11-mixture-of-experts/)
 - **English (source):** Distributing mixture-of-experts subnetworks across devices and routing each token's activations to the devices that host its selected experts. Sparse experts increase model capacity without executing every expert for every token, but routing introduces communication, load-balance, and placement constraints.
 
 ### FlashAttention
@@ -100,7 +100,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ **ဆိုလိ�
 - **မကြာခဏ ရောထွေးမှု:** FlashAttention သည် attention တွက်ချက်သည့် နည်းလမ်းကို ပြောင်းလဲသည်။ ၎င်း ရည်မှန်းသည့် သင်္ချာ attention ရလဒ်ကို မပြောင်းလဲပါ။ KV caching နှင့် quantization တို့နှင့် သီးခြား ဖြစ်သည်။
 - **လက်တွေ့:** model ၏ shape၊ mask၊ dtype နှင့် hardware တို့ ထောက်ပံ့သည့် kernel ကို အသုံးပြုရမည်၊ ဂဏန်း ခံနိုင်မှု အတိုင်းအတာ (numerical tolerance) ကို စစ်ဆေးရမည်၊ paper ရလဒ်ကို ပုံသေ multiplier အဖြစ် ကိုးကားမည့်အစား end-to-end latency ကို benchmark လုပ်ရမည်။
 - **ဆက်စပ် term များ:** Attention, Self-Attention, KV Cache, Mixed Precision
-- **Learn it:** [KV Cache and Flash Attention](../phases/07-transformers-deep-dive/12-kv-cache-flash-attention/)
+- **Learn it:** [KV Cache and Flash Attention](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/12-kv-cache-flash-attention/)
 - **English (source):** An exact attention algorithm that tiles the computation to reduce transfers between accelerator memory levels while avoiding materialization of the full attention matrix in high-bandwidth memory. Attention can be limited by memory movement rather than arithmetic, especially for long sequences, so an IO-aware kernel can improve usable speed and memory efficiency.
 
 ### Goodput
@@ -112,7 +112,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ **ဆိုလိ�
 - **မကြာခဏ ရောထွေးမှု:** goodput သည် ပြီးစီးသည့် throughput အားလုံး မဟုတ်သလို၊ model တစ်ခု၏ အားလုံးအတွက် တူညီသည့် ဂုဏ်သတ္တိလည်း မဟုတ်ပါ။ ၎င်းသည် workload နှင့် အောင်မြင်မှု သတ်မှတ်ချက်များအပေါ် မူတည်သည်။
 - **လက်တွေ့:** request ဖြန့်ဝေမှု ပုံစံနှင့် latency သတ်မှတ်ချက်များကို ကြေညာရမည်၊ ကိုက်ညီသည့် ပြီးစီးမှုများကိုသာ ရေတွက်ရမည်၊ စုစုပေါင်း နှုန်းဘေးတွင် percentile များကို ဖော်ပြရမည်၊ မတူညီသည့် ပန်းတိုင်များအောက်ရှိ စနစ်များကို နှိုင်းယှဉ်ခြင်းကို ရှောင်ရမည်။
 - **ဆက်စပ် term များ:** Service Level Objective (SLO), Time to First Token (TTFT), Time per Output Token (TPOT), Cost per Successful Task
-- **Learn it:** [Inference Metrics and Goodput](../phases/17-infrastructure-and-production/08-inference-metrics-goodput/)
+- **Learn it:** [Inference Metrics and Goodput](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/08-inference-metrics-goodput/)
 - **English (source):** The rate of completed requests that satisfy defined service constraints, such as both time-to-first-token and per-token latency objectives, under a stated workload. Raw throughput can rise while users experience more slow requests. Goodput counts only work that meets the service contract.
 
 ### Inter-Token Latency (ITL)
@@ -124,7 +124,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ **ဆိုလိ�
 - **မကြာခဏ ရောထွေးမှု:** ITL သည် ဆက်တိုက် token များအကြား ကြားကာလ တစ်ခု ဖြစ်သည်။ time per output token သည် ထို ကြားကာလများ၏ request တစ်ခုချင်း ပျှမ်းမျှ ဖြစ်ပြီး၊ time to first token သည် streaming မစမီ စောင့်ချိန်ကို ဖုံးလွှမ်းသည်။
 - **လက်တွေ့:** ပထမ token နောက်ပိုင်း ကြားကာလ တစ်ခုချင်းကို ၎င်း၏ request နှင့် token နေရာ (position) နှင့်အတူ မှတ်တမ်းတင်ရမည်၊ ထို့နောက် request နယ်နိမိတ်များကို ရောစပ်ပစ်ခြင်း မပြုဘဲ workload၊ output အရှည်နှင့် concurrency အလိုက် ဖြန့်ဝေမှု ပုံစံများကို ဖော်ပြရမည်။
 - **ဆက်စပ် term များ:** Time per Output Token (TPOT), Time to First Token (TTFT), Decode Phase, Tail Latency
-- **Learn it:** [Inference Metrics and Goodput](../phases/17-infrastructure-and-production/08-inference-metrics-goodput/)
+- **Learn it:** [Inference Metrics and Goodput](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/08-inference-metrics-goodput/)
 - **English (source):** The elapsed time between two consecutive output-token arrival events for one request, calculated as `t_i - t_(i-1)` for an output token after the first. Individual gaps expose decode stalls and streaming jitter that a per-request average can hide, especially under batching, preemption, or mixed workloads.
 
 ### Model Serving
@@ -136,7 +136,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ **ဆိုလိ�
 - **မကြာခဏ ရောထွေးမှု:** model serving သည် inference တစ်ခါ ခေါ်ခြင်းထက် ပိုကျယ်ပြန့်သည်။ retrieval၊ tool၊ policy နှင့် အသုံးပြုသူ အခြေအနေ (user state) ပါဝင်သည့် အပလီကေးရှင်း တစ်ခုလုံးထက် ကျဉ်းမြောင်းသည်။
 - **လက်တွေ့:** model နှင့် tokenizer version များကို pin လုပ်ရမည်၊ request ကန့်သတ်ချက်များကို စစ်ဆေးရမည်၊ readiness နှင့် latency signal များကို ဖော်ထုတ်ရမည်၊ concurrency ကို ထိန်းချုပ်ရမည်၊ production traffic မလွှဲမီ rollback ကို စမ်းသပ်ရမည်။
 - **ဆက်စပ် term များ:** Inference, Model Router, Autoscaling, Observability
-- **Learn it:** [Self-Hosted Serving Selection](../phases/17-infrastructure-and-production/28-self-hosted-serving-selection/)
+- **Learn it:** [Self-Hosted Serving Selection](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/28-self-hosted-serving-selection/)
 - **English (source):** The runtime and API layer that loads versioned model artifacts, accepts inference requests, schedules execution, manages resources, and returns results under an operational contract. A capable model can still produce an unreliable product when queueing, batching, placement, versioning, cancellation, and response boundaries are not engineered explicitly.
 
 ### Paged KV Cache
@@ -148,7 +148,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ **ဆိုလိ�
 - **မကြာခဏ ရောထွေးမှု:** paged KV cache သည် runtime ရှိ attention-state memory ကို စီမံသည်။ model parameter များကို disk သို့ ရွှေ့သည် မဟုတ်သလို၊ model ၏ သင်တန်းပေးထားသည့် context limit ကို တိုးချဲ့သည် လည်း မဟုတ်ပါ။
 - **လက်တွေ့:** workload တိုင်းတာမှုများမှ block size ကို ရွေးရမည်၊ allocation နှင့် eviction ကို ခြေရာခံရမည်၊ request များအကြား state ကို သီးခြားထားရမည်၊ memory ဖိအားအောက်တွင် cancellation နှင့် prefix sharing ကို စမ်းသပ်ရမည်။
 - **ဆက်စပ် term များ:** KV Cache, Prefix Caching, Context Window, Model Serving
-- **Learn it:** [vLLM Serving Internals](../phases/17-infrastructure-and-production/04-vllm-serving-internals/)
+- **Learn it:** [vLLM Serving Internals](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/04-vllm-serving-internals/)
 - **English (source):** A KV-cache memory manager that stores attention state in fixed-size blocks and maps logical sequence positions to physical blocks instead of requiring one contiguous allocation per sequence. Variable sequence lengths create fragmentation and unpredictable growth, so block-based allocation can improve usable memory and enable flexible sharing.
 
 ### Pipeline Parallelism
@@ -160,7 +160,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ **ဆိုလိ�
 - **မကြာခဏ ရောထွေးမှု:** pipeline parallelism သည် layer များကို အတိမ်အနက် (depth) အလိုက် ခွဲသည်။ tensor parallelism သည် layer တစ်ခုအတွင်းရှိ tensor operation များကို ခွဲသည်။
 - **လက်တွေ့:** အဆင့် တစ်ခုချင်း၏ ကုန်ကျစရိတ်ကို ညီမျှစေရမည်၊ microbatch schedule ကို ရွေးရမည်၊ အားလပ်ချိန် (idle time) နှင့် interconnect traffic ကို တိုင်းတာရမည်၊ model နှင့် checkpoint partition metadata ကို version စနစ်ဖြင့် ထိန်းသိမ်းရမည်။
 - **ဆက်စပ် term များ:** Tensor Parallelism, Expert Parallelism, Batch Size, Model Serving
-- **Learn it:** [Scaling and Distributed Training](../phases/10-llms-from-scratch/05-scaling-distributed/)
+- **Learn it:** [Scaling and Distributed Training](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/05-scaling-distributed/)
 - **English (source):** Partitioning sequential groups of model layers across devices and moving microbatches or requests through those stages as a pipeline. It lets models exceed one device's memory, but stage imbalance, pipeline bubbles, activation transfers, and failure coordination affect usable performance.
 
 ### Prefill
@@ -172,7 +172,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ **ဆိုလိ�
 - **မကြာခဏ ရောထွေးမှု:** prefill သည် runtime ရှိ prompt-processing အဆင့် ဖြစ်သည်။ ပထမ ထုတ်လုပ်သည့် token ကိုယ်တိုင် မဟုတ်ပါ။ ပထမ token သည် prefill နှင့် queueing ပြီးဆုံးပြီးမှသာ ပေါ်လာသည်။
 - **လက်တွေ့:** prompt token များနှင့် prefill latency ကို မှတ်တမ်းတင်ရမည်၊ queue ကြာချိန်နှင့် လည်ပတ်ချိန်ကို ခွဲထားရမည်၊ cache ရှိသည့် prefix နှင့် မရှိသည့် prefix ကို နှိုင်းယှဉ်ရမည်၊ ရှည်လျားသည့် prompt များကို တက်ကြွသည့် decode traffic ဘေးတွင် စမ်းသပ်ရမည်။
 - **ဆက်စပ် term များ:** Decode Phase, KV Cache, Time to First Token (TTFT), Chunked Prefill
-- **Learn it:** [Disaggregated Prefill and Decode](../phases/17-infrastructure-and-production/17-disaggregated-prefill-decode/)
+- **Learn it:** [Disaggregated Prefill and Decode](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/17-disaggregated-prefill-decode/)
 - **English (source):** The initial inference stage that processes all supplied input tokens to produce their representations and the attention state required for subsequent autoregressive generation. Prompt shape, queueing, and cache reuse affect prefill cost, and prefill competes differently for compute than decode, so it strongly influences startup latency and serving schedules.
 
 ### Prefix Caching
@@ -184,7 +184,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ **ဆိုလိ�
 - **မကြာခဏ ရောထွေးမှု:** prefix caching သည် တိကျသည့် token prefix များအတွက် runtime attention state ကို ပြန်သုံးသည်။ prompt caching သည် ပိုမို ကျယ်ပြန့်သည့် provider သို့မဟုတ် အပလီကေးရှင်း သဘောတူညီချက် ဖြစ်ပြီး၊ semantic caching သည် ဆင်တူသည့် request တစ်ခုအတွက် ယခင် ရလဒ်ကို ပြန်သုံးသည်။
 - **လက်တွေ့:** တည်ငြိမ်သည့် token များကို request သီးသန့် အကြောင်းအရာ မတိုင်မီ ထားရမည်၊ cache အမှတ်အသားတွင် model နှင့် tokenizer version များ ထည့်ရမည်၊ tenant ဆိုင်ရာ state ကို သီးခြားထားရမည်၊ hit rate ကို စောင့်ကြည့်ရမည်၊ eviction ကို ပုံမှန် ဖြစ်ရိုးဖြစ်စဉ်အဖြစ် သတ်မှတ်ရမည်။
 - **ဆက်စပ် term များ:** Prompt Cache, Semantic Cache, KV Cache, Paged KV Cache
-- **Learn it:** [Inference Optimization](../phases/10-llms-from-scratch/12-inference-optimization/)
+- **Learn it:** [Inference Optimization](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/12-inference-optimization/)
 - **English (source):** Reusing KV-cache blocks produced for an identical eligible token prefix across requests so the serving runtime can skip repeated prefix computation. Shared system instructions, templates, or documents can consume substantial prefill work, but reuse only helps when token sequences and cache eligibility match.
 
 ### Tensor Parallelism
@@ -196,7 +196,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ **ဆိုလိ�
 - **မကြာခဏ ရောထွေးမှု:** tensor parallelism သည် layer များအတွင်းရှိ အလုပ်ကို ခွဲသည်။ pipeline parallelism သည် layer အုပ်စု မတူညီသည့်အရာများကို device မတူညီသည့် နေရာများတွင် ထားသည်။
 - **လက်တွေ့:** partition dimension များကို model shape များနှင့် ကိုက်ညီစေရမည်၊ collective traffic ကို benchmark လုပ်ရမည်၊ rank များကို အမြန်သည့် interconnect တွင် ထားရမည်၊ sharding layout ကို checkpoint နှင့် serving configuration များနှင့်အတူ မှတ်တမ်းတင်ရမည်။
 - **ဆက်စပ် term များ:** Tensor, Pipeline Parallelism, Expert Parallelism, Parameter
-- **Learn it:** [Scaling and Distributed Training](../phases/10-llms-from-scratch/05-scaling-distributed/)
+- **Learn it:** [Scaling and Distributed Training](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/05-scaling-distributed/)
 - **English (source):** Partitioning tensor operations within a model layer across devices, with collective communication combining partial results during the layer computation. It lets one layer use memory and compute from several devices, but frequent communication can dominate when the interconnect or partition is unsuitable.
 
 ### Time per Output Token (TPOT)
@@ -208,7 +208,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ **ဆိုလိ�
 - **မကြာခဏ ရောထွေးမှု:** TPOT သည် request တစ်ခုချင်း ပျှမ်းမျှ ဖြစ်သည်။ inter-token latency တစ်ခုချင်းသည် ဆက်တိုက် token နှစ်ခုအကြား ကွာဟချက် တစ်ခု ဖြစ်ပြီး၊ time to first token သည် output မစမီ စောင့်ချိန်ကို ပါဝင်သည်။
 - **လက်တွေ့:** TPOT ကို request တစ်ခုချင်းအတွက် သီးခြား တွက်ရမည်၊ output အရှည်နှင့် concurrency အလိုက် request များအကြား percentile များကို ဖော်ပြရမည်၊ token ကြားကာလ အားလုံးကို ရောစပ်ပစ်ခြင်း သို့မဟုတ် tokenizer နှင့် တိုင်းတာမှု နယ်နိမိတ် မတူညီသည့် စနစ်များကို နှိုင်းယှဉ်ခြင်းကို ရှောင်ရမည်။
 - **ဆက်စပ် term များ:** Decode Phase, Time to First Token (TTFT), Streaming, Goodput
-- **Learn it:** [Inference Metrics and Goodput](../phases/17-infrastructure-and-production/08-inference-metrics-goodput/)
+- **Learn it:** [Inference Metrics and Goodput](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/08-inference-metrics-goodput/)
 - **English (source):** For one request with `N > 1` output tokens, the average post-first-token interval: `(t_N - t_1) / (N - 1)`. System distributions then aggregate those per-request averages. Users can receive the first token quickly while the rest of the answer streams slowly, so startup latency alone does not describe generation responsiveness.
 
 ### Tokens per Second (TPS)
@@ -245,5 +245,5 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ **ဆိုလိ�
 
 - Source glossary — https://aiengineeringfromscratch.com/glossary
 - Source repository — https://github.com/rohitg00/ai-engineering-from-scratch (MIT)
-- Lessons — [GPU Autoscaling on Kubernetes](../phases/17-infrastructure-and-production/03-gpu-autoscaling-kubernetes/), [vLLM Serving Internals](../phases/17-infrastructure-and-production/04-vllm-serving-internals/), [Disaggregated Prefill and Decode](../phases/17-infrastructure-and-production/17-disaggregated-prefill-decode/), [Inference Metrics and Goodput](../phases/17-infrastructure-and-production/08-inference-metrics-goodput/), [Self-Hosted Serving Selection](../phases/17-infrastructure-and-production/28-self-hosted-serving-selection/), [Mixture of Experts](../phases/07-transformers-deep-dive/11-mixture-of-experts/), [KV Cache and Flash Attention](../phases/07-transformers-deep-dive/12-kv-cache-flash-attention/), [Scaling and Distributed Training](../phases/10-llms-from-scratch/05-scaling-distributed/), [Inference Optimization](../phases/10-llms-from-scratch/12-inference-optimization/)
+- Lessons — [GPU Autoscaling on Kubernetes](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/03-gpu-autoscaling-kubernetes/), [vLLM Serving Internals](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/04-vllm-serving-internals/), [Disaggregated Prefill and Decode](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/17-disaggregated-prefill-decode/), [Inference Metrics and Goodput](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/08-inference-metrics-goodput/), [Self-Hosted Serving Selection](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/28-self-hosted-serving-selection/), [Mixture of Experts](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/11-mixture-of-experts/), [KV Cache and Flash Attention](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/12-kv-cache-flash-attention/), [Scaling and Distributed Training](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/05-scaling-distributed/), [Inference Optimization](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/12-inference-optimization/)
 - Papers — [Orca](https://www.usenix.org/conference/osdi22/presentation/yu), [Sarathi-Serve](https://arxiv.org/abs/2403.02310), [DistServe](https://arxiv.org/abs/2401.09670), [PagedAttention](https://arxiv.org/abs/2309.06180), [FlashAttention](https://arxiv.org/abs/2205.14135), [Megatron-LM](https://arxiv.org/abs/1909.08053), [GPipe](https://arxiv.org/abs/1811.06965), [GShard](https://arxiv.org/abs/2006.16668), [SGLang](https://arxiv.org/abs/2312.07104)

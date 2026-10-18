@@ -45,6 +45,7 @@ AI-Engineering-Glossary-course/
 ├── WRITING_RULES.md             # နှစ်ဘာသာ အရေးအသား စည်းမျဉ်း
 ├── glossary/
 │   ├── terms.json               # source ၏ term ၂၅၀ (machine-readable)
+│   ├── burmese_names.json       # term ၂၅၀ ၏ မြန်မာ အမည်
 │   └── by_area/NN_<area>.json   # နယ်ပယ်အလိုက် ခွဲထားသည့် data
 ├── terms/
 │   ├── 00_index.md              # A–Z index (term ၂၅၀ လုံး)
@@ -74,6 +75,20 @@ python3 quiz.py --seed 42 --count 20 --answers     # အဖြေစာရင်
 3. **မကြာခဏ ရောထွေးမှု** ကို ဖတ်ပါ — အလွယ်တကူ မှားတတ်သည့် အချက်
 4. **ဆက်စပ် term များ** ကို လိုက်ဖတ်ပါ — term တစ်ခုတည်း မဟုတ်ဘဲ အစုအဖွဲ့အဖြစ် မှတ်ပါ
 5. **Learn it** လင့်ရှိပါက source lesson သို့ သွား၍ လက်တွေ့ လုပ်ပါ
+
+## လက်ရှိ အခြေအနေ (verified)
+
+| အချက် | ရလဒ် |
+|---|---|
+| Term ဖိုင်များ | နယ်ပယ် ၁၂ ခု / ဖိုင် ၁၂ ခု (`terms/`) |
+| Term အရေအတွက် | **၂၅၀ / ၂၅၀** |
+| စာလုံး အရေအတွက် | ၄၀၅,၀၂၃ လုံး / ၃,၄၁၂ လိုင်း |
+| `verify_glossary.py` | `TOTAL: 250/250 terms across 12 area file(s)` — `[PASS]` |
+| Source အင်္ဂလိပ် စာသား | term တိုင်း byte တူညီစွာ ပါဝင် |
+| စကားပြော ပါတ်တစ်လ်လ် / အခြားဘာသာ / emoji | သုည |
+| `quiz.py` | `--self-test` အောင်မြင်၊ offline |
+
+ဤ စာရင်းသည် source ၏ ကြေညာချက် — **term ၂၅၀၊ နယ်ပယ် ၁၂** — နှင့် တစ်ခုမှ မကွာ။
 
 ## Source နှင့် လိုင်စင်
 

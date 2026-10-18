@@ -16,7 +16,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **အရေးပါသည့် အကြောင်းရင်း:** Attention သည် sequence အတွင်းရှိ position များအကြား အချက်အလက် စီးဆင်းမှုကို လမ်းကြောင်းချပေးနိုင်သည်၊ သို့သော် ၎င်းကိုယ်တိုင်က model နားလည်ခဲ့သည့် အကြောင်းအရာကို ရှင်းလင်းပြသည် သို့မဟုတ် သက်သေပြသည် မဟုတ်ပါ။
 - **မကြာခဏ ရောထွေးမှု:** Attention weight များသည် computation coefficient များ ဖြစ်သည်၊ model ၏ ကျိုးကြောင်းဆင်ခြင်မှုကို သစ္စာရှိစွာ ဖော်ပြသည့် ရှင်းလင်းချက် မဟုတ်ပါ။
 - **ဆက်စပ် term များ:** Self-Attention, Transformer, KV Cache
-- **Learn it:** [Self-Attention from Scratch](../phases/07-transformers-deep-dive/02-self-attention-from-scratch/)
+- **Learn it:** [Self-Attention from Scratch](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/02-self-attention-from-scratch/)
 - **English (source):** A mechanism that forms contextual representations by comparing query vectors with key vectors, normalizing the resulting scores, and using them to combine value vectors. Masks, position rules, or sparse patterns can restrict which positions participate. Attention lets a model route information between sequence positions, but it does not by itself explain or prove what the model understood.
 
 ### Autoregressive
@@ -135,7 +135,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **အရေးပါသည့် အကြောင်းရင်း:** ၎င်းသည် ထပ်တလဲလဲ တွက်ချက်မှုကို လျှော့ချပေးသော်လည်း sequence အရှည်၊ layer အရေအတွက်၊ batch နှင့် model configuration အပေါ် မှီခို၍ ကြီးထွားလာသည့် memory ကို အသုံးပြုသည်။
 - **မကြာခဏ ရောထွေးမှု:** KV cache သည် sequence တစ်ခုအတွက် runtime attention state ဖြစ်သည်။ Prefix caching သည် အသုံးပြုနိုင်သည့် KV state ကို request များအကြား ပြန်လည် အသုံးပြုခြင်း ဖြစ်ပြီး prompt caching သည် ပိုမို ကျယ်ပြန့်သည့် provider သို့မဟုတ် application အဆင့် ပြန်လည် အသုံးပြုမှု သဘောတူညီချက် ဖြစ်သည်။
 - **ဆက်စပ် term များ:** Attention, Autoregressive, Prefix Caching, Prompt Cache
-- **Learn it:** [KV Cache and Flash Attention](../phases/07-transformers-deep-dive/12-kv-cache-flash-attention/)
+- **Learn it:** [KV Cache and Flash Attention](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/12-kv-cache-flash-attention/)
 - **English (source):** Stored key and value tensors from earlier positions in autoregressive generation. Reusing them avoids recomputing attention projections for the unchanged prefix at every decoding step. It reduces repeated computation but consumes memory that grows with sequence length, layers, batch, and model configuration.
 
 ### LLM (Large Language Model)
@@ -167,7 +167,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **အရေးပါသည့် အကြောင်းရင်း:** compute၊ memory၊ communication၊ routing balance နှင့် quality တို့သည် သက်ဆိုင်ရာ ဖွဲ့စည်းပုံနှင့် serving စနစ်အပေါ် မှီခိုသည်။
 - **မကြာခဏ ရောထွေးမှု:** product အမည်များသည် model developer က ထုတ်ဖော်မပြဘဲ MoE ဖွဲ့စည်းပုံ ဖြစ်သည်ဟု သက်သေပြသည် မဟုတ်ပါ။
 - **ဆက်စပ် term များ:** Transformer, Model Router, Parameter
-- **Learn it:** [Mixture of Experts](../phases/07-transformers-deep-dive/11-mixture-of-experts/)
+- **Learn it:** [Mixture of Experts](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/11-mixture-of-experts/)
 - **English (source):** An architecture with multiple expert subnetworks and a learned router that selects a subset for each input unit, often each token. Sparse activation can increase total parameter capacity without using every expert on every forward pass. Compute, memory, communication, routing balance, and quality depend on the specific architecture and serving system.
 
 ### Nucleus Sampling (Top-p)
@@ -219,7 +219,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **အရေးပါသည့် အကြောင်းရင်း:** ၎င်းသည် context အပေါ် မှီခိုသည့် token representation များကို တည်ဆောက်ပေးသော်လည်း ခွင့်ပြုထားသည့် attention pattern သည် ဖွဲ့စည်းပုံအပေါ် မှီခိုသည်။
 - **မကြာခဏ ရောထွေးမှု:** token တိုင်းသည် အခြား token တိုင်းကို အမြဲတမ်း attend လုပ်နိုင်သည် မဟုတ်ပါ။ causal နှင့် sparse model များသည် ဆက်သွယ်မှုများကို ရည်ရွယ်ချက်ရှိရှိ ကန့်သတ်သည်။
 - **ဆက်စပ် term များ:** Attention, Transformer, Context Window
-- **Learn it:** [Self-Attention from Scratch](../phases/07-transformers-deep-dive/02-self-attention-from-scratch/)
+- **Learn it:** [Self-Attention from Scratch](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/02-self-attention-from-scratch/)
 - **English (source):** Attention in which queries, keys, and values are derived from the same sequence representation. Scaled similarity scores are normalized and used to combine values, subject to causal, padding, local, or other masks. It builds context-sensitive token representations, but the permitted attention pattern depends on the architecture.
 
 ### Speculative Decoding
@@ -252,7 +252,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **အရေးပါသည့် အကြောင်းရင်း:** ၎င်းသည် ခံစားရသည့် တုံ့ပြန်မှု လျင်မြန်မှုကို ကောင်းမွန်စေသည်၊ သို့သော် model ၏ အဖြေ အပြည့်အစုံ ထုတ်လုပ်ရန် အမှန်တကယ် အချိန်ကို လျှော့ချပေးသည် မဟုတ်ပါ။
 - **မကြာခဏ ရောထွေးမှု:** network transport၊ event ပုံစံနှင့် chunk နယ်နိမိတ်များသည် provider အလိုက် ကွာခြားပြီး word သို့မဟုတ် token များနှင့် တိုက်ဆိုင်မည်ဟု အာမမခံနိုင်ပါ။
 - **ဆက်စပ် term များ:** Time to First Token (TTFT), Autoregressive, Observability
-- **Learn it:** [Production LLM Application](../phases/11-llm-engineering/13-production-app/)
+- **Learn it:** [Production LLM Application](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/13-production-app/)
 - **English (source):** Delivering incremental response events before the complete result is ready. A stream may contain token text, structured deltas, tool-call arguments, usage metadata, or status events depending on the API. It improves perceived responsiveness, but it does not reduce the model's actual time to produce a complete answer.
 
 ### Temperature
@@ -295,7 +295,7 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 - **အရေးပါသည့် အကြောင်းရင်း:** လေ့ကျင့်မှုတွင် sequence position အများအပြားကို တစ်ပြိုင်နက် လုပ်ဆောင်နိုင်ပြီး autoregressive generation သည် အဆင့်ဆင့် အစဉ်လိုက် output ထုတ်လုပ်နေဆဲ ဖြစ်သည်။
 - **မကြာခဏ ရောထွေးမှု:** self-attention ရှိခြင်းသည် transformer တိုင်းတွင် ကန့်သတ်ချက် မရှိ all-to-all attention ရှိသည်ဟု အဓိပ္ပာယ် မဆောင်ပါ။
 - **ဆက်စပ် term များ:** Attention, Self-Attention, Encoder, Decoder
-- **Learn it:** [Build a Full Transformer](../phases/07-transformers-deep-dive/05-full-transformer/)
+- **Learn it:** [Build a Full Transformer](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/05-full-transformer/)
 - **English (source):** A neural-network architecture built from attention, position information, feed-forward sublayers, residual connections, and normalization. Encoder, decoder, and encoder-decoder variants use different masks and information flows. Training can process many sequence positions in parallel, while autoregressive generation still produces outputs step by step.
 
 ### VAE (Variational Autoencoder)
@@ -338,5 +338,5 @@ Term တစ်ခုစီတွင် အောက်ပါ field များ 
 ## References
 
 - Source glossary: [AI Engineering from Scratch — Glossary](https://aiengineeringfromscratch.com/glossary) — MIT licensed, from `rohitg00/ai-engineering-from-scratch`။
-- Lessons: [Self-Attention from Scratch](../phases/07-transformers-deep-dive/02-self-attention-from-scratch/)၊ [Build a Full Transformer](../phases/07-transformers-deep-dive/05-full-transformer/)၊ [Mixture of Experts](../phases/07-transformers-deep-dive/11-mixture-of-experts/)၊ [KV Cache and Flash Attention](../phases/07-transformers-deep-dive/12-kv-cache-flash-attention/)၊ [Production LLM Application](../phases/11-llm-engineering/13-production-app/)။
+- Lessons: [Self-Attention from Scratch](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/02-self-attention-from-scratch/)၊ [Build a Full Transformer](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/05-full-transformer/)၊ [Mixture of Experts](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/11-mixture-of-experts/)၊ [KV Cache and Flash Attention](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/07-transformers-deep-dive/12-kv-cache-flash-attention/)၊ [Production LLM Application](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/13-production-app/)။
 - Papers and documentation: [Attention Is All You Need](https://arxiv.org/abs/1706.03762)၊ [The Curious Case of Neural Text Degeneration](https://arxiv.org/abs/1904.09751)၊ [Fast Inference from Transformers via Speculative Decoding](https://proceedings.mlr.press/v202/leviathan23a.html)၊ [Auto-Encoding Variational Bayes](https://arxiv.org/abs/1312.6114)၊ [Transformers text-generation documentation](https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)။

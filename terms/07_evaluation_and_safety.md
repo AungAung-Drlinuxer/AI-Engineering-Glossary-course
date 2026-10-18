@@ -55,7 +55,7 @@ Term တစ်ခုစီကို အောက်ပါ ပုံစံဖြ�
 - **မကြာခဏ ရောထွေးမှု:** Development eval သည် ထပ်ခါတလဲလဲ ပြုပြင်တိုးတက်စေရန် လမ်းညွှန်သည်။ Final held-out test သည် ရွေးချယ်မှုများ သတ်မှတ်ပြီးနောက် စွမ်းဆောင်ရည်ကို ခန့်မှန်းသည်။ Standardized benchmark သည် မျှဝေထားသည့် protocol အောက်တွင် နှိုင်းယှဉ်မှုကို ပံ့ပိုးသည်။ Held-out set တစ်ခုခုကို ထပ်ခါတလဲလဲ ချိန်ညှိခြင်းသည် test အချက်အလက် ယိုစိမ့်စေပြီး ရလဒ်များကို ဖောင်းပွစေသည်။
 - **လက်တွေ့:** ကိုယ်စားပြုနိုင်သည့် support မေးခွန်းများ၊ adversarial ညွှန်ကြားချက်များ၊ မျှော်လင့်ထားသည့် citation များနှင့် failure label များကို development နမူနာများနှင့် သီးခြားဖြစ်သည့်၊ ပြန်လည်စစ်ဆေးထားသည့် dataset တွင် ထိန်းသိမ်းရမည်။
 - **ဆက်စပ် term များ:** Evaluation (Eval), Regression Test, LLM-as-a-Judge, Verification Gate
-- **Learn it:** [Eval-Driven Agent Development](../phases/14-agent-engineering/30-eval-driven-agent-development/)
+- **Learn it:** [Eval-Driven Agent Development](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/30-eval-driven-agent-development/)
 - **English (source):** A versioned collection of inputs, expected properties, scoring rules, and metadata used to measure an AI system against a defined capability or risk. A repeatable set turns vague quality claims into comparable evidence and catches regressions after prompts, models, tools, or retrieval change.
 
 ### Evaluation (Eval)
@@ -67,7 +67,7 @@ Term တစ်ခုစီကို အောက်ပါ ပုံစံဖြ�
 - **မကြာခဏ ရောထွေးမှု:** Benchmark score သည် evaluation ရလဒ် တစ်ခုသာ ဖြစ်သည်၊ production အရည်အသွေး၏ ပြည့်စုံသည့် ဖော်ပြချက် မဟုတ်သည်။
 - **လက်တွေ့:** retrieval ပြောင်းလဲခြင်းမတိုင်မီနှင့် အပြီးတွင် အသုံးပြုသူ support scenario တူညီသည့် အစုကို run ခြင်း၊ မှန်ကန်မှုနှင့် citation ပံ့ပိုးမှုကို score ခြင်း၊ ကျရှုံးမှုများကို အမျိုးအစားအလိုက် စစ်ဆေးခြင်း ပြုလုပ်ရမည်။
 - **ဆက်စပ် term များ:** Eval Set, LLM-as-a-Judge, Cost per Successful Task, Regression Test
-- **Learn it:** [LLM Evaluation](../phases/11-llm-engineering/10-evaluation/)
+- **Learn it:** [LLM Evaluation](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/10-evaluation/)
 - **English (source):** A defined process for measuring model or system behavior on representative tasks using explicit success criteria, data, scorers, and review procedures. You cannot improve reliability if success is only a subjective impression from a few demos.
 
 ### Exact Match (EM)
@@ -89,7 +89,7 @@ Term တစ်ခုစီကို အောက်ပါ ပုံစံဖြ�
 - **အရေးပါသည့် အကြောင်းရင်း:** မည်သည့် filter တစ်ခုတည်းမှ ကျရှုံးမှု ပုံစံ အားလုံးကို ဖုံးလွှမ်းနိုင်ခြင်း မရှိသည့်အတွက် အန္တရာယ်အလိုက် ထိန်းချုပ်မှုများကို အလွှာလိုက် စီစဉ်ရမည်။
 - **မကြာခဏ ရောထွေးမှု:** Guardrails သည် အန္တရာယ်ကို လျှော့ချသည်၊ AI စနစ်တစ်ခု ဘေးကင်းသည်ဟု သက်သေပြခြင်း မဟုတ်သည်။
 - **ဆက်စပ် term များ:** Least Privilege, Approval Gate, Sandbox, Evaluation (Eval)
-- **Learn it:** [Guardrails](../phases/11-llm-engineering/12-guardrails/)
+- **Learn it:** [Guardrails](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/12-guardrails/)
 - **English (source):** System controls that constrain inputs, tool use, outputs, permissions, and escalation. They can include schemas, policy checks, classifiers, allowlists, sandboxing, approvals, and post-action verification. No single filter covers all failure modes, so controls should be layered according to risk.
 
 ### Hallucination
@@ -123,7 +123,7 @@ Term တစ်ခုစီကို အောက်ပါ ပုံစံဖြ�
 - **မကြာခဏ ရောထွေးမှု:** Judge model သည် ground truth မဟုတ်သည်။ ၎င်းသည် အစဉ်လိုက်မှု၊ စကားလုံး များပြားမှု၊ စတိုင်၊ prompt အရေးအသား သို့မဟုတ် မျှဝေသည့် model ကျရှုံးမှုများကြောင့် bias ဖြစ်နိုင်သည်။
 - **လက်တွေ့:** သီးခြား evaluator model တစ်ခုအား အလုပ်၊ လျာထားချက် အဖြေ၊ အကိုးအကား အထောက်အထားနှင့် ဖွဲ့စည်းထားသည့် rubric ပေးအပ်ပြီး ၎င်း၏ score များကို လူသား ပြန်လည်စစ်ဆေးထားသည့် နမူနာများနှင့် ချိန်ညှိရမည်။
 - **ဆက်စပ် term များ:** Evaluation (Eval), Eval Set, Verification Gate, Precision & Recall
-- **Learn it:** [Eval-Driven Agent Development](../phases/14-agent-engineering/30-eval-driven-agent-development/)
+- **Learn it:** [Eval-Driven Agent Development](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/30-eval-driven-agent-development/)
 - **English (source):** Using a language model to score, compare, classify, or critique another system's output against a rubric. It can scale evaluation of qualities that are difficult to express as exact-match tests, such as clarity or instruction adherence.
 
 ### Model Card
@@ -167,7 +167,7 @@ Term တစ်ခုစီကို အောက်ပါ ပုံစံဖြ�
 - **မကြာခဏ ရောထွေးမှု:** Prompt injection သည် SQL injection နှင့် နည်းပညာအရ တူညီသည့် လုပ်ငန်းစဉ် မဟုတ်သည်၊ ပိုမိုခိုင်မာသည့် system prompt သည်လည်း ပြည့်စုံသည့် ကာကွယ်မှု မဟုတ်သည်။
 - **လက်တွေ့:** ပြင်ပ အကြောင်းအရာကို ယုံကြည်စိတ်ချရခြင်း မရှိသည့် အရာအဖြစ် သတ်မှတ်ခြင်း၊ ၎င်းကို အခွင့်အာဏာ သက်ရောက်သည့် ညွှန်ကြားချက်များနှင့် သီးခြားထားခြင်း၊ tool permission များကို အနည်းဆုံးဖြစ်စေခြင်း၊ အကျိုးသက်ရောက်မှုရှိသည့် ရေးသားမှုများအတွက် approval တောင်းခံခြင်းနှင့် output များနှင့် လုပ်ဆောင်ချက်များကို စစ်ဆေးခြင်း ပြုလုပ်ရမည်။
 - **ဆက်စပ် term များ:** Least Privilege, Sandbox, Approval Gate, Tool Contract
-- **Learn it:** [Prompt Injection Defense](../phases/14-agent-engineering/27-prompt-injection-defense/)
+- **Learn it:** [Prompt Injection Defense](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/27-prompt-injection-defense/)
 - **English (source):** An attack or failure mode in which untrusted content influences a model to disregard intended instructions, expose data, misuse tools, or take actions outside the user's goal. The content can arrive directly from a user or indirectly through retrieved pages, files, messages, or tool output. Models process instructions and data through the same language channel, so input filtering alone cannot reliably separate every malicious instruction from legitimate content.
 
 ### ROUGE
@@ -189,7 +189,7 @@ Term တစ်ခုစီကို အောက်ပါ ပုံစံဖြ�
 - **မကြာခဏ ရောထွေးမှု:** Verification သည် အထောက်အထားသည် စံနှုန်းများနှင့် ကိုက်ညီခြင်း ရှိ မရှိ စစ်ဆေးသည်။ Approval သည် အထောက်အထားကို သိရှိပြီးဖြစ်သည့်အခါတွင်ပင် ဆက်လက်လုပ်ဆောင်ရန် အခွင့်အာဏာ ပေးအပ်သည်။
 - **လက်တွေ့:** Patch သက်ရောက်ခြင်း၊ နယ်ပယ်သတ်မှတ်ထားသည့် test များ အောင်မြင်ခြင်း၊ တားမြစ်ထားသည့် file များ မပြောင်းလဲခြင်းနှင့် လိုအပ်သည့် artifact များ တည်ရှိခြင်း မပြီးမချင်း coding အလုပ်တစ်ခုကို ပြီးစီးခွင့် မပြုရ။
 - **ဆက်စပ် term များ:** Approval Gate, Regression Test, Scope Contract, Structured Output
-- **Learn it:** [Verification Gates](../phases/14-agent-engineering/38-verification-gates/)
+- **Learn it:** [Verification Gates](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/38-verification-gates/)
 - **English (source):** A control point that blocks progress until defined evidence satisfies a correctness or quality criterion. It converts a model's claim of completion into an evidence-backed decision.
 
 ## Self-check

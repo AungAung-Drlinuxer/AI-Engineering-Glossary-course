@@ -50,7 +50,7 @@ technical term များ (threat model၊ least privilege၊ trust boundary�
 - **မကြာခဏ ရောထွေးမှု:** provenance သည် သမိုင်းကြောင်းကို မည်သူ ကြေညာခဲ့သည် နှင့် မှတ်တမ်းကို ပြောင်းလဲခဲ့မှု ရှိမရှိ ကို အတည်ပြုနိုင်သည်။ သို့သော် ဖော်ပြထားသည့် ဖြစ်ရပ် မှန်ကန်သည် သို့မဟုတ် content သည် အန္တရာယ် ကင်းသည် ဆိုသည်ကို သက်သေမပြနိုင်ပါ။
 - **လက်တွေ့:** provenance ကြေညာချက်များကို content နှင့် ချိတ်ဆက်ရမည်၊ ထိန်းချုပ်ထားသည့် identity ဖြင့် လက်မှတ်ထိုးရမည်၊ ပြောင်းလဲမှု သမိုင်းကြောင်းကို ထိန်းသိမ်းရမည်၊ အထောက်အထား မရှိသည့် သို့မဟုတ် အတည်ပြုနိုင်မည် မဟုတ်သည့် အခါ ရှင်းလင်းစွာ ဖော်ပြရမည်။
 - **ဆက်စပ် term များ:** Data Provenance, Provenance Attestation, Audit Log, Grounding
-- **Learn it:** [Watermarking, SynthID, Stable Signature, and C2PA](../phases/18-ethics-safety-alignment/23-watermarking-synthid-stable-signature-c2pa/)
+- **Learn it:** [Watermarking, SynthID, Stable Signature, and C2PA](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/23-watermarking-synthid-stable-signature-c2pa/)
 - **English (source):** Verifiable information about the origin and editing history of a piece of media or other digital content, including the actors, tools, transformations, and assertions attached to it. Generative systems make origin claims difficult to infer from appearance alone, so consumers and platforms need inspectable evidence about how content was produced.
 
 ### Data Classification
@@ -73,7 +73,7 @@ technical term များ (threat model၊ least privilege၊ trust boundary�
 - **မကြာခဏ ရောထွေးမှု:** exfiltration သည် ခွင့်ပြုချက် မရှိသည့် ရွေ့လျားမှု သို့မဟုတ် ဖော်ထုတ်မှုနှင့် သက်ဆိုင်သည်။ ခွင့်ပြုချက် ရှိသည့် component တစ်ခုမှ data ကို ပုံမှန် ရယူခြင်း (retrieval) သည် exfiltration မဟုတ်ပါ။ သို့သော် နောက်ပိုင်း အသုံးပြုမှုသည် exfiltration ဖြစ်လာနိုင်သည်။
 - **လက်တွေ့:** ဖတ်နိုင်သည့် data ကို အနည်းဆုံးဖြစ်စေရမည်၊ destination များကို allowlist ဖြင့် သတ်မှတ်ရမည်၊ အပြင်သို့ ထွက်သည့် tool call များကို စစ်ဆေးရမည်၊ sensitive field များကို redact လုပ်ရမည်၊ trust boundary များကို ဖြတ်ကူးသည့် ပုံမှန်မဟုတ်သည့် transfer များအတွက် alert ထုတ်ရမည်။
 - **ဆက်စပ် term များ:** Trust Boundary, Least Privilege, Indirect Prompt Injection, Audit Log
-- **Learn it:** [EchoLeak and CVEs for AI](../phases/18-ethics-safety-alignment/25-echoleak-cves-for-ai/)
+- **Learn it:** [EchoLeak and CVEs for AI](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/25-echoleak-cves-for-ai/)
 - **English (source):** Unauthorized transfer of protected data from a system or trust zone to a person, tool, service, or storage location that is not permitted to receive it. An agent can expose secrets through generated text, tool arguments, URLs, logs, or side effects even when the original data store remains intact.
 
 ### Data Lineage
@@ -107,7 +107,7 @@ technical term များ (threat model၊ least privilege၊ trust boundary�
 - **မကြာခဏ ရောထွေးမှု:** datasheet သည် အထောက်အထားနှင့် ရည်ရွယ်ထားသည့် အသုံးပြုမှုကို မှတ်တမ်းတင်သည်။ ၎င်းသည် license၊ အရည်အသွေး အာမခံချက် သို့မဟုတ် deployment အလိုက် evaluation ကို အစားထိုးခြင်း မဟုတ်ပါ။
 - **လက်တွေ့:** datasheet ကို version သတ်မှတ်ထားသည့် dataset နှင့်အတူ ထုတ်ဝေရမည်၊ မေးခွန်း ဖြေနိုင်သူများကို ဖော်ထုတ်ရမည်၊ ဖယ်ထုတ်ထားသည့် လူအုပ်စုများနှင့် transformation များကို မှတ်တမ်းတင်ရမည်၊ dataset ပြောင်းလဲသည့်အခါ စာရွက်စာတမ်းကို ပြန်လည် ပြင်ဆင်ရမည်။
 - **ဆက်စပ် term များ:** Data Lineage, Data Provenance, Model Card, Dataset Split
-- **Learn it:** [Model, System, and Dataset Cards](../phases/18-ethics-safety-alignment/26-model-system-dataset-cards/)
+- **Learn it:** [Model, System, and Dataset Cards](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/26-model-system-dataset-cards/)
 - **English (source):** Structured documentation of a dataset's motivation, composition, collection process, preprocessing, uses, distribution, maintenance, and known limitations. A dataset is not safe or suitable merely because it is available. Downstream builders need evidence about how it was created and where its assumptions break.
 
 ### Defense in Depth
@@ -130,7 +130,7 @@ technical term များ (threat model၊ least privilege၊ trust boundary�
 - **မကြာခဏ ရောထွေးမှု:** indirect သည် ပို့ဆောင်သည့် လမ်းကြောင်းကို ဖော်ပြသည်၊ ပိုအားနည်းသည့် တိုက်ခိုက်မှုကို မဆိုလိုပါ။ ရယူထားသည့် အကြောင်းအရာ အတွင်း ဝှက်ထားသည့် ညွှန်ကြားချက်သည် သုံးစွဲသူ၏ တိုက်ရိုက် prompt ကဲ့သို့ပင် အကျိုးဆက် ရှိနိုင်သည်။
 - **လက်တွေ့:** ပြင်ပ အကြောင်းအရာကို ယုံကြည်မှု မထားနိုင်သည့် data အဖြစ် label တပ်ရမည်၊ ၎င်းကို ညွှန်ကြားချက်များနှင့် ခွဲခြားရမည်၊ tool permission များကို အနည်းဆုံးဖြစ်စေရမည်၊ အကျိုးဆက် ရှိသည့် လုပ်ဆောင်ချက်များအတွက် approval တောင်းရမည်၊ အန္တရာယ်ရှိသည့် ရယူထားသည့် အကြောင်းအရာများကို regression test များတွင် ထည့်သွင်းရမည်။
 - **ဆက်စပ် term များ:** Prompt Injection, Instruction Hierarchy, Trust Boundary, Data Exfiltration
-- **Learn it:** [Indirect Prompt Injection](../phases/18-ethics-safety-alignment/15-indirect-prompt-injection/)
+- **Learn it:** [Indirect Prompt Injection](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/15-indirect-prompt-injection/)
 - **English (source):** A prompt-injection attack delivered through content the system retrieves or observes, such as a webpage, document, email, image text, or tool result, rather than directly through the user's instruction. An agent can encounter attacker-controlled instructions while performing an authorized task and mistake that content for authority-bearing guidance.
 
 ### Jailbreak
@@ -142,7 +142,7 @@ technical term များ (threat model၊ least privilege၊ trust boundary�
 - **မကြာခဏ ရောထွေးမှု:** jailbreak သည် မော်ဒယ် သို့မဟုတ် စနစ်၏ အပြုအမူ ကန့်သတ်ချက်များကို ပစ်မှတ်ထားသည်။ prompt injection သည် ညွှန်ကြားချက် လိုက်နာမှုကို လမ်းလွဲစေပြီး များသောအားဖြင့် တိုက်ခိုက်သူ၏ ပန်းတိုင်ဆီသို့ ဦးတည်စေသည်။ အပြန်အလှန် ဆက်သွယ်မှု တစ်ခုတွင် နှစ်မျိုးလုံး ပါဝင်နိုင်သည်။
 - **လက်တွေ့:** တားမြစ်ထားသည့် အပြုအမူများမှ test family များကို ထုတ်ယူရမည်၊ format နှင့် အပြန်အလှန် ဆက်သွယ်မှု အရှည်ကို ပြောင်းလဲရမည်၊ refusal နှင့် အန္တရာယ်ရှိသည့် ဖြည့်စွက်မှု နှစ်မျိုးလုံးကို တိုင်းတာရမည်၊ အတည်ပြုပြီးသည့် ပျက်ကွက်မှုများကို version သတ်မှတ်ထားသည့် adversarial eval များအဖြစ် ပြောင်းလဲရမည်။
 - **ဆက်စပ် term များ:** Prompt Injection, Red Teaming, Guardrails, Eval Set
-- **Learn it:** [Jailbreak Taxonomy](../phases/19-capstone-projects/82-jailbreak-taxonomy/)
+- **Learn it:** [Jailbreak Taxonomy](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/82-jailbreak-taxonomy/)
 - **English (source):** An adversarial input or interaction strategy intended to make a model produce behavior that its training or application controls are designed to prevent. Successful jailbreaks expose gaps between stated policy and actual behavior, and they can become more consequential when the model controls tools or protected data.
 
 ### Membership Inference
@@ -154,7 +154,7 @@ technical term များ (threat model၊ least privilege၊ trust boundary�
 - **မကြာခဏ ရောထွေးမှု:** membership inference သည် record တစ်ခု training တွင် ပါဝင်ခဲ့သည် မပါဝင်ခဲ့သည် ကို မေးသည်။ model extraction သည် မော်ဒယ်၏ အပြုအမူကို ပြန်ထုတ်ရန် ကြိုးစားသည်။ တိုက်ရိုက် memorization စစ်ဆေးမှုသည် အကြောင်းအရာကို ပြန်လည် ရယူနိုင်သည် မရယူနိုင်သည် ကို စမ်းသပ်သည်။
 - **လက်တွေ့:** အမှန်တကယ် query interface အောက်တွင် ကိုယ်စားပြုသည့် member နှင့် non-member များကို စမ်းသပ်ရမည်၊ မလိုအပ်သည့် confidence အချက်ပြမှုများကို ကန့်သတ်ရမည်၊ data ဖော်ထုတ်ခံရမှုကို လျှော့ချရမည်၊ privacy ကာကွယ်မှုများကို အသုံးဝင်မှု လိုအပ်ချက်များနှင့် ချိန်ဆ၍ အကဲဖြတ်ရမည်။
 - **ဆက်စပ် term များ:** Data Leakage, Data Minimization, Eval Set, Data Classification
-- **Learn it:** [Differential Privacy for LLMs](../phases/18-ethics-safety-alignment/22-differential-privacy-for-llms/)
+- **Learn it:** [Differential Privacy for LLMs](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/18-ethics-safety-alignment/22-differential-privacy-for-llms/)
 - **English (source):** An attack that estimates whether a particular record or example was included in a model's training data by observing model outputs or other accessible signals. Even when the model does not reproduce a record verbatim, distinguishable behavior can reveal information about participation in a sensitive dataset.
 
 ### Provenance Attestation
@@ -232,7 +232,7 @@ technical term များ (threat model၊ least privilege၊ trust boundary�
 - **မကြာခဏ ရောထွေးမှု:** network boundary သည် trust boundary အမျိုးအစားများအနက် တစ်မျိုးသာ ဖြစ်သည်။ ယုံကြည်မှု မထားနိုင်သည့် document စာသားသည် အာဏာ ရှိသည့် agent context ထဲသို့ ဝင်လာခြင်းသည်လည်း boundary တစ်ခုကို ဖြတ်ကူးခြင်း ဖြစ်သည်။
 - **လက်တွေ့:** သုံးစွဲသူများ၊ model context၊ retrieval source များ၊ tool များ၊ network များနှင့် data store များ ပတ်လည်တွင် boundary များကို ရေးဆွဲရမည်။ ထို့နောက် ဖြတ်ကူးမှု တိုင်းအတွက် validation နှင့် authorization ကို သတ်မှတ်ရမည်။
 - **ဆက်စပ် term များ:** Threat Model, Least Privilege, Sandbox, Indirect Prompt Injection
-- **Learn it:** [Jailbreak Taxonomy](../phases/19-capstone-projects/82-jailbreak-taxonomy/)
+- **Learn it:** [Jailbreak Taxonomy](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/82-jailbreak-taxonomy/)
 - **English (source):** An interface where data, instructions, identity, or authority crosses between components or principals that operate under different trust assumptions. A boundary crossing is where the system must authenticate actors, validate data, constrain permissions, and decide which claims can influence action.
 
 ### Zero Trust
@@ -244,7 +244,7 @@ technical term များ (threat model၊ least privilege၊ trust boundary�
 - **မကြာခဏ ရောထွေးမှု:** zero trust သည် မည်သည့်အရာကိုမျှ မယုံကြည်ခြင်း သို့မဟုတ် automation အားလုံးကို ပိတ်ခြင်း မဟုတ်ပါ။ ယုံကြည်မှု ဆုံးဖြတ်ချက်များကို ရှင်းလင်းစွာ ဖော်ပြခြင်း၊ နယ်ပယ် သတ်မှတ်ခြင်းနှင့် အဆက်မပြတ် စစ်ဆေးနိုင်ခြင်းကို ဆိုလိုသည်။
 - **လက်တွေ့:** လုပ်ဆောင်သူနှင့် workload တိုင်းကို authenticate လုပ်ရမည်၊ resource လုပ်ဆောင်ချက် တိုင်းကို authorize လုပ်ရမည်၊ သက်တမ်းတို credential များ ထုတ်ပေးရမည်၊ access ကို segment ခွဲရမည်၊ policy နှင့် သက်ဆိုင်သည့် အချက်ပြမှုများကို အဆက်မပြတ် မှတ်တမ်းတင်ပြီး ပြန်လည် အကဲဖြတ်ရမည်။
 - **ဆက်စပ် term များ:** Least Privilege, Trust Boundary, Approval Gate, Audit Log
-- **Learn it:** [Security, Secrets, and Audit](../phases/17-infrastructure-and-production/25-security-secrets-audit/)
+- **Learn it:** [Security, Secrets, and Audit](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/17-infrastructure-and-production/25-security-secrets-audit/)
 - **English (source):** A security model that grants no implicit trust from network location or asset ownership and instead evaluates each access request against identity, device, resource, policy, and current context. AI tools and agents span local files, cloud services, models, and external content, so a trusted internal network is too broad a basis for authority.
 
 ## Self-check

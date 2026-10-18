@@ -54,7 +54,7 @@ term တစ်ခုချင်းစီကို အောက်ပါ ပု�
 - **မကြာခဏ ရောထွေးမှု:** စာသား အကြံပြုချက်သာ ပေးသည့် coding assistant သည် agent ဖြစ်ရန် မလိုအပ်ပါ။ agent သည် tool များမှတစ်ဆင့် လုပ်ဆောင်ပြီး ရလဒ်များကို စောင့်ကြည့်သည်။
 - **လက်တွေ့:** agent အား issue တစ်ခု၊ scope contract တစ်ခု၊ repository လမ်းညွှန်ချက်များ နှင့် test command တစ်ခု ပေးပြီး၊ ထွက်ပေါ်လာသည့် patch နှင့် အထောက်အထားကို လက်ခံမီ review လုပ်ရမည်။
 - **ဆက်စပ် term များ:** Agent Harness, Repository Map, Patch, Scope Contract, Reviewer Agent
-- **Learn it:** [Skill Discovery and Progressive Disclosure](../phases/13-tools-and-protocols/24-skill-discovery-and-progressive-disclosure/)
+- **Learn it:** [Skill Discovery and Progressive Disclosure](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/24-skill-discovery-and-progressive-disclosure/)
 - **English (source):** An agent specialized for software work that can inspect a repository, edit files, run development tools, and use their outputs to advance a scoped engineering task. Its value depends on repository context, tool permissions, review boundaries, and verification, not only code generation quality.
 
 ### Cost per Successful Task
@@ -88,7 +88,7 @@ term တစ်ခုချင်းစီကို အောက်ပါ ပု�
 - **မကြာခဏ ရောထွေးမှု:** Summary သည် မည်သည့် အရာ ဖြစ်ပွားခဲ့သည်ကို ဆိုသည်။ Handoff သည် မည်သည့် အခြေအနေက အခွင့်အာဏာ ရှိသည်နှင့် နောက်တွင် မည်သည့် အရာ လုပ်ရမည်ကို ထပ်မံ ဆိုသည်။
 - **လက်တွေ့:** လက်ခံထားသည့် အစီအစဉ်၊ ပြောင်းလဲထားသည့် ဖိုင်များ၊ test command များ နှင့် ရလဒ်များ၊ မဖြေရှင်းရသေးသည့် အန္တရာယ်များ နှင့် နောက်တွင် လုပ်ဆောင်ရမည့် တိကျသည့် လုပ်ဆောင်ချက်ကို ကျစ်လျစ်သည့် task packet တစ်ခုအတွင်း လွှဲပြောင်းရမည်။
 - **ဆက်စပ် term များ:** Agent State, Checkpoint, Scope Contract, Progressive Disclosure
-- **Learn it:** [Multi-Session Handoff](../phases/14-agent-engineering/40-multi-session-handoff/)
+- **Learn it:** [Multi-Session Handoff](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/40-multi-session-handoff/)
 - **English (source):** A structured transfer of a task between people or agents that preserves the objective, current state, evidence, decisions, constraints, and remaining work. A good handoff prevents the next worker from reconstructing the entire task from a long transcript or repeating completed actions.
 
 ### Idempotency
@@ -122,7 +122,7 @@ term တစ်ခုချင်းစီကို အောက်ပါ ပု�
 - **မကြာခဏ ရောထွေးမှု:** Logging သည် event များကို စုဆောင်းသည်။ Observability သည် ထို event များကို ဖွဲ့စည်းပုံကျပြီး အပြန်အလှန် ဆက်စပ်မှု ရှိစေကာ လုပ်ငန်း မေးခွန်းများကို ဖြေနိုင်အောင် ပြုလုပ်သည်။
 - **လက်တွေ့:** retrieval၊ မော်ဒယ် ခေါ်ဆိုမှု၊ tool လုပ်ဆောင်မှု၊ ခွင့်ပြုချက်များ နှင့် နောက်ဆုံး အမှတ်ပေးခြင်း တစ်လျှောက် trace ID တစ်ခုကို မှတ်တမ်းတင်ပြီး၊ redaction နှင့် ဝင်ရောက်မှု ထိန်းချုပ်ချက်များကို ကျင့်သုံးရမည်။
 - **ဆက်စပ် term များ:** Trace, Evaluation (Eval), Agent State, Time to First Token (TTFT)
-- **Learn it:** [Agent Observability Platforms](../phases/14-agent-engineering/24-agent-observability-platforms/)
+- **Learn it:** [Agent Observability Platforms](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/24-agent-observability-platforms/)
 - **English (source):** The ability to understand an AI system's behavior from recorded inputs, outputs, state transitions, tool calls, timings, costs, errors, and evaluation signals. AI failures often span model, retrieval, tools, and orchestration. You need correlated evidence to locate the failing boundary.
 
 ### Patch
@@ -134,7 +134,7 @@ term တစ်ခုချင်းစီကို အောက်ပါ ပု�
 - **မကြာခဏ ရောထွေးမှု:** Patch သည် ဖိုင် ပြောင်းလဲမှုများကို ဖမ်းယူသည်၊ ၎င်းတို့ကို ဖြန့်ချိရန် လိုအပ်သည့် ကျိုးကြောင်းဆင်ခြင်မှု၊ test အထောက်အထား သို့မဟုတ် ခွင့်ပြုချက်ကို ဖမ်းယူခြင်း မဟုတ်ပါ။
 - **လက်တွေ့:** coding agent အား unified diff ပြန်ပေးရန် တောင်းဆိုပြီး၊ ၎င်းသည် ခွင့်ပြုထားသည့် ဖိုင်များကိုသာ ထိခြင်း ရှိ၊ မရှိ နှင့် မျှော်လင့်သည့် commit အပေါ် သန့်ရှင်းစွာ အသုံးချနိုင်ခြင်း ရှိ၊ မရှိ စစ်ဆေးရမည်။
 - **ဆက်စပ် term များ:** Coding Agent, Worktree, Scope Contract, Regression Test
-- **Learn it:** [Workbench for Real Repositories](../phases/14-agent-engineering/41-workbench-for-real-repos/)
+- **Learn it:** [Workbench for Real Repositories](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/41-workbench-for-real-repos/)
 - **English (source):** A reviewable representation of changes to one or more files, usually expressed as additions and deletions against a known base revision. A patch gives people and agents a narrow artifact to inspect, test, apply, or reject without accepting an entire working directory.
 
 ### Progressive Disclosure
@@ -146,7 +146,7 @@ term တစ်ခုချင်းစီကို အောက်ပါ ပု�
 - **မကြာခဏ ရောထွေးမှု:** Progressive disclosure သည် အသေးစိတ်သို့ အဆင့်လိုက် ဝင်ရောက်ခြင်း ဖြစ်သည်၊ ဆုံးဖြတ်ချက်အတွက် လိုအပ်သည့် အချက်အလက်ကို တမင်တကာ မပေးခြင်း မဟုတ်ပါ။
 - **လက်တွေ့:** coding agent အား repository စည်းမျဉ်းများ နှင့် map တစ်ခုကို အရင်ပေးပြီး၊ သက်ဆိုင်သည့် module ကို ဖော်ထုတ်ပြီးနောက်မှသာ implementation ဖိုင်များကို အပြည့်အစုံ load လုပ်ရမည်။
 - **ဆက်စပ် term များ:** Context Engineering, Repository Map, Token Budget, Handoff
-- **Learn it:** [Workbench for Real Repositories](../phases/14-agent-engineering/41-workbench-for-real-repos/)
+- **Learn it:** [Workbench for Real Repositories](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/41-workbench-for-real-repos/)
 - **English (source):** Supplying a person or model with the minimum useful context first, then revealing deeper detail when the task or evidence requires it. It limits context noise and cost while keeping authoritative detail available on demand.
 
 ### Rate Limit
@@ -169,7 +169,7 @@ term တစ်ခုချင်းစီကို အောက်ပါ ပု�
 - **မကြာခဏ ရောထွေးမှု:** Regression test သည် သတ်မှတ်ထားသည့် မျှော်လင့်အပြုအမူတစ်ခုကို ကာကွယ်သည်။ ကျယ်ပြန့်သည့် benchmark သည် ပိုမို ကျယ်သည့် လုပ်ငန်း ပြန့်ကျဲမှုအပေါ် စွမ်းဆောင်ရည်ကို ခန့်မှန်းသည်။
 - **လက်တွေ့:** ပြုပြင်ပြီးသား prompt-injection ဖြစ်ရပ်တစ်ခုကို အမြဲတမ်း eval case အဖြစ် ပြောင်းလဲပြီး၊ နောက် deployment မတိုင်မီ ၎င်း အောင်ရမည် ဖြစ်သည်။
 - **ဆက်စပ် term များ:** Eval Set, Verification Gate, Patch, Evaluation (Eval)
-- **Learn it:** [Eval-Driven Agent Development](../phases/14-agent-engineering/30-eval-driven-agent-development/)
+- **Learn it:** [Eval-Driven Agent Development](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/30-eval-driven-agent-development/)
 - **English (source):** A repeatable check that protects behavior known to work, especially after code, prompt, model, retrieval, or tool changes. AI system changes can improve average quality while silently reintroducing a previously fixed failure.
 
 ### Repository Instructions
@@ -192,7 +192,7 @@ term တစ်ခုချင်းစီကို အောက်ပါ ပု�
 - **မကြာခဏ ရောထွေးမှု:** အကြမ်းဖျင်း ဖိုင် tree သည် အမည်များကို ပြသည်။ repository map သည် မည်သည့် path များ အရေးပါသည် နှင့် လုပ်ငန်းတစ်ခုနှင့် မည်သို့ ဆက်စပ်သည်ကို ရှင်းပြသည်။
 - **လက်တွေ့:** tree နှင့် manifest များမှ index တစ်ခု ထုတ်လုပ်ပြီး၊ module နယ်နိမိတ်များ နှင့် validation command များအကြောင်း ယုံကြည်ရသည့် မှတ်စုများဖြင့် ဖြည့်စွက်ရမည်။
 - **ဆက်စပ် term များ:** Coding Agent, Progressive Disclosure, Scope Contract, Context Engineering
-- **Learn it:** [Repository Memory and State](../phases/14-agent-engineering/34-repo-memory-and-state/)
+- **Learn it:** [Repository Memory and State](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/34-repo-memory-and-state/)
 - **English (source):** A compact, maintained description of a repository's important directories, ownership boundaries, entry points, build commands, tests, generated files, and local instructions. It helps a coding agent find the right evidence before loading large files or editing the wrong subsystem.
 
 ### Reproducible Build
@@ -226,7 +226,7 @@ term တစ်ခုချင်းစီကို အောက်ပါ ပု�
 - **မကြာခဏ ရောထွေးမှု:** ဒုတိယ မော်ဒယ် ခေါ်ဆိုမှုတစ်ခုသည် အလိုအလျောက် လွတ်လပ်သည် သို့မဟုတ် မှန်ကန်သည် မဟုတ်ပါ။ မျှဝေထားသည့် context၊ မော်ဒယ်၏ bias နှင့် မပီပြင်သည့် စံချိန်စံညွှန်းများသည် တူညီသည့် အမှားကို ပြန်ဖြစ်စေနိုင်သည်။
 - **လက်တွေ့:** agent တစ်ခုက patch တစ်ခု ထုတ်လုပ်ပြီးနောက်၊ သီးခြား reviewer တစ်ခုအား diff၊ scope contract၊ repository စည်းမျဉ်းများ နှင့် test output ပေးပြီး၊ စာကြောင်း တိကျသည့် တွေ့ရှိချက်များ တောင်းခံရမည်။
 - **ဆက်စပ် term များ:** Coding Agent, Verification Gate, Scope Contract, LLM-as-a-Judge
-- **Learn it:** [Reviewer Agent](../phases/14-agent-engineering/39-reviewer-agent/)
+- **Learn it:** [Reviewer Agent](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/39-reviewer-agent/)
 - **English (source):** An agent assigned to inspect another agent's artifact or decision against explicit criteria and return findings or a verdict. Separation of roles can catch omissions, but it only helps when the reviewer receives independent evidence and a concrete rubric.
 
 ### Scope Contract
@@ -238,7 +238,7 @@ term တစ်ခုချင်းစီကို အောက်ပါ ပု�
 - **မကြာခဏ ရောထွေးမှု:** လုပ်ငန်း ဖော်ပြချက်သည် မည်သည့် အရာကို လိုချင်သည်ကို ဆိုသည်။ Scope contract သည် နယ်နိမိတ်များ နှင့် သက်သေကို ထပ်မံ သတ်မှတ်သည်။
 - **လက်တွေ့:** parser module နှင့် ၎င်း၏ test များကိုသာ ပြောင်းလဲခွင့်ပြုခြင်း၊ public API များ ကိုက်ညီမှု ရှိရမည် နှင့် အမည်ဖော်ပြထားသည့် test suite အောင်ရမည် ဟု သတ်မှတ်ရမည်။
 - **ဆက်စပ် term များ:** Coding Agent, Patch, Verification Gate, Handoff
-- **Learn it:** [Scope Contracts](../phases/14-agent-engineering/36-scope-contracts/)
+- **Learn it:** [Scope Contracts](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/36-scope-contracts/)
 - **English (source):** A concrete agreement that defines a task's goal, allowed and forbidden surfaces, expected artifacts, verification requirements, and stopping conditions. It prevents an agent from turning a narrow fix into an unreviewable refactor or from claiming completion without evidence.
 
 ### Semantic Cache
@@ -272,7 +272,7 @@ term တစ်ခုချင်းစီကို အောက်ပါ ပု�
 - **မကြာခဏ ရောထွေးမှု:** Trace သည် လုပ်ငန်း ဆိုင်ရာ အထောက်အထားကို မှတ်တမ်းတင်ရမည်၊ ဖုံးကွယ်ထားသည့် မော်ဒယ် ကျိုးကြောင်းဆင်ခြင်မှု၊ secret များ သို့မဟုတ် redact မလုပ်ရသေးသည့် အရေးပါသည့် အကြောင်းအရာများကို ဖော်ထုတ်ခြင်း မဟုတ်ပါ။
 - **လက်တွေ့:** agent harness တစ်လျှောက် trace identifier တစ်ခုကို ဖြန့်ဝေပြီး၊ မော်ဒယ် နှင့် tool လုပ်ဆောင်ချက် တစ်ခုချင်းစီအတွက် redact လုပ်ထားသည့် span များ တွဲထည့်ရမည်။
 - **ဆက်စပ် term များ:** Observability, Agent State, Time to First Token (TTFT), Evaluation (Eval)
-- **Learn it:** [OpenTelemetry GenAI Conventions](../phases/14-agent-engineering/23-otel-genai-conventions/)
+- **Learn it:** [OpenTelemetry GenAI Conventions](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/23-otel-genai-conventions/)
 - **English (source):** A correlated record of one request or task across model calls, retrieval, tools, state transitions, retries, approvals, and evaluations. It lets you reconstruct where time, cost, and failure entered a multi-step workflow.
 
 ### Worktree
@@ -284,7 +284,7 @@ term တစ်ခုချင်းစီကို အောက်ပါ ပု�
 - **မကြာခဏ ရောထွေးမှု:** Worktree သည် checked-out ဖိုင်များကို သီးခြားခွဲခြားပေးသည်၊ စက်ပေါ်ရှိ process၊ port၊ cache၊ database သို့မဟုတ် secret တိုင်းကို သီးခြားခွဲခြားပေးခြင်း မဟုတ်ပါ။
 - **လက်တွေ့:** coding agent တစ်ခုချင်းစီအား အမည်ပေးထားသည့် feature branch နှင့် တိကျသည့် worktree path ပေးပြီး၊ ပုံမှန် Git history အတိုင်း patch များကို review လုပ်ပြီး ပေါင်းစည်းရမည်။
 - **ဆက်စပ် term များ:** Coding Agent, Patch, Scope Contract, Handoff
-- **Learn it:** [Workbench for Real Repositories](../phases/14-agent-engineering/41-workbench-for-real-repos/)
+- **Learn it:** [Workbench for Real Repositories](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/41-workbench-for-real-repos/)
 - **English (source):** In Git, a working directory attached to a repository and branch or commit, with shared object storage but its own checked-out files and index. Separate worktrees let people and agents work concurrently without constantly switching or overwriting one checkout.
 
 ## Self-check
@@ -327,12 +327,12 @@ term တစ်ခုချင်းစီကို အောက်ပါ ပု�
 
 Source lesson လင့်များ —
 
-- [Skill Discovery and Progressive Disclosure](../phases/13-tools-and-protocols/24-skill-discovery-and-progressive-disclosure/)
-- [Multi-Session Handoff](../phases/14-agent-engineering/40-multi-session-handoff/)
-- [Agent Observability Platforms](../phases/14-agent-engineering/24-agent-observability-platforms/)
-- [Workbench for Real Repositories](../phases/14-agent-engineering/41-workbench-for-real-repos/)
-- [Eval-Driven Agent Development](../phases/14-agent-engineering/30-eval-driven-agent-development/)
-- [Repository Memory and State](../phases/14-agent-engineering/34-repo-memory-and-state/)
-- [Reviewer Agent](../phases/14-agent-engineering/39-reviewer-agent/)
-- [Scope Contracts](../phases/14-agent-engineering/36-scope-contracts/)
-- [OpenTelemetry GenAI Conventions](../phases/14-agent-engineering/23-otel-genai-conventions/)
+- [Skill Discovery and Progressive Disclosure](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/24-skill-discovery-and-progressive-disclosure/)
+- [Multi-Session Handoff](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/40-multi-session-handoff/)
+- [Agent Observability Platforms](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/24-agent-observability-platforms/)
+- [Workbench for Real Repositories](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/41-workbench-for-real-repos/)
+- [Eval-Driven Agent Development](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/30-eval-driven-agent-development/)
+- [Repository Memory and State](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/34-repo-memory-and-state/)
+- [Reviewer Agent](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/39-reviewer-agent/)
+- [Scope Contracts](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/36-scope-contracts/)
+- [OpenTelemetry GenAI Conventions](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/23-otel-genai-conventions/)

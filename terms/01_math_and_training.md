@@ -39,7 +39,7 @@ tensor၊ dtype၊ checkpoint၊ quantization …) ကို မြန်မာ 
 - **ဆိုလိုသည့် အဓိပ္ပာယ်:** linear သို့မဟုတ် affine layer တစ်ခုပြီးနောက် အသုံးပြုသည့် function ဖြစ်ပြီး nonlinearity ကို ထည့်သွင်းပေးသည်။ မထည့်သွင်းပါက weights နှင့် biases ဖြင့် စုစည်းထားသည့် layer များသည် affine transformation တစ်ခုတည်းအဖြစ် ကျုံ့ဝင်သွားသည်။ ReLU၊ GELU နှင့် SiLU တို့သည် အသုံးများသည့် ရွေးချယ်မှုများ ဖြစ်သည်။ ရွေးချယ်မှုသည် training အတွင်း gradient စီးဆင်းမှုကို တိုက်ရိုက် သက်ရောက်သည်။
 - **အရေးပါသည့် အကြောင်းရင်း:** nonlinearity မရှိပါက layer မည်မျှ ထပ်စေကာမူ model သည် affine transformation တစ်ခုထက် မပိုနိုင်သဖြင့်၊ activation function သည် network ကို ပိုရှုပ်ထွေးသည့် function များ ဖော်ပြနိုင်စေသည်။ ထို့အပြင် gradient စီးဆင်းမှုကို ဆုံးဖြတ်သဖြင့် training အလုပ်ဖြစ်မှုကိုပါ သက်ရောက်သည်။
 - **ဆက်စပ် term များ:** ReLU, Gradient, Backpropagation
-- **Learn it:** [Activation Functions](../phases/03-deep-learning-core/04-activation-functions/)
+- **Learn it:** [Activation Functions](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/03-deep-learning-core/04-activation-functions/)
 - **English (source):** A function applied after a linear or affine layer that introduces nonlinearity. Without it, composing layers with weights and biases collapses to one affine transformation. ReLU, GELU, and SiLU are common choices. The choice directly affects whether gradients flow during training.
 
 ### Adam (Optimizer)
@@ -69,7 +69,7 @@ tensor၊ dtype၊ checkpoint၊ quantization …) ကို မြန်မာ 
 - **ဆိုလိုသည့် အဓိပ္ပာယ်:** tensor operation များကို မှတ်တမ်းတင်ခြင်း သို့မဟုတ် အသွင်ပြောင်းခြင်း ပြုလုပ်ပြီး derivative များကို တွက်ချက်နိုင်သည့် စနစ် ဖြစ်သည်။ များသောအားဖြင့် reverse-mode automatic differentiation ကို အသုံးပြုသည်။ အသုံးပြုသူက forward computation ကိုသာ ရေးသားရပြီး backpropagation အတွက် လိုအပ်သည့် gradient များကို framework က ဆင်းသက် ထုတ်ပေးသည်။
 - **အရေးပါသည့် အကြောင်းရင်း:** gradient များကို လက်ဖြင့် ဆင်းသက် တွက်ချက်ရန် မလိုတော့သဖြင့် layer များစွာ ပါဝင်သည့် model ကြီးများကို လက်တွေ့ train လုပ်နိုင်သည်။ ၎င်းသည် backpropagation ကို အလိုအလျောက် လုပ်ဆောင်ပေးသည့် အခြေခံ ယန္တရား ဖြစ်သည်။
 - **ဆက်စပ် term များ:** Backpropagation, Gradient, Tensor
-- **Learn it:** [Chain Rule and Automatic Differentiation](../phases/01-math-foundations/05-chain-rule-and-autodiff/)
+- **Learn it:** [Chain Rule and Automatic Differentiation](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/05-chain-rule-and-autodiff/)
 - **English (source):** A system that records or transforms tensor operations so it can compute derivatives, usually with reverse-mode automatic differentiation. You write the forward computation and the framework derives the gradients needed for backpropagation.
 
 ### Backpropagation
@@ -80,7 +80,7 @@ tensor၊ dtype၊ checkpoint၊ quantization …) ကို မြန်မာ 
 - **အရေးပါသည့် အကြောင်းရင်း:** parameter update တိုင်း၏ အခရာ ဖြစ်သည့် gradient များကို ထုတ်ပေးသဖြင့် neural network သင်ယူမှု တစ်ခုလုံး၏ အခြေခံ ယန္တရား ဖြစ်သည်။
 - **မကြာခဏ ရောထွေးမှု:** Backpropagation သည် gradient များကို တွက်ချက်သည်။ update rule သို့မဟုတ် learning rate ကို ရွေးချယ်ခြင်း မဟုတ်ပါ။
 - **ဆက်စပ် term များ:** Autograd, Gradient, Optimizer
-- **Learn it:** [Backpropagation from Scratch](../phases/03-deep-learning-core/03-backpropagation/)
+- **Learn it:** [Backpropagation from Scratch](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/03-deep-learning-core/03-backpropagation/)
 - **English (source):** An efficient application of the chain rule that propagates derivatives from a scalar loss backward through a computation graph. It computes gradients; an optimizer uses those gradients to update parameters.
 
 ### Batch Size
@@ -130,7 +130,7 @@ tensor၊ dtype၊ checkpoint၊ quantization …) ကို မြန်မာ 
 - **အရေးပါသည့် အကြောင်းရင်း:** reward model နှင့် reinforcement learning အဆင့် မလိုဘဲ preference data ကို တိုက်ရိုက် အသုံးပြုသဖြင့် pipeline ပိုရိုးရှင်းပြီး ထိန်းချုပ်ရ လွယ်ကူသည်။
 - **မကြာခဏ ရောထွေးမှု:** DPO သည် preference data ၏ အရည်အသွေးနှင့် လွှမ်းခြုံမှုအပေါ် မှီခိုဆဲ ဖြစ်ပြီး evaluation သို့မဟုတ် alignment အန္တရာယ်ကို ဖယ်ရှားပေးသည်မဟုတ်ပါ။
 - **ဆက်စပ် term များ:** RLHF (Reinforcement Learning from Human Feedback), SFT (Supervised Fine-Tuning), Alignment
-- **Learn it:** [Direct Preference Optimization](../phases/10-llms-from-scratch/08-dpo/)
+- **Learn it:** [Direct Preference Optimization](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/08-dpo/)
 - **English (source):** A preference-optimization objective that trains a policy directly from preferred and rejected response pairs relative to a reference policy. It avoids running an explicit reward model and reinforcement-learning loop during this stage.
 
 ### Dropout
@@ -169,7 +169,7 @@ tensor၊ dtype၊ checkpoint၊ quantization …) ကို မြန်မာ 
 - **အရေးပါသည့် အကြောင်းရင်း:** Fine-tuning သည် အပြုအမူ၊ style၊ format သို့မဟုတ် task စွမ်းဆောင်ရည်ကို ပြုပြင်နိုင်သည်၊ သို့သော် အချက်အလက်များ (facts) လက်ရှိ ဖြစ်နေရန် သို့မဟုတ် ခြေရာခံနိုင်ရန် လိုအပ်သည့်အခါ retrieval ကို ယုံကြည်စိတ်ချစွာ အစားထိုးနိုင်သည့် နည်းလမ်း မဟုတ်ပါ။
 - **မကြာခဏ ရောထွေးမှု:** Fine-tuning သည် သင်ယူထားသည့် အသိပညာကို သက်ရောက်နိုင်သည်၊ သို့သော် model အတွင်းရှိ ရှာဖွေနိုင်သည့် database တစ်ခုသို့ မှတ်တမ်းများ ရိုးရှင်းစွာ ထပ်ဖြည့်သည့် သဘောမျိုး မဟုတ်ပါ။
 - **ဆက်စပ် term များ:** SFT (Supervised Fine-Tuning), LoRA (Low-Rank Adaptation), QLoRA, RAG (Retrieval-Augmented Generation)
-- **Learn it:** [Fine-Tuning and LoRA](../phases/11-llm-engineering/08-fine-tuning-lora/)
+- **Learn it:** [Fine-Tuning and LoRA](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/08-fine-tuning-lora/)
 - **English (source):** Continuing training from pretrained parameters on a narrower dataset or objective. Depending on the method, you may update all parameters, selected parameters, or added adapter parameters. Fine-tuning can adapt behavior, style, format, or task performance, but it is not a dependable replacement for retrieval when facts must stay current or traceable.
 
 ### Gradient
@@ -231,7 +231,7 @@ tensor၊ dtype၊ checkpoint၊ quantization …) ကို မြန်မာ 
 - **အရေးပါသည့် အကြောင်းရင်း:** accelerator အပေါ် numerical computation ကို compile လုပ်၍ run နိုင်ရန် ခွင့်ပြုပြီး autograd၊ vectorization နှင့် parallel execution ကို function transformation အဖြစ် ပူးတွဲ ရရှိစေသည်။
 - **မကြာခဏ ရောထွေးမှု:** JAX သည် state ပါဝင်သည့် programming ကို လုံးဝ တားမြစ်သည်မဟုတ်ပါ၊ သို့သော် transformation ခံထားသည့် function အတွင်း ဖုံးကွယ်ထားသည့် mutation သည် မှားယွင်းသည့် သို့မဟုတ် မပံ့ပိုးသည့် အပြုအမူကို ဖြစ်ပေါ်စေနိုင်သည်။
 - **ဆက်စပ် term များ:** Autograd, Tensor, CUDA
-- **Learn it:** [Introduction to JAX](../phases/03-deep-learning-core/12-intro-to-jax/)
+- **Learn it:** [Introduction to JAX](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/03-deep-learning-core/12-intro-to-jax/)
 - **English (source):** A Python library for transforming numerical functions with automatic differentiation, compilation, vectorization, and parallel execution across accelerators. Its transformations work best with explicit state and functional-style code.
 
 ### Knowledge Distillation
@@ -274,7 +274,7 @@ tensor၊ dtype၊ checkpoint၊ quantization …) ကို မြန်မာ 
 - **အရေးပါသည့် အကြောင်းရင်း:** parameter အားလုံးကို update လုပ်ရန် မလိုဘဲ ချိန်ညှိမှုကို ရရှိစေသဖြင့် model ကြီးများကို သက်သာသည့် အရင်းအမြစ်ဖြင့် adapt လုပ်နိုင်သည်။
 - **မကြာခဏ ရောထွေးမှု:** အမှန်တကယ် memory နှင့် အမြန်နှုန်း သက်သာမှုသည် rank၊ target module၊ optimizer state၊ activation memory၊ quantization နှင့် အကောင်အထည်ဖော်မှုအပေါ် မူတည်သည်။
 - **ဆက်စပ် term များ:** Fine-tuning, QLoRA, Parameter
-- **Learn it:** [Fine-Tuning and LoRA](../phases/11-llm-engineering/08-fine-tuning-lora/)
+- **Learn it:** [Fine-Tuning and LoRA](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/08-fine-tuning-lora/)
 - **English (source):** A method that keeps base weights frozen and learns low-rank update matrices for selected layers. It reduces the number of trainable parameters and can lower training memory relative to full-parameter fine-tuning.
 
 ### Loss Function
@@ -345,7 +345,7 @@ tensor၊ dtype၊ checkpoint၊ quantization …) ကို မြန်မာ 
 - **အရေးပါသည့် အကြောင်းရင်း:** ကြီးမားသည့် model များကို ချိန်ညှိရန် လိုအပ်သည့် memory ကို လျှော့ချနိုင်သည်၊ သို့သော် သက်သာမှုနှင့် အရည်အသွေးသည် model၊ rank၊ optimizer၊ sequence အရှည်၊ hardware နှင့် အကောင်အထည်ဖော်မှုအပေါ် မူတည်သည်။
 - **မကြာခဏ ရောထွေးမှု:** QLoRA သည် memory အသုံးပြုမှု အတိအကျ တစ်ခုကို လည်းကောင်း၊ full fine-tuning နှင့် ကွာခြားသည့် အရည်အသွေး ကွာဟမှု ကိန်းသေ တစ်ခုကို လည်းကောင်း အာမမခံပါ။
 - **ဆက်စပ် term များ:** LoRA (Low-Rank Adaptation), Quantization, Fine-tuning
-- **Learn it:** [Fine-Tuning and LoRA](../phases/11-llm-engineering/08-fine-tuning-lora/)
+- **Learn it:** [Fine-Tuning and LoRA](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/08-fine-tuning-lora/)
 - **English (source):** A parameter-efficient fine-tuning method that keeps a pretrained base model frozen in a low-bit quantized representation while training LoRA adapters with higher-precision computation where needed. It can reduce the memory needed to adapt large models, but savings and quality depend on model, rank, optimizer, sequence length, hardware, and implementation.
 
 ### ReLU
@@ -365,7 +365,7 @@ tensor၊ dtype၊ checkpoint၊ quantization …) ကို မြန်မာ 
 - **အရေးပါသည့် အကြောင်းရင်း:** တိုက်ရိုက် တိုင်းတာ၍ မရသည့် အပြုအမူများကို လူ၏ ရွေးချယ်မှုမှ သင်ယူထားသည့် signal အဖြစ် ပြောင်းလဲပြီး policy ကို optimize လုပ်နိုင်သဖင့် လူ အကြိုက် အပြုအမူများကို training အဖြစ် ပြောင်းလဲစေသည်။
 - **မကြာခဏ ရောထွေးမှု:** RLHF သည် စုဆောင်းထားသည့် တုံ့ပြန်ချက်မှ သင်ယူထားသည့် proxy တစ်ခုကို optimize လုပ်သည်။ အသုံးပြုသူနှင့် အခြေအနေ တိုင်းအတွက် ကျယ်ပြန့်သည့် alignment ကို အာမမခံပါ။
 - **ဆက်စပ် term များ:** DPO (Direct Preference Optimization), SFT (Supervised Fine-Tuning), Alignment
-- **Learn it:** [Reinforcement Learning from Human Feedback](../phases/10-llms-from-scratch/07-rlhf/)
+- **Learn it:** [Reinforcement Learning from Human Feedback](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/07-rlhf/)
 - **English (source):** A family of pipelines that uses human feedback to learn a reward or preference signal and then optimizes a model policy against that signal. Implementations vary and need not all use the same reinforcement-learning algorithm.
 
 ### SFT (Supervised Fine-Tuning)
@@ -488,11 +488,11 @@ tensor၊ dtype၊ checkpoint၊ quantization …) ကို မြန်မာ 
 
 - Source glossary — https://aiengineeringfromscratch.com/glossary
 - Source repository — https://github.com/rohitg00/ai-engineering-from-scratch (MIT license)
-- [Activation Functions](../phases/03-deep-learning-core/04-activation-functions/)
-- [Chain Rule and Automatic Differentiation](../phases/01-math-foundations/05-chain-rule-and-autodiff/)
-- [Backpropagation from Scratch](../phases/03-deep-learning-core/03-backpropagation/)
-- [Direct Preference Optimization](../phases/10-llms-from-scratch/08-dpo/)
-- [Fine-Tuning and LoRA](../phases/11-llm-engineering/08-fine-tuning-lora/)
-- [Introduction to JAX](../phases/03-deep-learning-core/12-intro-to-jax/)
-- [Reinforcement Learning from Human Feedback](../phases/10-llms-from-scratch/07-rlhf/)
+- [Activation Functions](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/03-deep-learning-core/04-activation-functions/)
+- [Chain Rule and Automatic Differentiation](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/01-math-foundations/05-chain-rule-and-autodiff/)
+- [Backpropagation from Scratch](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/03-deep-learning-core/03-backpropagation/)
+- [Direct Preference Optimization](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/08-dpo/)
+- [Fine-Tuning and LoRA](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/08-fine-tuning-lora/)
+- [Introduction to JAX](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/03-deep-learning-core/12-intro-to-jax/)
+- [Reinforcement Learning from Human Feedback](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/10-llms-from-scratch/07-rlhf/)
 

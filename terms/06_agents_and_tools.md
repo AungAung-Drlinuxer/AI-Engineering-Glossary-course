@@ -16,7 +16,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ မြန်မာ
 - **မကြာခဏ ရောထွေးမှု:** Autonomy ဆိုသည်မှာ လွှဲအပ်ထားသည့် အခွင့်အာဏာ၏ အတိုင်းအတာ တစ်ခု ဖြစ်ပြီး agent တိုင်း၏ မဖြစ်မနေ လိုအပ်သည့် ဂုဏ်သတ္တိ မဟုတ်ပါ။
 - **လက်တွေ့:** Coding agent တစ်ခုသည် repository context ကို ဖတ်ရှုပြီး patch တစ်ခု အဆိုပြုကာ sandbox အတွင်း test များ လုပ်ဆောင်ပြီးနောက် deployment မပြုမီ အတည်ပြုချက်အတွက် ရပ်တန့်သည်။
 - **ဆက်စပ် term များ:** Agent Harness, Agent State, Tool Contract, Human-in-the-Loop (HITL)
-- **Learn it:** [The Agent Loop](../phases/14-agent-engineering/01-the-agent-loop/)
+- **Learn it:** [The Agent Loop](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/01-the-agent-loop/)
 - **English (source):** A software system that lets a model select actions toward a goal, observe tool or environment results, and continue under an orchestration policy. An agent may use a loop, a state machine, a workflow engine, or human approvals. The model is one component, not the entire system. Reliability comes from the harness, tool contracts, state, permissions, and verification around the model.
 
 ### Agent Harness
@@ -28,7 +28,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ မြန်မာ
 - **မကြာခဏ ရောထွေးမှု:** Harness သည် prompt template ထက် ကျယ်ပြန့်ပြီး ပြီးပြည့်စုံသည့် product ထက် ကျဉ်းမြောင်းသည်။
 - **လက်တွေ့:** သင့် harness သည် agent ကို tool call ငါးခုအထိသာ ကန့်သတ်နိုင်သည်၊ လက်ခံသည့် patch တစ်ခုစီပြီးနောက် checkpoint တစ်ခု သိမ်းဆည်းနိုင်သည်၊ ပြီးစီးမှု မတိုင်မီ အောင်မြင်သည့် test command တစ်ခု လိုအပ်နိုင်သည်။
 - **ဆက်စပ် term များ:** Agent, Tool Contract, Agent State, Verification Gate, Sandbox
-- **Learn it:** [Minimal Agent Workbench](../phases/14-agent-engineering/32-minimal-agent-workbench/)
+- **Learn it:** [Minimal Agent Workbench](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/32-minimal-agent-workbench/)
 - **English (source):** The runtime around a model that assembles context, exposes tools, manages state, enforces limits, records traces, and decides when the agent should continue, retry, ask, or stop. Two systems using the same model can perform very differently because their harnesses provide different context, tools, feedback, and safety boundaries.
 
 ### Agent Memory
@@ -51,7 +51,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ မြန်မာ
 - **မကြာခဏ ရောထွေးမှု:** State သည် conversation history နှင့် တူညီသည် မဟုတ်ပါ။ Transcript သည် အထောက်အထား ဖြစ်သည်။ State သည် နောက်တွင် မည်သည့်အရာ ဖြစ်လာမည်ကို ဆုံးဖြတ်ရန် အသုံးပြုသည့် ကျစ်လျစ်သည့် လုပ်ငန်းလည်ပတ်မှု မှတ်တမ်း ဖြစ်သည်။
 - **လက်တွေ့:** ရွေးချယ်ထားသည့် issue၊ ပြောင်းလဲထားသည့် file များ၊ နောက်ဆုံး test ရလဒ်နှင့် ကျန်ရှိသည့် စစ်ဆေးမှုများကို လုပ်ဆောင်ချက် တစ်ခုစီပြီးနောက် update လုပ်သည့် typed object တစ်ခုတွင် သိမ်းဆည်းရမည်။
 - **ဆက်စပ် term များ:** Checkpoint, Durable Execution, Context Engineering, Handoff
-- **Learn it:** [Repository Memory and State](../phases/14-agent-engineering/34-repo-memory-and-state/)
+- **Learn it:** [Repository Memory and State](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/34-repo-memory-and-state/)
 - **English (source):** The explicit data an agent carries across steps, such as the current objective, completed actions, tool results, open questions, budgets, approvals, and artifact references. Explicit state makes long tasks resumable, inspectable, and less dependent on the model reconstructing progress from a transcript.
 
 ### Agent Skill
@@ -63,7 +63,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ မြန်မာ
 - **မကြာခဏ ရောထွေးမှု:** Skill တစ်ခု activate လုပ်ခြင်းသည် context ကို ပေးအပ်သည်။ ၎င်းသည် tool တစ်ခု ဖော်ထုတ်ခြင်း၊ permission ပေးခြင်း၊ sandbox တစ်ခု ဖန်တီးခြင်း သို့မဟုတ် ရလဒ်လုပ်ငန်း မှန်ကန်ကြောင်း သက်သေပြခြင်း မပြုပါ။
 - **လက်တွေ့:** ကျစ်လျစ်သည့် name နှင့် routing description ကို ထုတ်ဝေရမည်၊ activate ပြီးနောက်မှသာ workflow ကို load လုပ်ရမည်၊ task သည် သက်ဆိုင်ရာ အခန်းကိုင်းသို့ ရောက်သည့်အခါ branch-specific reference များကို ဖတ်ရမည်။
 - **ဆက်စပ် term များ:** Skill Bundle, Skill Catalog, Skill Invocation, Progressive Disclosure, MCP (Model Context Protocol)
-- **Learn it:** [Agent Skills: Portable Contract and Runtime Boundary](../phases/13-tools-and-protocols/22-skills-and-agent-sdks/)
+- **Learn it:** [Agent Skills: Portable Contract and Runtime Boundary](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/22-skills-and-agent-sdks/)
 - **English (source):** A discoverable directory of procedural instructions whose entry point is `SKILL.md`, with optional references, scripts, and assets that a compatible runtime can load in stages. It packages reusable task knowledge separately from one conversation while keeping deeper context and deterministic helpers available on demand.
 
 ### Approval Gate
@@ -75,7 +75,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ မြန်မာ
 - **မကြာခဏ ရောထွေးမှု:** Approval gate သည် လုပ်ဆောင်ချက် တစ်ခု ခွင့်ပြုထားခြင်း ရှိမရှိကို မေးသည်။ Verification gate သည် ထို လုပ်ဆောင်ချက် မှန်ကန်ကြောင်း အထောက်အထား ပြသနိုင် ရှိမရှိကို မေးသည်။
 - **လက်တွေ့:** agent အား database migration တစ်ခု ရေးဆွဲစေပြီး စွန့်ပစ်နိုင်သည့် database တစ်ခုပေါ်တွင် run စေနိုင်သည်၊ သို့သော် production တွင် လုပ်ဆောင်မှု တိုင်းအတွက် owner တစ်ဦး၏ အတည်ပြုချက် လိုအပ်ရမည်။
 - **ဆက်စပ် term များ:** Human-in-the-Loop (HITL), Verification Gate, Least Privilege
-- **Learn it:** [Verification Gates](../phases/14-agent-engineering/38-verification-gates/)
+- **Learn it:** [Verification Gates](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/38-verification-gates/)
 - **English (source):** A control point that blocks a consequential action until an authorized person or policy grants permission. It limits the blast radius of uncertain model decisions while preserving automation for reversible work.
 
 ### Checkpoint
@@ -87,7 +87,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ မြန်မာ
 - **မကြာခဏ ရောထွေးမှု:** Workflow checkpoint နှင့် model-training checkpoint သည် ပြန်လည်ကောင်းမွန်ရေး ရည်မှန်းချက် တူညီသည်၊ သို့သော် ထိန်းသိမ်းသည့် state မတူညီပါ။ မည်သည့် တစ်ခုမှ transcript သက်သက် သို့မဟုတ် resume metadata မပါသည့် weights file သက်သက် မဟုတ်ပါ။
 - **လက်တွေ့:** အတည်ပြုပြီးသည့် အဆင့် တစ်ခုပြီးနောက် agent ၏ လက်ခံပြီးသား patch နှင့် test အထောက်အထားကို သိမ်းဆည်းရမည်၊ သို့မဟုတ် shutdown မပြုမီ training run ၏ weights၊ optimizer state၊ random state နှင့် data position တို့ကို သိမ်းဆည်းရမည်။
 - **ဆက်စပ် term များ:** Agent State, Durable Execution, Parameter, Optimizer
-- **Learn it:** [Checkpoint Save and Resume](../phases/19-capstone-projects/47-checkpoint-save-resume/); [Repository Memory and State](../phases/14-agent-engineering/34-repo-memory-and-state/)
+- **Learn it:** [Checkpoint Save and Resume](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/19-capstone-projects/47-checkpoint-save-resume/); [Repository Memory and State](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/34-repo-memory-and-state/)
 - **English (source):** A durable snapshot used to resume from a known boundary. In a workflow, it stores operational state and artifact references. In model training, it can store parameters, optimizer state, scheduler state, and the training position. Long-running workflows and training runs can recover from interruption without replaying completed work or losing expensive progress.
 
 ### Compensating Action
@@ -131,7 +131,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ မြန်မာ
 - **အရေးပါသည့် အကြောင်းရင်း:** Function calling သည် မော်ဒယ်နှင့် ပြင်ပ လုပ်ဆောင်ချက်များကြား ဖွဲ့စည်းထားသည့် ဆက်သွယ်မှု နယ်နိမိတ်ကို ပေးအပ်ပြီး application code သည် လုပ်ဆောင်ချက်ကို အတည်ပြုပြီးမှ ဆောင်ရွက်ရမည် ဖြစ်သည်။
 - **မကြာခဏ ရောထွေးမှု:** မော်ဒယ်သည် function call တစ်ခုကို တောင်းဆိုသည်။ သင့်၏ ယုံကြည်စိတ်ချရသည့် code သည် ၎င်းကို လုပ်ဆောင်မည်၊ မည်သို့ လုပ်ဆောင်မည်ကို ဆုံးဖြတ်သည်။ Function calling သက်သက်သည် ပြည့်စုံသည့် agent တစ်ခု မဟုတ်ပါ။
 - **ဆက်စပ် term များ:** Structured Output, Tool Contract, Agent, MCP (Model Context Protocol) ## G
-- **Learn it:** [Function Calling](../phases/11-llm-engineering/09-function-calling/)
+- **Learn it:** [Function Calling](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/09-function-calling/)
 - **English (source):** A provider or application interface through which a model emits a structured request naming a tool and its arguments. Application code validates the request, performs the operation, and can return the result for another model step.
 
 ### Human-in-the-Loop (HITL)
@@ -153,7 +153,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ မြန်မာ
 - **အရေးပါသည့် အကြောင်းရင်း:** MCP သည် မော်ဒယ် အခြေပြု application များနှင့် ပြင်ပ tool နှင့် context ရင်းမြစ်များကြား ချိတ်ဆက်မှုကို စံချိန်တစ်ခုတည်း ဖြစ်စေပြီး discovery နှင့် exchange လုပ်ငန်းများကို ကြိုတင်သတ်မှတ်ထားသည့် စာချုပ်များအပေါ် တည်ဆောက်နိုင်စေသည်။
 - **မကြာခဏ ရောထွေးမှု:** MCP သည် discovery နှင့် exchange ကို စံပြုပေးသည်။ မည်သည့် tool ကို ခေါ်ရန် လုံခြုံသည်ကို ဆုံးဖြတ်ခြင်း၊ permission ပေးခြင်း သို့မဟုတ် application တစ်ခုကို တိကျသည့် state handle များ အသုံးပြုခြင်းမှ တားမြစ်ခြင်း မပြုပါ။
 - **ဆက်စပ် term များ:** Stateless MCP, Multi Round-Trip Request (MRTR), Function Calling, Tool Contract, Least Privilege
-- **Learn it:** [Model Context Protocol](../phases/11-llm-engineering/14-model-context-protocol/)
+- **Learn it:** [Model Context Protocol](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/14-model-context-protocol/)
 - **English (source):** An open JSON-RPC protocol for a host to connect to servers that expose tools, resources, prompts, and extensions through defined request, result, discovery, and transport contracts. In revision 2026-07-28, every request carries its protocol version and client capabilities instead of relying on an initialization handshake or protocol session.
 
 ### Multi Round-Trip Request (MRTR)
@@ -165,7 +165,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ မြန်မာ
 - **မကြာခဏ ရောထွေးမှု:** `requestState` သည် မယုံကြည်ရသည့် round-trip data ဖြစ်သည်။ authorization သို့မဟုတ် လုပ်ငန်း ဆုံးဖြတ်ချက်များအတွက် အသုံးမပြုမီ integrity ကို ကာကွယ်ရမည်၊ server-side session identifier အနေဖြင့် မသဘောထားရ။
 - **လက်တွေ့:** `tools/call` မှ input request တစ်ခု ပြန်လည်ပေးအပ်ရမည်၊ ခွင့်ပြုထားသည့် response ကို host တွင် စုဆောင်းရမည်၊ ထို tool call ကို JSON-RPC id အသစ်တစ်ခုဖြင့် ပြန်လည်ကြိုးစားရမည်။
 - **ဆက်စပ် term များ:** Stateless MCP, MCP (Model Context Protocol), Human-in-the-Loop (HITL), Tool Contract
-- **Learn it:** [MCP Roots and Elicitation](../phases/13-tools-and-protocols/12-mcp-roots-and-elicitation/)
+- **Learn it:** [MCP Roots and Elicitation](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/12-mcp-roots-and-elicitation/)
 - **English (source):** An MCP request pattern in which an operation returns `resultType: input_required` with one or more `inputRequests`, then the client retries the original method with `inputResponses` and the exact returned `requestState`. It lets a stateless server request user, model, or root input without opening a server-initiated JSON-RPC exchange or storing protocol session state.
 
 ### Orchestration
@@ -210,7 +210,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ မြန်မာ
 - **မကြာခဏ ရောထွေးမှု:** Sandbox သည် သက်ရောက်မှုကို လျော့နည်းစေသည်။ ၎င်းအတွင်းရှိ code မှန်ကန်သည် သို့မဟုတ် အန္တရာယ်ကင်းသည်ကို သက်သေပြခြင်း မပြုပါ။
 - **လက်တွေ့:** ephemeral container တစ်ခုတွင် read-only base၊ ကန့်သတ်ထားသည့် စာရေးနိုင်သည့် workspace၊ production secret မပါခြင်းနှင့် တိကျပြတ်သားသည့် network allowlist တို့ဖြင့် test များ run ရမည်။
 - **ဆက်စပ် term များ:** Least Privilege, Approval Gate, Coding Agent, Guardrails
-- **Learn it:** [Production Agent Runtimes](../phases/14-agent-engineering/29-production-runtimes/)
+- **Learn it:** [Production Agent Runtimes](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/29-production-runtimes/)
 - **English (source):** An isolated execution environment that restricts an agent's access to files, processes, network destinations, credentials, and host resources. Generated code and tool calls can be wrong or malicious. Isolation limits their reach and makes disposable verification practical.
 
 ### Skill Bundle
@@ -222,7 +222,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ မြန်မာ
 - **မကြာခဏ ရောထွေးမှု:** `SKILL.md` သည် entry point ဖြစ်ပြီး artifact တစ်ခုလုံး မဖြစ်မနေ မဟုတ်ပါ။
 - **လက်တွေ့:** သစ်ပင်ကို ယူနစ်တစ်ခုအနေဖြင့် တပ်ဆင်ရမည်၊ hash များနှင့် source revision ကို မှတ်တမ်းတင်ရမည်၊ တပ်ဆင်ထားသည့် မိတ္တူကို validate လုပ်ရမည်၊ ရှိပြီးသား bundle ကို အစားထိုးမီ collision များကို ပြသရမည်။
 - **ဆက်စပ် term များ:** Agent Skill, Skill Catalog, Reproducible Build, Provenance Attestation
-- **Learn it:** [Skill Evals, Packaging, and Portability](../phases/13-tools-and-protocols/27-skill-evals-packaging-and-portability/)
+- **Learn it:** [Skill Evals, Packaging, and Portability](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/27-skill-evals-packaging-and-portability/)
 - **English (source):** The complete installable skill directory, including `SKILL.md` and every reference, script, asset, fixture, or companion file required by the workflow. Copying only the entry file can leave valid-looking instructions that point to missing resources or lose the deterministic code the workflow depends on.
 
 ### Skill Catalog
@@ -234,7 +234,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ မြန်မာ
 - **မကြာခဏ ရောထွေးမှု:** Catalog entry တစ်ခု ရှိခြင်းသည် skill ရှာဖွေတွေ့ရှိနိုင်သည် ဟု အဓိပ္ပာယ်ရသည်။ Body active ဖြစ်သည် သို့မဟုတ် ၎င်း၏ tool များ ခွင့်ပြုထားသည် ဟု မဆိုလိုပါ။
 - **လက်တွေ့:** package များကို အရင် validate လုပ်ရမည်၊ တိကျပြတ်သားသည့် duplicate-name policy ကို ကျင့်သုံးရမည်၊ serialized catalog budget ကို တိုင်းတာရမည်၊ တိုချုံ့ခြင်း၊ ချန်လှပ်ခြင်း သို့မဟုတ် ဖုံးလွှမ်းခံရသည့် entry များအတွက် diagnostic များ ထိန်းသိမ်းရမည်။
 - **ဆက်စပ် term များ:** Skill Discovery, Skill Invocation, Progressive Disclosure, Token Budget
-- **Learn it:** [Skill Discovery and Progressive Disclosure](../phases/13-tools-and-protocols/24-skill-discovery-and-progressive-disclosure/)
+- **Learn it:** [Skill Discovery and Progressive Disclosure](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/24-skill-discovery-and-progressive-disclosure/)
 - **English (source):** The compact model-visible inventory of eligible skills, usually containing routing metadata such as name, description, and an internal source identifier rather than every skill body. A catalog lets an agent discover relevant procedures without loading every installed package into the working context.
 
 ### Skill Discovery
@@ -246,7 +246,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ မြန်မာ
 - **မကြာခဏ ရောထွေးမှု:** Skill discovery သည် `SKILL.md` ဟု အမည်တပ်ထားသည့် filename များကို ကန့်သတ်ချက်မရှိ ထပ်ခါတလဲလဲ ရှာဖွေခြင်း မဟုတ်ပါ။ တပ်ဆင်သည့် တည်နေရာများနှင့် ဦးစားပေးအစဉ်သည် runtime policy ဖြစ်သည်။
 - **လက်တွေ့:** ရှာဖွေမည့် scope များနှင့် duplicate အပြုအမူကို ကြေညာရမည်၊ symlink များကို မည်သို့ ကိုင်တွယ်မည်ကို ဆုံးဖြတ်ရမည်၊ resource escape များကို ငြင်းပယ်ရမည်၊ candidate တစ်ခုစီ လက်ခံခြင်း သို့မဟုတ် ငြင်းပယ်ခြင်း၏ အကြောင်းရင်းကို log မှတ်ရမည်။
 - **ဆက်စပ် term များ:** Skill Catalog, Skill Bundle, Progressive Disclosure, Trust Boundary
-- **Learn it:** [Skill Discovery and Progressive Disclosure](../phases/13-tools-and-protocols/24-skill-discovery-and-progressive-disclosure/)
+- **Learn it:** [Skill Discovery and Progressive Disclosure](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/24-skill-discovery-and-progressive-disclosure/)
 - **English (source):** A runtime pipeline that searches configured roots, identifies candidate skill directories, validates their package contract, attaches scope and provenance, resolves collisions, and publishes eligible catalog entries. Deterministic discovery makes missing, malformed, shadowed, and unsafe packages diagnosable before model routing begins.
 
 ### Skill Invocation
@@ -258,7 +258,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ မြန်မာ
 - **မကြာခဏ ရောထွေးမှု:** Invocation သည် ညွှန်ကြားချက်များကို activate လုပ်သည်။ ၎င်းသည် command တစ်ခုကို အလိုအလျောက် လုပ်ဆောင်ခြင်း သို့မဟုတ် approval နှင့် sandbox policy ကို ကျော်လွန်ခြင်း မပြုပါ။
 - **လက်တွေ့:** actor policy ကို သတ်မှတ်ရမည်၊ description များကို အပြုသဘောနှင့် နီးစပ်သော်လည်း မကိုက်ညီသည့် တောင်းဆိုမှုများဖြင့် အကဲဖြတ်ရမည်၊ ရွေးချယ်ထားသည့် package အမှတ်အသားကို မှတ်တမ်းတင်ရမည်၊ host-specific invocation field များကို စမ်းသပ်ပြီးသား adapter များတွင် ထားရှိရမည်။
 - **ဆက်စပ် term များ:** Agent Skill, Skill Catalog, Approval Gate, Sandbox
-- **Learn it:** [Skill Invocation and Routing](../phases/13-tools-and-protocols/25-skill-invocation-and-routing/)
+- **Learn it:** [Skill Invocation and Routing](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/25-skill-invocation-and-routing/)
 - **English (source):** The runtime-mediated process in which an eligible human, model, application, or other skill selects a skill and causes its instructions to enter the working context. Explicit user access, implicit model routing, activation, argument binding, tool permission, and execution are separate decisions with different failure modes.
 
 ### Stateless MCP
@@ -270,7 +270,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ မြန်မာ
 - **မကြာခဏ ရောထွေးမှု:** Stateless MCP သည် protocol session များကို ဖယ်ရှားသည်။ application state၊ transport connection များ၊ streaming response များ၊ task များ သို့မဟုတ် တိကျပြတ်သားသည့် handle များကို မဖယ်ရှားပါ။
 - **လက်တွေ့:** `server/discover` ကို အကောင်အထည်ဖော်ရမည်၊ call တိုင်းတွင် request metadata ကို ပြန်လည်တည်ဆောက်ရမည်၊ transport header များကို JSON-RPC body နှင့် ကိုက်ညီမှု စစ်ဆေးရမည်၊ ဆက်လက်တည်ရှိမှု လိုအပ်သည့်အခါ server မှ ထုတ်ပေးသည့် application handle များကို သာမန် tool argument များအနေဖြင့် ပေးအပ်ရမည်။
 - **ဆက်စပ် term များ:** MCP (Model Context Protocol), Multi Round-Trip Request (MRTR), Tool Contract, Idempotency
-- **Learn it:** [MCP Fundamentals](../phases/13-tools-and-protocols/06-mcp-fundamentals/)
+- **Learn it:** [MCP Fundamentals](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/06-mcp-fundamentals/)
 - **English (source):** The MCP 2026-07-28 request model in which every request carries the protocol version and client capabilities in `params._meta`, while results carry an explicit `resultType`; no protocol state is keyed by an initialization handshake, connection, or `Mcp-Session-Id`. Any worker can validate and process a request from its contents and authorization context, which avoids hidden connection affinity and makes horizontal routing easier to reason about.
 
 ### Structured Output
@@ -282,7 +282,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ မြန်မာ
 - **မကြာခဏ ရောထွေးမှု:** Schema နှင့် ကိုက်ညီသည့် ရလဒ်တွင် မှားယွင်းသည့် တန်ဖိုးများ ရှိနိုင်ဆဲ ဖြစ်သည်။ ဖွဲ့စည်းပုံသည် အချက်အလက် မှန်ကန်မှု စစ်ဆေးခြင်း မဟုတ်ပါ။
 - **လက်တွေ့:** ခွင့်ပြုထားသည့် severity enum၊ evidence array နှင့် nullable escalation reason ပါဝင်သည့် incident triage ရလဒ်တစ်ခုကို လိုအပ်ရမည်၊ schema မကိုက်ညီသည့် တုံ့ပြန်မှု တိုင်းကို ငြင်းပယ်ရမည်။
 - **ဆက်စပ် term များ:** Function Calling, Tool Contract, Verification Gate
-- **Learn it:** [Structured Outputs](../phases/11-llm-engineering/03-structured-outputs/)
+- **Learn it:** [Structured Outputs](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/03-structured-outputs/)
 - **English (source):** Model output constrained or validated against a machine-readable schema so application code can consume fields without parsing free-form prose. It reduces format ambiguity at the model-to-software boundary and enables field-level validation and retries.
 
 ### Swarm
@@ -315,7 +315,7 @@ Entry တစ်ခုကို ဖတ်သည့်အခါ မြန်မာ
 - **မကြာခဏ ရောထွေးမှု:** JSON Schema တစ်ခုသည် tool contract ၏ အစိတ်အပိုင်း တစ်ခု ဖြစ်ပြီး စာချုပ် တစ်ခုလုံး မဟုတ်ပါ။
 - **လက်တွေ့:** ခွင့်ပြုထားသည့် root၊ မျှော်မှန်းထားသည့် base revision၊ အများဆုံး အရွယ်အစား၊ dry-run mode၊ တိကျပြတ်သားသည့် conflict error များနှင့် ပြန်လည်ပေးအပ်သည့် patch hash ပါဝင်သည့် file-write tool တစ်ခုကို သတ်မှတ်ရမည်။
 - **ဆက်စပ် term များ:** Function Calling, Structured Output, Least Privilege, Idempotency
-- **Learn it:** [Tool Use and Function Calling](../phases/14-agent-engineering/06-tool-use-and-function-calling/)
+- **Learn it:** [Tool Use and Function Calling](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/06-tool-use-and-function-calling/)
 - **English (source):** The complete agreement for a tool boundary: purpose, typed inputs, outputs, validation, permissions, side effects, errors, timeouts, idempotency, and evidence returned to the caller. A schema tells a model what fields exist; a contract tells the system when the tool is safe and how failures must be handled.
 
 ## Self-check
@@ -344,9 +344,9 @@ Sandbox သည် သက်ရောက်မှု အတိုင်းအတ�
 
 - Source glossary: [AI Engineering from Scratch — Glossary](https://aiengineeringfromscratch.com/glossary)
 - Source repository: [rohitg00/ai-engineering-from-scratch](https://github.com/rohitg00/ai-engineering-from-scratch) (MIT License)
-- [The Agent Loop](../phases/14-agent-engineering/01-the-agent-loop/)
-- [Minimal Agent Workbench](../phases/14-agent-engineering/32-minimal-agent-workbench/)
-- [Tool Use and Function Calling](../phases/14-agent-engineering/06-tool-use-and-function-calling/)
-- [Verification Gates](../phases/14-agent-engineering/38-verification-gates/)
-- [Model Context Protocol](../phases/11-llm-engineering/14-model-context-protocol/)
-- [MCP Fundamentals](../phases/13-tools-and-protocols/06-mcp-fundamentals/)
+- [The Agent Loop](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/01-the-agent-loop/)
+- [Minimal Agent Workbench](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/32-minimal-agent-workbench/)
+- [Tool Use and Function Calling](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/06-tool-use-and-function-calling/)
+- [Verification Gates](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/14-agent-engineering/38-verification-gates/)
+- [Model Context Protocol](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/11-llm-engineering/14-model-context-protocol/)
+- [MCP Fundamentals](https://github.com/rohitg00/ai-engineering-from-scratch/tree/main/phases/13-tools-and-protocols/06-mcp-fundamentals/)
