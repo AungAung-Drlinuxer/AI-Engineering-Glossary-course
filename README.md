@@ -20,7 +20,12 @@ Term စာရင်းသည် "ဘာလဲ" ကို ဖြေသည်။ 
 
 | လမ်းညွှန် | ဖုံးလွှမ်းသည့် နယ်ပယ် | ပါဝင်သည့် အရာ |
 |---|---|---|
-| [`guides/02_models_and_inference/`](guides/02_models_and_inference/README.md) | Models & inference (term ၂၉) | လေ့လာသည့် အစဉ် (အဆင့် ၆)၊ Mermaid ပုံ ၁၂ ခု၊ interactive lab ၆ ခု၊ အောက်ခံစနစ် သက်ရောက်မှု၊ လေ့ကျင့်ခန်း |
+| [`guides/01_math_and_training/`](guides/01_math_and_training/README.md) | Math & training (term ၄၂) | အစဉ် ၆ အဆင့်၊ ပုံများ၊ lab ၃ ခု (gradient step၊ schedule၊ memory)၊ အောက်ခံစနစ်၊ လေ့ကျင့်ခန်း |
+| [`guides/02_models_and_inference/`](guides/02_models_and_inference/README.md) | Models & inference (term ၂၉) | အစဉ် ၆ အဆင့်၊ ပုံ ၁၂ ခု၊ lab ၆ ခု၊ အောက်ခံစနစ်၊ လေ့ကျင့်ခန်း |
+| [`guides/03_data_and_representations/`](guides/03_data_and_representations/README.md) | Data & representations (term ၁၃) | အစဉ် ၅ အဆင့်၊ tokenizer/split/pipeline lab |
+| [`guides/04_retrieval_and_generation/`](guides/04_retrieval_and_generation/README.md) | Retrieval & generation (term ၁၄) | အစဉ် ၅ အဆင့်၊ index/chunking/prompt-budget lab |
+| [`guides/05_prompting_and_context/`](guides/05_prompting_and_context/README.md) | Prompting & context (term ၁၅) | အစဉ် ၅ အဆင့်၊ budget/prefix-cache/prompt-shape lab |
+| [`guides/06_agents_and_tools/`](guides/06_agents_and_tools/README.md) | Agents & tools (term ၂၇) | အစဉ် ၆ အဆင့်၊ agent-loop/tool-schema/concurrency lab |
 
 ### guides/02 — Models & inference
 
@@ -39,8 +44,9 @@ Term စာရင်းသည် "ဘာလဲ" ကို ဖြေသည်။ 
 - **လေ့ကျင့်ခန်း** — လုပ်ပြထားသည့် ဥပမာ ၆ ခု၊ တွက်ချက်ရသည့် လေ့ကျင့်ခန်း ၈ ခု၊ ပြဿနာ ရှာဖွေခြင်း ၅ ခု၊
   ဆုံးဖြတ်ချက် ၃ ခု၊ အဖြေများ အပြည့်အစုံ။
 
-စစ်ဆေးခြင်း — `python3 verify_guide.py --verbose` (ဖိုင်၊ register၊ term လွှမ်းခြုံမှု၊
-lab ၆ ခု ၃ ကြိမ် စီ၊ ဖိုင်ထဲ ကူးထားသည့် output တိုင်း ပြန် run ၍ တူညီမှု)။
+စစ်ဆေးခြင်း — `python3 verify_guide.py --verbose` (လမ်းညွှန် တိုင်းအတွက် — ဖိုင် ၆ ခု၊ register၊ term လွှမ်းခြုံမှု၊
+Mermaid ပုံ ≥ ၄ ခု၊ lab တိုင်း ၃ ကြိမ် byte-identical၊ ဖိုင်ထဲ ကူးထားသည့် run တိုင်း ပြန် run ၍ တူညီမှု၊
+လမ်းညွှန် က ညွှန်သည့် lab/script ဖိုင် တိုင်း တကယ် ရှိမှု)။
 
 ## လေ့လာနယ်ပယ် ၁၂ ခု (Learning areas)
 
