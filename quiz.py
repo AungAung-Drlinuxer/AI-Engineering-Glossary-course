@@ -1,45 +1,45 @@
 #!/usr/bin/env python3
-"""Glossary မှ self-quiz ဖန်တီးသည့် script (offline၊ deterministic)။
+"""`terms/` မှ self-quiz ဖန်တီးသည့် script (offline၊ deterministic)။
 
     python3 quiz.py                              # term ၁၀ ခု၊ မေးခွန်းတိုင်း interactive
     python3 quiz.py --area 06 --count 15
     python3 quiz.py --seed 42 --answers          # အဖြေစာရင်း ပြရန် (interactive မဟုတ်)
     python3 quiz.py --self-test                  # စစ်ဆေးချက် (offline၊ ချက်ချင်း)
 
-မေးခွန်း ပုံစံ — term တစ်ခု ပေးပြီး၊ အဓိပ္ပာယ် ၄ ခုအနက် မှန်သည့် တစ်ခုကို ရွေးသည်။
+မေးခွန်း ပုံစံ — term တစ်ခု ပေးပြီး၊ source ၏ အင်္ဂလိပ် အဓိပ္ပာယ် ၄ ခုအနက် မှန်သည့် တစ်ခုကို ရွေးသည်။
 ရွေးချယ်စရာ ၃ ခုသည် တူညီသော နယ်ပယ်မှ အခြား term များ၏ အဓိပ္ပာယ် ဖြစ်သည်။
 """
 
 from __future__ import annotations
 
 import argparse
-import json
 import random
 import sys
 from pathlib import Path
 
+import terms_corpus as tc
+
 REPO = Path(__file__).resolve().parent
-TERMS = REPO / "glossary" / "terms.json"
-AREAS = REPO / "glossary" / "by_area"
 
 
 def load() -> list[dict]:
-    return json.loads(TERMS.read_text(encoding="utf-8"))
-
-
-def area_map() -> dict[str, str]:
-    mapping = {}
-    for path in sorted(AREAS.glob("*.json")):
-        num = path.stem.split("_")[0]
-        for entry in json.loads(path.read_text(encoding="utf-8")):
-            mapping[entry["term"]] = num
-    return mapping
+    """`terms/NN_<slug>.md` မှ term အားလုံးကို နယ်ပယ် အချက်အလက်နှင့်အတူ ဖတ်သည်။"""
+    entries: list[dict] = []
+    for path in tc.area_paths():
+        num = path.name[:2]
+        name = tc.area_name(num)
+        for entry in tc.parse_area(path):
+            if not entry.get("english", "").strip():
+                continue
+            entries.append(dict(term=entry["term"], area=num, category=name,
+                                means=entry["english"].strip(),
+                                related=entry.get("related", "")))
+    return entries
 
 
 def build(seed: int, area: str | None, count: int) -> list[dict]:
     entries = load()
-    mapping = area_map()
-    pool = [e for e in entries if area is None or mapping.get(e["term"]) == area]
+    pool = [e for e in entries if area is None or e["area"] == area]
     if len(pool) < 4:
         raise SystemExit(f"area {area} has too few terms for a quiz")
     rng = random.Random(seed)
@@ -106,7 +106,7 @@ def self_test() -> int:
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Self-quiz over the glossary terms.")
+    ap = argparse.ArgumentParser(description="Self-quiz over the terms files.")
     ap.add_argument("--seed", type=int, default=1)
     ap.add_argument("--area", default=None, help="area number, e.g. 06")
     ap.add_argument("--count", type=int, default=10)

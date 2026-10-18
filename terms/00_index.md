@@ -275,4 +275,4 @@ Term အားလုံးကို အက္ခရာ အစဉ်လိုက�
 | 11 | Security & governance | 20 | [`terms/11_security_and_governance.md`](11_security_and_governance.md) |
 | 12 | Multimodal systems | 15 | [`terms/12_multimodal_systems.md`](12_multimodal_systems.md) |
 
-Source — https://aiengineeringfromscratch.com/glossary (`glossary/terms.md`, MIT)။
+Source — https://aiengineeringfromscratch.com/glossary (မူရင်း repository ၏ `glossary/terms.md`၊ MIT)။

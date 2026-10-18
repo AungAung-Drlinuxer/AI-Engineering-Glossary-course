@@ -74,15 +74,12 @@ AI-Engineering-Glossary-course/
 ├── README.md                    # ဤဖိုင်
 ├── COURSE_OUTLINE.md            # လေ့လာသည့် အစီအစဉ် (၄ ပတ်)
 ├── WRITING_RULES.md             # နှစ်ဘာသာ အရေးအသား စည်းမျဉ်း
-├── glossary/
-│   ├── terms.json               # source ၏ term ၂၅၀ (machine-readable)
-│   ├── burmese_names.json       # term ၂၅၀ ၏ မြန်မာ အမည်
-│   └── by_area/NN_<area>.json   # နယ်ပယ်အလိုက် ခွဲထားသည့် data
 ├── terms/
-│   ├── 00_index.md              # A–Z index (term ၂၅၀ လုံး)
-│   └── NN_<area>.md             # နယ်ပယ်တိုင်း၏ နှစ်ဘာသာ term စာရင်း
+│   ├── 00_index.md              # A–Z index (term ၂၅၀ လုံး) + နယ်ပယ်အလိုက် အကျဉ်းချုပ်
+│   └── NN_<area>.md             # နယ်ပယ်တိုင်း၏ နှစ်ဘာသာ term စာရင်း (data အရင်းအမြစ်)
 ├── guides/                      # terms-only shortcut လမ်းညွှန် (နယ်ပယ်အလိုက် ဖိုင် ၁၂ ခု)
 │   └── 11_security_and_governance/  # README.md — term ၂၀၊ term တိုင်း ၃ ကြောင်း
+├── terms_corpus.py              # `terms/` ကို ဖတ်သည့် shared parser (tool များ အသုံးပြုသည်)
 ├── verify_glossary.py           # term ၂၅၀ လုံး ပြည့်စုံ/မှန်ကန်ကြောင်း စစ်ဆေးသည့် script
 ├── verify_guide.py              # လမ်းညွှန် ဖိုင်များ (terms-only gate) စစ်ဆေးသည့် script
 └── quiz.py                      # term များမှ self-quiz ဖန်တီးသည့် script
@@ -116,9 +113,11 @@ python3 quiz.py --seed 42 --count 20 --answers     # အဖြေစာရင်
 |---|---|
 | Term ဖိုင်များ | နယ်ပယ် ၁၂ ခု / ဖိုင် ၁၂ ခု (`terms/`) |
 | Term အရေအတွက် | **၂၅၀ / ၂၅၀** |
-| စာလုံး အရေအတွက် | ၄၀၅,၀၂၃ လုံး / ၃,၄၁၂ လိုင်း |
+| စာလုံး အရေအတွက် | ၄၁၀,၈၇၄ လုံး / ၃,၄၄၇ လိုင်း (`terms/NN_*.md` ၁၂ ဖိုင်) |
+| Data အရင်းအမြစ် | `terms/` ကိုယ်တိုင် — tool များသည် `terms_corpus.py` ဖြင့် တိုက်ရိုက် ဖတ်သည် (အပိုဆောင်း data folder မလိုပါ) |
+| Index ↔ ဖိုင် ကိုက်ညီမှု | index အတန်း ၂၅၀ လုံး၊ term တိုင်း ဖိုင်ထဲ ပါဝင်၊ လင့် anchor ၂၅၀ လုံး ကိုက်ညီ |
 | `verify_glossary.py` | `TOTAL: 250/250 terms across 12 area file(s)` — `[PASS]` |
-| Source အင်္ဂလိပ် စာသား | term တိုင်း byte တူညီစွာ ပါဝင် |
+| Source အင်္ဂလိပ် စာသား | term တိုင်း `English (source)` အဖြစ် မူရင်း စာသား ပါဝင် |
 | စကားပြော particle / အခြားဘာသာ / emoji | သုည |
 | `quiz.py` | `--self-test` အောင်မြင်၊ offline |
 | လမ်းညွှန် (`guides/`) | နယ်ပယ် ၁၂ ခု / ဖိုင် ၁၂ ခု — term ၂၅၀ လုံး၊ နယ်ပယ်တိုင်း shortcut ပုံစံ |
@@ -132,9 +131,9 @@ python3 quiz.py --seed 42 --count 20 --answers     # အဖြေစာရင်
 |---|---|
 | Glossary page | https://aiengineeringfromscratch.com/glossary |
 | Source repository | https://github.com/rohitg00/ai-engineering-from-scratch |
-| Glossary ဖိုင် | `glossary/terms.md` (term ၂၅၀) |
+| Source glossary ဖိုင် | source repository ၏ `glossary/terms.md` (term ၂၅၀) |
 | License | MIT |
 
-အင်္ဂလိပ် စာသား (definition များ) ကို source အတိုင်း byte တူညီစွာ ထားရှိပြီး၊ မြန်မာ ဘာသာပြန်/ရှင်းလင်းချက်ကို
+အင်္ဂလိပ် စာသား (source မှ ကူးယူသည့် အဓိပ္ပာယ် ဖော်ပြချက်များ) ကို မူရင်းအတိုင်း ထည့်ထားပြီး၊ မြန်မာ ဘာသာပြန်/ရှင်းလင်းချက်ကို
 ထပ်ပေါင်း ရေးထားသည်။ နည်းပညာ အသုံးအနှုန်းများ (embedding, quantization, KV cache, RAG …) ကို
 အင်္ဂလိပ်အတိုင်း ထားရှိသည် — မြန်မာလို တိုက်ရိုက် ဘာသာပြန်ပါက အဓိပ္ပာယ် ပျက်စီးသည်။

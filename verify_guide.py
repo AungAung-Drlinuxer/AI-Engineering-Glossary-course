@@ -7,6 +7,9 @@
     python3 verify_guide.py --labs              # lab များသာ
     python3 verify_guide.py --verbose
 
+term စာရင်း (နယ်ပယ် တိုင်း၏ term မည်မျှ ပါရမည်) ကို `terms/` မှ တိုက်ရိုက် ဖတ်သည် — `terms/NN_<slug>.md`
+၏ `### ` heading များ ဖြစ်သည်။
+
 လမ်းညွှန် နှစ်မျိုး ရှိသည်။
 
 **terms-only လမ်းညွှန်** — README.md ထဲ `<!-- guide-kind: terms-only -->` marker ပါသည့် ဖိုင် (နယ်ပယ် ၁၂ ခုလုံး ဤ ပုံစံ ဖြစ်သည်) —
@@ -32,15 +35,15 @@ register (စကားပြော particle) ban ကို ဤ ဖိုင်�
 from __future__ import annotations
 
 import argparse
-import json
 import re
 import subprocess
 import sys
 from pathlib import Path
 
+import terms_corpus as tc
+
 REPO = Path(__file__).resolve().parent
 GUIDES = REPO / "guides"
-SLICES = REPO / "glossary" / "by_area"
 REQUIRED_DOCS = ["README.md", "01_learning_sequence.md", "02_visual_explanations.md",
                  "03_theory_to_infrastructure.md", "04_exercises.md", "labs/README.md"]
 BANNED = ["ပါတယ်", "ပါဘူး", "ရမယ်", "ဖြစ်တယ်", "တဲ့", "နဲ့", "ဖို့", "ရဲ့", "နော်", "ပေါ့", "လို့", "ဆိုတာ", "ဒီ"]
@@ -60,9 +63,8 @@ def foreign(text: str) -> list[str]:
 
 
 def slice_terms(number: str) -> list[str]:
-    for path in sorted(SLICES.glob(f"{number}_*.json")):
-        return [e["term"] for e in json.loads(path.read_text(encoding="utf-8"))]
-    return []
+    """နယ်ပယ် တစ်ခု၏ term များကို `terms/NN_<slug>.md` မှ တိုက်ရိုက် ဖတ်သည်။"""
+    return tc.terms_of(number)
 
 
 def check_documents(guide: Path, number: str, verbose: bool) -> list[str]:
@@ -290,7 +292,7 @@ def main() -> int:
         for p in problems[:60]:
             print("  -", p)
         return 1
-    print("[PASS] Every guide is complete, in register, and every pasted run and lab reproduces offline.")
+    print("[PASS] Every guide is complete, in register, and carries every term of its area.")
     return 0
 
 

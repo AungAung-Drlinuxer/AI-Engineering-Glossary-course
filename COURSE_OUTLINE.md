@@ -1,7 +1,7 @@
 # Course Outline — AI Engineering Glossary (English + မြန်မာ)
 
 Source — [`rohitg00/ai-engineering-from-scratch`](https://github.com/rohitg00/ai-engineering-from-scratch) ၏
-glossary (`glossary/terms.md`)၊ term **250** ခု၊ လေ့လာနယ်ပယ် **၁၂** ခု။
+glossary (မူရင်း repository ၏ `glossary/terms.md`)၊ term **250** ခု၊ လေ့လာနယ်ပယ် **၁၂** ခု။
 Website — https://aiengineeringfromscratch.com/glossary
 
 ## ဤ course က ဘာကို ပေးသလဲ
